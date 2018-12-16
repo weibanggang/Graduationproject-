@@ -1,0 +1,28 @@
+public static void main(String[] args) {
+        int [] arr={63,4,24,12,45,6,8,9};
+        /**
+         * 将查询最大的放到最后面
+         * 循环查询  当前值大于前列 把当前数组位置记录
+         *
+         */
+
+        int index;
+        for (int i = 1; i < arr.length; i++) {
+            index=i;
+                //第一个开始   小于数组长度减去当前循环
+            for (int j = 0; j <arr.length-i ; j++) {
+                //如果滴i个元素大于
+                if(arr[i]>arr[j]){
+                    index=j;
+                }
+            }
+
+            int temp=arr[arr.length-i];
+            arr[arr.length-i]=arr[index];
+            arr[index]=temp;
+
+        }
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
+        }
+    }

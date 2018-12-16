@@ -1,0 +1,272 @@
+<template>
+	<div>
+		<Form ref="formValidate" :model="typeofMeeting" :label-width="80">
+			<FormItem>
+				<Button type="success" @click="add()" long>添加</Button>
+			</FormItem>
+		</Form>
+		<Table border :columns="columns7" :data="data6"></Table>
+		<div style="margin: 10px;overflow: hidden">
+			<div style="float: right;">
+				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
+			</div>
+		</div>
+		<Modal v-model="modal13" draggable scrollable title="会议类型" @on-ok="ok">
+			<Form ref="formValidate" :model="typeofMeeting" :label-width="80">
+				<FormItem label="会议名称" prop="tName">
+					<Input v-model="typeofMeeting.tName" placeholder="请输入会议名称"></Input>
+				</FormItem>
+				<FormItem label="会议状态" rop="status">
+					<i-switch v-model="typeofMeeting.status" size="large">
+						<span slot="open">正常</span>
+						<span slot="close">冻结</span>
+					</i-switch>
+				</FormItem>
+				<FormItem label="会议备注" prop="tRemarks">
+					<Input v-model="typeofMeeting.tRemarks" type='textarea' :autosize="{minRows: 5,maxRows: 6}" placeholder="请输入会议备注"></Input>
+				</FormItem>
+				<FormItem label="排序" prop="tSort">
+					<InputNumber :max="100" :min="1" v-model="typeofMeeting.tSort"></InputNumber>
+				</FormItem>
+			</Form>
+		</Modal>
+		<Modal v-model="modal14" draggable scrollable title="会议类型" @on-ok="oks">
+			<Form ref="formValidate" :model="typeofMeeting" :label-width="80">
+				<FormItem label="会议名称" prop="tName">
+					<Input v-model="typeofMeeting.tName" placeholder="请输入会议名称"></Input>
+				</FormItem>
+				<FormItem label="会议状态" rop="status">
+					<i-switch v-model="typeofMeeting.status" size="large">
+						<span slot="open">正常</span>
+						<span slot="close">冻结</span>
+					</i-switch>
+				</FormItem>
+				<FormItem label="会议备注" prop="tRemarks">
+					<Input v-model="typeofMeeting.tRemarks" type='textarea' :autosize="{minRows: 5,maxRows: 6}" placeholder="请输入会议备注"></Input>
+				</FormItem>
+				<FormItem label="排序" prop="tSort">
+					<InputNumber :max="100" :min="1" v-model="typeofMeeting.tSort"></InputNumber>
+				</FormItem>
+			</Form>
+		</Modal>
+	</div>
+</template>
+<script>
+	export default {
+		data() {
+			return {
+				title: "添加会议类型",
+				url: "http://localhost:8080",
+				count: 10,
+				modal13: false,
+				modal14: false,
+				columns7: [{
+						title: '会议编号',
+						key: 'tId',
+						align: 'center',
+						render: (h, params) => {
+							return h('div', [
+								h('Icon', {
+									props: {
+										type: 'person'
+									}
+								}),
+								h('strong', params.row.tId)
+							]);
+						}
+					},
+					{
+						title: '会议名称',
+						key: 'tName',
+						align: 'center',
+					},
+					{
+						title: '会议状态',
+						key: 'status',
+						align: 'center',
+						render: (h, params) => {
+							//return h('元素',{元素的性质},'内容')
+							return h('i-switch', {
+									props: {
+										size: "large",
+										value: params.row.status == "true"
+									},
+									on: {
+										'on-change': (value) => {
+											params.row.status = value;
+											const th = this;
+											axios.get(th.url + '/typeofMeeting/updateStatus', {
+												params: {
+													tId: params.row.tId,
+													status: value
+												}
+											}).then(function(res) {
+												if (res.data.code === 1028) {
+													th.$Message.success(res.data.message);
+												} else {
+													th.$Message.error(res.data.message);
+													th.changePage(1);
+												}
+											})
+
+										}
+									}
+								},
+								[h('span', {
+										slot: "open",
+										domProps: {
+											innerHTML: '正常'
+										}
+									}),
+									h('span', {
+										slot: "close",
+										domProps: {
+											innerHTML: '冻结'
+										}
+									}),
+								]
+							)
+						}
+
+					},
+					{
+						title: '会议备注',
+						key: 'tRemarks',
+						align: 'center',
+					},
+					{
+						title: '排序',
+						key: 'tSort',
+						align: 'center',
+					},
+					{
+						title: '操作',
+						key: 'action',
+						width: 150,
+						align: 'center',
+						render: (h, params) => {
+							return h('div', [
+								h('Button', {
+									props: {
+										type: 'primary',
+										size: 'small'
+									},
+									style: {
+										marginRight: '5px'
+									},
+									on: {
+										click: () => {
+											this.show(params.row)
+										}
+									}
+								}, '编辑'),
+								h('Button', {
+									props: {
+										type: 'error',
+										size: 'small'
+									},
+									on: {
+										click: () => {
+											this.remove(params.row.tId, params.index)
+										}
+									}
+								}, '移除')
+							]);
+						}
+					}
+				],
+				data6: [],
+				typeofMeeting: {
+					tId: 0,
+					tName: "",
+					status: true,
+					tRemarks: "",
+					tSort: 1
+				}
+			}
+		},
+		methods: {
+			show(data) {
+				this.modal13 = true;
+				this.typeofMeeting.tId = data.tId;
+				this.typeofMeeting.tName = data.tName;
+				this.typeofMeeting.status = data.status == "true";
+				this.typeofMeeting.tRemarks = data.tRemarks;
+				this.typeofMeeting.tSort = data.tSort;
+			},
+			changePage(page) {
+				const th = this;
+				axios.get(th.url + '/typeofMeeting/selectAll', {
+					params: {
+						pageNum: page
+					}
+				}).then(function(res) {
+					th.data6 = res.data.data;
+					th.count = res.data.count;
+				})
+			},
+
+			remove(tId, index) {
+				this.$Modal.confirm({
+					title: '删除提示',
+					content: '<p>移除后不可恢复，确定继续？</p>',
+					onOk: () => {
+						const th = this;
+						axios.get(th.url + '/typeofMeeting/deleteByPrimaryKey', {
+							params: {
+								tId: tId
+							}
+						}).then(function(res) {
+							if (res.data.code === 1028) {
+								th.$Message.success(res.data.message);
+								th.changePage(1);
+							} else {
+								th.$Message.error(res.data.message);
+							}
+						})
+					}
+				});
+			},
+			ok() {
+				const th = this;
+				console.log(th);
+				axios.post(th.url + '/typeofMeeting/updateByPrimaryKey', th.typeofMeeting, {
+					headers: {
+						"Content-Type": "application/json;charset=utf-8"
+					}
+				}).then(function(res) {
+					if (res.data.code === 1028) {
+						th.$Message.success(res.data.message);
+						th.changePage(1);
+					} else {
+						th.$Message.error(res.data.message);
+					}
+				})
+			},
+			oks() {
+				const th = this;
+				console.log(th);
+				axios.post(th.url + '/typeofMeeting/insert', th.typeofMeeting, {
+					headers: {
+						"Content-Type": "application/json;charset=utf-8"
+					}
+				}).then(function(res) {
+					if (res.data.code === 1028) {
+						th.$Message.success(res.data.message);
+						th.changePage(1);
+					} else {
+						th.$Message.error(res.data.message);
+					}
+				})
+			},
+			add() {
+				this.typeofMeeting.tName = "";
+				this.typeofMeeting.tRemarks = "";
+				this.modal14 = true;
+			},
+		},
+		created() {
+			this.changePage(1);
+		}
+	}
+</script>
