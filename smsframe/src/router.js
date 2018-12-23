@@ -61,8 +61,27 @@ export default new Router({
 		},
 		{
 			path: '/memberInformationAdd',
-			name: 'memberInformationAdd',
+			name: '/memberInformationAdd',
 			component: () => import('./components/memberInformation/add.vue')
+		},{
+			path: '/financialManagementSelect',
+			name: '/financialManagementSelect',
+			component: () => import('./components/financialManagement/select.vue')
+		},
+		{
+			path: '/financialManagementAdd',
+			name: '/financialManagementAdd',
+			component: () => import('./components/financialManagement/add.vue')
+		},
+		{
+			path: '/monthlyPlanSummarySelect',
+			name: '/monthlyPlanSummarySelect',
+			component: () => import('./components/monthlyPlanSummary/select.vue')
+		},
+		{
+			path: '/monthlyPlanSummaryAdd',
+			name: '/monthlyPlanSummaryAdd',
+			component: () => import('./components/monthlyPlanSummary/add.vue')
 		},
 		{
 			path: '/jurisdictionSelect',
@@ -84,6 +103,22 @@ export default new Router({
 			path: '/workArrangementSelect',
 			name: '/workArrangementSelect',
 			component: () => import('./components/workArrangement/select.vue')
+		},{
+			path: '/departmentalExcellenceRecordSelect',
+			name: '/departmentalExcellenceRecordSelect',
+			component: () => import('./components/departmentalExcellenceRecord/select.vue')
+		},{
+			path: '/personalMeritRecordSelect',
+			name: '/personalMeritRecordSelect',
+			component: () => import('./components/personalMeritRecord/select.vue')
+		},{
+			path: '/attendanceSelect',
+			name: '/attendanceSelect',
+			component: () => import('./components/attendance/select.vue')
+		},{
+			path: '/minutesOfTheMeetingSelect',
+			name: '/minutesOfTheMeetingSelect',
+			component: () => import('./components/minutesOfTheMeeting/select.vue')
 		},
   ]
 })

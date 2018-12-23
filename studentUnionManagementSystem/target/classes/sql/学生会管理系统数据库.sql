@@ -198,27 +198,32 @@ insert into LeaveRecord(d_name, m_user,l_m_name,  p_date, l_title, l_type, l_con
 create table PersonalMeritRecord(
 p_id int auto_increment primary key comment'编号',
 d_name varchar(50) comment '部门名称',
-m_id int comment '成员编号',
+m_user int comment '成员编号',
+l_m_name varchar(20) comment '成员姓名',
 p_title varchar(30) comment '主题',
 p_date datetime comment '时间',
 p_contexts longtext comment '内容',
 p_file  varchar(256) comment '文件路径',
-p_m_id int comment '操作人',
-foreign key(m_id) references  MemberInformation(m_id),
-foreign key(p_m_id) references MemberInformation(m_id)
+m_name varchar(20) comment '操作人'
 );
+insert into PersonalMeritRecord(d_name,m_user,l_m_name,p_title,p_date,p_contexts,p_file,m_name)values
+('文体部','100010001','小邦哥','优秀副部长','2018-12-30','最佳副部长','无路径','曾丽玉'),
+('文体部','100010002','廖珠炫','优秀部长','2018-12-30','最佳部长','无路径','曾丽玉'),
+('文体部','100010004','彭金华','优秀干事','2018-12-30','最佳学长','无路径','老吴');
 #14部门评优记录
 create table DepartmentalExcellenceRecord(
 d_id int auto_increment primary key comment'编号',
-d_d_id int comment '部门编号',
+d_name varchar(50) comment '部门名称',
 d_title varchar(50) comment '标题',
 d_date date comment '时间',
 d_contexts longtext comment '内容',
 d_file varchar(256) comment '文件路径',
-m_id int comment '操作人',
-foreign key(d_id) references DepartmentType(d_id),
-foreign key(m_id) references  MemberInformation(m_id)
+m_name varchar(20) comment '操作人'
 );
+insert into DepartmentalExcellenceRecord(d_name,d_title,d_date,d_contexts,d_file,m_name)values
+('文体部','最佳优秀部门','2018-12-30','什么内部内容的','无文件','曾丽玉'),
+('生活部','最佳生活管理部门','2018-12-30','生活部内容的','无文件','曾丽玉'),
+('纪检部','最佳检查部门','2018-12-30','纪检部内容的','无文件','曾丽玉');
 #15财务管理
 create table FinancialManagement(
 f_id int auto_increment primary key comment'编号',
@@ -228,10 +233,9 @@ f_after_money decimal(10,2) comment '交易后余额',
 f_money decimal(10,2) comment '交易余额',
 f_date date  comment '时间',
 f_mr_date  datetime default(now()) comment '操作时间',
-m_id int comment '操作人',
+m_name varchar(20) comment '操作人',
 f_remarks  varchar(256) comment '备注',
-f_file  varchar(256) comment '文件路径',
-foreign key(m_id) references MemberInformation(m_id)
+f_file  varchar(256) comment '文件路径'
 );
 #16出勤情况
 create table  Attendance(
@@ -241,9 +245,8 @@ m_user int comment '成员工作编号',
 d_name varchar(20) comment '成员部门',
 a_titile  varchar(50) comment '标题',
 a_date datetime comment '时间',
-a_m_id int comment '操作人',
-a_remaks varchar(256) comment '备注',
-foreign key(a_m_id) references MemberInformation(m_id)
+m_name varchar(20) comment '操作人',
+a_remaks varchar(256) comment '备注'
 );
 #17会议记录
 create table MinutesOfTheMeeting(
@@ -252,11 +255,15 @@ m_title  varchar(50) comment '标题',
 t_id int comment '会议类型',
 m_date  datetime default(now()) comment '上传时间',
 m_file   varchar(256) comment '文件路径',
-m_m_id int comment '操作人',
+m_name varchar(20) comment '操作人',
 m_contexts varchar(256) comment '内容',
-foreign key(m_m_id) references MemberInformation(m_id),
 foreign key(t_id) references TypeOfMeeting(t_id)
 );
+insert into MinutesOfTheMeeting(m_title,t_id,m_file,m_name,m_contexts)values
+('第二次全体大会',1,'无','小邦哥','内容正在填写'),
+('第二次部门会议',2,'无','小邦哥1','内容正在填写'),
+('第三次全体大会',1,'无','小邦哥2','内容正在填写'),
+('第四次全体大会',1,'无','小邦哥3','内容正在填写');
 #18月计划总结表
 create table MonthlyPlanSummary(
 m_id int auto_increment primary key comment'编号',
@@ -265,9 +272,13 @@ d_id int comment '部门编号',
 m_date datetime default(now()) comment '上传时间',
 m_file  varchar(256) comment '文件路径',
 m_remarks varchar(256) comment '备注',
-m_m_id int comment '操作人',
+m_name varchar(20) comment '操作人',
 m_contexts longtext comment '内容',
-foreign key(m_m_id) references MemberInformation(m_id),
 foreign key(d_id) references DepartmentType(d_id)
 );
+insert into monthlyplansummary (m_title, d_id,  m_remarks,  m_name, m_contexts) values
+('九月份总结与十月份计划','1','无','小邦哥','暂时没有内容'),
+('九月份总结与十月份计划','2','无','小邦哥','暂时没有内容'),
+('九月份总结与十月份计划','4','无','小邦哥','暂时没有内容'),
+('九月份总结与十月份计划','3','无','小邦哥','暂时没有内容');
 

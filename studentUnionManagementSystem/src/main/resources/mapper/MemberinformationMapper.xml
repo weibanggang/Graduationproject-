@@ -132,4 +132,7 @@ where m.status like concat('%',#{status},'%')
     <select id="iUserName" resultType="com.wbg.sums.entity.MemberInformation">
           select m_user,m_name,d_id from memberinformation where m_user like  concat ('%',#{mUser},'%')
     </select>
+    <select id="selectJid" resultType="java.lang.Integer">
+        select j_id from memberinformation where m_user = #{mUser}
+    </select>
 </mapper>

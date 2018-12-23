@@ -17,7 +17,6 @@ import java.util.List;
 public class AdminController {
     @Autowired
     private AdminService adminService;
-
     /**
      * 根据aId删除
      * 要求转入 aId

@@ -55,6 +55,7 @@ public class MemberInformationController {
     @PostMapping("/insert")
     public Result insert(@RequestBody MemberInformation memberInfomation) {
         try {
+            memberInfomation.setmName("设置session");
             return memberInformationService.insert(memberInfomation) > 0 ? new Result().successMessage("添加成功！") : new Result("添加失败！");
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");

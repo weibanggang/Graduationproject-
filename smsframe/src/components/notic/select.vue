@@ -6,7 +6,7 @@
 				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
 			</div>
 		</div>
-		<Modal v-model="modal13" draggable scrollable title="编辑公告" @on-ok="ok" @on-cancel="cancel">
+		<Modal v-model="modal13" draggable scrollable title="编辑公告" @on-ok="ok" >
 			<div>
 				<Form ref="formInline" :model="notic" :label-width="80">
 					<FormItem label="标题">

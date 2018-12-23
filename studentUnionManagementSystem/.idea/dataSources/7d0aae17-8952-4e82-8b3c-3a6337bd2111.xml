@@ -1436,10 +1436,10 @@
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="365" parent="334" name="a_m_id">
+    <column id="365" parent="334" name="m_name">
       <Position>7</Position>
       <Comment>操作人</Comment>
-      <DataType>int(11)|0s</DataType>
+      <DataType>varchar(20)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -1450,22 +1450,12 @@
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="367" parent="334" name="a_m_id">
-      <ColNames>a_m_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="368" parent="334" name="PRIMARY">
+    <key id="367" parent="334" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>a_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="369" parent="334" name="attendance_ibfk_1">
-      <ColNames>a_m_id</ColNames>
-      <RefSchemaName>studentunionmanagementsystem</RefSchemaName>
-      <RefTableName>memberinformation</RefTableName>
-      <RefColNames>m_id</RefColNames>
-    </foreign-key>
-    <column id="370" parent="335" name="b_id">
+    <column id="368" parent="335" name="b_id">
       <Position>1</Position>
       <Comment>编号</Comment>
       <DataType>int(11)|0s</DataType>
@@ -1473,47 +1463,47 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="371" parent="335" name="b_beforedate">
+    <column id="369" parent="335" name="b_beforedate">
       <Position>2</Position>
       <Comment>备份时间</Comment>
       <DataType>datetime|0s</DataType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="372" parent="335" name="b_file">
+    <column id="370" parent="335" name="b_file">
       <Position>3</Position>
       <Comment>备份路径</Comment>
       <DataType>varchar(256)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="373" parent="335" name="b_afterdate">
+    <column id="371" parent="335" name="b_afterdate">
       <Position>4</Position>
       <Comment>还原时间</Comment>
       <DataType>datetime|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="374" parent="335" name="b_brefore_name">
+    <column id="372" parent="335" name="b_brefore_name">
       <Position>5</Position>
       <Comment>备份人</Comment>
       <DataType>varchar(20)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="375" parent="335" name="b_after_name">
+    <column id="373" parent="335" name="b_after_name">
       <Position>6</Position>
       <Comment>还原人</Comment>
       <DataType>varchar(20)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="376" parent="335" name="PRIMARY">
+    <key id="374" parent="335" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>b_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="377" parent="336" name="c_id">
+    <column id="375" parent="336" name="c_id">
       <Position>1</Position>
       <Comment>编号</Comment>
       <DataType>int(11)|0s</DataType>
@@ -1521,40 +1511,40 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="378" parent="336" name="c_name">
+    <column id="376" parent="336" name="c_name">
       <Position>2</Position>
       <Comment>班级名称</Comment>
       <DataType>varchar(20)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="379" parent="336" name="c_headmaster_name">
+    <column id="377" parent="336" name="c_headmaster_name">
       <Position>3</Position>
       <Comment>班主任名字</Comment>
       <DataType>varchar(20)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="380" parent="336" name="c_phone">
+    <column id="378" parent="336" name="c_phone">
       <Position>4</Position>
       <Comment>联系电话</Comment>
       <DataType>varchar(11)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="381" parent="336" name="status">
+    <column id="379" parent="336" name="status">
       <Position>5</Position>
       <Comment>状态</Comment>
       <DataType>varchar(10)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="382" parent="336" name="PRIMARY">
+    <key id="380" parent="336" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>c_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="383" parent="337" name="d_id">
+    <column id="381" parent="337" name="d_id">
       <Position>1</Position>
       <Comment>编号</Comment>
       <DataType>int(11)|0s</DataType>
@@ -1562,70 +1552,54 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="384" parent="337" name="d_d_id">
+    <column id="382" parent="337" name="d_name">
       <Position>2</Position>
-      <Comment>部门编号</Comment>
-      <DataType>int(11)|0s</DataType>
+      <Comment>部门名称</Comment>
+      <DataType>varchar(50)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="385" parent="337" name="d_title">
+    <column id="383" parent="337" name="d_title">
       <Position>3</Position>
       <Comment>标题</Comment>
       <DataType>varchar(50)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="386" parent="337" name="d_date">
+    <column id="384" parent="337" name="d_date">
       <Position>4</Position>
       <Comment>时间</Comment>
       <DataType>date|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="387" parent="337" name="d_contexts">
+    <column id="385" parent="337" name="d_contexts">
       <Position>5</Position>
       <Comment>内容</Comment>
       <DataType>longtext|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="388" parent="337" name="d_file">
+    <column id="386" parent="337" name="d_file">
       <Position>6</Position>
       <Comment>文件路径</Comment>
       <DataType>varchar(256)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="389" parent="337" name="m_id">
+    <column id="387" parent="337" name="m_name">
       <Position>7</Position>
       <Comment>操作人</Comment>
-      <DataType>int(11)|0s</DataType>
+      <DataType>varchar(20)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="390" parent="337" name="m_id">
-      <ColNames>m_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="391" parent="337" name="PRIMARY">
+    <key id="388" parent="337" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>d_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="392" parent="337" name="departmentalexcellencerecord_ibfk_1">
-      <ColNames>d_id</ColNames>
-      <RefSchemaName>studentunionmanagementsystem</RefSchemaName>
-      <RefTableName>departmenttype</RefTableName>
-      <RefColNames>d_id</RefColNames>
-    </foreign-key>
-    <foreign-key id="393" parent="337" name="departmentalexcellencerecord_ibfk_2">
-      <ColNames>m_id</ColNames>
-      <RefSchemaName>studentunionmanagementsystem</RefSchemaName>
-      <RefTableName>memberinformation</RefTableName>
-      <RefColNames>m_id</RefColNames>
-    </foreign-key>
-    <column id="394" parent="338" name="d_id">
+    <column id="389" parent="338" name="d_id">
       <Position>1</Position>
       <Comment>部门编号</Comment>
       <DataType>int(11)|0s</DataType>
@@ -1633,47 +1607,47 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="395" parent="338" name="d_name">
+    <column id="390" parent="338" name="d_name">
       <Position>2</Position>
       <Comment>部门名称</Comment>
       <DataType>varchar(20)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="396" parent="338" name="status">
+    <column id="391" parent="338" name="status">
       <Position>3</Position>
       <Comment>状态</Comment>
       <DataType>varchar(10)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="397" parent="338" name="d_synopsis">
+    <column id="392" parent="338" name="d_synopsis">
       <Position>4</Position>
       <Comment>部门简介</Comment>
       <DataType>longtext|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="398" parent="338" name="d_remarks">
+    <column id="393" parent="338" name="d_remarks">
       <Position>5</Position>
       <Comment>部门备注</Comment>
       <DataType>varchar(256)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="399" parent="338" name="d_sort">
+    <column id="394" parent="338" name="d_sort">
       <Position>6</Position>
       <Comment>排序</Comment>
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="400" parent="338" name="PRIMARY">
+    <key id="395" parent="338" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>d_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="401" parent="339" name="e_id">
+    <column id="396" parent="339" name="e_id">
       <Position>1</Position>
       <Comment>编号</Comment>
       <DataType>int(11)|0s</DataType>
@@ -1681,40 +1655,40 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="402" parent="339" name="e_name">
+    <column id="397" parent="339" name="e_name">
       <Position>2</Position>
       <Comment>学生会名称</Comment>
       <DataType>varchar(30)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="403" parent="339" name="e_remarks">
+    <column id="398" parent="339" name="e_remarks">
       <Position>3</Position>
       <Comment>备注</Comment>
       <DataType>longtext|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="404" parent="339" name="status">
+    <column id="399" parent="339" name="status">
       <Position>4</Position>
       <Comment>状态</Comment>
       <DataType>varchar(10)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="405" parent="339" name="e_sort">
+    <column id="400" parent="339" name="e_sort">
       <Position>5</Position>
       <Comment>排序</Comment>
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="406" parent="339" name="PRIMARY">
+    <key id="401" parent="339" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>e_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="407" parent="340" name="f_id">
+    <column id="402" parent="340" name="f_id">
       <Position>1</Position>
       <Comment>编号</Comment>
       <DataType>int(11)|0s</DataType>
@@ -1722,85 +1696,75 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="408" parent="340" name="f_type">
+    <column id="403" parent="340" name="f_type">
       <Position>2</Position>
       <Comment>交易类型</Comment>
       <DataType>varchar(5)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="409" parent="340" name="f_front_money">
+    <column id="404" parent="340" name="f_front_money">
       <Position>3</Position>
       <Comment>交易前余额</Comment>
       <DataType>decimal(10,2 digit)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="410" parent="340" name="f_after_money">
+    <column id="405" parent="340" name="f_after_money">
       <Position>4</Position>
       <Comment>交易后余额</Comment>
       <DataType>decimal(10,2 digit)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="411" parent="340" name="f_money">
+    <column id="406" parent="340" name="f_money">
       <Position>5</Position>
       <Comment>交易余额</Comment>
       <DataType>decimal(10,2 digit)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="412" parent="340" name="f_date">
+    <column id="407" parent="340" name="f_date">
       <Position>6</Position>
       <Comment>时间</Comment>
       <DataType>date|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="413" parent="340" name="f_mr_date">
+    <column id="408" parent="340" name="f_mr_date">
       <Position>7</Position>
       <Comment>操作时间</Comment>
       <DataType>datetime|0s</DataType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="414" parent="340" name="m_id">
+    <column id="409" parent="340" name="m_name">
       <Position>8</Position>
       <Comment>操作人</Comment>
-      <DataType>int(11)|0s</DataType>
+      <DataType>varchar(20)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="415" parent="340" name="f_remarks">
+    <column id="410" parent="340" name="f_remarks">
       <Position>9</Position>
       <Comment>备注</Comment>
       <DataType>varchar(256)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="416" parent="340" name="f_file">
+    <column id="411" parent="340" name="f_file">
       <Position>10</Position>
       <Comment>文件路径</Comment>
       <DataType>varchar(256)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="417" parent="340" name="m_id">
-      <ColNames>m_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="418" parent="340" name="PRIMARY">
+    <key id="412" parent="340" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>f_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="419" parent="340" name="financialmanagement_ibfk_1">
-      <ColNames>m_id</ColNames>
-      <RefSchemaName>studentunionmanagementsystem</RefSchemaName>
-      <RefTableName>memberinformation</RefTableName>
-      <RefColNames>m_id</RefColNames>
-    </foreign-key>
-    <column id="420" parent="341" name="j_id">
+    <column id="413" parent="341" name="j_id">
       <Position>1</Position>
       <Comment>编号</Comment>
       <DataType>int(11)|0s</DataType>
@@ -1808,33 +1772,33 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="421" parent="341" name="j_name">
+    <column id="414" parent="341" name="j_name">
       <Position>2</Position>
       <Comment>权限名称</Comment>
       <DataType>varchar(20)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="422" parent="341" name="status">
+    <column id="415" parent="341" name="status">
       <Position>3</Position>
       <Comment>状态</Comment>
       <DataType>varchar(10)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="423" parent="341" name="j_remarks">
+    <column id="416" parent="341" name="j_remarks">
       <Position>4</Position>
       <Comment>权限备注</Comment>
       <DataType>varchar(256)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="424" parent="341" name="PRIMARY">
+    <key id="417" parent="341" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>j_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="425" parent="342" name="l_id">
+    <column id="418" parent="342" name="l_id">
       <Position>1</Position>
       <Comment>编号</Comment>
       <DataType>int(11)|0s</DataType>
@@ -1842,75 +1806,75 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="426" parent="342" name="d_name">
+    <column id="419" parent="342" name="d_name">
       <Position>2</Position>
       <Comment>部门名称</Comment>
       <DataType>varchar(50)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="427" parent="342" name="m_user">
+    <column id="420" parent="342" name="m_user">
       <Position>3</Position>
       <Comment>成员工作编号</Comment>
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="428" parent="342" name="l_m_name">
+    <column id="421" parent="342" name="l_m_name">
       <Position>4</Position>
       <Comment>成员姓名</Comment>
       <DataType>varchar(20)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="429" parent="342" name="p_date">
+    <column id="422" parent="342" name="p_date">
       <Position>5</Position>
       <Comment>请假时间</Comment>
       <DataType>date|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="430" parent="342" name="l_title">
+    <column id="423" parent="342" name="l_title">
       <Position>6</Position>
       <Comment>会议标题</Comment>
       <DataType>varchar(20)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="431" parent="342" name="l_type">
+    <column id="424" parent="342" name="l_type">
       <Position>7</Position>
       <Comment>请假类型</Comment>
       <DataType>varchar(20)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="432" parent="342" name="l_contexts">
+    <column id="425" parent="342" name="l_contexts">
       <Position>8</Position>
       <Comment>请假内容</Comment>
       <DataType>longtext|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="433" parent="342" name="l_file">
+    <column id="426" parent="342" name="l_file">
       <Position>9</Position>
       <Comment>文件路径</Comment>
       <DataType>varchar(256)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="434" parent="342" name="m_name">
+    <column id="427" parent="342" name="m_name">
       <Position>10</Position>
       <Comment>操作人</Comment>
       <DataType>varchar(20)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="435" parent="342" name="PRIMARY">
+    <key id="428" parent="342" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>l_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="436" parent="343" name="m_id">
+    <column id="429" parent="343" name="m_id">
       <Position>1</Position>
       <Comment>编号</Comment>
       <DataType>int(11)|0s</DataType>
@@ -1918,183 +1882,183 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="437" parent="343" name="m_user">
+    <column id="430" parent="343" name="m_user">
       <Position>2</Position>
       <Comment>工作编号账号</Comment>
       <DataType>varchar(20)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="438" parent="343" name="m_password">
+    <column id="431" parent="343" name="m_password">
       <Position>3</Position>
       <Comment>密码</Comment>
       <DataType>varchar(20)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="439" parent="343" name="m_name">
+    <column id="432" parent="343" name="m_name">
       <Position>4</Position>
       <Comment>姓名</Comment>
       <DataType>varchar(10)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="440" parent="343" name="m_sex">
+    <column id="433" parent="343" name="m_sex">
       <Position>5</Position>
       <Comment>成员性别</Comment>
       <DataType>varchar(2)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="441" parent="343" name="c_id">
+    <column id="434" parent="343" name="c_id">
       <Position>6</Position>
       <Comment>成员班级</Comment>
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="442" parent="343" name="c_phone">
+    <column id="435" parent="343" name="c_phone">
       <Position>7</Position>
       <Comment>成员手机</Comment>
       <DataType>varchar(11)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="443" parent="343" name="d_id">
+    <column id="436" parent="343" name="d_id">
       <Position>8</Position>
       <Comment>成员部门</Comment>
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="444" parent="343" name="p_id">
+    <column id="437" parent="343" name="p_id">
       <Position>9</Position>
       <Comment>成员职位</Comment>
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="445" parent="343" name="p_photo">
+    <column id="438" parent="343" name="p_photo">
       <Position>10</Position>
       <Comment>图片路径</Comment>
       <DataType>varchar(256)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="446" parent="343" name="e_id">
+    <column id="439" parent="343" name="e_id">
       <Position>11</Position>
       <Comment>第几届</Comment>
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="447" parent="343" name="j_id">
+    <column id="440" parent="343" name="j_id">
       <Position>12</Position>
       <Comment>权限</Comment>
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="448" parent="343" name="m_qq">
+    <column id="441" parent="343" name="m_qq">
       <Position>13</Position>
       <Comment>成员qq</Comment>
       <DataType>varchar(15)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="449" parent="343" name="status">
+    <column id="442" parent="343" name="status">
       <Position>14</Position>
       <Comment>状态</Comment>
       <DataType>varchar(10)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="450" parent="343" name="r_admission_date">
+    <column id="443" parent="343" name="r_admission_date">
       <Position>15</Position>
       <Comment>入会时间</Comment>
       <DataType>date|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="451" parent="343" name="r_tuihui_date">
+    <column id="444" parent="343" name="r_tuihui_date">
       <Position>16</Position>
       <Comment>退会时间</Comment>
       <DataType>date|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="452" parent="343" name="p_remarks">
+    <column id="445" parent="343" name="p_remarks">
       <Position>17</Position>
       <Comment>备注</Comment>
       <DataType>longtext|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="453" parent="343" name="m_user">
+    <index id="446" parent="343" name="m_user">
       <ColNames>m_user</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="454" parent="343" name="c_id">
+    <index id="447" parent="343" name="c_id">
       <ColNames>c_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="455" parent="343" name="d_id">
+    <index id="448" parent="343" name="d_id">
       <ColNames>d_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="456" parent="343" name="p_id">
+    <index id="449" parent="343" name="p_id">
       <ColNames>p_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="457" parent="343" name="e_id">
+    <index id="450" parent="343" name="e_id">
       <ColNames>e_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="458" parent="343" name="j_id">
+    <index id="451" parent="343" name="j_id">
       <ColNames>j_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="459" parent="343" name="PRIMARY">
+    <key id="452" parent="343" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>m_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="460" parent="343" name="m_user">
+    <key id="453" parent="343" name="m_user">
       <ColNames>m_user</ColNames>
       <UnderlyingIndexName>m_user</UnderlyingIndexName>
     </key>
-    <foreign-key id="461" parent="343" name="memberinformation_ibfk_1">
+    <foreign-key id="454" parent="343" name="memberinformation_ibfk_1">
       <ColNames>c_id</ColNames>
       <RefSchemaName>studentunionmanagementsystem</RefSchemaName>
       <RefTableName>classtable</RefTableName>
       <RefColNames>c_id</RefColNames>
     </foreign-key>
-    <foreign-key id="462" parent="343" name="memberinformation_ibfk_2">
+    <foreign-key id="455" parent="343" name="memberinformation_ibfk_2">
       <ColNames>d_id</ColNames>
       <RefSchemaName>studentunionmanagementsystem</RefSchemaName>
       <RefTableName>departmenttype</RefTableName>
       <RefColNames>d_id</RefColNames>
     </foreign-key>
-    <foreign-key id="463" parent="343" name="memberinformation_ibfk_3">
+    <foreign-key id="456" parent="343" name="memberinformation_ibfk_3">
       <ColNames>p_id</ColNames>
       <RefSchemaName>studentunionmanagementsystem</RefSchemaName>
       <RefTableName>positiontype</RefTableName>
       <RefColNames>p_id</RefColNames>
     </foreign-key>
-    <foreign-key id="464" parent="343" name="memberinformation_ibfk_4">
+    <foreign-key id="457" parent="343" name="memberinformation_ibfk_4">
       <ColNames>e_id</ColNames>
       <RefSchemaName>studentunionmanagementsystem</RefSchemaName>
       <RefTableName>exchangetable</RefTableName>
       <RefColNames>e_id</RefColNames>
     </foreign-key>
-    <foreign-key id="465" parent="343" name="memberinformation_ibfk_5">
+    <foreign-key id="458" parent="343" name="memberinformation_ibfk_5">
       <ColNames>j_id</ColNames>
       <RefSchemaName>studentunionmanagementsystem</RefSchemaName>
       <RefTableName>jurisdiction</RefTableName>
       <RefColNames>j_id</RefColNames>
     </foreign-key>
-    <column id="466" parent="344" name="m_id">
+    <column id="459" parent="344" name="m_id">
       <Position>1</Position>
       <Comment>编号</Comment>
       <DataType>int(11)|0s</DataType>
@@ -2102,74 +2066,64 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="467" parent="344" name="m_title">
+    <column id="460" parent="344" name="m_title">
       <Position>2</Position>
       <Comment>标题</Comment>
       <DataType>varchar(50)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="468" parent="344" name="t_id">
+    <column id="461" parent="344" name="t_id">
       <Position>3</Position>
       <Comment>会议类型</Comment>
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="469" parent="344" name="m_date">
+    <column id="462" parent="344" name="m_date">
       <Position>4</Position>
       <Comment>上传时间</Comment>
       <DataType>datetime|0s</DataType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="470" parent="344" name="m_file">
+    <column id="463" parent="344" name="m_file">
       <Position>5</Position>
       <Comment>文件路径</Comment>
       <DataType>varchar(256)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="471" parent="344" name="m_m_id">
+    <column id="464" parent="344" name="m_name">
       <Position>6</Position>
       <Comment>操作人</Comment>
-      <DataType>int(11)|0s</DataType>
+      <DataType>varchar(20)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="472" parent="344" name="m_contexts">
+    <column id="465" parent="344" name="m_contexts">
       <Position>7</Position>
       <Comment>内容</Comment>
       <DataType>varchar(256)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="473" parent="344" name="t_id">
+    <index id="466" parent="344" name="t_id">
       <ColNames>t_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="474" parent="344" name="m_m_id">
-      <ColNames>m_m_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="475" parent="344" name="PRIMARY">
+    <key id="467" parent="344" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>m_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="476" parent="344" name="minutesofthemeeting_ibfk_2">
+    <foreign-key id="468" parent="344" name="minutesofthemeeting_ibfk_1">
       <ColNames>t_id</ColNames>
       <RefSchemaName>studentunionmanagementsystem</RefSchemaName>
       <RefTableName>typeofmeeting</RefTableName>
       <RefColNames>t_id</RefColNames>
     </foreign-key>
-    <foreign-key id="477" parent="344" name="minutesofthemeeting_ibfk_1">
-      <ColNames>m_m_id</ColNames>
-      <RefSchemaName>studentunionmanagementsystem</RefSchemaName>
-      <RefTableName>memberinformation</RefTableName>
-      <RefColNames>m_id</RefColNames>
-    </foreign-key>
-    <column id="478" parent="345" name="m_id">
+    <column id="469" parent="345" name="m_id">
       <Position>1</Position>
       <Comment>编号</Comment>
       <DataType>int(11)|0s</DataType>
@@ -2177,81 +2131,71 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="479" parent="345" name="m_title">
+    <column id="470" parent="345" name="m_title">
       <Position>2</Position>
       <Comment>标题</Comment>
       <DataType>varchar(50)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="480" parent="345" name="d_id">
+    <column id="471" parent="345" name="d_id">
       <Position>3</Position>
       <Comment>部门编号</Comment>
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="481" parent="345" name="m_date">
+    <column id="472" parent="345" name="m_date">
       <Position>4</Position>
       <Comment>上传时间</Comment>
       <DataType>datetime|0s</DataType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="482" parent="345" name="m_file">
+    <column id="473" parent="345" name="m_file">
       <Position>5</Position>
       <Comment>文件路径</Comment>
       <DataType>varchar(256)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="483" parent="345" name="m_remarks">
+    <column id="474" parent="345" name="m_remarks">
       <Position>6</Position>
       <Comment>备注</Comment>
       <DataType>varchar(256)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="484" parent="345" name="m_m_id">
+    <column id="475" parent="345" name="m_name">
       <Position>7</Position>
       <Comment>操作人</Comment>
-      <DataType>int(11)|0s</DataType>
+      <DataType>varchar(20)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="485" parent="345" name="m_contexts">
+    <column id="476" parent="345" name="m_contexts">
       <Position>8</Position>
       <Comment>内容</Comment>
       <DataType>longtext|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="486" parent="345" name="d_id">
+    <index id="477" parent="345" name="d_id">
       <ColNames>d_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="487" parent="345" name="m_m_id">
-      <ColNames>m_m_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="488" parent="345" name="PRIMARY">
+    <key id="478" parent="345" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>m_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="489" parent="345" name="monthlyplansummary_ibfk_2">
+    <foreign-key id="479" parent="345" name="monthlyplansummary_ibfk_1">
       <ColNames>d_id</ColNames>
       <RefSchemaName>studentunionmanagementsystem</RefSchemaName>
       <RefTableName>departmenttype</RefTableName>
       <RefColNames>d_id</RefColNames>
     </foreign-key>
-    <foreign-key id="490" parent="345" name="monthlyplansummary_ibfk_1">
-      <ColNames>m_m_id</ColNames>
-      <RefSchemaName>studentunionmanagementsystem</RefSchemaName>
-      <RefTableName>memberinformation</RefTableName>
-      <RefColNames>m_id</RefColNames>
-    </foreign-key>
-    <column id="491" parent="346" name="n_id">
+    <column id="480" parent="346" name="n_id">
       <Position>1</Position>
       <Comment>编号</Comment>
       <DataType>int(11)|0s</DataType>
@@ -2259,61 +2203,61 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="492" parent="346" name="n_title">
+    <column id="481" parent="346" name="n_title">
       <Position>2</Position>
       <Comment>标题</Comment>
       <DataType>varchar(50)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="493" parent="346" name="n_context">
+    <column id="482" parent="346" name="n_context">
       <Position>3</Position>
       <Comment>内容</Comment>
       <DataType>longtext|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="494" parent="346" name="n_date">
+    <column id="483" parent="346" name="n_date">
       <Position>4</Position>
       <Comment>发布时间</Comment>
       <DataType>datetime|0s</DataType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="495" parent="346" name="n_file">
+    <column id="484" parent="346" name="n_file">
       <Position>5</Position>
       <Comment>文件路径</Comment>
       <DataType>varchar(256)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="496" parent="346" name="m_name">
+    <column id="485" parent="346" name="m_name">
       <Position>6</Position>
       <Comment>操作人</Comment>
       <DataType>varchar(20)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="497" parent="346" name="status">
+    <column id="486" parent="346" name="status">
       <Position>7</Position>
       <Comment>状态</Comment>
       <DataType>varchar(10)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="498" parent="346" name="n_sort">
+    <column id="487" parent="346" name="n_sort">
       <Position>8</Position>
       <Comment>排序</Comment>
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="499" parent="346" name="PRIMARY">
+    <key id="488" parent="346" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>n_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="500" parent="347" name="p_id">
+    <column id="489" parent="347" name="p_id">
       <Position>1</Position>
       <Comment>编号</Comment>
       <DataType>int(11)|0s</DataType>
@@ -2321,81 +2265,68 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="501" parent="347" name="d_name">
+    <column id="490" parent="347" name="d_name">
       <Position>2</Position>
       <Comment>部门名称</Comment>
       <DataType>varchar(50)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="502" parent="347" name="m_id">
+    <column id="491" parent="347" name="m_user">
       <Position>3</Position>
       <Comment>成员编号</Comment>
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="503" parent="347" name="p_title">
+    <column id="492" parent="347" name="l_m_name">
       <Position>4</Position>
+      <Comment>成员姓名</Comment>
+      <DataType>varchar(20)|0s</DataType>
+      <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="493" parent="347" name="p_title">
+      <Position>5</Position>
       <Comment>主题</Comment>
       <DataType>varchar(30)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="504" parent="347" name="p_date">
-      <Position>5</Position>
+    <column id="494" parent="347" name="p_date">
+      <Position>6</Position>
       <Comment>时间</Comment>
       <DataType>datetime|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="505" parent="347" name="p_contexts">
-      <Position>6</Position>
+    <column id="495" parent="347" name="p_contexts">
+      <Position>7</Position>
       <Comment>内容</Comment>
       <DataType>longtext|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="506" parent="347" name="p_file">
-      <Position>7</Position>
+    <column id="496" parent="347" name="p_file">
+      <Position>8</Position>
       <Comment>文件路径</Comment>
       <DataType>varchar(256)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="507" parent="347" name="p_m_id">
-      <Position>8</Position>
+    <column id="497" parent="347" name="m_name">
+      <Position>9</Position>
       <Comment>操作人</Comment>
-      <DataType>int(11)|0s</DataType>
+      <DataType>varchar(20)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="508" parent="347" name="m_id">
-      <ColNames>m_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="509" parent="347" name="p_m_id">
-      <ColNames>p_m_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="510" parent="347" name="PRIMARY">
+    <key id="498" parent="347" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>p_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="511" parent="347" name="personalmeritrecord_ibfk_1">
-      <ColNames>m_id</ColNames>
-      <RefSchemaName>studentunionmanagementsystem</RefSchemaName>
-      <RefTableName>memberinformation</RefTableName>
-      <RefColNames>m_id</RefColNames>
-    </foreign-key>
-    <foreign-key id="512" parent="347" name="personalmeritrecord_ibfk_2">
-      <ColNames>p_m_id</ColNames>
-      <RefSchemaName>studentunionmanagementsystem</RefSchemaName>
-      <RefTableName>memberinformation</RefTableName>
-      <RefColNames>m_id</RefColNames>
-    </foreign-key>
-    <column id="513" parent="348" name="p_id">
+    <column id="499" parent="348" name="p_id">
       <Position>1</Position>
       <Comment>编号</Comment>
       <DataType>int(11)|0s</DataType>
@@ -2403,40 +2334,40 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="514" parent="348" name="p_name">
+    <column id="500" parent="348" name="p_name">
       <Position>2</Position>
       <Comment>类型名称</Comment>
       <DataType>varchar(20)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="515" parent="348" name="status">
+    <column id="501" parent="348" name="status">
       <Position>3</Position>
       <Comment>状态</Comment>
       <DataType>varchar(10)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="516" parent="348" name="p_remarks">
+    <column id="502" parent="348" name="p_remarks">
       <Position>4</Position>
       <Comment>职位备注</Comment>
       <DataType>varchar(256)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="517" parent="348" name="p_sort">
+    <column id="503" parent="348" name="p_sort">
       <Position>5</Position>
       <Comment>排序</Comment>
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="518" parent="348" name="PRIMARY">
+    <key id="504" parent="348" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>p_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="519" parent="349" name="t_id">
+    <column id="505" parent="349" name="t_id">
       <Position>1</Position>
       <Comment>编号</Comment>
       <DataType>int(11)|0s</DataType>
@@ -2444,40 +2375,40 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="520" parent="349" name="t_name">
+    <column id="506" parent="349" name="t_name">
       <Position>2</Position>
       <Comment>名称</Comment>
       <DataType>varchar(20)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="521" parent="349" name="status">
+    <column id="507" parent="349" name="status">
       <Position>3</Position>
       <Comment>状态</Comment>
       <DataType>varchar(10)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="522" parent="349" name="t_remarks">
+    <column id="508" parent="349" name="t_remarks">
       <Position>4</Position>
       <Comment>备注</Comment>
       <DataType>varchar(256)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="523" parent="349" name="t_sort">
+    <column id="509" parent="349" name="t_sort">
       <Position>5</Position>
       <Comment>排序</Comment>
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="524" parent="349" name="PRIMARY">
+    <key id="510" parent="349" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>t_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="525" parent="350" name="w_id">
+    <column id="511" parent="350" name="w_id">
       <Position>1</Position>
       <Comment>编号</Comment>
       <DataType>int(11)|0s</DataType>
@@ -2485,58 +2416,58 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="526" parent="350" name="w_title">
+    <column id="512" parent="350" name="w_title">
       <Position>2</Position>
       <Comment>标题</Comment>
       <DataType>varchar(50)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="527" parent="350" name="w_contents">
+    <column id="513" parent="350" name="w_contents">
       <Position>3</Position>
       <Comment>内容</Comment>
       <DataType>longtext|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="528" parent="350" name="d_id">
+    <column id="514" parent="350" name="d_id">
       <Position>4</Position>
       <Comment>负责工作部门</Comment>
       <DataType>int(11)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="529" parent="350" name="m_name">
+    <column id="515" parent="350" name="m_name">
       <Position>5</Position>
       <Comment>总负责人</Comment>
       <DataType>varchar(10)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="530" parent="350" name="w_date">
+    <column id="516" parent="350" name="w_date">
       <Position>6</Position>
       <Comment>时间</Comment>
       <DataType>date|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="531" parent="350" name="w_remarks">
+    <column id="517" parent="350" name="w_remarks">
       <Position>7</Position>
       <Comment>备注</Comment>
       <DataType>varchar(256)|0s</DataType>
       <DefaultExpression>&apos;NULL&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="532" parent="350" name="d_id">
+    <index id="518" parent="350" name="d_id">
       <ColNames>d_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="533" parent="350" name="PRIMARY">
+    <key id="519" parent="350" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>w_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="534" parent="350" name="workarrangement_ibfk_1">
+    <foreign-key id="520" parent="350" name="workarrangement_ibfk_1">
       <ColNames>d_id</ColNames>
       <RefSchemaName>studentunionmanagementsystem</RefSchemaName>
       <RefTableName>departmenttype</RefTableName>

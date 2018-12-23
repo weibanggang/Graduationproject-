@@ -83,6 +83,9 @@ public interface MemberInformationMapper {
     //根据职位p_id查询所有名字和id
     List<MemberInformation> iSelectName(int pId);
 
-    //根据mUser查询name
+    //根据mUser模糊查询name
     List<MemberInformation> iUserName(String mUser);
+
+    //根据m_user查询权限
+    int selectJid(String mUser);
 }

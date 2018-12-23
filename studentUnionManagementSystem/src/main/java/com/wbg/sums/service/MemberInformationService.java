@@ -82,5 +82,6 @@ public interface MemberInformationService {
         List<MemberInformation> iSelectName(int pId);
     //根据mUser查询name
     List<MemberInformation> iUserName(String mUser);
-
+    //根据m_user查询权限
+    int selectJid(String mUser);
 }

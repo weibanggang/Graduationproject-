@@ -86,5 +86,10 @@ public class MemberInformationServiceImpl implements MemberInformationService {
         return memberInformationMapper.iUserName(mUser);
     }
 
+    @Override
+    public int selectJid(String mUser) {
+        return memberInformationMapper.selectJid(mUser);
+    }
+
 
 }

@@ -146,7 +146,7 @@ public class TypeofMeetingController {
     @GetMapping("/iselectAllStatus")
     public Result iselectAllStatus() {
         try {
-            List<TypeofMeeting> list = typeofMeetingService.iselectAllStatus("");
+            List<TypeofMeeting> list = typeofMeetingService.iselectAllStatus("true");
             if (list == null) {
                 return new Result().successMessage("无数据");
             } else {

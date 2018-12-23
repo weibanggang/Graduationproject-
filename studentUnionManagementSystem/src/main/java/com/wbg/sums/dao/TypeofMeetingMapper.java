@@ -55,7 +55,7 @@ public interface TypeofMeetingMapper {
 
     //      select * from TypeofMeeting where status={#status}
     //  根据状态查询编号、名称 List<TypeofMeeting> iselectAllStatus(String status);
-    List<TypeofMeeting> iselectAllStatus(@Param("v")String status);
+    List<TypeofMeeting> iselectAllStatus(@Param("status")String status);
 
     //      select t_id,t_name  from TypeofMeeting where status={#status}
 //      根据t_id修改顺序   int updateSort(int t_id, int t_sort);

@@ -1,6 +1,7 @@
 package com.wbg.sums.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 public class MemberInformation {
@@ -136,7 +137,8 @@ public class MemberInformation {
      *
      * @mbg.generated
      */
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GTM+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date rAdmissionDate;
 
     /**

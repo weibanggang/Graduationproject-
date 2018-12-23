@@ -75,7 +75,6 @@
 		methods: {
 			add() {
 				const th = this;
-				console.log(th.leaveRecord);
 			axios.post(th.url + '/leaveRecord/insert', th.leaveRecord, {
 					headers: {
 						"Content-Type": "application/json;charset=utf-8"
