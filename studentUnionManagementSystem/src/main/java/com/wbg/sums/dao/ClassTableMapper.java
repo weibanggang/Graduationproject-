@@ -56,7 +56,11 @@ public interface ClassTableMapper {
 
     //    update ClassTable set status=#{status} where c_id=#{c_id}
 //    模糊查询班主任名字     List<ClassTable> selectByName(String c_headmaster_name);
-    List<ClassTable> selectByName(@Param("c_headmaster_name")String c_headmaster_name);
+    List<ClassTable> selectByName(@Param("cHeadmasterName")String cHeadmasterName);
+    //模糊查询班主任名字返回多少条数据
+    int countByName(@Param("cHeadmasterName")String cHeadmasterName);
+    //返回groupby数组
+    List<ClassTable> selectGroupBy();
 
     //    select * from ClassTable where  c_headmaster_name like concat('%',#{c_headmaster_name},'%')
 //    根据状态查询全部      List<ClassTable> selectAllStatus(String status);

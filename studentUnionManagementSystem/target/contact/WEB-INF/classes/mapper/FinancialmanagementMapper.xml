@@ -67,7 +67,7 @@
     -->
     select f_id, f_type, f_front_money, f_after_money, f_money, f_date, f_mr_date, m_name, 
     f_remarks, f_file
-    from financialManagement
+    from financialManagement group by f_id desc
   </select>
     <select id="count" resultType="java.lang.Integer">
       select count(*) from financialManagement

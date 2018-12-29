@@ -1,6 +1,58 @@
 <template>
 	<div>
-    <Table border :columns="columns7" :data="data6"></Table>
+		
+		
+		<div class="rigtop">
+			<!-- <Form ref="FinancialManagement" :model="FinancialManagement" inline>
+				<FormItem>
+					<Row>
+						<Col span="7" style="text-align: center;">
+							<Checkbox v-model="FinancialManagement.CmName" label="">操作人</Checkbox>
+						</Col>
+						<Col span="16" >
+						<Select v-model="FinancialManagement.mName" filterable>
+							<Option v-for="item in FinancialManagementGroup" :value="item.mName" :key="item.mName">{{ item.mName }}</Option>
+						</Select>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem prop="user">
+					<Row>
+						<Col span="7" style="text-align: center;">
+							<Checkbox v-model="FinancialManagement.CDate" label="">交易时间</Checkbox>
+						</Col>
+						<Col span="17">
+						<DatePicker type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></DatePicker>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem>
+					<RadioGroup v-model="FinancialManagement.fType">
+						<Radio label="全部">
+							<Icon type="ios-football-outline" />
+							<span>全部</span>
+						</Radio>
+						<Radio label="收入">
+							<Icon type="md-log-in" />
+							<span>收入</span>
+						</Radio>
+						<Radio label="支出">
+							<Icon type="md-log-out" />
+							<span>支出</span>
+						</Radio>
+					</RadioGroup>
+				</FormItem>
+				<FormItem>
+					<Button>快速查询</Button>
+				</FormItem>
+				<FormItem>
+					<Button>快速导出</Button>
+				</FormItem>
+			</Form> -->
+		</div>
+		
+		
+    <Table border :columns="columns7" :data="data6" height="520" stripe size='default' ></Table>
 		<div style="margin: 10px;overflow: hidden">
         <div style="float: right;">
             <Page :total="count" :current="1" @on-change="changePage($event)"></Page>
@@ -84,6 +136,8 @@
 						title: '备注',
 						key: 'aRemarks',
 						align:'center',
+						width:250,
+						tooltip:true
 					},
                     {
                         title: '操作',

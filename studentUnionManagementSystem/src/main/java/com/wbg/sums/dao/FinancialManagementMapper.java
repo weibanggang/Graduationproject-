@@ -40,6 +40,9 @@ public interface FinancialManagementMapper {
      */
     //获取当前余额
     BigDecimal selectMoney();
+
+
+
     List<FinancialManagement> selectAll();
     //select m_name from FinancialManagement group by m_name
     //获取操作人

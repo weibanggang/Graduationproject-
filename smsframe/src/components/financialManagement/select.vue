@@ -48,6 +48,9 @@
 				</FormItem>
 			</Form>
 		</div>
+		
+		
+		
 		<Table border :columns="columns7" :data="data6" height="520" stripe size='default'></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
@@ -66,7 +69,6 @@
 				modal13: false,
 				columns7: [{
 						title: '编号',
-						tableHeight: 450,
 						key: 'fId',
 						align: 'center',
 						render: (h, params) => {
@@ -123,7 +125,7 @@
 						key: 'fRemarks',
 						align: 'center',
 						tooltip: true,
-						width: 100
+						width: 120
 					}
 				],
 				data6: [],

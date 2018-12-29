@@ -25,9 +25,9 @@ public class TypeofMeetingController {
     @GetMapping("/deleteByPrimaryKey")
     public Result deleteByPrimaryKey(TypeofMeeting typeofMeeting) {
         try {
-        return typeofMeetingService.deleteByPrimaryKey(typeofMeeting.gettId()) > 0 ? new Result().successMessage("删除成功") : new Result("修改失败");
+            return typeofMeetingService.deleteByPrimaryKey(typeofMeeting.gettId()) > 0 ? new Result().successMessage("删除成功") : new Result("修改失败");
         } catch (Exception ex) {
-            return new Result().error ("出错,检查是否有依赖，再重试！");
+            return new Result().error("出错,检查是否有依赖，再重试！");
         }
     }
 
@@ -75,12 +75,12 @@ public class TypeofMeetingController {
     @GetMapping("/selectAll")
     public Result selectAll(@RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize) {
         try {
-            PageHelper.startPage(pageNum,pageSize);
+            PageHelper.startPage(pageNum, pageSize);
             List<TypeofMeeting> list = typeofMeetingService.selectAll();
             if (list == null) {
                 return new Result().successMessage("无数据");
             } else {
-                return new Result().success(list,typeofMeetingService.count(""));
+                return new Result().success(list, typeofMeetingService.count(""));
             }
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");
@@ -101,8 +101,6 @@ public class TypeofMeetingController {
             return new Result().error("出错,请重试！");
         }
     }
-
-
     /**
      * 根据tId修改状态status
      *

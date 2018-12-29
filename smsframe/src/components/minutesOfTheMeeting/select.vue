@@ -1,26 +1,70 @@
 <template>
 	<div>
-		<Table border :columns="columns7" :data="data6"></Table>
+
+		<div class="rigtop">
+			<Form ref="classTable"  inline>
+				<FormItem>
+					<Row>
+						<Col span="6" style="text-align: center;">
+						会议标题
+						</Col>
+						<Col span="18">
+						<Input placeholder="姓名"></Input>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem>
+					<Row>
+						<Col span="6" style="text-align: center;">
+						会议类型
+						</Col>
+						<Col span="18">
+						<!-- <Select v-model="notic.nTitle" filterable>
+									<Option v-for="item in noticTitle"  :value="item" :key="item">{{ item}}</Option>
+								</Select> -->
+						<Input  placeholder="姓名"></Input>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem>
+					<Row>
+						<Col span="6" style="text-align: center;">
+							上传时间
+						</Col>
+						<Col span="16">
+						<DatePicker type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></DatePicker>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem>
+					<Button>快速导出</Button>
+				</FormItem>
+			</Form>
+		</div>
+
+
+
+		<Table border :columns="columns7" :data="data6" height="520" stripe size='default'></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
 				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
 			</div>
 		</div>
-		<Modal v-model="modal13" draggable scrollable title="编辑会议记录" @on-ok="ok" >
+		<Modal v-model="modal13" draggable scrollable title="编辑会议记录" @on-ok="ok">
 			<div>
 				<Form ref="formInline" :model="minutesOfTheMeeting" :label-width="80">
 					<FormItem label="会议标题">
 						<Input v-model="minutesOfTheMeeting.mTitle" placeholder="标题"></Input>
 					</FormItem>
 					<FormItem label="会议类型" prop="dId">
-						<Select v-model="minutesOfTheMeeting.tId" placeholder="请选择会议类型" >
-						<Option v-for="item in typeofMeeting" :value="item.tId" :key="item.tId">{{ item.tName }}</Option>
+						<Select v-model="minutesOfTheMeeting.tId" placeholder="请选择会议类型">
+							<Option v-for="item in typeofMeeting" :value="item.tId" :key="item.tId">{{ item.tName }}</Option>
 						</Select>
 					</FormItem>
 					<FormItem label="内容" prop="mContexts">
 						<Input v-model="minutesOfTheMeeting.mContexts" type="textarea" :autosize="{minRows: 6,maxRows: 8}" placeholder="内容"></Input>
 					</FormItem>
-					
+
 					<FormItem label="文件上传">
 						<div>
 							<Row>
@@ -49,14 +93,11 @@
 						title: '编号',
 						key: 'mId',
 						align: 'center',
-						fixed:"left",
-						width:100
+						width: 100
 					},
-						{
+					{
 						title: '会议标题',
 						key: 'mTitle',
-						fixed:"left",
-						width: 180,
 						align: 'center',
 						render: (h, params) => {
 							return h('div', [
@@ -72,41 +113,29 @@
 					{
 						title: '会议类型',
 						key: 'tName',
-						width:100,
 						align: 'center'
 					},
 					{
 						title: '上传时间',
 						key: 'mDate',
-						width:120,
 						align: 'center',
-					},{
+					}, {
 						title: '操作人',
 						key: 'mName',
-						width:100,
+						width: 100,
 						align: 'center'
 					},
 					{
 						title: '内容',
 						key: 'mContexts',
-						width:400,
-						align: 'center',
-						render: (h, params) => {
-							return h('div', [
-								h('Icon', {
-									props: {
-										type: 'person'
-									}
-								}),
-								h('strong', params.row.mContexts.substring(0, 50))
-							]);
-						}
+						width: 200,
+						tooltip: true,
+						align: 'center'
 					},
 					{
 						title: '操作',
 						key: 'action',
 						width: 150,
-						fixed:"right",
 						align: 'center',
 						render: (h, params) => {
 							return h('div', [
@@ -144,13 +173,13 @@
 				minutesOfTheMeeting: {
 					mId: 0,
 					mTitle: "",
-					tId:"",
+					tId: "",
 					nDate: "",
 					mFile: "",
 					mName: "",
 					mContexts: "",
 				},
-				typeofMeeting:[]
+				typeofMeeting: []
 			}
 		},
 		methods: {
@@ -170,8 +199,8 @@
 						pageNum: page
 					}
 				}).then(function(res) {
-					var datares=res.data.data.map((e) => {
-						e.tName=e.typeOfMeeting.tName;
+					var datares = res.data.data.map((e) => {
+						e.tName = e.typeOfMeeting.tName;
 						return e;
 					})
 					th.data6 = datares;
@@ -228,9 +257,9 @@
 			this.changePage(1);
 			const th = this;
 			axios.get(th.url + '/typeofMeeting/iselectAllStatus')
-			.then(function(res) {
-				th.typeofMeeting = res.data.data;
-			})
+				.then(function(res) {
+					th.typeofMeeting = res.data.data;
+				})
 		}
 	}
 </script>

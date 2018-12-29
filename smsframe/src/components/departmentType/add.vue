@@ -1,6 +1,5 @@
 <template>
 	<div>
-    
        <Form ref="formValidate" :model="DepartmentType"  :label-width="80">
        	<FormItem label="部门名称" prop="dName">
        		<Input v-model="DepartmentType.dName" placeholder="请输入部门名称"></Input>
@@ -46,7 +45,6 @@
 		},
 		methods:{
 			add(){
-					
 					const th=this;
 					axios.post(th.url+'/departmentType/insert',th.DepartmentType,{
 						headers:{

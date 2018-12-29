@@ -1,11 +1,67 @@
 <template>
 	<div>
-		<Form ref="formValidate" :model="personalMeritRecord" :label-width="80">
+		
+		<div class="rigtop">
+				<Form ref="classTable"  inline>
+					<FormItem>
+						<Row>
+							<Col span="6" style="text-align: center;">
+							成员编号
+							</Col>
+							<Col span="18">
+							<Input placeholder="姓名"></Input>
+							</Col>
+						</Row>
+					</FormItem>
+					<FormItem>
+						<Row>
+							<Col span="6" style="text-align: center;">
+							成员姓名
+							</Col>
+							<Col span="18">
+							<!-- <Select v-model="notic.nTitle" filterable>
+										<Option v-for="item in noticTitle"  :value="item" :key="item">{{ item}}</Option>
+									</Select> -->
+							<Input  placeholder="姓名"></Input>
+							</Col>
+						</Row>
+					</FormItem>
+					<FormItem>
+						<Row>
+							<Col span="6" style="text-align: center;">
+							部门
+							</Col>
+							<Col span="18">
+							<!-- <Select v-model="notic.nTitle" filterable>
+										<Option v-for="item in noticTitle"  :value="item" :key="item">{{ item}}</Option>
+									</Select> -->
+							<Input  placeholder="姓名"></Input>
+							</Col>
+						</Row>
+					</FormItem>
+					<FormItem>
+						<Row>
+							<Col span="6" style="text-align: center;">
+								时间
+							</Col>
+							<Col span="16">
+							<DatePicker type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></DatePicker>
+							</Col>
+						</Row>
+					</FormItem>
+					<FormItem>
+						<Button>快速导出</Button>
+					</FormItem>
+				</Form>
+			</div>
+		
+		
+		<!-- <Form ref="formValidate" :model="personalMeritRecord" :label-width="80">
 			<FormItem>
 				<Button type="success" @click="add()" long>添加</Button>
 			</FormItem>
-		</Form>
-		<Table border :columns="columns7" :data="data6"></Table>
+		</Form> -->
+		<Table border :columns="columns7" :data="data6"  height="520" stripe size='default' ></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
 				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
@@ -113,13 +169,10 @@
 						title: '部门名称',
 						key: 'dName',
 						align: 'center',
-						fixed: "left",
-						width: 150
 					},
 					{
 						title: '成员编号',
 						key: 'mUser',
-						width: 150,
 						align: 'center',
 						render: (h, params) => {
 							return h('div', [
@@ -135,31 +188,28 @@
 					{
 						title: '成员姓名',
 						key: 'lMName',
-						width: 100,
 						align: 'center'
 					},
 					{
 						title: '标题',
 						key: 'pTitle',
-						width: 120,
 						align: 'center',
 					},
 					{
 						title: '时间',
 						key: 'pDate',
-						width: 120,
 						align: 'center',
 					},
 					{
 						title: '操作人',
 						key: 'mName',
-						width: 100,
 						align: 'center',
 					},
 					{
 						title: '内容',
 						key: 'pContexts',
-						width: 400,
+						width: 200,
+						tooltip:true,
 						align: 'center',
 						render: (h, params) => {
 							return h('div', [
@@ -176,7 +226,6 @@
 						title: '操作',
 						key: 'action',
 						width: 150,
-						fixed: "right",
 						align: 'center',
 						render: (h, params) => {
 							return h('div', [

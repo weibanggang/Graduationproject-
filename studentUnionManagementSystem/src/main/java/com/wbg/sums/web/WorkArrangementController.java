@@ -80,7 +80,7 @@ public class WorkArrangementController {
             if (list == null) {
                 return new Result().successMessage("无数据");
             } else {
-                return new Result().success(list,workArrangementService.counts());
+                return new Result().success(list,workArrangementService.counts(0,null));
             }
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");
@@ -97,6 +97,57 @@ public class WorkArrangementController {
     public Result updateByPrimaryKey(@RequestBody WorkArrangement workArrangement) {
         try {
             return workArrangementService.updateByPrimaryKey(workArrangement) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");
+        } catch (Exception ex) {
+            return new Result().error("出错,请重试！");
+        }
+    }
+
+    /**
+     * 获取不重复的标题
+     *
+     * @return
+     */
+    @GetMapping("/selectGroupBy")
+    public Result selectGroupBy() {
+        try {
+            List<WorkArrangement> list = workArrangementService.selectGroupBy();
+            if (list == null) {
+                return new Result().successMessage("无数据");
+            } else {
+                return new Result().success(list,workArrangementService.counts(0,null));
+            }
+        } catch (Exception ex) {
+            return new Result().error("出错,请重试！");
+        }
+    }
+    /**
+     * 根据负责人查询工作
+     */
+    @GetMapping("/selectmName")
+    public Result selectmName(String mName) {
+        try {
+            List<WorkArrangement> list = workArrangementService.selectmName(mName);
+            if (list == null) {
+                return new Result().successMessage("无数据");
+            } else {
+                return new Result().success(list,workArrangementService.counts(0, mName));
+            }
+        } catch (Exception ex) {
+            return new Result().error("出错,请重试！");
+        }
+    }
+    /**
+     * 根据部门查询工作
+     */
+    @GetMapping("/selectAllVagueName")
+    public Result selectAllVagueName(int dId) {
+        try {
+            List<WorkArrangement> list = workArrangementService.selectAllVagueName(dId);
+            if (list == null) {
+                return new Result().successMessage("无数据");
+            } else {
+                return new Result().success(list,workArrangementService.counts(dId, null));
+            }
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");
         }

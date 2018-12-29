@@ -69,12 +69,19 @@
     from ClassTable
   </select>
   <select id="selectByName" resultType="com.wbg.sums.entity.ClassTable">
-    select * from ClassTable where  c_headmaster_name like concat('%',#{c_headmaster_name},'%')
+    select * from ClassTable where  c_headmaster_name like concat('%',#{cHeadmasterName},'%')
   </select>
   <select id="selectAllStatus" resultType="com.wbg.sums.entity.ClassTable">
-    select * from ClassTable where status=#{status}
+    select * from ClassTable where status like concat('%',#{status},'%')
   </select>
     <select id="count" resultType="java.lang.Integer">
       select count(*) from ClassTable where status like concat('%',#{status},'%')
     </select>
+    <select id="selectGroupBy" resultType="com.wbg.sums.entity.ClassTable">
+      select c_id , c_headmaster_name from ClassTable group by c_headmaster_name
+    </select>
+  <select id="countByName" resultType="java.lang.Integer">
+     select count(*) from ClassTable where  c_headmaster_name like concat('%',#{cHeadmasterName},'%')
+  </select>
+
 </mapper>

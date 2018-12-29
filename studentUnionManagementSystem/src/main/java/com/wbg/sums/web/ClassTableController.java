@@ -50,17 +50,17 @@ public class ClassTableController {
     /**
      * 根据aid查找对象  最多只能返回一个对象
      *
-     * @param classTable
+     * @param cId
      * @return
      */
     @GetMapping("/selectByPrimaryKey")
-    public Result selectByPrimaryKey(ClassTable classTable) {
+    public Result selectByPrimaryKey(int cId) {
         try {
-            ClassTable classTable1 = classTableService.selectByPrimaryKey(classTable.getcId());
+            ClassTable classTable1 = classTableService.selectByPrimaryKey(cId);
             if (classTable1 == null) {
                 return new Result().successMessage("无数据");
             } else {
-                return new Result().success(classTable1);
+                return new Result().success(classTable1,1);
             }
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");
@@ -81,6 +81,24 @@ public class ClassTableController {
                 return new Result().successMessage("无数据");
             } else {
                 return new Result().success(list,classTableService.count(""));
+            }
+        } catch (Exception ex) {
+            return new Result().error("出错,请重试！");
+        }
+    }
+    /**
+     * 返回不重复数组
+     *
+     * @return
+     */
+    @GetMapping("/selectGroupBy")
+    public Result selectGroupBy() {
+        try {
+            List<ClassTable> list = classTableService.selectGroupBy();
+            if (list == null) {
+                return new Result().successMessage("无数据");
+            } else {
+                return new Result().success(list);
             }
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");
@@ -134,19 +152,19 @@ public class ClassTableController {
     }
 
     /**
-     * 根据cHeadmasterName查询
+     * 根据班主任cHeadmasterName查询
      *
-     * @param classTable
+     * @paramcHeadmasterName
      * @return
      */
     @GetMapping("/selectByName")
-    public Result selectByName(ClassTable classTable) {
+    public Result selectByName(String cHeadmasterName) {
         try {
-            List<ClassTable> list = classTableService.selectByName(classTable.getcHeadmasterName());
+            List<ClassTable> list = classTableService.selectByName(cHeadmasterName);
             if (list == null) {
                 return new Result().successMessage("无数据！");
             } else {
-                return new Result().success(list);
+                return new Result().success(list,classTableService.countByName(cHeadmasterName));
             }
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");
@@ -156,17 +174,21 @@ public class ClassTableController {
     /**
      * 根据status  查询  返回全部
      *
-     * @param classTable
+     * @param status
      * @return
      */
     @GetMapping("/selectAllStatus")
-    public Result selectAllStatus(ClassTable classTable) {
+    public Result selectAllStatus(String status, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize) {
         try {
-            List<ClassTable> list = classTableService.selectAllStatus(classTable.getStatus());
+            if ("all".equals(status)) {
+                status = "";
+            }
+            PageHelper.startPage(pageNum,pageSize);
+            List<ClassTable> list = classTableService.selectAllStatus(status);
             if (list == null) {
                 return new Result().successMessage("无数据！");
             } else {
-                return new Result().success(list);
+                return new Result().success(list,classTableService.count(status));
             }
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");

@@ -1,6 +1,56 @@
 <template>
 	<div>
-		<Table border :columns="columns7" :data="data6"></Table>
+
+
+
+		<div class="rigtop">
+			<Form ref="classTable" :model="classTable" inline>
+				<FormItem>
+					<Row>
+						<Col span="6" style="text-align: center;">
+						模糊姓名
+						</Col>
+						<Col span="18">
+						<Input v-model="leaveRecord.lMName"  placeholder="姓名"></Input>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem>
+					<Row>
+						<Col span="6" style="text-align: center;">
+						工作编号
+						</Col>
+						<Col span="18">
+						<!-- <Select v-model="notic.nTitle" filterable>
+							<Option v-for="item in noticTitle"  :value="item" :key="item">{{ item}}</Option>
+						</Select> -->
+						<Input v-model="leaveRecord.lMName"  placeholder="姓名"></Input>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem>
+					<Row>
+						<Col span="6" style="text-align: center;">
+						部门
+						</Col>
+						<Col span="18">
+						<!-- <Select v-model="notic.mName" filterable>
+							<Option v-for="item in noticTitle"  :value="item" :key="item">{{ item }}</Option>
+						</Select> -->
+						<Input v-model="leaveRecord.lMName"  placeholder="姓名"></Input>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem>
+					<Button>快速导出</Button>
+				</FormItem>
+			</Form>
+		</div>
+
+
+
+
+		<Table border :columns="columns7" :data="data6" height="520" stripe size='default'></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
 				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
@@ -22,7 +72,7 @@
 						<Row>
 							<Col span="11">
 							<FormItem prop="rAdmissionDate">
-								<DatePicker type="date" placeholder="请选择请假时间" v-model="leaveRecord.pDate" @on-change="getStartTime"></DatePicker>
+								<DatePicker type="date" placeholder="请选择请假时间" v-model="leaveRecord.pDate"></DatePicker>
 							</FormItem>
 							</Col>
 						</Row>
@@ -58,8 +108,6 @@
 				columns7: [{
 						title: '姓名',
 						key: 'lMName',
-						width: 120,
-						fixed: "left",
 						align: 'center',
 						render: (h, params) => {
 							return h('div', [
@@ -75,62 +123,44 @@
 					{
 						title: '工作编号',
 						key: 'mUser',
-						fixed: "left",
-						width: 120,
 						align: 'center'
 					},
 					{
 						title: '部门',
 						key: 'dName',
-						width: 120,
 						align: 'center'
 					},
 					{
 						title: '请假时间',
 						key: 'pDate',
-						width: 120,
 						align: 'center'
 					},
 					{
 						title: '标题',
 						key: 'lTitle',
-						width: 180,
 						align: 'center'
 					},
 					{
 						title: '请假类型',
 						key: 'lType',
-						width: 150,
 						align: 'center'
 					},
 					{
 						title: '操作人',
 						key: 'mName',
-						width: 130,
 						align: 'center',
 					},
 
 					{
 						title: '请假内容',
 						key: 'lContexts',
-						width: 400,
+						width: 200,
 						align: 'center',
-						render: (h, params) => {
-							return h('div', [
-								h('Icon', {
-									props: {
-										type: 'person'
-									}
-								}),
-								h('strong', params.row.lContexts.substring(0, 50))
-							]);
-						}
+						tooltip: true
 					},
 					{
 						title: '操作',
 						key: 'action',
-						width: 150,
-						fixed: "right",
 						align: 'center',
 						render: (h, params) => {
 							return h('div', [

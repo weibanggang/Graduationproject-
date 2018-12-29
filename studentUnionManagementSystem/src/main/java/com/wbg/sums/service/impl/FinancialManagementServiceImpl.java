@@ -56,14 +56,6 @@ public class FinancialManagementServiceImpl implements FinancialManagementServic
         return financialManagementMapper.count();
     }
 
-    public static void main(String[] args) {
-        BigDecimal money = null;
-        BigDecimal money2 = new BigDecimal(100.00);
-        if(money2==null){
-            System.out.println( " asdsad");
-        }
-        System.out.println(money.compareTo(new BigDecimal(0))<=0);
-    }
     @Override
     public FinancialManagement selectByPrimaryKey(Integer fId) {
         return financialManagementMapper.selectByPrimaryKey(fId);

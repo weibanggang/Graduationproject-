@@ -1,6 +1,51 @@
 <template>
 	<div>
-		<Table border :columns="columns7" :data="data6"></Table>
+		
+		
+		<div class="rigtop">
+			<Form ref="classTable" :model="classTable" inline>
+				<FormItem>
+					<Row>
+						<Col span="6" style="text-align: center;">
+							标题
+						</Col>
+						<Col span="18" >
+						<Select v-model="notic.nTitle" filterable>
+							<Option v-for="item in noticTitle"  :value="item" :key="item">{{ item}}</Option>
+						</Select>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem>
+					<Row>
+						<Col span="6" style="text-align: center;">
+							发布人
+						</Col>
+						<Col span="18" >
+						<Select v-model="notic.mName" filterable>
+							<Option v-for="item in noticTitle"  :value="item" :key="item">{{ item }}</Option>
+						</Select>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem>
+					<Row>
+						<Col span="6" style="text-align: center;">
+							发布时间
+						</Col>
+						<Col span="16">
+						<DatePicker type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></DatePicker>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem>
+					<Button>快速导出</Button>
+				</FormItem>
+			</Form>
+		</div>
+		
+		
+		<Table border :columns="columns7" :data="data6" height="520" stripe size='default' ></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
 				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
@@ -48,27 +93,17 @@
 				url: "http://localhost:8080",
 				count: 10,
 				modal13: false,
+				noticTitle:"",
 				columns7: [{
 						title: '标题',
 						key: 'nTitle',
 						align: 'center',
-						fixed:"left",
-						width:180,
-						render: (h, params) => {
-							return h('div', [
-								h('Icon', {
-									props: {
-										type: 'person'
-									}
-								}),
-								h('strong', params.row.nTitle.substring(0,10))
-							]);
-						}
+						width:150,
+						tooltip:true
 					},
 						{
 						title: '编号',
 						key: 'nId',
-						width: 70,
 						align: 'center',
 						render: (h, params) => {
 							return h('div', [
@@ -84,25 +119,21 @@
 					{
 						title: '发布时间',
 						key: 'nDate',
-						width:100,
 						align: 'center'
 					},
 					{
 						title: '发布人',
 						key: 'mName',
-						width:120,
 						align: 'center',
 					},
 					{
 						title: '排序',
 						key: 'nSort',
-						width:80,
 						align: 'center',
 					},
 					{
 						title: '状态',
 						key: 'status',
-						width:100,
 						align: 'center',
 						render: (h, params) => {
 							//return h('元素',{元素的性质},'内容')
@@ -153,24 +184,13 @@
 					{
 						title: '公告内容',
 						key: 'nContext',
-						width:400,
+						width:200,
 						align: 'center',
-						render: (h, params) => {
-							return h('div', [
-								h('Icon', {
-									props: {
-										type: 'person'
-									}
-								}),
-								h('strong', params.row.nContext.substring(0, 50))
-							]);
-						}
+						tooltip:true
 					},
 					{
 						title: '操作',
 						key: 'action',
-						width: 150,
-						fixed:"right",
 						align: 'center',
 						render: (h, params) => {
 							return h('div', [
@@ -238,6 +258,9 @@
 					}
 				}).then(function(res) {
 					th.data6 = res.data.data;
+					th.noticTitle = res.data.data.map((e) => {
+						return e.nTitle;
+					})
 					th.count = res.data.count;
 				})
 			},

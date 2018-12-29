@@ -50,13 +50,13 @@ public class PositionTypeController {
     /**
      * 根据pId查找对象  最多只能返回一个对象
      *
-     * @param positionType
+     * @param pId
      * @return
      */
     @GetMapping("/selectByPrimaryKey")
-    public Result selectByPrimaryKey(PositionType positionType) {
+    public Result selectByPrimaryKey(int pId) {
         try {
-            PositionType positionType1 = positionTypeService.selectByPrimaryKey(positionType.getpId());
+            PositionType positionType1 = positionTypeService.selectByPrimaryKey(pId);
             if (positionType1 == null) {
                 return new Result().successMessage("无数据");
             } else {
@@ -125,29 +125,33 @@ public class PositionTypeController {
      * @param positionType
      * @return
      */
-    @GetMapping("/updateSort")
-    public Result updateSort(PositionType positionType) {
+    @PostMapping("/updateSort")
+    public Result updateSort(@RequestBody PositionType positionType) {
         try {
             return positionTypeService.updateSort(positionType.getpId(), positionType.getpSort()) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");
         }
     }
-
     /**
      * 根据status查询全部
      *
-     * @param positionType
+     * @param status
      * @return
      */
     @GetMapping("/selectAllStatus")
-    public Result selectAllStatus(PositionType positionType) {
+    public Result selectAllStatus(String status, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize) {
         try {
-            List<PositionType> list = positionTypeService.selectAllStatus(positionType.getStatus());
+            if ("all".equals(status)) {
+                status = "";
+            }
+            PageHelper pageHelper=new PageHelper();
+            pageHelper.startPage(pageNum,pageSize);
+            List<PositionType> list = positionTypeService.selectAllStatus(status);
             if (list == null) {
                 return new Result().successMessage("无数据！");
             } else {
-                return new Result().success(list);
+                return new Result().success(list,positionTypeService.count(status));
             }
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");

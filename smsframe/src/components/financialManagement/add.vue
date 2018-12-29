@@ -64,9 +64,9 @@
 		},
 		methods: {
 			add() {
-
+console.log(this.FinancialManagement);
 				const th = this;
-				axios.post(th.url + '/financialManagement/insert', th.FinancialManagement, {
+				axios.post(th.url + 'financialManagement/insert', th.FinancialManagement, {
 					headers: {
 						"Content-Type": "application/json;charset=utf-8"
 					}

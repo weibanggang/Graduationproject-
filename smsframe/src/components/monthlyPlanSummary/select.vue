@@ -1,6 +1,48 @@
 <template>
 	<div>
-		<Table border :columns="columns7" :data="data6"></Table>
+			<div class="rigtop">
+					<Form ref="classTable"  inline>
+						<FormItem>
+							<Row>
+								<Col span="6" style="text-align: center;">
+								标题
+								</Col>
+								<Col span="18">
+								<Input placeholder="姓名"></Input>
+								</Col>
+							</Row>
+						</FormItem>
+						<FormItem>
+							<Row>
+								<Col span="6" style="text-align: center;">
+								部门
+								</Col>
+								<Col span="18">
+								<!-- <Select v-model="notic.nTitle" filterable>
+											<Option v-for="item in noticTitle"  :value="item" :key="item">{{ item}}</Option>
+										</Select> -->
+								<Input  placeholder="姓名"></Input>
+								</Col>
+							</Row>
+						</FormItem>
+						<FormItem>
+							<Row>
+								<Col span="6" style="text-align: center;">
+									上传时间
+								</Col>
+								<Col span="16">
+								<DatePicker type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></DatePicker>
+								</Col>
+							</Row>
+						</FormItem>
+						<FormItem>
+							<Button>快速导出</Button>
+						</FormItem>
+					</Form>
+				</div>
+		
+		
+		<Table border :columns="columns7" :data="data6" height="520" stripe size='default' ></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
 				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
@@ -40,6 +82,8 @@
 					{
 						title: '备注',
 						key: 'mRemarks',
+						width:200,
+						tooltip:true,
 						align: 'center',
 					},
 					{

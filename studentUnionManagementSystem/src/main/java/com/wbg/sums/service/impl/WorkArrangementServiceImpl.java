@@ -23,13 +23,24 @@ public class WorkArrangementServiceImpl implements WorkArrangementService {
     }
 
     @Override
+    public List<WorkArrangement> selectGroupBy() {
+        return workArrangementMapper.selectGroupBy();
+    }
+
+    @Override
+    public List<WorkArrangement> selectmName(String mName) {
+        return workArrangementMapper.selectmName(mName);
+    }
+
+    @Override
     public WorkArrangement selectByPrimaryKey(Integer wId) {
         return workArrangementMapper.selectByPrimaryKey(wId);
     }
 
+
     @Override
-    public int counts() {
-        return workArrangementMapper.counts();
+    public int counts(Integer dId, String mName) {
+        return workArrangementMapper.counts(dId, mName);
     }
 
     @Override

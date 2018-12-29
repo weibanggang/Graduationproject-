@@ -1,14 +1,65 @@
 <template>
 	<div>
-		<Form ref="formValidate" :model="classTable" :label-width="80">
-			<FormItem>
-				<Button type="success" @click="add()" long>添加</Button>
-			</FormItem>
-		</Form>
-		<Table border :columns="columns7" :data="data6"></Table>
+
+
+		<div class="rigtop">
+			<Form ref="classTable" :model="classTable" inline>
+				<FormItem>
+					<Row>
+						<Col span="6" style="text-align: center;">
+						班级名称
+						</Col>
+						<Col span="18">
+						<Select v-model="classTable.cId" @on-change="selectCName()" filterable>
+							<Option v-for="item in classTableName" :value="item.cId" :key="item.cId">{{ item.cName }}</Option>
+						</Select>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem>
+					<Row>
+						<Col span="6" style="text-align: center;">
+						班&nbsp;主&nbsp;任
+						</Col>
+						<Col span="18">
+						<Select v-model="classTable.cHeadmasterName" @on-change="selectHName(1)" filterable>
+							<Option v-for="item in classTableGroup" :value="item.cHeadmasterName" :key="item.cId">{{ item.cHeadmasterName }}</Option>
+						</Select>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem>
+					<RadioGroup v-model="status" @on-change="changePage(1)">
+						<Radio label="true">
+							<Icon type="ios-eye" />
+							<span>正常</span>
+						</Radio>
+						<Radio label="false">
+							<Icon type="ios-eye-off" />
+							<span>冻结</span>
+						</Radio>
+						<Radio label="all">
+							<Icon type="ios-football-outline" />
+							<span>全部</span>
+						</Radio>
+					</RadioGroup>
+				</FormItem>
+				<FormItem style="position: absolute;right: 30px">
+					<FormItem>
+						<Button @click="insert()">
+							<Icon type="ios-add-circle-outline" />新增部门
+						</Button>
+					</FormItem>
+					<Button @click="exportData()">
+						<Icon type="ios-download-outline" />数据导出
+					</Button>
+				</FormItem>
+			</Form>
+		</div>
+		<Table border :columns="columns7" :data="data6" height="520" stripe size='default' :loading="loading" ref="table"></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
-				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
+				<Page :total="count" :current="1" @on-change="Page($event)"></Page>
 			</div>
 		</div>
 		<Modal v-model="modal13" draggable scrollable title="编辑班级信息" @on-ok="ok">
@@ -55,10 +106,15 @@
 	export default {
 		data() {
 			return {
+				fycx: "",
 				url: "http://localhost:8080",
 				count: 10,
 				modal13: false,
 				modal14: false,
+				loading: true,
+				status: "true",
+				classTableGroup: "",
+				classTableName: "",
 				columns7: [{
 						title: '编号',
 						key: 'cId',
@@ -185,26 +241,46 @@
 			}
 		},
 		methods: {
+			//分页条件
+			Page(page) {
+				//按班级查询分页
+				if (this.fycx == "cName") {
+					selectCName();
+				}
+				//按班主任名字查询
+				if (this.fycx == "classTableName") {
+					selectHName(page);
+				} //按状态查询
+				if (this.fycx == "status") {
+					changePage(page);
+				}
+			},
+			//编辑
 			show(data) {
 				this.modal13 = true;
 				this.classTable.cId = data.cId;
 				this.classTable.cName = data.cName;
-				this.classTable.status = data.status=="true";
+				this.classTable.status = data.status == "true";
 				this.classTable.cHeadmasterName = data.cHeadmasterName;
 				this.classTable.cPhone = data.cPhone;
 			},
+			//查询
 			changePage(page) {
+				this.fycx == "status"
 				const th = this;
-				axios.get(th.url + '/classTable/selectAll', {
+				th.loading = true;
+				axios.get(th.url + '/classTable/selectAllStatus', {
 					params: {
-						pageNum: page
+						pageNum: page,
+						status: th.status
 					}
 				}).then(function(res) {
 					th.data6 = res.data.data;
 					th.count = res.data.count;
 				})
+				th.loading = false;
 			},
-
+			//删除
 			remove(cId, index) {
 				this.$Modal.confirm({
 					title: '删除提示',
@@ -226,15 +302,18 @@
 					}
 				});
 			},
-			clone(){
-				this.classTable.cName="";
-				this.classTable.cHeadmasterName="";
-				this.classTable.cPhone="";
+			//清空
+			clone() {
+				this.classTable.cName = "";
+				this.classTable.cHeadmasterName = "";
+				this.classTable.cPhone = "";
 			},
-			add() {
+			//弹出
+			insert() {
 				this.clone();
 				this.modal14 = true;
 			},
+			//修改
 			ok() {
 				const th = this;
 				axios.post(th.url + '/classTable/updateByPrimaryKey', th.classTable, {
@@ -249,7 +328,8 @@
 						th.$Message.error(res.data.message);
 					}
 				})
-			},//添加
+			}, //添加
+			//添加
 			oks() {
 				const th = this;
 				console.log(th);
@@ -263,14 +343,68 @@
 						th.changePage(1);
 					} else {
 						th.$Message.error(res.data.message);
-						th.modal14=true;
+						th.modal14 = true;
 					}
 				})
 			},
-			
+			//导出数据
+			exportData() {
+				this.$refs.table.exportCsv({
+					filename: '职位信息'
+				});
+			},
+			//根据班级名称查询
+			selectCName() {
+				this.fycx == "cName"
+				const th = this;
+				th.loading = true;
+				axios.get(th.url + '/classTable/selectByPrimaryKey', {
+					params: {
+						cId: th.classTable.cId
+					}
+				}).then(function(res) {
+					th.data6 = [];
+					th.data6.push(res.data.data)
+				})
+				th.loading = false;
+			},
+			//根据班主任查询
+			selectHName(page) {
+				this.fycx == "cHeadmasterName"
+				const th = this;
+				th.loading = true;
+				axios.get(th.url + '/classTable/selectByName', {
+					params: {
+						pageNum: page,
+						cHeadmasterName: th.classTable.cHeadmasterName
+					}
+				}).then(function(res) {
+					th.data6 = res.data.data;
+					th.count = res.data.count;
+				})
+				th.loading = false;
+
+			},
 		},
 		created() {
-			this.changePage(1);
+			const th = this;
+			th.loading = true;
+			axios.get(th.url + '/classTable/selectGroupBy')
+				.then(function(res) {
+					th.classTableGroup = res.data.data;
+				})
+			axios.get(th.url + '/classTable/selectAllStatus', {
+				params: {
+					pageNum: 1,
+					status: th.status
+				}
+			}).then(function(res) {
+				th.data6 = res.data.data;
+				th.classTableName = res.data.data;
+				th.count = res.data.count;
+			})
+			th.loading = false;
+
 		}
 	}
 </script>

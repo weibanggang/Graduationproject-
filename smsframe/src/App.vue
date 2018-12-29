@@ -4,7 +4,7 @@
 <style scoped="scoped">
 	
 	.ivu-layout-header{
-		z-index: 9999999;
+		z-index: 999;
 }
 .ivu-menu-horizontal,.layout-logo,.ivu-layout-header{
 	height: 50px;
@@ -40,7 +40,9 @@
 			<!--头部-->
 			<Header>
 				<Menu mode="horizontal" theme="dark" active-name="1" :style="{position: 'fixed', width: '100%'}">
-					<div class="layout-logo" style="left:-50px;font-size: 24px;top:0px;width:250px;text-align: center; color: rgba(255, 255, 255, 0.7);">学生会管理系统</div>
+					<div class="layout-logo" style="left:-50px;top:0px;width:300px;text-align: center;background:#515a6e ">
+						<img src="http://localhost:8080/image/logos.png" style="width: 100%; height: 100%;" />
+					</div>
 					<div class="layout-nav">
 						<MenuItem name="1">
 						<Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" />
@@ -75,7 +77,7 @@
 			<Layout>
 				<!--左边-->
 				<Sider hide-trigger :style="{background: '#fff'}">
-					<Menu active-name="1-2" theme="light" accordion width="auto" :open-names="['1']">
+					<Menu active-name="1-2" theme="light" accordion width="auto"  :open-names="['1']">
 						<Submenu name="5">
 							<template slot="title">
 								<Icon type="ios-navigate"></Icon>
@@ -97,7 +99,10 @@
 								<MenuItem name="6-1">会议记录</MenuItem>
 							</router-Link>
 							<router-Link to="/monthlyPlanSummarySelect">
-								<MenuItem name="6-2">月计划总结表</MenuItem>
+								<MenuItem name="6-2">月计划月总结</MenuItem>
+							</router-Link>
+							<router-Link to="/leaveRecordSelect">
+								<MenuItem name="6-3">请假记录</MenuItem>
 							</router-Link>
 						</Submenu>
 						<Submenu name="7">
@@ -183,27 +188,14 @@
 							<router-Link to="/typeOfMeetingSelect">
 								<MenuItem name="13-3">会议类型</MenuItem>
 							</router-Link>
-							</router-Link>
 							<router-Link to="/exchangeTableSelect">
 								<MenuItem name="13-4">会名管理</MenuItem>
 							</router-Link>
-						</Submenu>
-						<Submenu name="14">
-							<template slot="title">
-								<Icon type="ios-analytics"></Icon>
-								部门职位
-							</template>
 							<router-Link to="/departmentTypeSelect">
-								<MenuItem name="14-1">部门信息</MenuItem>
-							</router-Link>
-							<router-Link to="/departmentTypeAdd">
-								<MenuItem name="14-2">添加部门</MenuItem>
+								<MenuItem name="13-5">部门管理</MenuItem>
 							</router-Link>
 							<router-Link to="/positionTypeSelect">
-								<MenuItem name="14-3">职位信息</MenuItem>
-							</router-Link>
-							<router-Link to="/positionTypeAdd">
-								<MenuItem name="14-4">添加职位</MenuItem>
+								<MenuItem name="13-6">职位管理</MenuItem>
 							</router-Link>
 						</Submenu>
 						<Submenu name="15">

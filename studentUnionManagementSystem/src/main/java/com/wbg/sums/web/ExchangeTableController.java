@@ -51,13 +51,13 @@ public class ExchangeTableController {
     /**
      * 根据eId查找对象  最多只能返回一个对象
      *
-     * @param exchangeTable
+     * @param eId
      * @return
      */
     @GetMapping("/selectByPrimaryKey")
-    public Result selectByPrimaryKey(ExchangeTable exchangeTable) {
+    public Result selectByPrimaryKey(int eId) {
         try {
-            ExchangeTable list = exchangeTableService.selectByPrimaryKey(exchangeTable.geteId());
+            ExchangeTable list = exchangeTableService.selectByPrimaryKey(eId);
             if (list == null) {
                 return new Result().successMessage("无数据");
             } else {
@@ -124,8 +124,8 @@ public class ExchangeTableController {
      * @param exchangeTable
      * @return
      */
-    @GetMapping("/updateSort")
-    public Result updateSort(ExchangeTable exchangeTable) {
+    @PostMapping("/updateSort")
+    public Result updateSort(@RequestBody ExchangeTable exchangeTable) {
         try {
             return exchangeTableService.updateSort(exchangeTable.geteId(),exchangeTable.geteSort()) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");
         } catch (Exception ex) {
@@ -134,19 +134,22 @@ public class ExchangeTableController {
     }
 
     /**
-     * 根据e_id修改全部字段
+     * 根据状态查询全部字段
      *
-     * @param exchangeTable
+     * @param
      * @return
      */
     @GetMapping("/selectAllStatus")
-    public Result selectAllStatus(ExchangeTable exchangeTable) {
+    public Result selectAllStatus(String status, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize) {
         try {
-           List<ExchangeTable> list= exchangeTableService.selectAllStatus(exchangeTable.getStatus());
+            if("all".equals(status))
+                status = "";
+            PageHelper.startPage(pageNum,pageSize);
+           List<ExchangeTable> list= exchangeTableService.selectAllStatus(status);
        if(list==null){
            return new Result().successMessage("无数据");
        }else {
-           return new Result().success(list);
+           return new Result().success(list, exchangeTableService.count(status));
        }
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");
@@ -175,13 +178,13 @@ public class ExchangeTableController {
     /**
      * 根据eName模糊查询
      *
-     * @param exchangeTable
+     * @param eName
      * @return
      */
     @GetMapping("/selectAllVague")
-    public Result selectAllVague(ExchangeTable exchangeTable) {
+    public Result selectAllVague(String eName) {
         try {
-            List<ExchangeTable> list= exchangeTableService.selectAllVague(exchangeTable.geteName());
+            List<ExchangeTable> list= exchangeTableService.selectAllVague(eName);
             if(list==null){
                 return new Result().successMessage("无数据");
             }else {

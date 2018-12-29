@@ -1,11 +1,48 @@
 <template>
 	<div>
-		<Form ref="formValidate" :model="typeofMeeting" :label-width="80">
+		<!-- <Form ref="formValidate" :model="typeofMeeting" :label-width="80">
 			<FormItem>
 				<Button type="success" @click="add()" long>添加</Button>
 			</FormItem>
-		</Form>
-		<Table border :columns="columns7" :data="data6"></Table>
+		</Form> -->
+		
+		<div class="rigtop">
+			<Form ref="classTable" :model="classTable" inline>
+				<FormItem>
+					<Row>
+						<Col span="6" style="text-align: center;">
+							会议名称
+						</Col>
+						<Col span="18" >
+						<Select v-model="typeofMeeting.tName" filterable>
+							<Option v-for="item in typeofMeetingName" :value="item" :key="item">{{ item }}</Option>
+						</Select>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem>
+					<RadioGroup v-model="status">
+						<Radio label="true">
+							<Icon type="ios-eye" />
+							<span>正常</span>
+						</Radio>
+						<Radio label="false">
+							<Icon type="ios-eye-off" />
+							<span>冻结</span>
+						</Radio>
+						<Radio label="all">
+							<Icon type="ios-football-outline" />
+							<span>全部</span>
+						</Radio>
+					</RadioGroup>
+				</FormItem>
+				<FormItem >
+					<Button>快速导出</Button>
+				</FormItem>
+			</Form>
+		</div>
+		
+		<Table border :columns="columns7" :data="data6" height="520" stripe size='default' ></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
 				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
@@ -60,6 +97,7 @@
 				count: 10,
 				modal13: false,
 				modal14: false,
+				typeofMeetingName:"",
 				columns7: [{
 						title: '会议编号',
 						key: 'tId',
@@ -202,6 +240,9 @@
 					}
 				}).then(function(res) {
 					th.data6 = res.data.data;
+					th.typeofMeetingName = res.data.data.map((e) =>{
+						return e.tName;
+					})
 					th.count = res.data.count;
 				})
 			},

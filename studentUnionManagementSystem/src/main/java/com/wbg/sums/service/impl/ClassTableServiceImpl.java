@@ -26,6 +26,11 @@ public class ClassTableServiceImpl implements ClassTableService {
     }
 
     @Override
+    public int countByName(String cHeadmasterName) {
+        return classTableMapper.countByName(cHeadmasterName);
+    }
+
+    @Override
     public int insert(ClassTable record) {
         return classTableMapper.insert(record);
     }
@@ -33,6 +38,11 @@ public class ClassTableServiceImpl implements ClassTableService {
     @Override
     public ClassTable selectByPrimaryKey(Integer cId) {
         return classTableMapper.selectByPrimaryKey(cId);
+    }
+
+    @Override
+    public List<ClassTable> selectGroupBy() {
+        return classTableMapper.selectGroupBy();
     }
 
     @Override

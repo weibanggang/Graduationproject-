@@ -73,9 +73,24 @@ join DepartmentType d on d.d_id=w.d_id where w_title like concat('%',#{wTitle},'
     </select>
   <select id="selectAllVagueName" resultMap="BaseResultMap">
      select d.d_id,w_id,w_title,w_contents,w_date,w_remarks,d.d_name,m_name from WorkArrangement w
-join DepartmentType d on d.d_id=w.d_id where d.d_id=#{dId}
+    join DepartmentType d on d.d_id=w.d_id where d.d_id=#{dId}
   </select>
   <select id="counts" resultType="java.lang.Integer">
     select  count(*)  from WorkArrangement
+    <where>
+      <if test="dId != 0">
+       and d_id=#{dId}
+      </if>
+      <if test="mName != null">
+        and m_name like concat('%', #{mName}, '%')
+      </if>
+    </where>
+  </select>
+    <select id="selectGroupBy" resultType="com.wbg.sums.entity.WorkArrangement">
+      select  d_id,w_title   from WorkArrangement group by w_title
+    </select>
+  <select id="selectmName" resultMap="BaseResultMap">
+    select d.d_id,w_id,w_title,w_contents,w_date,w_remarks,d.d_name,m_name from WorkArrangement w
+join DepartmentType d on d.d_id=w.d_id where w.m_name like concat('%', #{mName}, '%')
   </select>
 </mapper>
