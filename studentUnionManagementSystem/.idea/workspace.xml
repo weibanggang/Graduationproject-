@@ -10,87 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bba78ade-eba8-4e62-bf63-3ba45c47e789" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/image/logos.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/admin/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/admin/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/attendance/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/attendance/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/classTable/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/classTable/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/departmentType/add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/departmentType/add.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/departmentType/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/departmentType/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/departmentalExcellenceRecord/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/departmentalExcellenceRecord/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/exchangeTable/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/exchangeTable/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/financialManagement/add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/financialManagement/add.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/financialManagement/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/financialManagement/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/jurisdiction/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/jurisdiction/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/leaveRecord/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/leaveRecord/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/memberInformation/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/memberInformation/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/minutesOfTheMeeting/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/minutesOfTheMeeting/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/monthlyPlanSummary/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/monthlyPlanSummary/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/notic/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/notic/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/personalMeritRecord/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/personalMeritRecord/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/positionType/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/positionType/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/typeOfMeeting/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/typeOfMeeting/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/workArrangement/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/workArrangement/select.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/dao/ClassTableMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/dao/ClassTableMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/dao/FinancialManagementMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/dao/FinancialManagementMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/dao/PositionTypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/dao/PositionTypeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/dao/WorkArrangementMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/dao/WorkArrangementMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/entity/WorkArrangement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/entity/WorkArrangement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/ClassTableService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/ClassTableService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/WorkArrangementService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/WorkArrangementService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/impl/ClassTableServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/impl/ClassTableServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/impl/FinancialManagementServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/impl/FinancialManagementServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/impl/WorkArrangementServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/impl/WorkArrangementServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/ClassTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/ClassTableController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/DepartmentTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/DepartmentTypeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/ExchangeTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/ExchangeTableController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/PositionTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/PositionTypeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/TypeofMeetingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/TypeofMeetingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/WorkArrangementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/WorkArrangementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ClasstableMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ClasstableMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/DepartmenttypeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/DepartmenttypeMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/FinancialmanagementMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/FinancialmanagementMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/PositiontypeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/PositiontypeMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/WorkarrangementMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/WorkarrangementMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/dao/ClassTableMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/dao/ClassTableMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/dao/PositionTypeMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/dao/PositionTypeMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/dao/WorkArrangementMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/dao/WorkArrangementMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/service/ClassTableService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/service/ClassTableService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/service/WorkArrangementService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/service/WorkArrangementService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/service/impl/ClassTableServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/service/impl/ClassTableServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/service/impl/FinancialManagementServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/service/impl/FinancialManagementServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/service/impl/WorkArrangementServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/service/impl/WorkArrangementServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/ClassTableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/ClassTableController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/DepartmentTypeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/DepartmentTypeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/ExchangeTableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/ExchangeTableController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/PositionTypeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/PositionTypeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/TypeofMeetingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/TypeofMeetingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/WorkArrangementController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/WorkArrangementController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/ClasstableMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/ClasstableMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/DepartmenttypeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/DepartmenttypeMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/FinancialmanagementMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/FinancialmanagementMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/PositiontypeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/PositiontypeMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/WorkarrangementMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/WorkarrangementMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/dao/ClassTableMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/dao/ClassTableMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/dao/PositionTypeMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/dao/PositionTypeMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/dao/WorkArrangementMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/dao/WorkArrangementMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/service/ClassTableService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/service/ClassTableService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/service/WorkArrangementService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/service/WorkArrangementService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/service/impl/ClassTableServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/service/impl/ClassTableServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/service/impl/FinancialManagementServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/service/impl/FinancialManagementServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/service/impl/WorkArrangementServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/service/impl/WorkArrangementServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/ClassTableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/ClassTableController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/DepartmentTypeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/DepartmentTypeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/ExchangeTableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/ExchangeTableController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/PositionTypeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/PositionTypeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/TypeofMeetingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/TypeofMeetingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/WorkArrangementController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/WorkArrangementController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/mapper/ClasstableMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/mapper/ClasstableMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/mapper/DepartmenttypeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/mapper/DepartmenttypeMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/mapper/FinancialmanagementMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/mapper/FinancialmanagementMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/mapper/PositiontypeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/mapper/PositiontypeMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/mapper/WorkarrangementMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/mapper/WorkarrangementMapper.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -268,7 +188,7 @@
     <session id="1049810283">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="25" />
+          <entry key="project.closed" value="26" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.22" value="1" />
@@ -284,8 +204,9 @@
           <entry key="project.open.time.48" value="1" />
           <entry key="project.open.time.5" value="2" />
           <entry key="project.open.time.6" value="1" />
+          <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="25" />
+          <entry key="project.opened" value="26" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -335,7 +256,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/web/WorkArrangementController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
+            <state relative-caret-position="825">
               <caret line="141" column="36" selection-start-line="141" selection-start-column="18" selection-end-line="141" selection-end-column="36" />
             </state>
           </provider>
@@ -344,8 +265,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/dao/WorkArrangementMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="59" column="54" lean-forward="true" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="54" />
+            <state relative-caret-position="1512">
+              <caret line="59" column="54" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -353,7 +274,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar://$USER_HOME$/.m2/repository/org/springframework/spring-core/5.1.0.RELEASE/spring-core-5.1.0.RELEASE-sources.jar!/org/springframework/cglib/proxy/MethodProxy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
+            <state relative-caret-position="5157">
               <caret line="217" selection-start-line="217" selection-end-line="217" />
             </state>
           </provider>
@@ -549,7 +470,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
@@ -626,6 +546,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -914,6 +835,7 @@
       <workItem from="1546006912237" duration="5492000" />
       <workItem from="1546039722577" duration="684000" />
       <workItem from="1546059153576" duration="3844000" />
+      <workItem from="1546232387086" duration="599000" />
     </task>
     <servers />
   </component>
@@ -950,13 +872,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="296736000" />
+    <option name="totallyTimeSpent" value="297335000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7561375" visible="true" weight="0.2375189" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7561375" visible="true" weight="0.24130106" />
       <window_info id="Structure" order="1" sideWeight="0.24386252" side_tool="true" weight="0.40922844" />
       <window_info id="Designer" order="2" />
       <window_info id="JRebel" order="3" side_tool="true" />
@@ -1192,10 +1114,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-621">
           <caret line="85" column="25" selection-start-line="85" selection-start-column="25" selection-end-line="85" selection-end-column="25" />
-          <folding>
-            <element signature="e#1540#1541#0" expanded="true" />
-            <element signature="e#1588#1589#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1387,13 +1305,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/org/springframework/spring-core/5.1.0.RELEASE/spring-core-5.1.0.RELEASE-sources.jar!/org/springframework/cglib/proxy/MethodProxy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="217" selection-start-line="217" selection-end-line="217" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/entity/WorkArrangement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-550">
@@ -1415,17 +1326,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/dao/WorkArrangementMapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/web/WorkArrangementController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="59" column="54" lean-forward="true" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="54" />
+        <state relative-caret-position="825">
+          <caret line="141" column="36" selection-start-line="141" selection-start-column="18" selection-end-line="141" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/web/WorkArrangementController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/dao/WorkArrangementMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="141" column="36" selection-start-line="141" selection-start-column="18" selection-end-line="141" selection-end-column="36" />
+        <state relative-caret-position="1512">
+          <caret line="59" column="54" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/org/springframework/spring-core/5.1.0.RELEASE/spring-core-5.1.0.RELEASE-sources.jar!/org/springframework/cglib/proxy/MethodProxy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5157">
+          <caret line="217" selection-start-line="217" selection-end-line="217" />
         </state>
       </provider>
     </entry>
