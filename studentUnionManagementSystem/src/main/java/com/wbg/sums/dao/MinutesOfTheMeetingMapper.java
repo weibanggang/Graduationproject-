@@ -1,6 +1,8 @@
 package com.wbg.sums.dao;
 
 import com.wbg.sums.entity.MinutesOfTheMeeting;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 public interface MinutesOfTheMeetingMapper {
@@ -44,6 +46,9 @@ public interface MinutesOfTheMeetingMapper {
      */
     int updateByPrimaryKey(MinutesOfTheMeeting record);
 
-//    根据标题模糊查询 List<MinutesOfTheMeeting> selectTitle(title);
-//    根据上传时间查询  List<MinutesOfTheMeeting> selectTitle(m_date);
+//    根据上传时间查询  List<MinutesOfTheMeeting> selectDate(@Param("beforeDate") String beforeDate,@Param("afterDate") String afterDate);
+    List<MinutesOfTheMeeting> selects(@Param("mTitle") String mTitle, @Param("dId") int dId, @Param("beforeDate") String beforeDate,@Param("afterDate") String afterDate);
+
+    int counts(@Param("mTitle") String mTitle,@Param("dId") int dId, @Param("beforeDate") String beforeDate,@Param("afterDate") String afterDate);
+
 }

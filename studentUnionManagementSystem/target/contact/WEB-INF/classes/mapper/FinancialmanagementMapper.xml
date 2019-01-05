@@ -78,4 +78,25 @@
     <select id="selectGroupBymName" resultType="com.wbg.sums.entity.FinancialManagement">
       select m_name from FinancialManagement group by m_name
     </select>
+    <select id="selects" resultMap="BaseResultMap">
+       select f_id, f_type, f_front_money, f_after_money, f_money, f_date, f_mr_date, m_name,
+    f_remarks, f_file
+    from financialManagement where f_type like concat('%',#{fType},'%')
+      <if test="mName != null and mName !=''">
+        and m_name like concat('%',#{mName},'%')
+      </if>
+      <if test="beforeDate != null and beforeDate !=''">
+        and f_date &gt;= #{beforeDate} and f_date  &lt;=  #{afterDate}
+      </if>
+    </select>
+  <select id="counts" resultType="java.lang.Integer">
+    select count(*)
+    from financialManagement where f_type like concat('%',#{fType},'%')
+      <if test="mName != null and mName !=''">
+        and m_name like concat('%',#{mName},'%')
+      </if>
+      <if test="beforeDate != null and beforeDate !=''">
+        and f_date &gt;= #{beforeDate} and f_date  &lt;=  #{afterDate}
+      </if>
+  </select>
 </mapper>

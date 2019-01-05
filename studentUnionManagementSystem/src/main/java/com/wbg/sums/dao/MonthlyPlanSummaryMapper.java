@@ -1,6 +1,8 @@
 package com.wbg.sums.dao;
 
 import com.wbg.sums.entity.MonthlyPlanSummary;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 public interface MonthlyPlanSummaryMapper {
@@ -44,7 +46,13 @@ public interface MonthlyPlanSummaryMapper {
      */
     int updateByPrimaryKey(MonthlyPlanSummary record);
 
-//    根据标题模糊查询 List<MonthlyPlanSummary> selectTitle(title);
-//    根据时间、部门查询  List<MonthlyPlanSummary> selectTypedate(date，d_id);
+    //根据时间查询
+    List<MonthlyPlanSummary> selectDate(@Param("beforeDate") String beforeDate, @Param("afterDate") String afterDate);
+    //根据操作员查询
+    List<MonthlyPlanSummary> selectmName(@Param("mName") String mName);
+    //根据部门查询
+    List<MonthlyPlanSummary> selectdId(int dId);
+   //查询多少条数据
+    int counts(@Param("beforeDate") String beforeDate, @Param("afterDate") String afterDate, @Param("mName") String mName, @Param("dId") int dId);
 
 }

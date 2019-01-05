@@ -1,48 +1,55 @@
 <template>
 	<div>
-
-
-
 		<div class="rigtop">
-			<Form ref="classTable" :model="classTable" inline>
+			<Form  inline>
 				<FormItem>
 					<Row>
-						<Col span="6" style="text-align: center;">
-						模糊姓名
+						<Col span="8" style="text-align: center;">
+						<Checkbox v-model="name" label="">模糊姓名</Checkbox>
 						</Col>
-						<Col span="18">
-						<Input v-model="leaveRecord.lMName"  placeholder="姓名"></Input>
+						<Col span="16">
+						<Input v-model="leaveRecords.lMName" placeholder="姓名"></Input>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem>
+					<Row>
+						<Col span="7" style="text-align: center;">
+						<Checkbox v-model="dates" label="">请假时间</Checkbox>
+						</Col>
+						<Col span="16">
+						<DatePicker type="daterange" placement="bottom-end" @on-change="selectTime(($event))" placeholder="时间查询" style="width: 200px"></DatePicker>
 						</Col>
 					</Row>
 				</FormItem>
 				<FormItem>
 					<Row>
 						<Col span="6" style="text-align: center;">
-						工作编号
+						<Checkbox v-model="dname" label="">部门</Checkbox>
 						</Col>
-						<Col span="18">
-						<!-- <Select v-model="notic.nTitle" filterable>
-							<Option v-for="item in noticTitle"  :value="item" :key="item">{{ item}}</Option>
-						</Select> -->
-						<Input v-model="leaveRecord.lMName"  placeholder="姓名"></Input>
-						</Col>
-					</Row>
-				</FormItem>
-				<FormItem>
-					<Row>
-						<Col span="6" style="text-align: center;">
-						部门
-						</Col>
-						<Col span="18">
-						<!-- <Select v-model="notic.mName" filterable>
-							<Option v-for="item in noticTitle"  :value="item" :key="item">{{ item }}</Option>
-						</Select> -->
-						<Input v-model="leaveRecord.lMName"  placeholder="姓名"></Input>
+						<Col span="16">
+						<Select v-model="leaveRecords.dName" filterable>
+							<Option v-for="item in departmentType" :value="item.dName" :key="item.dId">{{ item.dName }}</Option>
+						</Select>
 						</Col>
 					</Row>
 				</FormItem>
+
 				<FormItem>
-					<Button>快速导出</Button>
+					<Button @click="select(1,'bd')">
+						<Icon type="ios-sync" />快速查询
+					</Button>
+				</FormItem>
+				<FormItem style="position: absolute;right: 30px">
+
+					<FormItem>
+						<Button @click="add()">
+							<Icon type="ios-add-circle-outline" />新增部门
+						</Button>
+					</FormItem>
+					<Button @click="exportData()">
+						<Icon type="ios-download-outline" />数据导出
+					</Button>
 				</FormItem>
 			</Form>
 		</div>
@@ -50,7 +57,7 @@
 
 
 
-		<Table border :columns="columns7" :data="data6" height="520" stripe size='default'></Table>
+		<Table border :columns="columns7" :data="data6" height="520" :loading="loading" stripe size='default' ref="table"></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
 				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
@@ -102,6 +109,13 @@
 	export default {
 		data() {
 			return {
+				dname: false,
+				name: false,
+				dates: false,
+				baDate: [],
+				bd: "",
+				loading: true,
+				departmentType: [],
 				url: "http://localhost:8080",
 				count: 10,
 				modal13: false,
@@ -206,10 +220,34 @@
 					mName: "",
 					lContexts: "",
 					lMName: "",
-				}
+				},
+				leaveRecords: {
+					lId: 0,
+					dName: "",
+					mUser: "",
+					pDate: "",
+					lTitle: "",
+					lType: "",
+					lFile: "",
+					mName: "",
+					lContexts: "",
+					lMName: "",
+				},
 			}
 		},
 		methods: {
+
+			//导出数据
+			exportData() {
+				this.$refs.table.exportCsv({
+					filename: '工作信息'
+				});
+			},
+			 //间隔时间
+			selectTime(starTime) {
+				this.baDate = starTime;
+			},
+			//编辑弹出
 			show(data) {
 				this.modal13 = true;
 				this.leaveRecord.lMName = data.lMName;
@@ -220,10 +258,13 @@
 				this.leaveRecord.pDate = data.pDate;
 				this.leaveRecord.lType = data.lType;
 			},
+			//时间
 			getStartTime(starTime) {
 				this.leaveRecord.pDate = starTime;
 			},
+			//查询
 			changePage(page) {
+				this.loading = true;
 				const th = this;
 				axios.get(th.url + '/leaveRecord/selectAll', {
 					params: {
@@ -233,7 +274,17 @@
 					th.data6 = res.data.data;
 					th.count = res.data.count;
 				})
+				this.loading = false;
 			},
+			//分页查询
+			selectpage(page) {
+				if (this.bd == "bd") {
+					select(page);
+				} else {
+					changePage(page);
+				}
+			},
+			//上传
 			resultMsg(res) {
 				if (res.code === 1224) {
 					this.leaveRecord.lFile = res.data;
@@ -242,6 +293,7 @@
 					this.$Message.error(res.message);
 				}
 			},
+			//删除
 			remove(lId, index) {
 				this.$Modal.confirm({
 					title: '删除提示',
@@ -263,6 +315,37 @@
 					}
 				});
 			},
+			//查询
+			select(page, bd) {
+				if (bd == "bd") {
+					this.bd = bd;
+				}
+				this.loading = true;
+				if (!this.name) {
+					this.leaveRecords.lMName = null;
+				}
+				if (!this.dname) {
+					this.leaveRecords.dName = null;
+				}
+				if (!this.dates) {
+					this.baDate = ["", ""];
+				}
+				const th = this;
+				axios.get(th.url + '/leaveRecord/selects', {
+					params: {
+						pageNum: page,
+						lMName:th.leaveRecords.lMName,
+						dName:th.leaveRecords.dName,
+						beforeDate:th.baDate[0],
+						afterDate:th.baDate[1],
+					}
+				}).then(function(res) {
+					th.data6 = res.data.data;
+					th.count = res.data.count;
+				})
+				this.loading = false;
+			},
+			//修改
 			ok() {
 				const th = this;
 				axios.post(th.url + '/leaveRecord/updateByPrimaryKey', th.leaveRecord, {
@@ -282,6 +365,11 @@
 		},
 		created() {
 			this.changePage(1);
+			const th = this;
+			//部门查询
+			axios.get(th.url + '/departmentType/iselectAllStatus').then(function(res) {
+				th.departmentType = res.data.data;
+			})
 		}
 	}
 </script>

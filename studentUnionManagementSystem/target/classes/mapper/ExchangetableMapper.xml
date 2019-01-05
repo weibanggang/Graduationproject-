@@ -49,7 +49,7 @@
     update ExchangeTable set e_sort=#{e_sort} where e_id=#{e_id}
   </update>
   <select id="iselectAllStatus" resultType="ExchangeTable">
-   select e_id,e_name from ExchangeTable where status like  concat('%',#{status},'%')
+   select e_id,e_name from ExchangeTable where status like  concat('%',#{status},'%') order by e_sort
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--

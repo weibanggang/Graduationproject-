@@ -41,4 +41,27 @@ public class MonthlyPlanSummaryServiceImpl implements MonthlyPlanSummaryService 
     public int updateByPrimaryKey(MonthlyPlanSummary record) {
         return monthlyPlanSummaryMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public List<MonthlyPlanSummary> selectDate(String beforeDate, String afterDate) {
+        return monthlyPlanSummaryMapper.selectDate(beforeDate,afterDate);
+    }
+
+    @Override
+    public List<MonthlyPlanSummary> selectmName(String mName) {
+        return monthlyPlanSummaryMapper.selectmName(mName);
+    }
+
+    @Override
+    public List<MonthlyPlanSummary> selectdId(int dId) {
+        return monthlyPlanSummaryMapper.selectdId(dId);
+    }
+
+    @Override
+    public int counts(String beforeDate, String afterDate, String mName, int dId) {
+        return monthlyPlanSummaryMapper.counts(beforeDate,afterDate,mName,dId);
+    }
+
+
+
 }

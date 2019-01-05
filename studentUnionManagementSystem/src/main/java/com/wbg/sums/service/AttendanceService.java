@@ -1,6 +1,7 @@
 package com.wbg.sums.service;
 
 import com.wbg.sums.entity.Attendance;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -45,4 +46,9 @@ public interface AttendanceService {
      * @mbg.generated
      */
     int updateByPrimaryKey(Attendance record);
+
+    //姓名、部门、操作员、时间
+    List<Attendance> selects(@Param("aMName") String aMName, @Param("dName") String dName, @Param("mName") String mName, @Param("beforeDate") String beforeDate, @Param("afterDate") String afterDate);
+    int counts(@Param("aMName") String aMName,@Param("dName") String dName,@Param("mName") String mName,@Param("beforeDate") String beforeDate, @Param("afterDate") String afterDate);
+
 }

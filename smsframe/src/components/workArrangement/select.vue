@@ -8,7 +8,7 @@
 					<Row>
 						<Col span="16">
 						<Select v-model="workArrangement.wId" @on-change="selectName()" filterable>
-							<Option v-for="item in workArrangementTitle" :value="item.dId" :key="item.dId">{{ item.wTitle}}</Option>
+							<Option v-for="item in workArrangementTitle" :value="item.wId" :key="item.wId">{{ item.wTitle}}</Option>
 						</Select>
 						</Col>
 					</Row>
@@ -35,14 +35,14 @@
 				<FormItem label="发布时间">
 					<Row>
 						<Col span="16">
-						<DatePicker type="daterange" placement="bottom-end" @on-change="getStartTime(($event))" placeholder="时间查询" style="width: 200px"></DatePicker>
+						<DatePicker type="daterange" placement="bottom-end" @on-change="getStartTime(($event),1)" placeholder="时间查询" style="width: 200px"></DatePicker>
 						</Col>
 					</Row>
 				</FormItem>
 				<FormItem style="position: absolute;right: 30px">
 					<FormItem>
 						<Button @click="changePage(1)">
-							<Icon type="ios-sync" />刷新
+							<Icon type="ios-sync" />全部查询
 						</Button>
 					</FormItem>
 					<FormItem>
@@ -57,10 +57,10 @@
 			</Form>
 		</div>
 
-		<Table border :columns="columns7" :data="data6" height="520" :loading="loading" stripe size='default'></Table>
+		<Table border :columns="columns7" :data="data6" height="520" :loading="loading" stripe size='default' ref="table"></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
-				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
+				<Page :total="count" :current="1" @on-change="seleAll($event)"></Page>
 			</div>
 		</div>
 
@@ -79,11 +79,11 @@
 						<Option v-for="item in departmentType" :value="item.dId" :key="item.dId">{{ item.dName }}</Option>
 					</Select>
 				</FormItem>
-				<FormItem label="入会时间">
+				<FormItem label="时间">
 					<Row>
 						<Col span="11">
 						<FormItem prop="wDate">
-							<DatePicker type="date" placeholder="请选择入会时间" @on-change="getTime(($event))" v-model="workArrangement.wDate"></DatePicker>
+							<DatePicker type="date" placeholder="请选择时间" @on-change="getTime(($event))" v-model="workArrangement.wDate"></DatePicker>
 						</FormItem>
 						</Col>
 					</Row>
@@ -111,11 +111,11 @@
 						<Option v-for="item in departmentType" :value="item.dId" :key="item.dId">{{ item.dName }}</Option>
 					</Select>
 				</FormItem>
-				<FormItem label="入会时间">
+				<FormItem label="时间">
 					<Row>
 						<Col span="11">
 						<FormItem prop="wDate">
-							<DatePicker type="date" placeholder="请选择入会时间" @on-change="getTime(($event))" v-model="workArrangement.wDate"></DatePicker>
+							<DatePicker type="date" placeholder="请选择时间" @on-change="getTime(($event))" v-model="workArrangement.wDate"></DatePicker>
 						</FormItem>
 						</Col>
 					</Row>
@@ -140,6 +140,8 @@
 				count: 10,
 				modal13: false,
 				modal14: false,
+				bd:"",
+				baDate:[],
 				workArrangementTitle: "",
 				departmentType: [],
 				columns7: [{
@@ -242,11 +244,38 @@
 			}
 		},
 		methods: {
-
-			//时间
-			getStartTime(starTime) {
-				console.log(starTime);
-				//this.workArrangement.wDate = starTime;
+				//导出数据
+			exportData() {
+				this.$refs.table.exportCsv({
+					filename: '工作信息'
+				});
+			},
+			//间隔时间
+			getStartTime(starTime,page) {
+				this.loading = true;
+				
+				if(starTime.length > 0){
+					this.baDate = starTime;
+				}
+				this.bd = "starTime";
+				const th = this;
+				axios.get(th.url + '/workArrangement/selectDate', {
+					params: {
+						pageNum: page,
+						beforeDate:th.baDate[0],
+						afterDate:th.baDate[1],
+					}
+				}).then(function(res) {
+					var datares = res.data.data.map((e) => {
+						e.dName = e.departmentType.dName;
+						return e
+					});
+					th.data6 = datares;
+					th.count = res.data.count;
+				
+				})
+				this.loading = false;
+				
 			},
 			//时间
 			getTime(starTime) {
@@ -333,8 +362,19 @@
 				this.workArrangement.wContents = data.wContents;
 				this.workArrangement.mName = data.mName;
 			},
+			//分页查询
+			seleAll(page){
+				
+				if(this.bd == "all"){
+					changePage(page);
+				}
+				if(this.bd = "starTime"){
+					getStartTime("",page);
+				}
+			},
 			//查询
 			changePage(page) {
+				this.bd = "all";
 				this.loading = true;
 				const th = this;
 				axios.get(th.url + '/workArrangement/selectAll', {
@@ -356,7 +396,8 @@
 			//第一次查询
 			selectAdd() {
 				const th = this;
-				axios.get(th.url + '/departmentType/iSelectAllStatus').then(function(res) {
+				//部门
+				axios.get(th.url + '/departmentType/iselectAllStatus').then(function(res) {
 					th.departmentType = res.data.data;
 				})
 				//这里4是主席团

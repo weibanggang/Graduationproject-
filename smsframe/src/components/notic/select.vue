@@ -1,54 +1,72 @@
 <template>
 	<div>
-		
-		
 		<div class="rigtop">
-			<Form ref="classTable" :model="classTable" inline>
+			<Form  :model="notic" inline>
 				<FormItem>
 					<Row>
-						<Col span="6" style="text-align: center;">
-							标题
+						<Col span="8" style="text-align: center;">
+							<Checkbox v-model="title" label="">模糊标题</Checkbox>
 						</Col>
-						<Col span="18" >
-						<Select v-model="notic.nTitle" filterable>
-							<Option v-for="item in noticTitle"  :value="item" :key="item">{{ item}}</Option>
-						</Select>
+						<Col span="16" >
+								<Input v-model="notic.nTitle"  placeholder="请输入关键字"></Input>
 						</Col>
 					</Row>
 				</FormItem>
 				<FormItem>
 					<Row>
-						<Col span="6" style="text-align: center;">
-							发布人
+						<Col span="7" style="text-align: center;">
+							<Checkbox v-model="name" label="">发布人</Checkbox>
 						</Col>
-						<Col span="18" >
-						<Select v-model="notic.mName" filterable>
-							<Option v-for="item in noticTitle"  :value="item" :key="item">{{ item }}</Option>
-						</Select>
+						<Col span="17">
+								<Input v-model="notic.mName"  placeholder="请输入名字"></Input>
 						</Col>
 					</Row>
 				</FormItem>
 				<FormItem>
 					<Row>
-						<Col span="6" style="text-align: center;">
-							发布时间
+						<Col span="7" style="text-align: center;">
+							<Checkbox v-model="dates" label="">发布时间</Checkbox>
 						</Col>
 						<Col span="16">
-						<DatePicker type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></DatePicker>
+						<DatePicker type="daterange" placement="bottom-end" placeholder="时间" @on-change="getStartTime(($event))" style="width: 200px"></DatePicker>
 						</Col>
 					</Row>
 				</FormItem>
 				<FormItem>
-					<Button>快速导出</Button>
+					<RadioGroup v-model="status">
+						<Radio label="true">
+							<Icon type="ios-eye" />
+							<span>正常</span>
+						</Radio>
+						<Radio label="false">
+							<Icon type="ios-eye-off" />
+							<span>冻结</span>
+						</Radio>
+						<Radio label="all">
+							<Icon type="ios-football-outline" />
+							<span>全部</span>
+						</Radio>
+					</RadioGroup>
+				</FormItem>
+				<FormItem>
+						<Button @click="select(1,'bd')">
+							快速查询
+							</Button>
+				</FormItem>
+			<FormItem style="position: absolute;right: 30px">
+			
+				<Button @click="exportData()">
+					<Icon type="ios-download-outline" />数据导出
+				</Button>
 				</FormItem>
 			</Form>
 		</div>
 		
 		
-		<Table border :columns="columns7" :data="data6" height="520" stripe size='default' ></Table>
+		<Table border :columns="columns7" :data="data6" height="520" size='default' :loading="loading" stripe ref="table"></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
-				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
+				<Page :total="count" :current="1" @on-change="selectpage($event)"></Page>
 			</div>
 		</div>
 		<Modal v-model="modal13" draggable scrollable title="编辑公告" @on-ok="ok" >
@@ -94,6 +112,14 @@
 				count: 10,
 				modal13: false,
 				noticTitle:"",
+				title:false,
+				name:false,
+				dates:false,
+				loading:true,
+				status:"true",
+				bd:"",
+				baDate:[],
+				memberInformationType: [],
 				columns7: [{
 						title: '标题',
 						key: 'nTitle',
@@ -144,7 +170,6 @@
 									},
 									on: {
 										'on-change': (value) => {
-											console.log(value);
 											params.row.status = value;
 											const th = this;
 											axios.get(th.url + '/notic/updateStatus', {
@@ -238,8 +263,18 @@
 			}
 		},
 		methods: {
+			//导出数据
+			exportData() {
+				this.$refs.table.exportCsv({
+					filename: '公告信息'
+				});
+			},
+			//间隔时间
+			getStartTime(starTime) {
+					this.baDate = starTime;
+			},
+			//编辑弹出
 			show(data) {
-				console.log(data);
 				this.modal13 = true;
 				this.notic.nId = data.nId;
 				this.notic.nTitle = data.nTitle;
@@ -250,20 +285,21 @@
 				this.notic.nSort = data.nSort;
 				this.notic.nContext = data.nContext;
 			},
+			//查询
 			changePage(page) {
 				const th = this;
+				th.loading = true;
 				axios.get(th.url + '/notic/selectAll', {
 					params: {
 						pageNum: page
 					}
 				}).then(function(res) {
 					th.data6 = res.data.data;
-					th.noticTitle = res.data.data.map((e) => {
-						return e.nTitle;
-					})
 					th.count = res.data.count;
 				})
+				th.loading = false;
 			},
+			//文件上传
 			resultMsg(res) {
 				if (res.code === 1224) {
 					this.notic.nFile = res.data;
@@ -272,6 +308,7 @@
 					this.$Message.error(res.message);
 				}
 			},
+			//删除
 			remove(nId, index) {
 				this.$Modal.confirm({
 					title: '删除提示',
@@ -293,6 +330,7 @@
 					}
 				});
 			},
+			//修改
 			ok() {
 				const th = this;
 				axios.post(th.url + '/notic/updateByPrimaryKey', th.notic, {
@@ -308,6 +346,48 @@
 						th.modal13 = true;
 					}
 				})
+			},
+			//分页查询
+			selectpage(page){
+				if(this.bd == "bd"){
+					select(page,bd);
+				}else{
+					changePage(page);
+				}
+			},
+			//快速查询
+			select(page, bd){
+				if(bd =="bd"){
+					this.bd = bd;
+					}
+					this.loading = true;
+				if(!this.title){
+					this.notic.nTitle = null;
+				}
+				if(!this.name){
+					this.notic.mName = null;
+				}
+				if(!this.dates){
+					this.baDate = ["",""];
+				}
+				const th = this;
+				axios.get(th.url + '/notic/selects', {
+					params: {
+						pageNum: page,
+						nTitle:th.notic.nTitle,
+						mName:th.notic.mName,
+						status:th.status,
+						beforeDate:th.baDate[0],
+						afterDate:th.baDate[1],
+					}
+				}).then(function(res) {
+					th.data6 = res.data.data;
+					th.noticTitle = res.data.data.map((e) => {
+						return e.nTitle;
+					})
+					th.count = res.data.count;
+				})
+				this.loading = false;
 			}
 		},
 		created() {

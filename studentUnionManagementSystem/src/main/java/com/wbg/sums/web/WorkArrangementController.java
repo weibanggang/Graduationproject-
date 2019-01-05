@@ -15,6 +15,7 @@ import java.util.List;
 public class WorkArrangementController {
     @Autowired
     private WorkArrangementService workArrangementService;
+
     /**
      * 根据pId删除
      *
@@ -74,13 +75,12 @@ public class WorkArrangementController {
     @GetMapping("/selectAll")
     public Result selectAll(@RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize) {
         try {
-           PageHelper pageHelper=new PageHelper();
-            pageHelper.startPage(pageNum,pageSize);
+            PageHelper.startPage(pageNum, pageSize);
             List<WorkArrangement> list = workArrangementService.selectAll();
             if (list == null) {
                 return new Result().successMessage("无数据");
             } else {
-                return new Result().success(list,workArrangementService.counts(0,null));
+                return new Result().success(list, workArrangementService.counts(0, null));
             }
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");
@@ -114,12 +114,13 @@ public class WorkArrangementController {
             if (list == null) {
                 return new Result().successMessage("无数据");
             } else {
-                return new Result().success(list,workArrangementService.counts(0,null));
+                return new Result().success(list, workArrangementService.counts(0, null));
             }
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");
         }
     }
+
     /**
      * 根据负责人查询工作
      */
@@ -130,12 +131,13 @@ public class WorkArrangementController {
             if (list == null) {
                 return new Result().successMessage("无数据");
             } else {
-                return new Result().success(list,workArrangementService.counts(0, mName));
+                return new Result().success(list, workArrangementService.counts(0, mName));
             }
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");
         }
     }
+
     /**
      * 根据部门查询工作
      */
@@ -146,7 +148,25 @@ public class WorkArrangementController {
             if (list == null) {
                 return new Result().successMessage("无数据");
             } else {
-                return new Result().success(list,workArrangementService.counts(dId, null));
+                return new Result().success(list, workArrangementService.counts(dId, null));
+            }
+        } catch (Exception ex) {
+            return new Result().error("出错,请重试！");
+        }
+    }
+
+    /**
+     * 根据时间查询
+     */
+    @GetMapping("/selectDate")
+    public Result selectDate(String beforeDate, String afterDate, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize) {
+        try {
+            PageHelper.startPage(pageNum, pageSize);
+            List<WorkArrangement> list = workArrangementService.selectDate(beforeDate, afterDate);
+            if (list == null) {
+                return new Result().successMessage("无数据");
+            } else {
+                return new Result().success(list, workArrangementService.count(beforeDate, afterDate));
             }
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");

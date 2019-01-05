@@ -73,13 +73,13 @@
         where m_id = #{mId,jdbcType=INTEGER}
     </update>
     <update id="updatePassword">
-      update MemberInformation set m_password=#{m_password} where m_user={m_user}
+      update MemberInformation set m_password=#{m_password} where m_user={mUser}
     </update>
     <update id="updatePhoto">
-    update MemberInformation  set photo=#{photo} where m_id=#{m_id}
+    update MemberInformation  set photo=#{photo} where m_id=#{mId}
   </update>
     <update id="updateStatus">
-    update MemberInformation  set status=#{status} where m_id=#{m_id}
+    update MemberInformation  set status=#{status} where m_id=#{mId}
   </update>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         <!--
@@ -107,7 +107,7 @@ join DepartmentType d on d.d_id=m.d_id
 join PositionType p on p.p_id=m.p_id
 join ExchangeTable e on e.e_id=m.e_id
 join Jurisdiction j on j.j_id=m.j_id
-where m.status=#{status} and m.m_name like concat('%',#{m_name},'%')
+where m.status=#{status} and m.m_name like concat('%',#{mName},'%')
   </select>
     <select id="selectTableAll" resultType="com.wbg.sums.dto.MemberInfomationDto">
 select m.m_id,m_user,m_name,m_sex,p_photo,m_qq,m.status,r_admission_date,m.p_remarks,c.c_name,c_headmaster_name,c.c_phone,d.d_name,p.p_name,e.e_name,j.j_name from MemberInformation m
@@ -134,5 +134,60 @@ where m.status like concat('%',#{status},'%')
     </select>
     <select id="selectJid" resultType="java.lang.Integer">
         select j_id from memberinformation where m_user = #{mUser}
+    </select>
+    <select id="selects" resultType="com.wbg.sums.dto.MemberInfomationDto">
+        select
+        m.m_id,m_user,m_name,m_sex,p_photo,m_qq,m.status,r_admission_date,m.p_remarks,c.c_name,c_headmaster_name,c.c_phone,d.d_name,p.p_name,e.e_name,j.j_name
+        from MemberInformation m
+        join ClassTable c on c.c_id=m.c_id
+        join DepartmentType d on d.d_id=m.d_id
+        join PositionType p on p.p_id=m.p_id
+        join ExchangeTable e on e.e_id=m.e_id
+        join Jurisdiction j on j.j_id=m.j_id
+        where m.status like concat('%',#{status},'%')
+            <if test="dId != 0">
+                and d.d_id = #{dId}
+            </if>
+            <if test="cId != 0">
+                and m.c_id = #{cId}
+            </if>
+            <if test="eId != 0">
+                and m.e_id = #{eId}
+            </if>
+            <if test="pId != 0">
+                and m.p_id = #{pId}
+            </if>
+            <if test="mName != null and mName !=''">
+                and m_name like concat('%',#{mName},'%')
+            </if>
+
+    </select>
+    <select id="counts" resultType="java.lang.Integer">
+        select count(*) from MemberInformation m
+        join ClassTable c on c.c_id=m.c_id
+        join DepartmentType d on d.d_id=m.d_id
+        join PositionType p on p.p_id=m.p_id
+        join ExchangeTable e on e.e_id=m.e_id
+        join Jurisdiction j on j.j_id=m.j_id
+        <where>
+            <if test="dId != 0">
+                and d.d_id = #{dId}
+            </if>
+            <if test="cId != 0">
+                and m.c_id = #{cId}
+            </if>
+            <if test="eId != 0">
+                and m.e_id = #{eId}
+            </if>
+            <if test="pId != 0">
+                and m.p_id = #{pId}
+            </if>
+            <if test="status != null and status !=''">
+                and m.status = #{status}
+            </if>
+            <if test="mName != null and mName !=''">
+                and m_name =  #{mName}
+            </if>
+        </where>
     </select>
 </mapper>

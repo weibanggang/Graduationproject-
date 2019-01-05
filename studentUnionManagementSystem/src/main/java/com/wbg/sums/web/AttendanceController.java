@@ -101,6 +101,26 @@ public class AttendanceController {
             return new Result().error("出错,请重试！");
         }
 
-
     }
+
+    /**
+     * 查询所有数据
+     *
+     * @return
+     */
+    @GetMapping("/selects")
+    public Result selects(@RequestParam(defaultValue = "1") int pageNum,@RequestParam(defaultValue = "10") int pageSize,String aMName, String dName, String mName, String beforeDate, String afterDate) {
+        try {
+            PageHelper.startPage(pageNum,pageSize);
+            List<Attendance> list = attendanceService.selects(aMName,dName,mName,beforeDate,afterDate);
+            if (list == null) {
+                return new Result().successMessage("无数据");
+            } else {
+                return new Result().success(list,attendanceService.counts(aMName,dName,mName,beforeDate,afterDate));
+            }
+        } catch (Exception ex) {
+            return new Result().error("出错,请重试！");
+        }
+    }
+
 }

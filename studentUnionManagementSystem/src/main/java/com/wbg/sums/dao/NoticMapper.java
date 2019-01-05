@@ -68,4 +68,9 @@ public interface NoticMapper {
     int updateStatus(@Param("nId") int nId,@Param("status") String status);
 //        update set status=#{status} where n_id=#{n_id}
 
+    List<Notic> selects(@Param("nTitle") String nTitle,@Param("mName") String mName,@Param("status") String status,@Param("beforeDate") String beforeDate,@Param("afterDate") String afterDate);
+
+    int counts(@Param("nTitle") String nTitle,@Param("mName") String mName,@Param("status") String status,@Param("beforeDate") String beforeDate,@Param("afterDate") String afterDate);
+
 }
+

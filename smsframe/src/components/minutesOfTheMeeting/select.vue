@@ -2,49 +2,60 @@
 	<div>
 
 		<div class="rigtop">
-			<Form ref="classTable"  inline>
+			<Form ref="minutesOfTheMeeting"  inline>
 				<FormItem>
 					<Row>
-						<Col span="6" style="text-align: center;">
-						会议标题
-						</Col>
-						<Col span="18">
-						<Input placeholder="姓名"></Input>
-						</Col>
-					</Row>
-				</FormItem>
-				<FormItem>
-					<Row>
-						<Col span="6" style="text-align: center;">
-						会议类型
-						</Col>
-						<Col span="18">
-						<!-- <Select v-model="notic.nTitle" filterable>
-									<Option v-for="item in noticTitle"  :value="item" :key="item">{{ item}}</Option>
-								</Select> -->
-						<Input  placeholder="姓名"></Input>
-						</Col>
-					</Row>
-				</FormItem>
-				<FormItem>
-					<Row>
-						<Col span="6" style="text-align: center;">
-							上传时间
+						<Col span="8" style="text-align: center;">
+						<Checkbox v-model="name" label="">会议标题</Checkbox>
 						</Col>
 						<Col span="16">
-						<DatePicker type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></DatePicker>
+						<Input placeholder="会议标题" v-model="minutesOfTheMeeting.mTitle" ></Input>
 						</Col>
 					</Row>
 				</FormItem>
 				<FormItem>
-					<Button>快速导出</Button>
+					<Row>
+						<Col span="8" style="text-align: center;">
+						<Checkbox v-model="dname" label="">会议类型</Checkbox>
+						</Col>
+						<Col span="16">
+						<Select v-model="minutesOfTheMeeting.tId" filterable>
+							<Option v-for="item in typeofMeeting"  :value="item.tId" :key="item.tId">{{ item.tName}}</Option>
+						</Select> 
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem>
+					<Row>
+						<Col span="7" style="text-align: center;">
+						<Checkbox v-model="dates" label="">上传时间</Checkbox>
+						</Col>
+						<Col span="16">
+						<DatePicker type="daterange" placement="bottom-end" @on-change="selectTime(($event))" placeholder="时间查询" style="width: 200px"></DatePicker>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem>
+					<Button @click="select(1)">
+						<Icon type="ios-sync" />快速查询
+					</Button>
+				</FormItem>
+				<FormItem style="position: absolute;right: 30px">
+					<FormItem>
+						<Button >
+							<Icon type="ios-add-circle-outline" />新增记录
+						</Button>
+					</FormItem>
+					<Button @click="exportData()">
+						<Icon type="ios-download-outline" />数据导出
+					</Button>
 				</FormItem>
 			</Form>
 		</div>
 
 
 
-		<Table border :columns="columns7" :data="data6" height="520" stripe size='default'></Table>
+		<Table border :columns="columns7" :data="data6" height="520" :loading="loading" stripe size='default' ref="table"></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
 				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
@@ -86,6 +97,12 @@
 	export default {
 		data() {
 			return {
+				dname: false,
+				name: false,
+				dates: false,
+				baDate: [],
+				bd: "",
+				loading: true,
 				url: "http://localhost:8080",
 				count: 10,
 				modal13: false,
@@ -99,6 +116,8 @@
 						title: '会议标题',
 						key: 'mTitle',
 						align: 'center',
+						width:150,
+						tooltip:true,
 						render: (h, params) => {
 							return h('div', [
 								h('Icon', {
@@ -183,6 +202,17 @@
 			}
 		},
 		methods: {
+			//导出数据
+			exportData() {
+				this.$refs.table.exportCsv({
+					filename: '会议记录'
+				});
+			},
+			 //间隔时间
+			selectTime(starTime) {
+				this.baDate = starTime;
+			},
+			//编辑弹出
 			show(data) {
 				this.modal13 = true;
 				this.minutesOfTheMeeting.mId = data.mId;
@@ -192,6 +222,7 @@
 				this.minutesOfTheMeeting.mName = data.mName;
 				this.minutesOfTheMeeting.mContexts = data.mContexts;
 			},
+			//查询
 			changePage(page) {
 				const th = this;
 				axios.get(th.url + '/minutesOfTheMeeting/selectAll', {
@@ -207,6 +238,39 @@
 					th.count = res.data.count;
 				})
 			},
+			//快速查询
+			select(page){
+				this.loading = true;
+				if (!this.name) {
+					this.minutesOfTheMeeting.mTitle = null;
+				}
+				var dId = this.minutesOfTheMeeting.tId;
+				if (!this.dname) {
+					dId = 0;
+				}
+				if (!this.dates) {
+					this.baDate = ["", ""];
+				}
+				const th = this;
+				axios.get(th.url + '/minutesOfTheMeeting/selects', {
+					params: {
+						pageNum: page,
+						dId:dId,
+						mTitle:th.minutesOfTheMeeting.mTitle,
+						beforeDate:th.baDate[0],
+						afterDate:th.baDate[1],
+					}
+				}).then(function(res) {
+					var datares = res.data.data.map((e) => {
+						e.tName = e.typeOfMeeting.tName;
+						return e;
+					})
+					th.data6 = datares;
+					th.count = res.data.count;
+				})
+				this.loading = false;
+			},
+			//上传文件
 			resultMsg(res) {
 				if (res.code === 1224) {
 					this.minutesOfTheMeeting.mFile = res.data;
@@ -215,6 +279,7 @@
 					this.$Message.error(res.message);
 				}
 			},
+			//删除
 			remove(mId, index) {
 				this.$Modal.confirm({
 					title: '删除提示',
@@ -236,6 +301,7 @@
 					}
 				});
 			},
+			//添加
 			ok() {
 				const th = this;
 				axios.post(th.url + '/minutesOfTheMeeting/updateByPrimaryKey', th.minutesOfTheMeeting, {
@@ -254,7 +320,7 @@
 			}
 		},
 		created() {
-			this.changePage(1);
+			this.select(1);
 			const th = this;
 			axios.get(th.url + '/typeofMeeting/iselectAllStatus')
 				.then(function(res) {

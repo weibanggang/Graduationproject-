@@ -20,6 +20,7 @@ public class MonthlyPlanSummaryController {
     /**
      * 根据mId删除
      * 要求转入 mId
+     *
      * @param monthlyPlanSummary
      * @return
      */
@@ -76,12 +77,12 @@ public class MonthlyPlanSummaryController {
     @GetMapping("/selectAll")
     public Result selectAll(@RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize) {
         try {
-            PageHelper.startPage(pageNum,pageSize);
+            PageHelper.startPage(pageNum, pageSize);
             List<MonthlyPlanSummary> list = monthlyPlanSummaryService.selectAll();
             if (list == null) {
                 return new Result().successMessage("无数据");
             } else {
-                return new Result().success(list,monthlyPlanSummaryService.count());
+                return new Result().success(list, monthlyPlanSummaryService.count());
             }
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");
@@ -94,15 +95,71 @@ public class MonthlyPlanSummaryController {
      * @param monthlyPlanSummary
      * @return
      */
-    @PostMapping(value = "/updateByPrimaryKey" )
+    @PostMapping(value = "/updateByPrimaryKey")
     public Result updateByPrimaryKey(@RequestBody MonthlyPlanSummary monthlyPlanSummary) {
         try {
             return monthlyPlanSummaryService.updateByPrimaryKey(monthlyPlanSummary) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");
         }
-
-
     }
 
+    /**
+     * 根据时间查询
+     *
+     * @return
+     */
+    @GetMapping("/selectDate")
+    public Result selectDate(@RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize, String beforeDate, String afterDate) {
+        try {
+            PageHelper.startPage(pageNum, pageSize);
+            List<MonthlyPlanSummary> list = monthlyPlanSummaryService.selectDate(beforeDate, afterDate);
+            if (list == null) {
+                return new Result().successMessage("无数据");
+            } else {
+                return new Result().success(list, monthlyPlanSummaryService.counts(beforeDate, afterDate, null, 0));
+            }
+        } catch (Exception ex) {
+            return new Result().error("出错,请重试！");
+        }
+    }
+
+    /**
+     * 根据操作员查询
+     *
+     * @return
+     */
+    @GetMapping("/selectmName")
+    public Result selectmName(@RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize, String mName) {
+        try {
+            PageHelper.startPage(pageNum, pageSize);
+            List<MonthlyPlanSummary> list = monthlyPlanSummaryService.selectmName(mName);
+            if (list == null) {
+                return new Result().successMessage("无数据");
+            } else {
+                return new Result().success(list, monthlyPlanSummaryService.counts(null, null, mName, 0));
+            }
+        } catch (Exception ex) {
+            return new Result().error("出错,请重试！");
+        }
+    }
+    /**
+     * 根据部门查询
+     *
+     * @return
+     */
+    @GetMapping("/selectdId")
+    public Result selectdId(@RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize,int dId) {
+        try {
+            PageHelper.startPage(pageNum, pageSize);
+            List<MonthlyPlanSummary> list = monthlyPlanSummaryService.selectdId(dId);
+            if (list == null) {
+                return new Result().successMessage("无数据");
+            } else {
+                return new Result().success(list, monthlyPlanSummaryService.counts(null, null, null, dId));
+            }
+        } catch (Exception ex) {
+            return new Result().error("出错,请重试！");
+        }
+    }
 }

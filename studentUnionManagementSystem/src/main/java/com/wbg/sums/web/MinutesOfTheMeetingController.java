@@ -102,7 +102,24 @@ public class MinutesOfTheMeetingController {
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");
         }
-
-
+    }
+    /**
+     * 查询所有数据
+     *
+     * @return
+     */
+    @GetMapping("/selects")
+    public Result selects(@RequestParam(defaultValue = "1") int pageNum,@RequestParam(defaultValue = "10") int pageSize,String mTitle, int dId, String beforeDate, String afterDate) {
+        try {
+            PageHelper.startPage(pageNum,pageSize);
+            List<MinutesOfTheMeeting> list = minutesOfTheMeetingService.selects(mTitle,dId,beforeDate,afterDate);
+            if (list == null) {
+                return new Result().successMessage("无数据");
+            } else {
+                return new Result().success(list,minutesOfTheMeetingService.counts(mTitle,dId,beforeDate,afterDate));
+            }
+        } catch (Exception ex) {
+            return new Result().error("出错,请重试！");
+        }
     }
 }

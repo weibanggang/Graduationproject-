@@ -105,4 +105,23 @@ public class LeaveRecordController {
         }
     }
 
+    /**
+     * 多个条件查询数据
+     *
+     * @return
+     */
+    @GetMapping("/selects")
+    public Result selects(@RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize,String lMName, String dName, String beforeDate, String afterDate) {
+        try {
+            PageHelper.startPage(pageNum,pageSize);
+            List<LeaveRecord> list = leaveRecordService.selects(lMName, dName, beforeDate, afterDate);
+            if (list == null) {
+                return new Result().successMessage("无数据");
+            } else {
+                return new Result().success(list,leaveRecordService.counts(lMName, dName, beforeDate, afterDate));
+            }
+        } catch (Exception ex) {
+            return new Result().error("出错,请重试！");
+        }
+    }
 }

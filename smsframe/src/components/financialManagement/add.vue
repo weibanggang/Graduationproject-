@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<Form ref="formInline" :model="FinancialManagement">
+		<Form  :model="FinancialManagement">
 			<FormItem prop="aUsername" label="金额">
 				<div>
 				<InputNumber

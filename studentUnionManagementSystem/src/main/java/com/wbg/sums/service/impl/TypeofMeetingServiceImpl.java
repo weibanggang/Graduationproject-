@@ -49,7 +49,7 @@ public class TypeofMeetingServiceImpl implements TypeofMeetingService {
 
     @Override
     public List<TypeofMeeting> selectAllStatus(String status) {
-        return null;
+        return typeofMeetingMapper.selectAllStatus(status);
     }
 
     @Override

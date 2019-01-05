@@ -242,12 +242,17 @@ create table  Attendance(
 a_id int auto_increment primary key comment'编号',
 a_type varchar(20) comment '类型',
 m_user int comment '成员工作编号',
+a_m_name varchar(20) comment '成员姓名',
 d_name varchar(20) comment '成员部门',
 a_titile  varchar(50) comment '标题',
 a_date datetime comment '时间',
 m_name varchar(20) comment '操作人',
 a_remaks varchar(256) comment '备注'
 );
+insert into Attendance(a_type,m_user,a_m_name,d_name,a_titile,a_date,m_name,a_remaks) values
+('全体会议','100010001','小邦哥','文体部','第一次全体培训大会',now(),'小丽','没有备注'),
+('全体会议','100010002','廖珠炫','文体部','第一次全体培训大会',now(),'小丽','没有备注'),
+('全体会议','100010003','彭金华','文体部','第一次全体培训大会',now(),'小丽','没有备注');
 #17会议记录
 create table MinutesOfTheMeeting(
 m_id int auto_increment primary key comment'编号',

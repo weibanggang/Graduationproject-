@@ -1,6 +1,7 @@
 package com.wbg.sums.service;
 
 import com.wbg.sums.entity.LeaveRecord;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -11,6 +12,10 @@ public interface LeaveRecordService {
      *
      * @mbg.generated
      */
+    List<LeaveRecord> selects(@Param("lMName") String lMName, @Param("dName") String dName, @Param("beforeDate") String beforeDate, @Param("afterDate") String afterDate);
+
+    int counts(@Param("lMName") String lMName, @Param("dName") String dName, @Param("beforeDate") String beforeDate, @Param("afterDate") String afterDate);
+
     int deleteByPrimaryKey(Integer lId);
     int count();
     /**

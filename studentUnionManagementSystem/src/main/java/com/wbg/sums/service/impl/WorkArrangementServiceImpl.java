@@ -18,6 +18,16 @@ public class WorkArrangementServiceImpl implements WorkArrangementService {
     }
 
     @Override
+    public List<WorkArrangement> selectDate(String beforeDate, String afterDate) {
+        return workArrangementMapper.selectDate(beforeDate, afterDate);
+    }
+
+    @Override
+    public int count(String beforeDate, String afterDate) {
+        return workArrangementMapper.count(beforeDate, afterDate);
+    }
+
+    @Override
     public int insert(WorkArrangement record) {
         return workArrangementMapper.insert(record);
     }

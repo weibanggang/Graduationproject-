@@ -1,6 +1,7 @@
 package com.wbg.sums.service;
 
 import com.wbg.sums.entity.FinancialManagement;
+import org.apache.ibatis.annotations.Param;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -47,4 +48,10 @@ public interface FinancialManagementService {
      */
     int updateByPrimaryKey(FinancialManagement record);
     List<FinancialManagement> selectGroupBymName();
+
+
+    List<FinancialManagement> selects(@Param("mName") String mName, @Param("fType") String fType, @Param("beforeDate") String beforeDate, @Param("afterDate") String afterDate);
+
+    int counts(@Param("mName") String mName,@Param("fType") String fType, @Param("beforeDate") String beforeDate, @Param("afterDate") String afterDate);
+
 }

@@ -1,70 +1,64 @@
 <template>
 	<div>
-		
 		<div class="rigtop">
-				<Form ref="classTable"  inline>
+			<Form ref="classTable" inline>
+				<FormItem label="姓名">
+					<Row>
+						<Col span="18">
+						<Input placeholder="姓名" v-model="lMName"></Input>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem>
+					<Button @click="selectName()">
+						<Icon type="ios-sync" />模糊查询
+					</Button>
+				</FormItem>
+				<FormItem>
+					<Row>
+						<Col span="8" style="text-align: center;">
+						<Checkbox v-model="name" label="">部门</Checkbox>
+						</Col>
+						<Col span="16">
+						<Select v-model="personalMeritRecord.dName" filterable>
+							<Option v-for="item in departmentType" :value="item.dName" :key="item.dId">{{ item.dName }}</Option>
+						</Select>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem>
+					<Col span="8" style="text-align: center;">
+					<Checkbox v-model="dates" label="">时间</Checkbox>
+					</Col>
+					<Row>
+						<Col span="16">
+						<DatePicker type="daterange" placement="bottom-end" @on-change="selectTime(($event))" placeholder="时间查询" style="width: 200px"></DatePicker>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem style="position: absolute;right: 30px">
 					<FormItem>
-						<Row>
-							<Col span="6" style="text-align: center;">
-							成员编号
-							</Col>
-							<Col span="18">
-							<Input placeholder="姓名"></Input>
-							</Col>
-						</Row>
+						<Button @click="select(1,'bd')">
+							<Icon type="ios-sync" />快速查询
+						</Button>
 					</FormItem>
 					<FormItem>
-						<Row>
-							<Col span="6" style="text-align: center;">
-							成员姓名
-							</Col>
-							<Col span="18">
-							<!-- <Select v-model="notic.nTitle" filterable>
-										<Option v-for="item in noticTitle"  :value="item" :key="item">{{ item}}</Option>
-									</Select> -->
-							<Input  placeholder="姓名"></Input>
-							</Col>
-						</Row>
+						<Button @click="add()">
+							<Icon type="ios-sync" />新增信息
+						</Button>
 					</FormItem>
 					<FormItem>
-						<Row>
-							<Col span="6" style="text-align: center;">
-							部门
-							</Col>
-							<Col span="18">
-							<!-- <Select v-model="notic.nTitle" filterable>
-										<Option v-for="item in noticTitle"  :value="item" :key="item">{{ item}}</Option>
-									</Select> -->
-							<Input  placeholder="姓名"></Input>
-							</Col>
-						</Row>
+						<Button @click="exportData()">
+							<Icon type="ios-download-outline" />数据导出
+						</Button>
 					</FormItem>
-					<FormItem>
-						<Row>
-							<Col span="6" style="text-align: center;">
-								时间
-							</Col>
-							<Col span="16">
-							<DatePicker type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></DatePicker>
-							</Col>
-						</Row>
-					</FormItem>
-					<FormItem>
-						<Button>快速导出</Button>
-					</FormItem>
-				</Form>
-			</div>
-		
-		
-		<!-- <Form ref="formValidate" :model="personalMeritRecord" :label-width="80">
-			<FormItem>
-				<Button type="success" @click="add()" long>添加</Button>
-			</FormItem>
-		</Form> -->
-		<Table border :columns="columns7" :data="data6"  height="520" stripe size='default' ></Table>
+				</FormItem>
+			</Form>
+		</div>
+		<Table border :columns="columns7" :data="data6" height="520" stripe size='default' ref="table"></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
-				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
+				<Page :total="count" :current="1" @on-change="selectpage($event)"></Page>
 			</div>
 		</div>
 		<Modal v-model="modal14" draggable scrollable title="添加个人评优" @on-ok="oks">
@@ -159,11 +153,16 @@
 	export default {
 		data() {
 			return {
+				name: false,
+				dates: false,
 				url: "http://localhost:8080/",
 				count: 10,
+				lMName: "",
+				
 				modal14: false,
 				modal13: false,
-				loading:false,
+				loading: false,
+				departmentType: [],
 				menberInforMation: [],
 				columns7: [{
 						title: '部门名称',
@@ -209,7 +208,7 @@
 						title: '内容',
 						key: 'pContexts',
 						width: 200,
-						tooltip:true,
+						tooltip: true,
 						align: 'center',
 						render: (h, params) => {
 							return h('div', [
@@ -260,6 +259,8 @@
 					}
 				],
 				data6: [],
+				baDate: [],
+				bd: "",
 				personalMeritRecord: {
 					pId: 0,
 					dName: "",
@@ -274,6 +275,61 @@
 			}
 		},
 		methods: {
+			//导出数据
+			exportData() {
+				this.$refs.table.exportCsv({
+					filename: '个人评优'
+				});
+			},
+			//条件查询
+			select(page, bd) {
+				if (bd == "bd") {
+					this.bd = bd;
+				}
+				this.loading = true;
+				if (!this.name) {
+					this.personalMeritRecord.dName = null;
+				}
+				if (!this.dates) {
+					this.baDate = ["", ""];
+				}
+				const th = this;
+				axios.get(th.url + '/personalMeritRecord/selects', {
+					params: {
+						pageNum: page,
+						dName: th.personalMeritRecord.dName,
+						beforeDate: th.baDate[0],
+						afterDate: th.baDate[1],
+					}
+				}).then(function(res) {
+					th.data6 = res.data.data;
+					th.count = res.data.count;
+				})
+				this.loading = false;
+			},
+			//模糊查询
+			selectName() {
+				this.loading = true;
+				const th = this;
+				axios.get(th.url + 'personalMeritRecord/selectName', {
+					params: {
+						lMName: th.lMName
+					}
+				}).then(function(res) {
+					th.data6 = res.data.data;
+					th.count = res.data.count;
+				})
+				th.loading = false;
+			},
+			//分页查询
+			selectpage(page) {
+				if (this.bd == "bd") {
+					select(page);
+				} else {
+					changePage(page);
+				}
+			},
+			//编辑弹出
 			show(data) {
 				this.modal13 = true;
 				this.personalMeritRecord.pId = data.pId;
@@ -285,9 +341,15 @@
 				this.personalMeritRecord.pFile = data.pFile;
 				this.personalMeritRecord.pContexts = data.pContexts;
 			},
+			//时间
 			getStartTime(starTime) {
 				this.personalMeritRecord.pDate = starTime;
 			},
+			//时间间隔查询
+			selectTime(value) {
+				this.baDate = value;
+			},
+			//根据编号查询姓名
 			selectMname(value) {
 				this.loading = true;
 				const th = this;
@@ -299,10 +361,12 @@
 					th.menberInforMation = res.data.data;
 					for (let s of res.data.data) {
 						th.personalMeritRecord.lMName = s.mName;
+						th.personalMeritRecord.dName = s.dId;
 					}
 					th.loading = false;
 				})
 			},
+			//查询
 			changePage(page) {
 				const th = this;
 				axios.get(th.url + 'personalMeritRecord/selectAll', {
@@ -314,6 +378,7 @@
 					th.count = res.data.count;
 				})
 			},
+			//上传文件
 			resultMsg(res) {
 				if (res.code === 1224) {
 					this.personalMeritRecord.pFile = res.data;
@@ -322,6 +387,7 @@
 					this.$Message.error(res.message);
 				}
 			},
+			//删除
 			remove(pId, index) {
 				this.$Modal.confirm({
 					title: '删除提示',
@@ -343,6 +409,7 @@
 					}
 				});
 			},
+			//修改
 			ok() {
 				const th = this;
 				axios.post(th.url + 'personalMeritRecord/updateByPrimaryKey', th.personalMeritRecord, {
@@ -359,6 +426,7 @@
 					}
 				})
 			},
+			//添加弹出
 			add() {
 				this.personalMeritRecord.mUser = "";
 				this.personalMeritRecord.dName = "";
@@ -368,6 +436,7 @@
 				this.personalMeritRecord.pContexts = "";
 				this.modal14 = true;
 			},
+			//添加
 			oks() {
 				const th = this;
 				axios.post(th.url + 'personalMeritRecord/insert', th.personalMeritRecord, {
@@ -387,6 +456,11 @@
 		},
 		created() {
 			this.changePage(1);
+			//部门查询
+			const th = this;
+			axios.get(th.url + '/departmentType/iselectAllStatus').then(function(res) {
+				th.departmentType = res.data.data;
+			})
 		}
 	}
 </script>

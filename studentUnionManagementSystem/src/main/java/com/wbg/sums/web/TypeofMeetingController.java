@@ -50,13 +50,13 @@ public class TypeofMeetingController {
     /**
      * 根据aid查找对象  最多只能返回一个对象
      *
-     * @param typeofMeeting
+     * @param
      * @return
      */
     @GetMapping("/selectByPrimaryKey")
-    public Result selectByPrimaryKey(TypeofMeeting typeofMeeting) {
+    public Result selectByPrimaryKey(int tId) {
         try {
-            TypeofMeeting typeofMeeting1 = typeofMeetingService.selectByPrimaryKey(typeofMeeting.gettId());
+            TypeofMeeting typeofMeeting1 = typeofMeetingService.selectByPrimaryKey(tId);
             if (typeofMeeting1 == null) {
                 return new Result().successMessage("无数据");
             } else {
@@ -119,17 +119,21 @@ public class TypeofMeetingController {
     /**
      * 根据stataus 查询全部字段
      *
-     * @param typeofMeeting
+     * @param status
      * @return
      */
     @GetMapping("/selectAllStatus")
-    public Result selectAllStatus(TypeofMeeting typeofMeeting) {
+    public Result selectAllStatus(String status, @RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize) {
         try {
-            List<TypeofMeeting> list = typeofMeetingService.selectAllStatus(typeofMeeting.getStatus());
+            if("all".equals(status)){
+                status = "";
+            }
+            PageHelper.startPage(pageNum, pageSize);
+            List<TypeofMeeting> list = typeofMeetingService.selectAllStatus(status);
             if (list == null) {
                 return new Result().successMessage("无数据");
             } else {
-                return new Result().success(list);
+                return new Result().success(list,typeofMeetingService.count(status));
             }
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");
@@ -161,8 +165,8 @@ public class TypeofMeetingController {
      * @param typeofMeeting
      * @return
      */
-    @GetMapping("/updateSort")
-    public Result updateSort(TypeofMeeting typeofMeeting) {
+    @PostMapping("/updateSort")
+    public Result updateSort(@RequestBody TypeofMeeting typeofMeeting) {
         try {
             return typeofMeetingService.updateSort(typeofMeeting.gettId(), typeofMeeting.gettSort()) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");
         } catch (Exception ex) {

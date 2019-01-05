@@ -61,4 +61,14 @@ public class NoticServiceImpl implements NoticService {
     public int updateStatus(int nId, String status) {
         return noticMapper.updateStatus(nId,status);
     }
+
+    @Override
+    public int counts(String nTitle, String mName, String status, String beforeDate, String afterDate) {
+        return noticMapper.counts(nTitle, mName, status, beforeDate, afterDate);
+    }
+
+    @Override
+    public List<Notic> selects(String nTitle, String mName, String status, String beforeDate, String afterDate) {
+        return noticMapper.selects(nTitle, mName, status, beforeDate, afterDate);
+    }
 }

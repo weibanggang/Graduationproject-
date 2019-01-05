@@ -57,8 +57,13 @@ public class MemberInformationServiceImpl implements MemberInformationService {
     }
 
     @Override
-    public List<MemberInformation> selectList(String m_sex, int c_id, int d_id, int p_id, int e_id, String status) {
-        return memberInformationMapper.selectList(m_sex,c_id,d_id,p_id,e_id,status);
+    public int counts(int cId, int dId, int pId, int eId, String status, String mName) {
+        return memberInformationMapper.counts(cId,dId,pId,eId,status,mName);
+    }
+
+    @Override
+    public List<MemberInformation> selects(int cId, int dId, int pId, int eId,  String status,String mName) {
+        return memberInformationMapper.selects(cId,dId,pId,eId,status,mName);
     }
 
     @Override

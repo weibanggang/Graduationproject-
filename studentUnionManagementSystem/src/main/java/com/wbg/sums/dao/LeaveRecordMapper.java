@@ -1,6 +1,8 @@
 package com.wbg.sums.dao;
 
 import com.wbg.sums.entity.LeaveRecord;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 public interface LeaveRecordMapper {
@@ -49,5 +51,9 @@ public interface LeaveRecordMapper {
 
 //    根据成员工作编号查询请假记录 List<LeaveRecord> selectByMid(String m_user);
     List<LeaveRecord> selectByMid(String m_user);
+
+    List<LeaveRecord> selects(@Param("lMName") String lMName, @Param("dName") String dName, @Param("beforeDate") String beforeDate, @Param("afterDate") String afterDate);
+
+    int counts(@Param("lMName") String lMName, @Param("dName") String dName, @Param("beforeDate") String beforeDate, @Param("afterDate") String afterDate);
 
 }

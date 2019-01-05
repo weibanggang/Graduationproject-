@@ -87,10 +87,19 @@ join DepartmentType d on d.d_id=w.d_id where w_title like concat('%',#{wTitle},'
     </where>
   </select>
     <select id="selectGroupBy" resultType="com.wbg.sums.entity.WorkArrangement">
-      select  d_id,w_title   from WorkArrangement group by w_title
+      select  w_id,w_title   from WorkArrangement group by w_title
     </select>
   <select id="selectmName" resultMap="BaseResultMap">
     select d.d_id,w_id,w_title,w_contents,w_date,w_remarks,d.d_name,m_name from WorkArrangement w
 join DepartmentType d on d.d_id=w.d_id where w.m_name like concat('%', #{mName}, '%')
+  </select>
+  <select id="selectDate" resultMap="BaseResultMap">
+    select d.d_id,w_id,w_title,w_contents,w_date,w_remarks,d.d_name,m_name from WorkArrangement w
+    join DepartmentType d on d.d_id=w.d_id where w_date &gt;= #{beforeDate} and w_date  &lt;=  #{afterDate}
+  </select>
+  <!--&lt;= 是小于等于          &gt;=中是大于等于-->
+  <select id="count" resultType="java.lang.Integer">
+    select count(*) from WorkArrangement
+    where w_date &gt;= #{beforeDate} and w_date  &lt;=  #{afterDate}
   </select>
 </mapper>

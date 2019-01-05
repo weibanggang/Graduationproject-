@@ -1,6 +1,7 @@
 package com.wbg.sums.service;
 
 import com.wbg.sums.entity.Notic;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -65,6 +66,7 @@ public interface NoticService {
 //        where status=#{status}
 //        根据n_id修改状态 int updateStatus(int n_id,String status);
     int updateStatus(int nId, String status);
+    int counts(@Param("nTitle") String nTitle,@Param("mName") String mName,@Param("status") String status,@Param("beforeDate") String beforeDate,@Param("afterDate") String afterDate);
 //        update set status=#{status} where n_id=#{n_id}
-
+List<Notic> selects(@Param("nTitle") String nTitle, @Param("mName") String mName, @Param("status") String status, @Param("beforeDate") String beforeDate, @Param("afterDate") String afterDate);
 }

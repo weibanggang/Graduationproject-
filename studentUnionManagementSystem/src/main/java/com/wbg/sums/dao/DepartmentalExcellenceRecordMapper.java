@@ -1,6 +1,9 @@
 package com.wbg.sums.dao;
 
 import com.wbg.sums.entity.DepartmentalExcellenceRecord;
+import com.wbg.sums.entity.Notic;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 public interface DepartmentalExcellenceRecordMapper {
@@ -44,4 +47,8 @@ public interface DepartmentalExcellenceRecordMapper {
      */
     int updateByPrimaryKey(DepartmentalExcellenceRecord record);
     //根据部门、时间查询  List<DepartmentalExcellenceRecord> selectDidADate(did,date);
+    List<DepartmentalExcellenceRecord> selects(@Param("dName") String dName, @Param("beforeDate") String beforeDate, @Param("afterDate") String afterDate);
+    int counts(@Param("dName") String dName, @Param("beforeDate") String beforeDate, @Param("afterDate") String afterDate);
+
+
 }

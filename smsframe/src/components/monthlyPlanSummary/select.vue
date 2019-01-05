@@ -1,51 +1,55 @@
 <template>
 	<div>
-			<div class="rigtop">
-					<Form ref="classTable"  inline>
-						<FormItem>
-							<Row>
-								<Col span="6" style="text-align: center;">
-								标题
-								</Col>
-								<Col span="18">
-								<Input placeholder="姓名"></Input>
-								</Col>
-							</Row>
-						</FormItem>
-						<FormItem>
-							<Row>
-								<Col span="6" style="text-align: center;">
-								部门
-								</Col>
-								<Col span="18">
-								<!-- <Select v-model="notic.nTitle" filterable>
-											<Option v-for="item in noticTitle"  :value="item" :key="item">{{ item}}</Option>
-										</Select> -->
-								<Input  placeholder="姓名"></Input>
-								</Col>
-							</Row>
-						</FormItem>
-						<FormItem>
-							<Row>
-								<Col span="6" style="text-align: center;">
-									上传时间
-								</Col>
-								<Col span="16">
-								<DatePicker type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></DatePicker>
-								</Col>
-							</Row>
-						</FormItem>
-						<FormItem>
-							<Button>快速导出</Button>
-						</FormItem>
-					</Form>
-				</div>
-		
-		
-		<Table border :columns="columns7" :data="data6" height="520" stripe size='default' ></Table>
+		<div class="rigtop">
+			<Form inline>
+				<FormItem label="部门">
+					<Row>
+						<Col span="16">
+						<Select v-model="MonthlyPlanSummary.dId" @on-change="selectdName(1)" filterable>
+							<Option v-for="item in departmentType" :value="item.dId" :key="item.dId">{{ item.dName }}</Option>
+						</Select>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem label="上传时间">
+					<Row>
+						<Col span="16">
+						<DatePicker type="daterange" placement="bottom-end" @on-change="selectTime(1,($event))" placeholder="时间查询" style="width: 200px"></DatePicker>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem style="position: relative;left: 65px">
+					<FormItem label="操作员">
+					<Row>
+						<Col span="16">
+						<Input v-model="MonthlyPlanSummary.lMName" placeholder="姓名"></Input>
+						</Col>
+					</Row>
+					</FormItem>
+					<FormItem>
+						<Button @click="select(1)">
+							<Icon type="ios-sync" />快速查询
+						</Button>
+					</FormItem>
+				</FormItem>
+				<FormItem style="position: absolute;right: 30px">
+				
+					<FormItem>
+						<Button >
+							<Icon type="ios-add-circle-outline" />添加记录
+						</Button>
+					</FormItem>
+					<Button @click="exportData()">
+						<Icon type="ios-download-outline" />数据导出
+					</Button>
+				</FormItem>
+			</Form>
+		</div>
+
+		<Table border :columns="columns7" :data="data6" height="520" :loading="loading" stripe size='default' ref="table"></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
-				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
+				<Page :total="count" :current="1" @on-change="selectpage($event)"></Page>
 			</div>
 		</div>
 		<Modal v-model="modal13" draggable scrollable title="修改备注" @on-ok="ok" @on-cancel="cancel">
@@ -61,8 +65,13 @@
 	export default {
 		data() {
 			return {
+				loading: true,
+				departmentType: "",
+				memberInformationType: [],
 				url: "http://localhost:8080",
 				count: 10,
+				baDate:[],
+				bd:"",
 				modal13: false,
 				columns7: [{
 						title: '标题',
@@ -82,8 +91,8 @@
 					{
 						title: '备注',
 						key: 'mRemarks',
-						width:200,
-						tooltip:true,
+						width: 200,
+						tooltip: true,
 						align: 'center',
 					},
 					{
@@ -91,44 +100,44 @@
 						key: 'mName',
 						align: 'center'
 					},
-				{
-					title: '操作',
-					key: 'action',
-					width: 150,
-					align: 'center',
-					render: (h, params) => {
-						return h('div', [
-							h('Button', {
-								props: {
-									type: 'primary',
-									size: 'small'
-								},
-								style: {
-									marginRight: '5px'
-								},
-								on: {
-									click: () => {
-										this.show(params.row)
+					{
+						title: '操作',
+						key: 'action',
+						width: 150,
+						align: 'center',
+						render: (h, params) => {
+							return h('div', [
+								h('Button', {
+									props: {
+										type: 'primary',
+										size: 'small'
+									},
+									style: {
+										marginRight: '5px'
+									},
+									on: {
+										click: () => {
+											this.show(params.row)
+										}
 									}
-								}
-							}, '编辑'),
-							h('Button', {
-								props: {
-									type: 'error',
-									size: 'small'
-								},
-								on: {
-									click: () => {
+								}, '编辑'),
+								h('Button', {
+									props: {
+										type: 'error',
+										size: 'small'
+									},
+									on: {
+										click: () => {
 
-										this.remove(params.row.mId, params.index)
+											this.remove(params.row.mId, params.index)
+										}
 									}
-								}
-							}, '移除')
-						]);
+								}, '移除')
+							]);
+						}
 					}
-				}
-			],
-			data6: [],
+				],
+				data6: [],
 				MonthlyPlanSummary: {
 					mId: 0,
 					mTitle: "",
@@ -141,23 +150,69 @@
 
 				},
 				mRemarks: ""
-		}
-	},
-	methods: {
+			}
+		},
+		methods: {
+			//导出数据
+			exportData() {
+				this.$refs.table.exportCsv({
+					filename: '工作信息'
+				});
+			},
+			//弹出编辑
 			show(data) {
 				this.modal13 = true;
 				this.MonthlyPlanSummary = data;
 				this.mRemarks = data.mRemarks;
-
 			},
+			//间隔时间
+			selectTime(page,starTime) {
+				const th = this;
+				this.loading = true;
+				th.baDate = starTime;
+				th.bd = "starTime";
+				axios.get(th.url + '/monthlyPlanSummary/selectDate', {
+					params: {
+						pageNum: page,
+						beforeDate:starTime[0],
+						afterDate:starTime[1]
+					}
+				}).then(function(res) {
+					const resdata = res.data.data.map((e) => {
+						e.dName = e.departmenttype.dName;
+						return e;
+					})
+					th.data6 = resdata;
+					th.count = res.data.count;
+				})
+				this.loading = false;
+			},
+			//分页查询
+			selectpage(page){
+				this.loading = true;
+				if(this.bd == "dName"){
+					selectdName(page);
+				}
+				if(this.bd == "mName"){
+					select(page);
+				}
+				if(this.bd == "mName"){
+					selectTime(page,th.baDate);
+				}else{
+					changePage(page);
+				}
+				this.loading = false;
+			},
+			//查询全部
 			changePage(page) {
 				const th = this;
+				this.loading = true;
 				axios.get(th.url + '/monthlyPlanSummary/selectAll', {
 					params: {
 						pageNum: page
 					}
 				}).then(function(res) {
-					const resdata = res.data.data.map( (e) => {
+					const resdata = res.data.data.map((e) => {
 						e.dName = e.departmenttype.dName;
 						return e;
 					})
@@ -165,8 +220,29 @@
 					th.data6 = resdata;
 					th.count = res.data.count;
 				})
+				this.loading = false;
 			},
-
+			//快速查询
+			select(page){
+				this.loading = true;
+				const th = this;
+				th.bd = "mName";
+				axios.get(th.url + '/monthlyPlanSummary/selectmName', {
+					params: {
+						pageNum: page,
+						mName:th.MonthlyPlanSummary.lMName
+					}
+				}).then(function(res) {
+					const resdata = res.data.data.map((e) => {
+						e.dName = e.departmenttype.dName;
+						return e;
+					})
+					th.data6 = resdata;
+					th.count = res.data.count;
+				})
+				this.loading = false;
+			},
+			//删除
 			remove(mId, index) {
 				this.$Modal.confirm({
 					title: '删除提示',
@@ -188,6 +264,7 @@
 					}
 				});
 			},
+			//修改
 			ok() {
 				const th = this;
 				axios.post(th.url + '/monthlyPlanSummary/updateByPrimaryKey', th.MonthlyPlanSummary, {
@@ -195,7 +272,7 @@
 						"Content-Type": "application/json;charset=utf-8"
 					}
 				}).then(function(res) {
-				
+
 					if (res.data.code === 1028) {
 						th.$Message.success(res.data.message);
 					} else {
@@ -204,12 +281,39 @@
 					}
 				})
 			},
+			//取消按钮
 			cancel() {
 				this.MonthlyPlanSummary.mRemarks = this.mRemarks;
+			},
+			//部门查询
+			selectdName(page){
+				const th = this;
+				this.loading = true;
+					th.bd = "dName";
+				axios.get(th.url + '/monthlyPlanSummary/selectdId', {
+					params: {
+						pageNum: page,
+						dId:th.MonthlyPlanSummary.dId
+					}
+				}).then(function(res) {
+					const resdata = res.data.data.map((e) => {
+						e.dName = e.departmenttype.dName;
+						return e;
+					})
+					th.data6 = resdata;
+					th.count = res.data.count;
+				})
+				this.loading = false;
 			}
+			
 		},
 		created() {
 			this.changePage(1);
+			const th = this;
+			//部门
+			axios.get(th.url + '/departmentType/iselectAllStatus').then(function(res) {
+				th.departmentType = res.data.data;
+			})
 		}
 	}
 </script>

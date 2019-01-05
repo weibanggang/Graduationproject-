@@ -42,9 +42,7 @@
     -->
     update notic
     set n_title = #{nTitle,jdbcType=VARCHAR},
-      n_date = #{nDate,jdbcType=TIMESTAMP},
       n_file = #{nFile,jdbcType=VARCHAR},
-      m_name = #{mName,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR},
       n_context = #{nContext,jdbcType=LONGVARCHAR},
      n_sort = #{nSort,jdbcType=INTEGER}
@@ -70,17 +68,44 @@
   </select>
     <select id="selectTitlestatus" resultType="com.wbg.sums.entity.Notic">
         select * from Notic
-  where status=#{status} and like n_title concat('%',#{nTitle},'%'}
+  where  status like concat('%', #{status}, '%') and like n_title concat('%',#{nTitle},'%'}
     </select>
   <select id="selectMidStatus" resultType="com.wbg.sums.entity.Notic">
      select * from Notic
-   where n_id=#{nId} and  status=#{status}
+   where n_id=#{mId} and  status concat('%', #{status},'%'}
   </select>
   <select id="iselectList" resultType="com.wbg.sums.entity.Notic">
       select n_id,n_title,n_context,n_date,m_name from Notic
-  where status=#{status}
+  where status like concat('%', #{status}, '%')
   </select>
     <select id="count" resultType="java.lang.Integer">
-      select count(*) from Notic
+      select count(*) from Notic  where status like concat('%', #{status}, '%')
     </select>
+
+  <select id="selects" resultType="com.wbg.sums.entity.Notic">
+     select *  from Notic where status like concat('%', #{status}, '%')
+        <if test="nTitle != null and nTitle !=''">
+          and n_title like concat('%', #{nTitle}, '%')
+        </if>
+      <if test="mName != null and mName !=''">
+        and m_name like concat('%', #{mName}, '%')
+      </if>
+      <if test="beforeDate != null and beforeDate !=''">
+       and n_date &gt;= #{beforeDate} and n_date  &lt;=  #{afterDate}
+      </if>
+  </select>
+  <select id="counts" resultType="java.lang.Integer">
+    select count(*)  from Notic where status like concat('%', #{status}, '%')
+
+      <if test="nTitle != null and nTitle !=''">
+        and n_title like concat('%', #{nTitle}, '%')
+      </if>
+      <if test="mName != null and mName !=''">
+        and m_name like concat('%', #{mName}, '%')
+      </if>
+      <if test="beforeDate != null and beforeDate !=''">
+        and n_date &gt;= #{beforeDate} and n_date  &lt;=  #{afterDate}
+      </if>
+
+  </select>
 </mapper>

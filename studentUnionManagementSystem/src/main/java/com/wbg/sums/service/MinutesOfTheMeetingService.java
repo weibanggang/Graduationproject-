@@ -1,6 +1,8 @@
 package com.wbg.sums.service;
 
 import com.wbg.sums.entity.MinutesOfTheMeeting;
+import com.wbg.sums.entity.Notic;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -44,5 +46,9 @@ public interface MinutesOfTheMeetingService {
      * @mbg.generated
      */
     int updateByPrimaryKey(MinutesOfTheMeeting record);
+    //    根据上传时间查询  List<MinutesOfTheMeeting> selectDate(@Param("beforeDate") String beforeDate,@Param("afterDate") String afterDate);
+    List<MinutesOfTheMeeting> selects(@Param("mTitle") String mTitle, @Param("dId") int dId, @Param("beforeDate") String beforeDate,@Param("afterDate") String afterDate);
+
+    int counts(@Param("mTitle") String mTitle,@Param("dId") int dId, @Param("beforeDate") String beforeDate,@Param("afterDate") String afterDate);
 
 }

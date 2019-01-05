@@ -75,4 +75,14 @@ public class FinancialManagementServiceImpl implements FinancialManagementServic
     public List<FinancialManagement> selectGroupBymName() {
         return financialManagementMapper.selectGroupBymName();
     }
+
+    @Override
+    public List<FinancialManagement> selects(String mName, String fType, String beforeDate, String afterDate) {
+        return financialManagementMapper.selects(mName,fType,beforeDate,afterDate);
+    }
+
+    @Override
+    public int counts(String mName, String fType, String beforeDate, String afterDate) {
+        return financialManagementMapper.counts(mName,fType,beforeDate,afterDate);
+    }
 }

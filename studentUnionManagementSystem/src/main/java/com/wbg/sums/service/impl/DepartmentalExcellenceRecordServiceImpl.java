@@ -2,6 +2,7 @@ package com.wbg.sums.service.impl;
 
 import com.wbg.sums.dao.DepartmentalExcellenceRecordMapper;
 import com.wbg.sums.entity.DepartmentalExcellenceRecord;
+import com.wbg.sums.entity.Notic;
 import com.wbg.sums.service.DepartmentalExcellenceRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,17 @@ public class DepartmentalExcellenceRecordServiceImpl implements DepartmentalExce
     public int deleteByPrimaryKey(Integer dId) {
         return departmentalExcellenceRecordMapper.deleteByPrimaryKey(dId);
     }
+
+    @Override
+    public List<DepartmentalExcellenceRecord> selects(String dName, String beforeDate, String afterDate) {
+        return departmentalExcellenceRecordMapper.selects(dName, beforeDate, afterDate);
+    }
+
+    @Override
+    public int counts(String dName, String beforeDate, String afterDate) {
+        return departmentalExcellenceRecordMapper.counts(dName, beforeDate, afterDate);
+    }
+
 
     @Override
     public int insert(DepartmentalExcellenceRecord record) {

@@ -17,6 +17,17 @@ public class LeaveRecordServiceImpl implements LeaveRecordService {
     private LeaveRecordMapper leaveRecordMapper;
     @Autowired
     private DepartmentTypeService departmentTypeService;
+
+    @Override
+    public List<LeaveRecord> selects(String lMName, String dName, String beforeDate, String afterDate) {
+        return leaveRecordMapper.selects(lMName, dName, beforeDate, afterDate);
+    }
+
+    @Override
+    public int counts(String lMName, String dName, String beforeDate, String afterDate) {
+        return leaveRecordMapper.counts(lMName, dName, beforeDate, afterDate);
+    }
+
     @Override
     public int deleteByPrimaryKey(Integer lId) {
         return leaveRecordMapper.deleteByPrimaryKey(lId);

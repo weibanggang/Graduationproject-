@@ -2,6 +2,7 @@ package com.wbg.sums.service.impl;
 
 import com.wbg.sums.dao.MinutesOfTheMeetingMapper;
 import com.wbg.sums.entity.MinutesOfTheMeeting;
+import com.wbg.sums.entity.Notic;
 import com.wbg.sums.service.MinutesOfTheMeetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,4 +42,16 @@ public class MinutesOfTheMeetingServiceImpl implements MinutesOfTheMeetingServic
     public int updateByPrimaryKey(MinutesOfTheMeeting record) {
         return minutesOfTheMeetingMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public List<MinutesOfTheMeeting> selects(String mTitle, int dId, String beforeDate, String afterDate) {
+        return minutesOfTheMeetingMapper.selects(mTitle,dId,beforeDate,afterDate);
+    }
+
+    @Override
+    public int counts(String mTitle, int dId, String beforeDate, String afterDate) {
+        return minutesOfTheMeetingMapper.counts(mTitle,dId,beforeDate,afterDate);
+    }
+
+
 }

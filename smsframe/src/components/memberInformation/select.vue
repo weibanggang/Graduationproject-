@@ -1,78 +1,292 @@
+<style scoped>
+	.demo-upload-list {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #fff;
+    position: relative;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+    margin-right: 4px;
+}
+
+.demo-upload-list img {
+    width: 100%;
+    height: 100%;
+}
+
+.demo-upload-list-cover {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, .6);
+}
+
+.demo-upload-list:hover .demo-upload-list-cover {
+    display: block;
+}
+
+.demo-upload-list-cover i {
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 0 2px;
+}
+
+.ivu-icon {
+    line-height: 58px;
+}
+</style>
 <template>
 	<div>
-		
-		
-		<div class="rigtop">
-			<!-- <Form ref="FinancialManagement" :model="FinancialManagement" inline>
+		<div class="rigtop" style="height: 100px;">
+			<Form inline>
 				<FormItem>
 					<Row>
-						<Col span="7" style="text-align: center;">
-							<Checkbox v-model="FinancialManagement.CmName" label="">操作人</Checkbox>
+						<Col span="8" style="text-align: center;">
+						<Checkbox v-model="mName" label="">模糊姓名</Checkbox>
 						</Col>
-						<Col span="16" >
-						<Select v-model="FinancialManagement.mName" filterable>
-							<Option v-for="item in FinancialManagementGroup" :value="item.mName" :key="item.mName">{{ item.mName }}</Option>
+						<Col span="16">
+						<Input v-model="memberInformation.mName" placeholder="姓名"></Input>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem>
+					<Row>
+						<Col span="6" style="text-align: center;">
+						<Checkbox v-model="dName" label="">部门</Checkbox>
+						</Col>
+						<Col span="16">
+						<Select v-model="memberInformation.dId" filterable>
+							<Option v-for="item in departmentType" :value="item.dId" :key="item.dId">{{ item.dName }}</Option>
 						</Select>
 						</Col>
 					</Row>
 				</FormItem>
-				<FormItem prop="user">
+				<FormItem>
 					<Row>
-						<Col span="7" style="text-align: center;">
-							<Checkbox v-model="FinancialManagement.CDate" label="">交易时间</Checkbox>
+						<Col span="6" style="text-align: center;">
+						<Checkbox v-model="pName" label="">职位</Checkbox>
 						</Col>
-						<Col span="17">
-						<DatePicker type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></DatePicker>
+						<Col span="16">
+						<Select v-model="memberInformation.pId" filterable>
+							<Option v-for="item in positionType" :value="item.pId" :key="item.pId">{{ item.pName }}</Option>
+						</Select>
 						</Col>
 					</Row>
 				</FormItem>
 				<FormItem>
-					<RadioGroup v-model="FinancialManagement.fType">
-						<Radio label="全部">
+					<Button @click="select(1)">
+						<Icon type="ios-sync" />快速查询
+					</Button>
+				</FormItem>
+				<FormItem style="position: absolute;right: 30px">
+					<FormItem>
+						<Button @click="add()">
+							<Icon type="ios-add-circle-outline" />新增记录
+						</Button>
+					</FormItem>
+					<Button @click="exportData()">
+						<Icon type="ios-download-outline" />数据导出
+					</Button>
+				</FormItem>
+
+			</Form>
+			<Form inline>
+				<FormItem>
+					<Row>
+						<Col span="7" style="text-align: center;">
+						<Checkbox v-model="eName" label="">所属届</Checkbox>
+						</Col>
+						<Col span="16">
+						<Select v-model="memberInformation.eId" filterable>
+							<Option v-for="item in exchangeTable" :value="item.eId" :key="item.eId">{{ item.eName }}</Option>
+						</Select>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem>
+					<Row>
+						<Col span="7" style="text-align: center;">
+						<Checkbox v-model="cName" label="">班级</Checkbox>
+						</Col>
+						<Col span="16">
+						<Select v-model="memberInformation.cId" filterable>
+							<Option v-for="item in classTable" :value="item.cId" :key="item.cId">{{ item.cName }}</Option>
+						</Select>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem>
+					<RadioGroup v-model="status">
+						<Radio label="true">
+							<Icon type="ios-eye" />
+							<span>正常</span>
+						</Radio>
+						<Radio label="false">
+							<Icon type="ios-eye-off" />
+							<span>退会</span>
+						</Radio>
+						<Radio label="all">
 							<Icon type="ios-football-outline" />
 							<span>全部</span>
 						</Radio>
-						<Radio label="收入">
-							<Icon type="md-log-in" />
-							<span>收入</span>
-						</Radio>
-						<Radio label="支出">
-							<Icon type="md-log-out" />
-							<span>支出</span>
-						</Radio>
 					</RadioGroup>
 				</FormItem>
-				<FormItem>
-					<Button>快速查询</Button>
-				</FormItem>
-				<FormItem>
-					<Button>快速导出</Button>
-				</FormItem>
-			</Form> -->
+
+			</Form>
 		</div>
-		
-		
-		<Table border :columns="columns7" :data="data6" height="520" stripe size='default' ></Table>
+		<Table border :columns="columns7" :data="data6" height="520" :loading="loading" stripe size='default' ref="table"></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
-				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
+				<Page :total="count" :current="1" @on-change="select($event)"></Page>
 			</div>
 		</div>
+
+		<Modal v-model="modal13" fullscreen title="添加成员" @on-ok="ok">
+			<Form :model="memberInformation" :label-width="80" inline>
+				<div style="width:70%;position:relative;float: left;">
+					<Row>
+						<Col span="8">
+						<FormItem label="姓名" prop="mName">
+							<Input v-model="memberInformation.mName" placeholder="姓名"></Input>
+						</FormItem>
+						</Col>
+						<Col span="8">
+						<FormItem label="工作编号" prop="mUser">
+							<Input v-model="memberInformation.mUser" placeholder="工作编号"></Input>
+						</FormItem>
+						</Col>
+						<Col span="8">
+
+						<FormItem label="职位">
+							<Select v-model="memberInformation.pId" placeholder="请选择职位">
+								<Option v-for="item in positionType" :value="item.pId" :key="item.pId">{{ item.pName }}</Option>
+							</Select>
+						</FormItem>
+						</Col>
+					</Row>
+					<Row>
+						<Col span="8">
+						<FormItem label="联系方式" prop="cPhone">
+							<Input v-model="memberInformation.cPhone" placeholder="联系方式"></Input>
+						</FormItem>
+						</Col>
+						<Col span="8">
+						<FormItem label="QQ" prop="mQq">
+							<Input v-model="memberInformation.mQq" placeholder="QQ"></Input>
+						</FormItem>
+						</Col>
+						<Col span="8">
+						<FormItem label="部门" prop="dId">
+							<Select v-model="memberInformation.dId" placeholder="请选择部门">
+								<Option v-for="item in departmentType" :value="item.dId" :key="item.dId">{{ item.dName }}</Option>
+							</Select>
+						</FormItem>
+						</Col>
+					</Row>
+
+					<Row>
+						<Col span="8">
+						<FormItem label="性别">
+							<i-switch size="large" v-model="sex" @on-change='off($event)'>
+								<span slot="open">男</span>
+								<span slot="close">女</span>
+							</i-switch>
+						</FormItem>
+						</Col>
+						<Col span="8">
+						<FormItem label="所属届" prop="eId">
+							<Select v-model="memberInformation.eId" placeholder="请选择所属届">
+								<Option v-for="item in exchangeTable" :value="item.eId" :key="item.eId">{{ item.eName }}</Option>
+							</Select>
+						</FormItem>
+						</Col>
+						<Col span="8">
+						<FormItem label="班级" prop="cId">
+							<Select v-model="memberInformation.cId" placeholder="请选择班级">
+								<Option v-for="item in classTable" :value="item.cId" :key="item.cId">{{ item.cName }}</Option>
+							</Select>
+						</FormItem>
+						</Col>
+					</Row>
+
+					<Row>
+						<Col span="8">
+						<FormItem label="权限" prop="jId">
+							<Select v-model="memberInformation.jId" placeholder="请      选      择      权      限">
+								<Option v-for="item in jurisdiction" :value="item.jId" :key="item.pId">{{ item.jName }}</Option>
+							</Select>
+						</FormItem>
+						</Col>
+						<Col span="8">
+						<FormItem label="入会时间">
+							<Row>
+								<Col span="21">
+								<FormItem>
+									<DatePicker type="date" placeholder="请选择入会时间" v-model="memberInformation.rAdmissionDate"></DatePicker>
+								</FormItem>
+								</Col>
+							</Row>
+						</FormItem>
+						</Col>
+						<Col span="8">
+						<FormItem label="状态">
+							<i-switch size="large" v-model="memberInformation.status">
+								<span slot="open">正常</span>
+								<span slot="close">冻结</span>
+							</i-switch>
+						</FormItem>
+						</Col>
+					</Row>
+					<Row>
+						<FormItem label="备注">
+							<Input v-model="memberInformation.pRemarks" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="备注"></Input>
+						</FormItem>
+					</Row>
+				</div>
+				<div style="width: 28%;position:relative;float: left;margin: auto; text-align: center;">
+					<p><canvas id="myCanvas" width="200" height="250" style="border:1px solid #d3d3d3;"/></p>
+					<Button type="primary">上传图片</Button>
+				</div>
+			</Form>
+		</Modal>
+
+
+
 	</div>
 </template>
 <script>
 	export default {
 		data() {
 			return {
-				title:"编辑部门类型",
+				title: "编辑部门类型",
 				url: "http://localhost:8080",
 				count: 10,
-				modal13: false,
-				columns7: [
-					{
+				mName: false,
+				dName: false,
+				cName: false,
+				pName: false,
+				eName: false,
+				status: "true",
+				modal13: true,
+				loading: true,
+				departmentType: '',
+				classTable: '',
+				positionType: '',
+				exchangeTable: '',
+				jurisdiction: '',
+				columns7: [{
 						title: '姓名',
 						key: 'mName',
-						 width: 120,
+						width: 120,
 						fixed: 'left',
 						align: 'center',
 						render: (h, params) => {
@@ -89,54 +303,65 @@
 					{
 						title: '成员工号',
 						key: 'mUser',
-						align: 'center',width: 120,
+						align: 'center',
+						width: 120,
 					},
 					{
 						title: '联系方式',
 						key: 'cPhone',
-						align: 'center',width: 120,
+						align: 'center',
+						width: 120,
 					},
 					{
 						title: '部门',
 						key: 'dName',
-						align: 'center',width: 100,
-					},{
+						align: 'center',
+						width: 100,
+					}, {
 						title: '职位',
 						key: 'pName',
-						align: 'center',width: 100,
+						align: 'center',
+						width: 100,
 					},
 					{
 						title: '所属届',
 						key: 'eName',
-						align: 'center',width: 150,
+						align: 'center',
+						width: 150,
 					},
 					{
 						title: '权限',
 						key: 'jName',
-						align: 'center',width: 100,
+						align: 'center',
+						width: 100,
 					},
 					{
 						title: '班级',
 						key: 'cName',
-						align: 'center',width: 100,
-					},{
+						align: 'center',
+						width: 100,
+					}, {
 						title: '班主任',
 						key: 'cHeadmasterName',
-						align: 'center',width: 100,
-					},{
+						align: 'center',
+						width: 100,
+					}, {
 						title: '班主任联系方式',
 						key: 'cPhone',
-						align: 'center',width: 150,
+						align: 'center',
+						width: 150,
 					},
 					{
 						title: 'QQ',
 						key: 'mQq',
-						align: 'center',width: 120,
+						align: 'center',
+						width: 120,
 					},
 					{
 						title: '入会时间',
 						key: 'rAdmissionDate',
-						align: 'center',width: 120,
+						align: 'center',
+						width: 120,
 					},
 					{
 						title: '退会时间',
@@ -144,11 +369,12 @@
 						align: 'center',
 						width: 120,
 					},
-					{title: '备注',
-					key: 'pRemarks',
-					width: 250,
-					align: 'center',
-					tooltip:true
+					{
+						title: '备注',
+						key: 'pRemarks',
+						width: 250,
+						align: 'center',
+						tooltip: true
 					},
 					{
 						title: '操作',
@@ -185,7 +411,7 @@
 								}, '移除')
 							]);
 						}
-					},{
+					}, {
 						title: '状态',
 						key: 'status',
 						align: 'center',
@@ -204,7 +430,7 @@
 											const th = this;
 											axios.get(th.url + '/memberInformation/updateStatus', {
 												params: {
-													dId: params.row.dId,
+													dId: params.row.mId,
 													status: value
 												}
 											}).then(function(res) {
@@ -239,35 +465,93 @@
 				],
 				data6: [],
 				memberInformation: {
+					mId: 0,
+					mUser: '',
+					mPassword: '686868',
+					mName: '',
+					mSex: '男',
+					cId: 0,
+					cPhone: '',
 					dId: 0,
-					dName: "",
+					pPhoto: '',
+					eId: 0,
+					jId: 0,
+					mQq: '',
 					status: true,
-					dSynopsis: "",
-					dRemarks: "",
-					dSort: 1
+					rAdmissionDate: '',
+					pRemarks: ''
 				}
 			}
 		},
 		methods: {
-			show(data) {
-				console.log(data.status);
+			add() {
 				this.modal13 = true;
 			},
-			changePage(page) {
+			//导出数据
+			exportData() {
+				this.$refs.table.exportCsv({
+					filename: '成员信息'
+				});
+			},
+			//查询部门类型
+			selectAdd() {
 				const th = this;
-				axios.get(th.url + '/memberInformation', {
-					params: {
-						pageNum: page
-					}
-				}).then(function(res) {
-				
-					th.data6 = res.data.data;
-					th.count = res.data.count;
-					console.log(th.data6);
-
+				axios.get(th.url + '/departmentType/iselectAllStatus').then(function(res) {
+					th.departmentType = res.data.data;
+				})
+				axios.get(th.url + '/classTable/iSelectAllStatus').then(function(res) {
+					th.classTable = res.data.data;
+				})
+				axios.get(th.url + '/positionType/iSelectAllStatus').then(function(res) {
+					th.positionType = res.data.data;
+				})
+				axios.get(th.url + '/exchangeTable/iSelectAllStatus').then(function(res) {
+					th.exchangeTable = res.data.data;
+				})
+				axios.get(th.url + '/jurisdiction/iSelectAllStatus').then(function(res) {
+					th.jurisdiction = res.data.data;
 				})
 			},
-
+			//编辑
+			show(data) {
+				this.modal13 = true;
+			},
+			//查询
+			select(page) {
+				if (!this.mName) {
+					this.memberInformation.mName = null;
+				}
+				if (!this.dName) {
+					this.memberInformation.dId = 0;
+				}
+				if (!this.cName) {
+					this.memberInformation.cId = 0;
+				}
+				if (!this.pName) {
+					this.memberInformation.pId = 0;
+				}
+				if (!this.eName) {
+					this.memberInformation.eId = 0;
+				}
+				this.loading = true;
+				const th = this;
+				axios.get(th.url + '/memberInformation/selects', {
+					params: {
+						pageNum: page,
+						cId: th.memberInformation.cId,
+						pId: th.memberInformation.pId,
+						dId: th.memberInformation.dId,
+						eId: th.memberInformation.eId,
+						mName: th.memberInformation.mName,
+						status: th.status
+					}
+				}).then(function(res) {
+					th.data6 = res.data.data;
+					th.count = res.data.count;
+				})
+				this.loading = false;
+			},
+			//删除
 			remove(dId, index) {
 				this.$Modal.confirm({
 					title: '删除提示',
@@ -289,6 +573,7 @@
 					}
 				});
 			},
+			//修改
 			ok() {
 				const th = this;
 				axios.post(th.url + '/memberInformation/updateByPrimaryKey', th.memberInformation, {
@@ -304,12 +589,12 @@
 					}
 				})
 			},
-			cancel() {
 
-			}
 		},
 		created() {
-			this.changePage(1);
+			this.select(1);
+			var th = this;
+			this.selectAdd();
 		}
 	}
 </script>

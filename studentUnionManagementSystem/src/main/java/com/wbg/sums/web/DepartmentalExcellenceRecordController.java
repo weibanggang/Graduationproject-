@@ -100,7 +100,25 @@ public class DepartmentalExcellenceRecordController {
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");
         }
-
-
     }
+    /**
+     * 查询所有数据
+     *
+     * @return
+     */
+    @GetMapping("/selects")
+    public Result selects(@RequestParam(defaultValue = "1") int pageNum,@RequestParam(defaultValue = "10") int pageSize, String dName, String beforeDate, String afterDate) {
+        try {
+            PageHelper.startPage(pageNum,pageSize);
+            List<DepartmentalExcellenceRecord> list = departmentalExcellenceRecordService.selects(dName, beforeDate, afterDate);
+            if (list == null) {
+                return new Result().successMessage("无数据");
+            } else {
+                return new Result().success(list,departmentalExcellenceRecordService.counts(dName, beforeDate, afterDate));
+            }
+        } catch (Exception ex) {
+            return new Result().error("出错,请重试！");
+        }
+    }
+
 }

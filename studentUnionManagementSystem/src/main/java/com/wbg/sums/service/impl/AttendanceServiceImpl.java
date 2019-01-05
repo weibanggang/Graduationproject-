@@ -42,4 +42,13 @@ public class AttendanceServiceImpl implements AttendanceService {
     public int updateByPrimaryKey(Attendance record) {
         return attendanceMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public List<Attendance> selects(String aMName, String dName, String mName, String beforeDate, String afterDate) {
+        return attendanceMapper.selects(aMName,dName,mName,beforeDate,afterDate);
+    }
+    @Override
+    public int counts(String aMName, String dName, String mName, String beforeDate, String afterDate) {
+        return attendanceMapper.counts(aMName,dName,mName,beforeDate,afterDate);
+    }
 }

@@ -65,6 +65,31 @@
         from PersonalMeritRecord
     </select>
     <select id="count" resultType="java.lang.Integer">
-        select count(*) from PersonalMeritRecord
+        select count(*) from PersonalMeritRecord where l_m_name like concat('%',#{lMName},'%')
+    </select>
+    <select id="selects" resultType="com.wbg.sums.entity.PersonalMeritRecord">
+          select *   from PersonalMeritRecord
+          <where>
+              <if test="dName != null and dName !=''">
+                  and d_name like concat('%', #{dName}, '%')
+              </if>
+              <if test="beforeDate != null and beforeDate !=''">
+                  and p_date &gt;= #{beforeDate} and p_date  &lt;=  #{afterDate}
+              </if>
+          </where>
+    </select>
+    <select id="counts" resultType="java.lang.Integer">
+        select  count(*)   from PersonalMeritRecord
+        <where>
+            <if test="dName != null and dName !=''">
+                and d_name like concat('%', #{dName}, '%')
+            </if>
+            <if test="beforeDate != null and beforeDate !=''">
+                and p_date &gt;= #{beforeDate} and p_date  &lt;=  #{afterDate}
+            </if>
+        </where>
+    </select>
+    <select id="selectName" resultType="com.wbg.sums.entity.PersonalMeritRecord">
+        select *   from PersonalMeritRecord where l_m_name like concat('%',#{lMName},'%')
     </select>
 </mapper>

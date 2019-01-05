@@ -121,5 +121,28 @@ public class NoticController {
         }
     }
 
+    /**
+     * 多个条件查询
+     *
+     * @param
+     * @return
+     */
+    @GetMapping("/selects")
+    public Result selects(@RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize, String nTitle, String mName, String status, String beforeDate, String afterDate) {
+        try {
+            if("all".equals(status)){
+                status = "";
+            }
 
+            PageHelper.startPage(pageNum,pageSize);
+            List<Notic> list =  noticService.selects(nTitle, mName, status ,beforeDate, afterDate);
+            if (list == null) {
+                return new Result().successMessage("无数据");
+            } else {
+                return new Result().success(list,noticService.counts(nTitle, mName, status ,beforeDate, afterDate));
+            }
+        } catch (Exception ex) {
+            return new Result().error("出错,请重试！");
+        }
+    }
 }

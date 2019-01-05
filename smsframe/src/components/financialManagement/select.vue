@@ -1,13 +1,13 @@
 <template>
 	<div>
 		<div class="rigtop">
-			<Form ref="FinancialManagement" :model="FinancialManagement" inline>
+			<Form :model="FinancialManagement" inline>
 				<FormItem>
 					<Row>
 						<Col span="7" style="text-align: center;">
-							<Checkbox v-model="FinancialManagement.CmName" label="">操作人</Checkbox>
+						<Checkbox v-model="FinancialManagement.CmName" label="">操作人</Checkbox>
 						</Col>
-						<Col span="16" >
+						<Col span="16">
 						<Select v-model="FinancialManagement.mName" filterable>
 							<Option v-for="item in FinancialManagementGroup" :value="item.mName" :key="item.mName">{{ item.mName }}</Option>
 						</Select>
@@ -17,15 +17,15 @@
 				<FormItem prop="user">
 					<Row>
 						<Col span="7" style="text-align: center;">
-							<Checkbox v-model="FinancialManagement.CDate" label="">交易时间</Checkbox>
+						<Checkbox v-model="FinancialManagement.CDate" label="">交易时间</Checkbox>
 						</Col>
 						<Col span="17">
-						<DatePicker type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></DatePicker>
+						<DatePicker type="daterange" placement="bottom-end" @on-change="selectTime(($event))" placeholder="时间" style="width: 200px"></DatePicker>
 						</Col>
 					</Row>
 				</FormItem>
 				<FormItem>
-					<RadioGroup v-model="FinancialManagement.fType">
+					<RadioGroup v-model="fType">
 						<Radio label="全部">
 							<Icon type="ios-football-outline" />
 							<span>全部</span>
@@ -41,22 +41,73 @@
 					</RadioGroup>
 				</FormItem>
 				<FormItem>
-					<Button>快速查询</Button>
+					<Button @click="changePage(1)">
+						<Icon type="ios-sync" />快速查询
+					</Button>
 				</FormItem>
-				<FormItem>
-					<Button>快速导出</Button>
+				<FormItem style="position: absolute;right: 30px">
+
+					<FormItem>
+						<Button @click="insert()">
+							<Icon type="ios-add-circle-outline" />新增记录
+						</Button>
+					</FormItem>
+					<Button @click="exportData()">
+						<Icon type="ios-download-outline" />数据导出
+					</Button>
 				</FormItem>
 			</Form>
 		</div>
-		
-		
-		
-		<Table border :columns="columns7" :data="data6" height="520" stripe size='default'></Table>
+
+		<Table border :columns="columns7" :data="data6" height="520" stripe size='default' ref="table"></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
 				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
 			</div>
 		</div>
+		<Modal v-model="modal13" draggable scrollable title="交易记录" @on-ok="add">
+			<Form :model="FinancialManagement">
+				<FormItem prop="aUsername" label="金额">
+					<div>
+						<InputNumber
+            :max="10000"
+            v-model="FinancialManagement.fMoney"
+            :formatter="value => `￥ ${value}`.replace(/B(?=(d{3})+(?!d))/g, ',')"
+            :parser="value => value.replace(/￥s?|(,*)/g, '')"></InputNumber>
+					</div>
+				</FormItem>
+				<FormItem label="类型">
+					<RadioGroup v-model="FinancialManagement.fType">
+						<Radio label="支出"></Radio>
+						<Radio label="收入"></Radio>
+					</RadioGroup>
+				</FormItem>
+				<FormItem label="时间">
+					<Row>
+						<Col span="11">
+						<FormItem prop="rAdmissionDate">
+							<DatePicker type="date" placeholder="请选择时间" v-model="FinancialManagement.fDate"></DatePicker>
+						</FormItem>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem label="文件上传">
+					<div>
+						<Row>
+							<Col span="6">
+							<Upload name='file' :show-upload-list='false' :on-success='resultMsg' action="http://localhost:8080/financialManagement/upload">
+								<Button icon="ios-cloud-upload-outline">可拖动上传</Button>
+							</Upload>
+							</Col>
+							<Col span="6"><Input icon="ios-cloud-upload-outline" v-model="FinancialManagement.fFile" disabled placeholder="没有文件" /></Col>
+						</Row>
+					</div>
+				</FormItem>
+				<FormItem>
+					<Input v-model="FinancialManagement.fRemarks" type="textarea" :autosize="{minRows: 6,maxRows: 8}" placeholder="备注"></Input>
+				</FormItem>
+			</Form>
+		</Modal>
 	</div>
 </template>
 
@@ -66,6 +117,8 @@
 			return {
 				url: "http://localhost:8080",
 				count: 10,
+				fType: "全部",
+				baDate: [],
 				modal13: false,
 				columns7: [{
 						title: '编号',
@@ -132,37 +185,105 @@
 				FinancialManagementGroup: '',
 				FinancialManagement: {
 					fId: 0,
-					fType: "全部",
+					fType: "支出",
 					fFrontMoney: "",
 					fAfterMoney: "",
-					fMoney: "",
+					fMoney: 0,
 					fDate: "",
 					fMrDate: "",
 					fRemarks: "",
 					fFile: "",
 					mName: "",
-					CmName:false,
-					CDate:false
+					CmName: false,
+					CDate: false
 				},
 				aRemarks: ""
 			}
 		},
 		methods: {
+			//导出数据
+			exportData() {
+				this.$refs.table.exportCsv({
+					filename: '余额记录'
+				});
+			},
+			//添加弹出框
+			insert() {
+				this.FinancialManagement.fMoney = 0;
+				this.FinancialManagement.fFile = "";
+				this.FinancialManagement.fRemarks = "";
+				this.modal13 = true;
+			},
+			//间隔时间
+			selectTime(starTime) {
+				this.baDate = starTime;
+			},
+			//编辑弹出
 			show(data) {
 				this.modal13 = true;
 			},
-			changePage(page) {
+			//添加
+			add() {
 				const th = this;
-				axios.get(th.url + '/financialManagement/selectAll', {
+				axios.post(th.url + '/financialManagement/insert', th.FinancialManagement, {
+					headers: {
+						"Content-Type": "application/json;charset=utf-8"
+					}
+				}).then(function(res) {
+					if (res.data.code === 1028) {
+						th.$Message.success(res.data.message);
+						th.FinancialManagement.fMoney = 0;
+						th.FinancialManagement.fFile = "";
+						th.FinancialManagement.fRemarks = "";
+						th.changePage(1);
+					} else {
+						th.$Message.error(res.data.message);
+					}
+				})
+
+			},
+			//上传文件
+			resultMsg(res) {
+				if (res.code === 1224) {
+					this.FinancialManagement.fFile = res.data;
+					this.$Message.success(res.message);
+				} else {
+					this.$Message.error(res.message);
+				}
+			},
+			//查询
+			changePage(page) {
+				this.loading = true;
+				if (!this.FinancialManagement.CmName) {
+					this.FinancialManagement.mName = null;
+				}
+				if (!this.FinancialManagement.CDate) {
+					this.baDate = ["", ""];
+				}
+				if (this.baDate.length == 0) {
+					this.baDate = ["", ""];
+				}
+				const th = this;
+				var fType = this.fType;
+				if (fType == "全部") {
+					fType = "";
+				}
+				axios.get(th.url + '/financialManagement/selects', {
 					params: {
-						pageNum: page
+						pageNum: page,
+						mName: th.FinancialManagement.mName,
+						fType: fType,
+						beforeDate: th.baDate[0],
+						afterDate: th.baDate[1],
 					}
 				}).then(function(res) {
 					th.data6 = res.data.data;
 					th.count = res.data.count;
 				})
+				this.loading = false;
 
 			},
+			//分组查询
 			GroupType() {
 				const th = this;
 				axios.get(th.url + '/financialManagement/selectGroupBymName').then(function(res) {

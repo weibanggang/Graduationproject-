@@ -47,6 +47,20 @@ public class MemberInformationController {
     }
 
     /**
+     * 根据aId修改状态
+     * 要求转入 aId
+     * @param status
+     * @return
+     */
+    @GetMapping("/updateStatus")
+    public Result updateStatus(int dId, String status) {
+        try {
+            return memberInformationService.updateStatus(dId, status) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");
+        } catch (Exception ex) {
+            return new Result().error("出错,请重试！");
+        }
+    }
+    /**
      * 添加对象MemberInformation
      *
      * @param memberInfomation
@@ -88,6 +102,29 @@ public class MemberInformationController {
      *
      * @return
      */
+    @GetMapping("/selects")
+    public Result selects(@RequestParam(defaultValue = "1") int pageNum,@RequestParam(defaultValue = "10") int pageSize,int cId, int dId, int pId, int eId,  String status,String mName) {
+        try {
+            if("all".equals(status)){
+                status = "";
+            }
+            PageHelper.startPage(pageNum,pageSize);
+            List<MemberInformation> list = memberInformationService.selects(cId,dId,pId,eId,status,mName);
+            if (list == null) {
+                return new Result().successMessage("无数据");
+            } else {
+                return new Result().success(list,memberInformationService.counts(cId,dId,pId,eId,status,mName));
+            }
+        } catch (Exception ex) {
+            return new Result().error("出错,请重试！");
+        }
+    }
+
+    /**
+     * 查询所有数据
+     *
+     * @return
+     */
     @GetMapping("/selectAll")
     public Result selectAll(@RequestParam(defaultValue = "1") int pageNum,@RequestParam(defaultValue = "10") int pageSize) {
         try {
@@ -103,7 +140,7 @@ public class MemberInformationController {
         }
     }
     /**
-     * 查询所有数据
+     * 查询职位
      *
      * @return
      */
@@ -154,4 +191,5 @@ public class MemberInformationController {
             return new Result().error("出错,请重试！");
         }
     }
+
 }

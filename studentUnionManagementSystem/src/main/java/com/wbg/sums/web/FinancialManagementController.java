@@ -114,8 +114,24 @@ public class FinancialManagementController {
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");
         }
-
-
     }
-
+    /**
+     * 查询所有数据
+     *
+     * @return
+     */
+    @GetMapping("/selects")
+    public Result selects(@RequestParam(defaultValue = "1") int pageNum,@RequestParam(defaultValue = "10") int pageSize,String mName, String fType, String beforeDate, String afterDate) {
+        try {
+            PageHelper.startPage(pageNum,pageSize);
+            List<FinancialManagement> list = financialManagementService.selects(mName,fType,beforeDate,afterDate);
+            if (list == null) {
+                return new Result().successMessage("无数据");
+            } else {
+                return new Result().success(list,financialManagementService.counts(mName,fType,beforeDate,afterDate));
+            }
+        } catch (Exception ex) {
+            return new Result().error("出错,请重试！");
+        }
+    }
 }

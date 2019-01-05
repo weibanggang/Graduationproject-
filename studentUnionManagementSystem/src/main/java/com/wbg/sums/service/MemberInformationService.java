@@ -2,6 +2,7 @@ package com.wbg.sums.service;
 
 import com.wbg.sums.dto.MemberInfomationDto;
 import com.wbg.sums.entity.MemberInformation;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -50,11 +51,11 @@ public interface MemberInformationService {
 
     //    根据工作编号修改密码int updatePassword(String m_user,String m_password)
     int updatePassword(String m_user, String m_password);
-
+    int counts(int cId, int dId, int pId, int eId,  String status,String mName);
     //    update MemberInformation set m_password=#{m_password} where m_user={m_user}
 //    根据性别、班级、部门、职位、所属届、状态查询所有成员信息 List<MemberInformation> selectList(m_sex,c_id,d_id,p_id,e_id,status);
 //(要求多表查询，使用mybatis判断字段传入为空时条件不成立)
-    List<MemberInformation> selectList(String m_sex, int c_id, int d_id, int p_id, int e_id, String status);
+    List<MemberInformation> selects(int cId, int dId, int pId, int eId,  String status,String mName);
 
     //    select m.m_id,m_user,m_name,m_sex,p_photo,m_qq,m.status,r_admission_date,m.p_remarks,c.c_name,c_headmaster_name,c.c_phone,d.d_name,p.p_name,e.e_name,j.j_name from MemberInformation m
 //    join ClassTable c on c.c_id=m.c_id

@@ -66,4 +66,28 @@
   <select id="count" resultType="java.lang.Integer">
     select count(*) from departmentalExcellenceRecord
   </select>
+    <select id="selects" resultType="com.wbg.sums.entity.DepartmentalExcellenceRecord">
+       select *
+    from departmentalExcellenceRecord
+    <where>
+      <if test="dName != null and dName != ''">
+        and d_name like concat('%', #{dName}, '%')
+      </if>
+      <if test="beforeDate != null and beforeDate !=''">
+        and d_date &gt;= #{beforeDate} and d_date  &lt;=  #{afterDate}
+      </if>
+    </where>
+    </select>
+  <select id="counts" resultType="java.lang.Integer">
+    select count(*)
+    from departmentalExcellenceRecord
+    <where>
+      <if test="dName != null and dName != ''">
+        and d_name like concat('%', #{dName}, '%')
+      </if>
+      <if test="beforeDate != null and beforeDate !=''">
+        and d_date &gt;= #{beforeDate} and d_date  &lt;=  #{afterDate}
+      </if>
+    </where>
+  </select>
 </mapper>

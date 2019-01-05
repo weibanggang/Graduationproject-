@@ -1,64 +1,74 @@
 <template>
 	<div>
-		<div class="rigtop">
-				<Form ref="classTable"  inline>
+		<div class="rigtop" style="height: 100px;">
+				<Form   inline>
 					<FormItem>
 						<Row>
-							<Col span="6" style="text-align: center;">
-							成员编号
-							</Col>
-							<Col span="18">
-							<Input placeholder="姓名"></Input>
-							</Col>
-						</Row>
-					</FormItem>
-					<FormItem>
-						<Row>
-							<Col span="6" style="text-align: center;">
-							标题
-							</Col>
-							<Col span="18">
-							<!-- <Select v-model="notic.nTitle" filterable>
-										<Option v-for="item in noticTitle"  :value="item" :key="item">{{ item}}</Option>
-									</Select> -->
-							<Input  placeholder="姓名"></Input>
-							</Col>
-						</Row>
-					</FormItem>
-					<FormItem>
-						<Row>
-							<Col span="6" style="text-align: center;">
-							部门
-							</Col>
-							<Col span="18">
-							<!-- <Select v-model="notic.nTitle" filterable>
-										<Option v-for="item in noticTitle"  :value="item" :key="item">{{ item}}</Option>
-									</Select> -->
-							<Input  placeholder="姓名"></Input>
-							</Col>
-						</Row>
-					</FormItem>
-					<FormItem>
-						<Row>
-							<Col span="6" style="text-align: center;">
-								时间
+							<Col span="8" style="text-align: center;">
+							<Checkbox v-model="aMName" label="">模糊姓名</Checkbox>
 							</Col>
 							<Col span="16">
-							<DatePicker type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></DatePicker>
+							<Input v-model="attendance.aMName" placeholder="姓名"></Input>
 							</Col>
 						</Row>
 					</FormItem>
 					<FormItem>
-						<Button>快速导出</Button>
+						<Row>
+							<Col span="7" style="text-align: center;">
+							<Checkbox v-model="dates" label="">请假时间</Checkbox>
+							</Col>
+							<Col span="16">
+							<DatePicker type="daterange" placement="bottom-end" @on-change="selectTime(($event))" placeholder="时间查询" style="width: 200px"></DatePicker>
+							</Col>
+						</Row>
+					</FormItem>
+					<FormItem>
+						<Row>
+							<Col span="7" style="text-align: center;">
+							<Checkbox v-model="mName" label="">操作员</Checkbox>
+							</Col>
+							<Col span="16">
+							<Input v-model="attendance.mName" placeholder="操作员"></Input>
+							</Col>
+						</Row>
+					</FormItem>
+					
+					<FormItem style="position: absolute;right: 30px">
+					
+						<FormItem>
+							<Button @click="add()">
+								<Icon type="ios-add-circle-outline" />新增记录
+							</Button>
+						</FormItem>
+						<Button @click="exportData()">
+							<Icon type="ios-download-outline" />数据导出
+						</Button>
+					</FormItem>
+					</Form>
+					<Form   inline>
+					<FormItem>
+						<Row>
+							<Col span="6" style="text-align: center;">
+							<Checkbox v-model="dName" label="">部门</Checkbox>
+							</Col>
+							<Col span="16">
+							<Select v-model="attendance.dName" filterable>
+								<Option v-for="item in departmentType" :value="item.dName" :key="item.dId">{{ item.dName }}</Option>
+							</Select>
+							</Col>
+						</Row>
+					</FormItem>
+					<FormItem>
+						<Button @click="select(1)">
+							<Icon type="ios-sync" />快速查询
+						</Button>
 					</FormItem>
 				</Form>
 			</div>
-	
-		
-		<Table border :columns="columns7" :data="data6"  height="520" stripe size='default' ></Table>
+		<Table border :columns="columns7" :data="data6"  height="520" :loading="loading" stripe size='default' ref="table"></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
-				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
+				<Page :total="count" :current="1" @on-change="select($event)"></Page>
 			</div>
 		</div>
 	</div>
@@ -67,6 +77,13 @@
 	export default {
 		data() {
 			return {
+				loading:true,
+				mName: false,
+				dName: false,
+				aMName: false,
+				dates: false,
+				baDate: [],
+				departmentType:[],
 				url: "http://localhost:8080",
 				count: 10,
 				modal13: false,
@@ -75,9 +92,14 @@
 						key: 'aType',
 						align: 'center'
 					},
-						{
+					{
 						title: '成员工作编号',
 						key: 'mUser',
+						align: 'center'
+					},
+					{
+						title: '成员姓名',
+						key: 'aMName',
 						align: 'center'
 					},
 					{
@@ -89,11 +111,21 @@
 						title: '标题',
 						key: 'aTitile',
 						align: 'center',
+						width:120,
+						tooltip:true
 					},
 					{
 						title: '时间',
 						key: 'aDate',
 						align: 'center',
+						width:120,
+						tooltip:true
+					},{
+						title: '备注',
+						key: 'aRemaks',
+						align: 'center',
+						width:150,
+						tooltip:true
 					},{
 						title: '操作员',
 						key: 'mName',
@@ -127,6 +159,7 @@
 					aId: 0,
 					aType:"",
 					mUser:"",
+					aMName:"",
 					dName:"",
 					aTitile: "",
 					aDate: "",
@@ -135,26 +168,48 @@
 			}
 		},
 		methods: {
-			changePage(page) {
+			//导出数据
+			exportData() {
+				this.$refs.table.exportCsv({
+					filename: '工作信息'
+				});
+			},
+			 //间隔时间
+			selectTime(starTime) {
+				this.baDate = starTime;
+			},
+			select(page) {
+				
+				this.loading = true;
+				if (!this.mName) {
+					this.attendance.mName = null;
+				}
+				if (!this.aMName) {
+					this.attendance.aMName = null;
+				}
+				if (!this.dName) {
+					this.attendance.dName = null;
+				}
+				if (!this.dates) {
+					this.baDate = ["", ""];
+				}
 				const th = this;
-				axios.get(th.url + '/attendance/selectAll', {
+				axios.get(th.url + '/attendance/selects', {
 					params: {
-						pageNum: page
+						pageNum: page,
+						mName:th.attendance.mName,
+						aMName:th.attendance.aMName,
+						dName:th.attendance.dName,
+						beforeDate:th.baDate[0],
+						afterDate:th.baDate[1],
 					}
 				}).then(function(res) {
-					console.log(res);
 					th.data6 = res.data.data;
 					th.count = res.data.count;
 				})
+				this.loading = false;
 			},
-			resultMsg(res) {
-				if (res.code === 1224) {
-					this.attendance.nFile = res.data;
-					this.$Message.success(res.message);
-				} else {
-					this.$Message.error(res.message);
-				}
-			},
+			//删除
 			remove(aId, index) {
 				this.$Modal.confirm({
 					title: '删除提示',
@@ -176,6 +231,7 @@
 					}
 				});
 			},
+			//修改
 			ok() {
 				const th = this;
 				axios.post(th.url + '/attendance/updateByPrimaryKey', th.attendance, {
@@ -194,7 +250,12 @@
 			}
 		},
 		created() {
-			this.changePage(1);
+			this.select(1);
+			var th = this;
+			//部门查询
+			axios.get(th.url + '/departmentType/iselectAllStatus').then(function(res) {
+				th.departmentType = res.data.data;
+			})
 		}
 	}
 </script>

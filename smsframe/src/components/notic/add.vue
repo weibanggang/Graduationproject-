@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<Form ref="formInline" :model="notic" :label-width="80">
+		<Form :model="notic" :label-width="80">
 			<FormItem label="标题">
 				<Input v-model="notic.nTitle" placeholder="标题"></Input>
 			</FormItem>

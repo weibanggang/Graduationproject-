@@ -1,27 +1,21 @@
 <template>
 	<div>
-		<!-- <Form ref="formValidate" :model="typeofMeeting" :label-width="80">
-			<FormItem>
-				<Button type="success" @click="add()" long>添加</Button>
-			</FormItem>
-		</Form> -->
-		
 		<div class="rigtop">
-			<Form ref="classTable" :model="classTable" inline>
+			<Form  :model="typeofMeeting" inline>
 				<FormItem>
 					<Row>
 						<Col span="6" style="text-align: center;">
 							会议名称
 						</Col>
 						<Col span="18" >
-						<Select v-model="typeofMeeting.tName" filterable>
-							<Option v-for="item in typeofMeetingName" :value="item" :key="item">{{ item }}</Option>
+						<Select v-model="typeofMeeting.tId" @on-change="selectName()" filterable>
+							<Option v-for="item in typeofMeetingName" :value="item.tId" :key="item.tId">{{ item.tName }}</Option>
 						</Select>
 						</Col>
 					</Row>
 				</FormItem>
 				<FormItem>
-					<RadioGroup v-model="status">
+					<RadioGroup v-model="status" @on-change="changePage(1)">
 						<Radio label="true">
 							<Icon type="ios-eye" />
 							<span>正常</span>
@@ -36,13 +30,20 @@
 						</Radio>
 					</RadioGroup>
 				</FormItem>
-				<FormItem >
-					<Button>快速导出</Button>
+				<FormItem style="position: absolute;right: 30px">
+					<FormItem>
+						<Button @click="insert()">
+							<Icon type="ios-add-circle-outline" />新增部门
+						</Button>
+					</FormItem>
+					<Button @click="exportData()">
+						<Icon type="ios-download-outline" />数据导出
+					</Button>
 				</FormItem>
 			</Form>
 		</div>
 		
-		<Table border :columns="columns7" :data="data6" height="520" stripe size='default' ></Table>
+		<Table border :columns="columns7" :data="data6" height="520" stripe size='default' :loading="loading" ref="table"></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
 				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
@@ -96,6 +97,8 @@
 				url: "http://localhost:8080",
 				count: 10,
 				modal13: false,
+				loading:true,
+				status: "true",
 				modal14: false,
 				typeofMeetingName:"",
 				columns7: [{
@@ -171,11 +174,30 @@
 						title: '会议备注',
 						key: 'tRemarks',
 						align: 'center',
+						width:250,
+						tooltip:true
 					},
 					{
 						title: '排序',
 						key: 'tSort',
 						align: 'center',
+						render: (h, params) => {
+													return h('div', [
+														h('InputNumber', {
+															props: {
+																size: "large",
+																value: params.row.tSort
+															},
+															on: {
+																'on-change': (value) => {
+																	this.typeofMeeting.tId = params.row.tId;
+																	this.typeofMeeting.tSort = value;
+																	this.updateSort();
+																}
+															}
+														})
+													])
+												}
 					},
 					{
 						title: '操作',
@@ -224,6 +246,13 @@
 			}
 		},
 		methods: {
+			//导出数据
+			exportData() {
+				this.$refs.table.exportCsv({
+					filename: '会议信息'
+				});
+			},
+			//编辑弹出
 			show(data) {
 				this.modal13 = true;
 				this.typeofMeeting.tId = data.tId;
@@ -232,21 +261,53 @@
 				this.typeofMeeting.tRemarks = data.tRemarks;
 				this.typeofMeeting.tSort = data.tSort;
 			},
-			changePage(page) {
+			//根据名称查询
+			selectName(){
 				const th = this;
-				axios.get(th.url + '/typeofMeeting/selectAll', {
+				axios.get(th.url + '/typeofMeeting/selectByPrimaryKey', {
 					params: {
-						pageNum: page
+						tId:th.typeofMeeting.tId
 					}
 				}).then(function(res) {
-					th.data6 = res.data.data;
-					th.typeofMeetingName = res.data.data.map((e) =>{
-						return e.tName;
-					})
+					th.data6 = [];
+					th.data6.push(res.data.data);
 					th.count = res.data.count;
 				})
 			},
-
+			//修改序号
+			updateSort() {
+				const th = this;
+				th.loading=true;
+				axios.post(th.url + '/typeofMeeting/updateSort', th.typeofMeeting, {
+					headers: {
+						"Content-Type": "application/json;charset=utf-8"
+					}
+				}).then(function(res) {
+					if (res.data.code === 1028) {
+						th.$Message.success(res.data.message);
+					} else {
+						th.$Message.error(res.data.message);
+					}
+				})
+				th.loading=false;
+			},
+			//查询
+			changePage(page) {
+				const th = this;
+				th.loading = true;
+				axios.get(th.url + '/typeofMeeting/selectAllStatus', {
+					params: {
+						pageNum: page,
+						status:th.status
+					}
+				}).then(function(res) {
+					console.log(res.data);
+					th.data6 = res.data.data;
+					th.count = res.data.count;
+					th.loading = false;
+				})
+			},
+			//删除
 			remove(tId, index) {
 				this.$Modal.confirm({
 					title: '删除提示',
@@ -268,9 +329,9 @@
 					}
 				});
 			},
+			//修改
 			ok() {
 				const th = this;
-				console.log(th);
 				axios.post(th.url + '/typeofMeeting/updateByPrimaryKey', th.typeofMeeting, {
 					headers: {
 						"Content-Type": "application/json;charset=utf-8"
@@ -284,9 +345,9 @@
 					}
 				})
 			},
+			//添加
 			oks() {
 				const th = this;
-				console.log(th);
 				axios.post(th.url + '/typeofMeeting/insert', th.typeofMeeting, {
 					headers: {
 						"Content-Type": "application/json;charset=utf-8"
@@ -300,7 +361,8 @@
 					}
 				})
 			},
-			add() {
+			//添加弹出
+			insert() {
 				this.typeofMeeting.tName = "";
 				this.typeofMeeting.tRemarks = "";
 				this.modal14 = true;
@@ -308,6 +370,11 @@
 		},
 		created() {
 			this.changePage(1);
+			const th = this;
+			axios.get(th.url + '/typeofMeeting/iselectAllStatus')
+			.then(function(res) {
+				th.typeofMeetingName = res.data.data;
+			})
 		}
 	}
 </script>

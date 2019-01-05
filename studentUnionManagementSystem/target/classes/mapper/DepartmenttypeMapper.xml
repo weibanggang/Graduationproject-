@@ -53,7 +53,7 @@
     update DepartmentType set status=#{status} where  d_id=#{d_id}
   </update>
   <select id="iselectAllStatus" resultType="DepartmentType">
-    select d_id,d_name  from DepartmentType where status like concat ('%',#{status},'%')
+    select d_id,d_name  from DepartmentType where status like concat ('%',#{status},'%')  order by d_sort
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--

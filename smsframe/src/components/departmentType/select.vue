@@ -9,8 +9,8 @@
 						类型名称
 						</Col>
 						<Col span="18">
-						<Select v-model="DepartmentType.dName" filterable @on-change="selectDName()">
-							<Option v-for="item in DepartmentTypeName" :value="item" :key="item">{{ item }}</Option>
+						<Select v-model="DepartmentType.dId" filterable @on-change="selectDName()">
+							<Option v-for="item in DepartmentTypeName" :value="item.dId" :key="item.dId">{{ item.dName }}</Option>
 						</Select>
 						</Col>
 					</Row>
@@ -304,9 +304,6 @@
 					}
 				}).then(function(res) {
 					th.data6 = res.data.data;
-					th.DepartmentTypeName = res.data.data.map((e) => {
-						return e.dName;
-					})
 					th.count = res.data.count;
 					th.loading=false;
 				})
@@ -394,6 +391,11 @@
 		},
 		created() {
 			this.changePage(1);
+			const th = this;
+			axios.get(th.url + '/departmentType/iselectAllStatus')
+			.then(function(res) {
+				th.DepartmentTypeName = res.data.data;
+			})
 		}
 	}
 </script>

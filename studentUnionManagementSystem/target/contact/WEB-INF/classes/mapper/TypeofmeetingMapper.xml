@@ -46,10 +46,10 @@
       update TypeofMeeting set status=#{status} where t_id=#{t_id}
     </update>
     <select id="iselectAllStatus" resultMap="BaseResultMap">
-    select t_id,t_name  from TypeofMeeting where  status like  concat('%',#{status},'%')
+    select t_id,t_name  from TypeofMeeting where  status like  concat('%',#{status},'%') order by t_sort
   </select>
     <update id="updateSort">
-    update TypeofMeeting set t_sort=#{t_sort} where t_id=#{t_id}
+    update TypeofMeeting set t_sort=#{tSort} where t_id=#{tId}
   </update>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         <!--
@@ -69,12 +69,12 @@
         from TypeofMeeting
     </select>
     <select id="selectAllStatus" resultType="com.wbg.sums.entity.TypeofMeeting">
-    select * from TypeofMeeting where status={#status}
+    select * from TypeofMeeting where status  like  concat('%',#{ status },'%')
   </select>
     <select id="selectAllVague" resultType="com.wbg.sums.entity.TypeofMeeting">
      select *  from TypeofMeeting  where   t_name like  concat('%',#{ t_name},'%')
   </select>
     <select id="count" resultType="java.lang.Integer">
-       select count(*)  from TypeofMeeting  where   status like  concat('%',#{ status},'%')
+       select count(*)  from TypeofMeeting  where   status like  concat('%',#{ status },'%')
     </select>
 </mapper>

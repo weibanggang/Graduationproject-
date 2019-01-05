@@ -2,64 +2,52 @@
 	<div>
 		
 		<div class="rigtop">
-			<!-- <Form ref="FinancialManagement" :model="FinancialManagement" inline>
-				<FormItem>
+			<Form  inline>
+				<FormItem >
 					<Row>
-						<Col span="7" style="text-align: center;">
-							<Checkbox v-model="FinancialManagement.CmName" label="">操作人</Checkbox>
+						<Col span="6" style="text-align: center;">
+						<Checkbox v-model="dname" label="">部门</Checkbox>
 						</Col>
-						<Col span="16" >
-						<Select v-model="FinancialManagement.mName" filterable>
-							<Option v-for="item in FinancialManagementGroup" :value="item.mName" :key="item.mName">{{ item.mName }}</Option>
+						<Col span="18">
+						<Select v-model="departmentalExcellenceRecord.dName"   filterable>
+							<Option v-for="item in departmentType" :value="item.dName" :key="item.dId">{{ item.dName }}</Option>
 						</Select>
 						</Col>
 					</Row>
 				</FormItem>
-				<FormItem prop="user">
+				<FormItem >
 					<Row>
-						<Col span="7" style="text-align: center;">
-							<Checkbox v-model="FinancialManagement.CDate" label="">交易时间</Checkbox>
+						<Col span="6" style="text-align: center;">
+						<Checkbox v-model="dates" label="">时间</Checkbox>
 						</Col>
-						<Col span="17">
-						<DatePicker type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></DatePicker>
+						<Col span="18">
+						<DatePicker type="daterange" placement="bottom-end" @on-change="selectTime(($event))" placeholder="时间查询" style="width: 200px"></DatePicker>
 						</Col>
 					</Row>
 				</FormItem>
-				<FormItem>
-					<RadioGroup v-model="FinancialManagement.fType">
-						<Radio label="全部">
-							<Icon type="ios-football-outline" />
-							<span>全部</span>
-						</Radio>
-						<Radio label="收入">
-							<Icon type="md-log-in" />
-							<span>收入</span>
-						</Radio>
-						<Radio label="支出">
-							<Icon type="md-log-out" />
-							<span>支出</span>
-						</Radio>
-					</RadioGroup>
+				<FormItem style="position: relative;left: 30px">
+						<Button @click="select(1)">
+							<Icon type="ios-sync" />快速查询
+						</Button>
 				</FormItem>
-				<FormItem>
-					<Button>快速查询</Button>
+				<FormItem style="position: absolute;right: 30px">
+					<FormItem>
+						<Button @click="add()">
+							<Icon type="ios-sync" />新增信息
+						</Button>
+					</FormItem>
+					<FormItem>
+						<Button @click="exportData()">
+							<Icon type="ios-download-outline" />数据导出
+						</Button>
+					</FormItem>
 				</FormItem>
-				<FormItem>
-					<Button>快速导出</Button>
-				</FormItem>
-			</Form> -->
+			</Form>
 		</div>
-		
-		
-		<!-- <Form ref="formValidate" :model="departmentalExcellenceRecord" :label-width="80">
-			<FormItem>
-				<Button type="success" @click="add()" long>添加</Button>
-			</FormItem>
-		</Form> -->
 		<Table border :columns="columns7" :data="data6" height="520" stripe size='default' ></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
-				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
+				<Page :total="count" :current="1" @on-change="select($event)"></Page>
 			</div>
 		</div>
 		<Modal v-model="modal14" draggable scrollable title="添加部门评优" @on-ok="oks">
@@ -146,9 +134,12 @@
 			return {
 				url: 'http://localhost:8080/',
 				count: 10,
+				dname:false,
+				dates:false,
 				modal14: false,
 				modal13: false,
 				loading:false,
+				baDate:[],
 				menberInforMation: [],
 				departmentType: '',
 				columns7: [{
@@ -227,6 +218,40 @@
 			}
 		},
 		methods: {
+				//导出数据
+			exportData() {
+				this.$refs.table.exportCsv({
+					filename: '部门评优信息'
+				});
+			},
+			//根据名称查询
+			select(page) {
+				
+				if(this.baDate.length != 2 || !this.dates){
+					this.baDate = ["",""];
+				}
+				if(!this.dname){
+					this.departmentalExcellenceRecord.dName = "";
+				}
+				const th = this;
+				axios.get(th.url + '/departmentalExcellenceRecord/selects', {
+					params: {
+						pageNum: page,
+						dName:th.departmentalExcellenceRecord.dName,
+						beforeDate:th.baDate[0],
+						afterDate:th.baDate[1],
+					}
+				}).then(function(res) {
+					th.data6 = res.data.data;
+					th.count = res.data.count;
+				})
+				this.loading = false;
+			},
+			//时间间隔查询
+			selectTime(value) {
+				this.baDate = value;
+			},
+			//编辑弹出
 			show(data) {
 				this.modal13 = true;
 				this.departmentalExcellenceRecord.dId = data.dId;
@@ -237,13 +262,14 @@
 				this.departmentalExcellenceRecord.dContexts = data.dContexts;
 				this.departmentalExcellenceRecord.mName = data.mName;
 			},
+			//时间
 			getStartTime(starTime) {
 				this.departmentalExcellenceRecord.dDate = starTime;
 			},
+			//成员根据编号查询姓名
 			selectMname(value) {
 				this.loading = true;
 				const th = this;
-				console.log("hgjh");
 				console.log(th.url);
 				axios.get(th.url + 'memberInformation/iUserName', {
 					params: {
@@ -257,17 +283,8 @@
 					th.loading = false;
 				})
 			},
-			changePage(page) {
-				const th = this;
-				axios.get(th.url + 'departmentalExcellenceRecord/selectAll', {
-					params: {
-						pageNum: page
-					}
-				}).then(function(res) {
-					th.data6 = res.data.data;
-					th.count = res.data.count;
-				})
-			},
+			
+			//上传文件
 			resultMsg(res) {
 				if (res.code === 1224) {
 					this.departmentalExcellenceRecord.dFile = res.data;
@@ -276,6 +293,7 @@
 					this.$Message.error(res.message);
 				}
 			},
+			//删除
 			remove(dId, index) {
 				this.$Modal.confirm({
 					title: '删除提示',
@@ -289,7 +307,7 @@
 						}).then(function(res) {
 							if (res.data.code === 1028) {
 								th.$Message.success(res.data.message);
-								th.changePage(1);
+								th.select(1);
 							} else {
 								th.$Message.error(res.data.message);
 							}
@@ -297,6 +315,7 @@
 					}
 				});
 			},
+			//修改
 			ok() {
 				const th = this;
 				axios.post(th.url + 'departmentalExcellenceRecord/updateByPrimaryKey', th.departmentalExcellenceRecord, {
@@ -306,13 +325,14 @@
 				}).then(function(res) {
 					if (res.data.code === 1028) {
 						th.$Message.success(res.data.message);
-						th.changePage(1);
+						th.select(1);
 					} else {
 						th.$Message.error(res.data.message);
 						th.modal13 = true;
 					}
 				})
 			},
+			//添加弹出
 			add() {
 				this.departmentalExcellenceRecord.dName = "";
 				this.departmentalExcellenceRecord.lMName = "";
@@ -321,6 +341,7 @@
 				this.departmentalExcellenceRecord.dContexts = "";
 				this.modal14 = true;
 			},
+			//添加
 			oks() {
 				const th = this;
 				axios.post(th.url + 'departmentalExcellenceRecord/insert', th.departmentalExcellenceRecord, {
@@ -329,7 +350,7 @@
 					}
 				}).then(function(res) {
 					if (res.data.code === 1028) {
-						th.changePage(1);
+						th.select(1);
 						th.$Message.success(res.data.message);
 					} else {
 						th.$Message.error(res.data.message);
@@ -340,10 +361,10 @@
 		},
 		created() {
 			const th=this;
-			axios.get(th.url + 'departmentType/iSelectAllStatus').then(function(res) {
+			axios.get(th.url + 'departmentType/iselectAllStatus').then(function(res) {
 				th.departmentType = res.data.data;
 			})
-			this.changePage(1);
+			this.select(1);
 			
 		}
 	}
