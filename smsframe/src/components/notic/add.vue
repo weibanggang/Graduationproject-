@@ -55,8 +55,8 @@
 			};
 		},
 		methods: {
+			//添加
 			add() {
-					console.log(this.notic);
 				const th = this;
 			axios.post(th.url + '/notic/insert', th.notic, {
 					headers: {
@@ -74,7 +74,7 @@
 				}) 
 
 			},
-
+			//上传文件
 			resultMsg(res) {
 				if (res.code === 1224) {
 					this.notic.nFile = res.data;
@@ -82,7 +82,7 @@
 				} else {
 					this.$Message.error(res.message);
 				}
-			}
+			},
 
 		}
 	}

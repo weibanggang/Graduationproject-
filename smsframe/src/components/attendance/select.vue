@@ -1,6 +1,14 @@
+<style scoped="scoped">
+	.ivu-table td, .ivu-table-border td{
+		height: 41px;
+	}
+	.rigtop{
+		height:80px;
+	}
+</style>
 <template>
 	<div>
-		<div class="rigtop" style="height: 100px;">
+		<div class="rigtop"  >
 				<Form   inline>
 					<FormItem>
 						<Row>
@@ -8,7 +16,7 @@
 							<Checkbox v-model="aMName" label="">模糊姓名</Checkbox>
 							</Col>
 							<Col span="16">
-							<Input v-model="attendance.aMName" placeholder="姓名"></Input>
+							<Input v-model="attendance.aMName"  height="20" placeholder="姓名"></Input>
 							</Col>
 						</Row>
 					</FormItem>
@@ -22,17 +30,12 @@
 							</Col>
 						</Row>
 					</FormItem>
-					<FormItem>
-						<Row>
-							<Col span="7" style="text-align: center;">
-							<Checkbox v-model="mName" label="">操作员</Checkbox>
-							</Col>
-							<Col span="16">
-							<Input v-model="attendance.mName" placeholder="操作员"></Input>
-							</Col>
-						</Row>
-					</FormItem>
 					
+					<FormItem style="position: relative;left: 10px">
+						<Button @click="select(1)">
+							<Icon type="ios-sync" />快速查询
+						</Button>
+					</FormItem>
 					<FormItem style="position: absolute;right: 30px">
 					
 						<FormItem>
@@ -46,10 +49,20 @@
 					</FormItem>
 					</Form>
 					<Form   inline>
+						<FormItem>
+							<Row>
+								<Col span="8" style="text-align: center;">
+								<Checkbox v-model="mName" label="">&nbsp;操&nbsp;作&nbsp;员</Checkbox>
+								</Col>
+								<Col span="16">
+								<Input v-model="attendance.mName" placeholder="操作员"></Input>
+								</Col>
+							</Row>
+						</FormItem>
 					<FormItem>
 						<Row>
-							<Col span="6" style="text-align: center;">
-							<Checkbox v-model="dName" label="">部门</Checkbox>
+							<Col span="8" style="text-align: center;">
+							<Checkbox v-model="dName" label="">部&nbsp;&nbsp;&nbsp;&nbsp;门</Checkbox>
 							</Col>
 							<Col span="16">
 							<Select v-model="attendance.dName" filterable>
@@ -58,14 +71,9 @@
 							</Col>
 						</Row>
 					</FormItem>
-					<FormItem>
-						<Button @click="select(1)">
-							<Icon type="ios-sync" />快速查询
-						</Button>
-					</FormItem>
 				</Form>
 			</div>
-		<Table border :columns="columns7" :data="data6"  height="520" :loading="loading" stripe size='default' ref="table"></Table>
+		<Table border :columns="columns7" :data="data6"  height="420" :loading="loading" stripe size='default' ref="table"></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
 				<Page :total="count" :current="1" @on-change="select($event)"></Page>
@@ -95,7 +103,8 @@
 					{
 						title: '成员工作编号',
 						key: 'mUser',
-						align: 'center'
+						align: 'center',
+						width:140
 					},
 					{
 						title: '成员姓名',

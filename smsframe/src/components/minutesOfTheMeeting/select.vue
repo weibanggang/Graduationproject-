@@ -1,6 +1,10 @@
+<style>
+	.ivu-table td, .ivu-table-border td{
+		height: 41px;
+	}
+</style>
 <template>
 	<div>
-
 		<div class="rigtop">
 			<Form ref="minutesOfTheMeeting"  inline>
 				<FormItem>
@@ -35,14 +39,14 @@
 						</Col>
 					</Row>
 				</FormItem>
-				<FormItem>
+				<FormItem style="position: relative;left: 15px">
 					<Button @click="select(1)">
 						<Icon type="ios-sync" />快速查询
 					</Button>
 				</FormItem>
 				<FormItem style="position: absolute;right: 30px">
 					<FormItem>
-						<Button >
+						<Button  @click="add()">
 							<Icon type="ios-add-circle-outline" />新增记录
 						</Button>
 					</FormItem>
@@ -55,7 +59,7 @@
 
 
 
-		<Table border :columns="columns7" :data="data6" height="520" :loading="loading" stripe size='default' ref="table"></Table>
+		<Table border :columns="columns7" :data="data6" height="450" :loading="loading" stripe size='default' ref="table"></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
 				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
@@ -91,6 +95,37 @@
 				</Form>
 			</div>
 		</Modal>
+		<Modal v-model="modal14" draggable scrollable title="添加会议记录" @on-ok="oks">
+			<div>
+				<Form ref="formInline" :model="minutesOfTheMeeting" :label-width="80">
+					<FormItem label="会议标题">
+						<Input v-model="minutesOfTheMeeting.mTitle" placeholder="标题"></Input>
+					</FormItem>
+					<FormItem label="会议类型" prop="dId">
+						<Select v-model="minutesOfTheMeeting.tId" placeholder="请选择会议类型">
+							<Option v-for="item in typeofMeeting" :value="item.tId" :key="item.tId">{{ item.tName }}</Option>
+						</Select>
+					</FormItem>
+					<FormItem label="内容" prop="mContexts">
+						<Input v-model="minutesOfTheMeeting.mContexts" type="textarea" :autosize="{minRows: 6,maxRows: 8}" placeholder="内容"></Input>
+					</FormItem>
+		
+					<FormItem label="文件上传">
+						<div>
+							<Row>
+								<Col span="12">
+								<Upload name='file' :show-upload-list='false' :on-success='resultMsg' action="http://localhost:8080/minutesOfTheMeeting/upload">
+									<Button icon="ios-cloud-upload-outline">可拖动上传</Button>
+								</Upload>
+								</Col>
+								<Col span="12"><Input icon="ios-cloud-upload-outline" v-model="minutesOfTheMeeting.mFile" disabled placeholder="没有文件" /></Col>
+							</Row>
+						</div>
+					</FormItem>
+				</Form>
+			</div>
+		</Modal>
+		
 	</div>
 </template>
 <script>
@@ -106,6 +141,7 @@
 				url: "http://localhost:8080",
 				count: 10,
 				modal13: false,
+				modal14:false,
 				columns7: [{
 						title: '编号',
 						key: 'mId',
@@ -116,18 +152,8 @@
 						title: '会议标题',
 						key: 'mTitle',
 						align: 'center',
-						width:150,
-						tooltip:true,
-						render: (h, params) => {
-							return h('div', [
-								h('Icon', {
-									props: {
-										type: 'person'
-									}
-								}),
-								h('strong', params.row.mTitle)
-							]);
-						}
+						width:200,
+						tooltip:true
 					},
 					{
 						title: '会议类型',
@@ -142,6 +168,7 @@
 						title: '操作人',
 						key: 'mName',
 						width: 100,
+						tooltip: true,
 						align: 'center'
 					},
 					{
@@ -279,6 +306,10 @@
 					this.$Message.error(res.message);
 				}
 			},
+			//添加弹出
+			add(){
+				this.modal14 = true;
+				},
 			//删除
 			remove(mId, index) {
 				this.$Modal.confirm({
@@ -301,7 +332,7 @@
 					}
 				});
 			},
-			//添加
+			//修改
 			ok() {
 				const th = this;
 				axios.post(th.url + '/minutesOfTheMeeting/updateByPrimaryKey', th.minutesOfTheMeeting, {
@@ -317,7 +348,25 @@
 						th.modal13 = true;
 					}
 				})
+			},
+			//添加
+			oks() {
+				const th = this;
+				axios.post(th.url + '/minutesOfTheMeeting/insert', th.minutesOfTheMeeting, {
+					headers: {
+						"Content-Type": "application/json;charset=utf-8"
+					}
+				}).then(function(res) {
+					if (res.data.code === 1028) {
+						th.$Message.success(res.data.message);
+						th.changePage(1);
+					} else {
+						th.$Message.error(res.data.message);
+						th.modal13 = true;
+					}
+				})
 			}
+		
 		},
 		created() {
 			this.select(1);

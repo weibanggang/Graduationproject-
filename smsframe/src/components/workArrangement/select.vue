@@ -1,7 +1,13 @@
+<style scoped="scoped">
+	.ivu-table td, .ivu-table-border td{
+		height: 41px;
+	}
+	.rigtop{
+		height:80px;
+	}
+</style>
 <template>
 	<div>
-
-
 		<div class="rigtop">
 			<Form :model="workArrangement" inline>
 				<FormItem label="工作标题">
@@ -13,38 +19,23 @@
 						</Col>
 					</Row>
 				</FormItem>
-
-				<FormItem label="负责人">
-					<Row>
-						<Col span="16">
-						<Select v-model="workArrangement.mName" @on-change="selectmName()" filterable>
-							<Option v-for="item in memberInformationType" :value="item.mName" :key="item.mId">{{ item.mName }}</Option>
-						</Select>
-						</Col>
-					</Row>
-				</FormItem>
-				<FormItem label="负责部门">
-					<Row>
-						<Col span="16">
-						<Select v-model="workArrangement.dName" @on-change="selectdName()" filterable>
-							<Option v-for="item in departmentType" :value="item.dId" :key="item.dId">{{ item.dName }}</Option>
-						</Select>
-						</Col>
-					</Row>
-				</FormItem>
-				<FormItem label="发布时间">
-					<Row>
-						<Col span="16">
-						<DatePicker type="daterange" placement="bottom-end" @on-change="getStartTime(($event),1)" placeholder="时间查询" style="width: 200px"></DatePicker>
-						</Col>
-					</Row>
-				</FormItem>
-				<FormItem style="position: absolute;right: 30px">
-					<FormItem>
-						<Button @click="changePage(1)">
-							<Icon type="ios-sync" />全部查询
-						</Button>
+				
+					<FormItem label="负责人">
+						<Row>
+							<Col span="16">
+							<Select v-model="workArrangement.mName" @on-change="selectmName()" filterable>
+								<Option v-for="item in memberInformationType" :value="item.mName" :key="item.mId">{{ item.mName }}</Option>
+							</Select>
+							</Col>
+						</Row>
 					</FormItem>
+					
+						<FormItem>
+							<Button @click="changePage(1)">
+								<Icon type="ios-sync" />全部查询
+							</Button>
+						</FormItem>
+				<FormItem style="position: absolute;right: 30px">
 					<FormItem>
 						<Button @click="add()">
 							<Icon type="ios-add-circle-outline" />新增部门
@@ -55,16 +46,36 @@
 					</Button>
 				</FormItem>
 			</Form>
+			<Form inline>
+				
+				<FormItem label="负责部门">
+					<Row>
+						<Col span="16">
+						<Select v-model="workArrangement.dName" @on-change="selectdName()" filterable>
+							<Option v-for="item in departmentType" :value="item.dId" :key="item.dId">{{ item.dName }}</Option>
+						</Select>
+						</Col>
+					</Row>
+				</FormItem>
+				
+				<FormItem label="发布时间">
+					<Row>
+						<Col span="16">
+						<DatePicker type="daterange" placement="bottom-end" @on-change="getStartTime(($event),1)" placeholder="时间查询" style="width: 200px"></DatePicker>
+						</Col>
+					</Row>
+				</FormItem>
+			</Form>
 		</div>
 
-		<Table border :columns="columns7" :data="data6" height="520" :loading="loading" stripe size='default' ref="table"></Table>
+		<Table border :columns="columns7" :data="data6" height="420" :loading="loading" stripe size='default' ref="table"></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
 				<Page :total="count" :current="1" @on-change="seleAll($event)"></Page>
 			</div>
 		</div>
 
-		<Modal v-model="modal13" draggable scrollable title="工作安排" @on-ok="ok">
+		<Modal v-model="modal13" :styles="{top: '40px'}" draggable scrollable title="编辑工作安排" @on-ok="ok">
 			<Form ref="formValidate" :model="workArrangement" :label-width="80">
 				<FormItem label="工作标题" prop="wTitle">
 					<Input v-model="workArrangement.wTitle" placeholder="请输入工作标题"></Input>
@@ -88,15 +99,15 @@
 						</Col>
 					</Row>
 				</FormItem>
-				<FormItem label="工作备注" prop="wRemarks">
-					<Input v-model="workArrangement.wRemarks" type='textarea' :autosize="{minRows: 5,maxRows: 6}" placeholder="请输入工作备注"></Input>
-				</FormItem>
 				<FormItem label="工作内容" prop="wContents">
-					<Input v-model="workArrangement.wContents" type='textarea' :autosize="{minRows: 5,maxRows: 6}" placeholder="请输入工作内容"></Input>
+					<Input v-model="workArrangement.wContents" type='textarea' :autosize="{minRows: 3,maxRows: 6}" placeholder="请输入工作内容"></Input>
+				</FormItem>
+				<FormItem label="工作备注" prop="wRemarks">
+					<Input v-model="workArrangement.wRemarks" type='textarea' :autosize="{minRows: 3,maxRows: 6}" placeholder="请输入工作备注"></Input>
 				</FormItem>
 			</Form>
 		</Modal>
-		<Modal v-model="modal14" draggable scrollable title="工作安排" @on-ok="oks">
+		<Modal v-model="modal14" :styles="{top: '40px'}" draggable scrollable title="添加工作安排" @on-ok="oks">
 			<Form ref="formValidate" :model="workArrangement" :label-width="80">
 				<FormItem label="工作标题" prop="wTitle">
 					<Input v-model="workArrangement.wTitle" placeholder="请输入工作标题"></Input>
@@ -121,10 +132,10 @@
 					</Row>
 				</FormItem>
 				<FormItem label="工作备注" prop="wRemarks">
-					<Input v-model="workArrangement.wRemarks" type='textarea' :autosize="{minRows: 5,maxRows: 6}" placeholder="请输入工作备注"></Input>
+					<Input v-model="workArrangement.wRemarks" type='textarea' :autosize="{minRows: 3,maxRows: 6}" placeholder="请输入工作备注"></Input>
 				</FormItem>
 				<FormItem label="工作内容" prop="wContents">
-					<Input v-model="workArrangement.wContents" type='textarea' :autosize="{minRows: 5,maxRows: 6}" placeholder="请输入工作内容"></Input>
+					<Input v-model="workArrangement.wContents" type='textarea' :autosize="{minRows: 3,maxRows: 6}" placeholder="请输入工作内容"></Input>
 				</FormItem>
 			</Form>
 		</Modal>
@@ -147,6 +158,7 @@
 				columns7: [{
 						title: '工作编号',
 						key: 'wId',
+						width:100,
 						align: 'center',
 						render: (h, params) => {
 							return h('div', [
@@ -162,6 +174,8 @@
 					{
 						title: '工作标题',
 						key: 'wTitle',
+						width:150,
+						tooltip:true,
 						align: 'center',
 					},
 					{
@@ -183,20 +197,21 @@
 						title: '备注',
 						key: 'wRemarks',
 						align: 'center',
-						width: 250,
+						width: 200,
 						tooltip: true
 					},
 					{
 						title: '工作内容',
 						key: 'wContents',
 						align: 'center',
-						width: 150,
+						width: 200,
 						tooltip: true
 					},
 					{
 						title: '操作',
 						key: 'action',
 						align: 'center',
+						width: 125,
 						render: (h, params) => {
 							return h('div', [
 								h('Button', {

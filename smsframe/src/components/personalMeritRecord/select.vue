@@ -1,3 +1,8 @@
+<style>
+	.ivu-table td, .ivu-table-border td{
+		height: 41px;
+	}
+</style>
 <template>
 	<div>
 		<div class="rigtop">
@@ -36,12 +41,12 @@
 						</Col>
 					</Row>
 				</FormItem>
+				<FormItem  style="position: relative;left: 70px">
+					<Button @click="select(1,'bd')">
+						<Icon type="ios-sync" />快速查询
+					</Button>
+				</FormItem>
 				<FormItem style="position: absolute;right: 30px">
-					<FormItem>
-						<Button @click="select(1,'bd')">
-							<Icon type="ios-sync" />快速查询
-						</Button>
-					</FormItem>
 					<FormItem>
 						<Button @click="add()">
 							<Icon type="ios-sync" />新增信息
@@ -55,7 +60,7 @@
 				</FormItem>
 			</Form>
 		</div>
-		<Table border :columns="columns7" :data="data6" height="520" stripe size='default' ref="table"></Table>
+		<Table border :columns="columns7" :data="data6" height="450" stripe size='default' ref="table"></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
 				<Page :total="count" :current="1" @on-change="selectpage($event)"></Page>

@@ -1,3 +1,8 @@
+<style>
+	.ivu-table td, .ivu-table-border td{
+		height: 41px;
+	}
+</style>
 <template>
 	<div>
 		<div class="rigtop">
@@ -20,11 +25,11 @@
 				</FormItem>
 				<FormItem style="position: relative;left: 65px">
 					<FormItem label="操作员">
-					<Row>
-						<Col span="16">
-						<Input v-model="MonthlyPlanSummary.lMName" placeholder="姓名"></Input>
-						</Col>
-					</Row>
+						<Row>
+							<Col span="16">
+							<Input v-model="MonthlyPlanSummary.lMName" placeholder="姓名"></Input>
+							</Col>
+						</Row>
 					</FormItem>
 					<FormItem>
 						<Button @click="select(1)">
@@ -33,9 +38,9 @@
 					</FormItem>
 				</FormItem>
 				<FormItem style="position: absolute;right: 30px">
-				
+
 					<FormItem>
-						<Button >
+						<Button @click="add()">
 							<Icon type="ios-add-circle-outline" />添加记录
 						</Button>
 					</FormItem>
@@ -46,7 +51,7 @@
 			</Form>
 		</div>
 
-		<Table border :columns="columns7" :data="data6" height="520" :loading="loading" stripe size='default' ref="table"></Table>
+		<Table border :columns="columns7" :data="data6" height="450" :loading="loading" stripe size='default' ref="table"></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
 				<Page :total="count" :current="1" @on-change="selectpage($event)"></Page>
@@ -59,6 +64,43 @@
 				</FormItem>
 			</Form>
 		</Modal>
+		<Modal v-model="modal14" draggable scrollable title="添加月计划月总结" @on-ok="oks()">
+			<div>
+				<Form ref="formInline" :model="MonthlyPlanSummary" :label-width="80">
+					<FormItem label="标题">
+						<Input v-model="MonthlyPlanSummary.mTitle" placeholder="标题"></Input>
+					</FormItem>
+					<FormItem label="部门">
+						<Row>
+							<Col span="16">
+							<Select v-model="MonthlyPlanSummary.dId" filterable>
+								<Option v-for="item in departmentType" :value="item.dId" :key="item.dId">{{ item.dName }}</Option>
+							</Select>
+							</Col>
+						</Row>
+					</FormItem>
+					<FormItem label="内容" >
+						<Input v-model="MonthlyPlanSummary.mContexts" type="textarea" :autosize="{minRows: 4,maxRows: 8}" placeholder="内容"></Input>
+					</FormItem>
+					<FormItem label="备注" >
+						<Input v-model="MonthlyPlanSummary.mRemarks" type="textarea" :autosize="{minRows: 4,maxRows: 8}" placeholder="备注"></Input>
+					</FormItem>
+					
+					<FormItem label="文件上传">
+						<div>
+							<Row>
+								<Col span="12">
+								<Upload name='file' :show-upload-list='false' :on-success='resultMsg' action="http://localhost:8080/monthlyPlanSummary/upload">
+									<Button icon="ios-cloud-upload-outline">可拖动上传</Button>
+								</Upload>
+								</Col>
+								<Col span="12"><Input icon="ios-cloud-upload-outline" v-model="MonthlyPlanSummary.mFile" disabled placeholder="没有文件" /></Col>
+							</Row>
+						</div>
+					</FormItem>
+				</Form>
+			</div>
+		</Modal>
 	</div>
 </template>
 <script>
@@ -70,12 +112,15 @@
 				memberInformationType: [],
 				url: "http://localhost:8080",
 				count: 10,
-				baDate:[],
-				bd:"",
+				baDate: [],
+				bd: "",
 				modal13: false,
+				modal14: false,
 				columns7: [{
 						title: '标题',
 						key: 'mTitle',
+						width: 200,
+						tooltip: true,
 						align: 'center'
 					},
 					{
@@ -86,6 +131,16 @@
 					{
 						title: '上传时间',
 						key: 'mDate',
+						align: 'center',
+						width: 150,
+						
+						tooltip: true
+					},
+					{
+						title: '内容',
+						key: 'mContexts',
+						width: 150,
+						tooltip: true,
 						align: 'center',
 					},
 					{
@@ -120,7 +175,7 @@
 											this.show(params.row)
 										}
 									}
-								}, '编辑'),
+								}, '备注'),
 								h('Button', {
 									props: {
 										type: 'error',
@@ -156,17 +211,17 @@
 			//导出数据
 			exportData() {
 				this.$refs.table.exportCsv({
-					filename: '工作信息'
+					filename: '月计划月总结'
 				});
 			},
-			//弹出编辑
+			//弹出备注
 			show(data) {
 				this.modal13 = true;
 				this.MonthlyPlanSummary = data;
 				this.mRemarks = data.mRemarks;
 			},
 			//间隔时间
-			selectTime(page,starTime) {
+			selectTime(page, starTime) {
 				const th = this;
 				this.loading = true;
 				th.baDate = starTime;
@@ -174,8 +229,8 @@
 				axios.get(th.url + '/monthlyPlanSummary/selectDate', {
 					params: {
 						pageNum: page,
-						beforeDate:starTime[0],
-						afterDate:starTime[1]
+						beforeDate: starTime[0],
+						afterDate: starTime[1]
 					}
 				}).then(function(res) {
 					const resdata = res.data.data.map((e) => {
@@ -188,17 +243,17 @@
 				this.loading = false;
 			},
 			//分页查询
-			selectpage(page){
+			selectpage(page) {
 				this.loading = true;
-				if(this.bd == "dName"){
+				if (this.bd == "dName") {
 					selectdName(page);
 				}
-				if(this.bd == "mName"){
+				if (this.bd == "mName") {
 					select(page);
 				}
-				if(this.bd == "mName"){
-					selectTime(page,th.baDate);
-				}else{
+				if (this.bd == "mName") {
+					selectTime(page, th.baDate);
+				} else {
 					changePage(page);
 				}
 				this.loading = false;
@@ -222,15 +277,24 @@
 				})
 				this.loading = false;
 			},
+			//上传文件
+			resultMsg(res) {
+				if (res.code === 1224) {
+					this.MonthlyPlanSummary.mFile = res.data;
+					this.$Message.success(res.message);
+				} else {
+					this.$Message.error(res.message);
+				}
+			},
 			//快速查询
-			select(page){
+			select(page) {
 				this.loading = true;
 				const th = this;
 				th.bd = "mName";
 				axios.get(th.url + '/monthlyPlanSummary/selectmName', {
 					params: {
 						pageNum: page,
-						mName:th.MonthlyPlanSummary.lMName
+						mName: th.MonthlyPlanSummary.lMName
 					}
 				}).then(function(res) {
 					const resdata = res.data.data.map((e) => {
@@ -264,6 +328,21 @@
 					}
 				});
 			},
+			//添加弹出
+			add(){
+				this.modal14 = true;
+				this.MonthlyPlanSummary = {
+					mId: 0,
+					mTitle: "",
+					dId: "",
+					mDate: "",
+					mFile: "",
+					mRemarks: "",
+					mContexts: "",
+					mName: ""
+				
+				};
+			},
 			//修改
 			ok() {
 				const th = this;
@@ -272,7 +351,6 @@
 						"Content-Type": "application/json;charset=utf-8"
 					}
 				}).then(function(res) {
-
 					if (res.data.code === 1028) {
 						th.$Message.success(res.data.message);
 					} else {
@@ -281,19 +359,36 @@
 					}
 				})
 			},
+			//添加
+			oks() {
+				const th = this;
+				axios.post(th.url + '/monthlyPlanSummary/insert', th.MonthlyPlanSummary, {
+					headers: {
+						"Content-Type": "application/json;charset=utf-8"
+					}
+				}).then(function(res) {
+					if (res.data.code === 1028) {
+						th.$Message.success(res.data.message);
+						th.changePage(1);
+					} else {
+						th.$Message.error(res.data.message);
+						th.modal14 = true;
+					}
+				})
+			},
 			//取消按钮
 			cancel() {
 				this.MonthlyPlanSummary.mRemarks = this.mRemarks;
 			},
 			//部门查询
-			selectdName(page){
+			selectdName(page) {
 				const th = this;
 				this.loading = true;
-					th.bd = "dName";
+				th.bd = "dName";
 				axios.get(th.url + '/monthlyPlanSummary/selectdId', {
 					params: {
 						pageNum: page,
-						dId:th.MonthlyPlanSummary.dId
+						dId: th.MonthlyPlanSummary.dId
 					}
 				}).then(function(res) {
 					const resdata = res.data.data.map((e) => {
@@ -305,7 +400,7 @@
 				})
 				this.loading = false;
 			}
-			
+
 		},
 		created() {
 			this.changePage(1);

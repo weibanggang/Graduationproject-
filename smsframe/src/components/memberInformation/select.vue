@@ -1,52 +1,14 @@
-<style scoped>
-	.demo-upload-list {
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    text-align: center;
-    line-height: 60px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    overflow: hidden;
-    background: #fff;
-    position: relative;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
-    margin-right: 4px;
-}
-
-.demo-upload-list img {
-    width: 100%;
-    height: 100%;
-}
-
-.demo-upload-list-cover {
-    display: none;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, .6);
-}
-
-.demo-upload-list:hover .demo-upload-list-cover {
-    display: block;
-}
-
-.demo-upload-list-cover i {
-    color: #fff;
-    font-size: 20px;
-    cursor: pointer;
-    margin: 0 2px;
-}
-
-.ivu-icon {
-    line-height: 58px;
-}
+<style scoped="scoped">
+	.ivu-table td, .ivu-table-border td{
+		height: 41px;
+	}
+	.rigtop{
+		height:80px;
+	}
 </style>
 <template>
 	<div>
-		<div class="rigtop" style="height: 100px;">
+		<div class="rigtop" >
 			<Form inline>
 				<FormItem>
 					<Row>
@@ -100,6 +62,7 @@
 
 			</Form>
 			<Form inline>
+				
 				<FormItem>
 					<Row>
 						<Col span="7" style="text-align: center;">
@@ -125,6 +88,7 @@
 					</Row>
 				</FormItem>
 				<FormItem>
+					状态 : 
 					<RadioGroup v-model="status">
 						<Radio label="true">
 							<Icon type="ios-eye" />
@@ -140,17 +104,16 @@
 						</Radio>
 					</RadioGroup>
 				</FormItem>
-
 			</Form>
 		</div>
-		<Table border :columns="columns7" :data="data6" height="520" :loading="loading" stripe size='default' ref="table"></Table>
+		<Table border :columns="columns7" :data="data6" height="420" :loading="loading" stripe size='default' ref="table"></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
 				<Page :total="count" :current="1" @on-change="select($event)"></Page>
 			</div>
 		</div>
 
-		<Modal v-model="modal13" fullscreen title="添加成员" @on-ok="ok">
+		<Modal v-model="modal13" fullscreen title="添加成员" @on-ok="handleSubmit('memberInformation')">
 			<Form :model="memberInformation" :label-width="80" inline>
 				<div style="width:70%;position:relative;float: left;">
 					<Row>
@@ -253,8 +216,11 @@
 					</Row>
 				</div>
 				<div style="width: 28%;position:relative;float: left;margin: auto; text-align: center;">
-					<p><canvas id="myCanvas" width="200" height="250" style="border:1px solid #d3d3d3;"/></p>
-					<Button type="primary">上传图片</Button>
+					<Upload name='file' :show-upload-list='false' :on-success='resultMsg' action="http://localhost:8080/memberInformation/upload">
+					<p><img :src="memberInformation.pPhoto" onerror="this.src='http://localhost:8080/image/tx.png'" id="myCanvas" width="200" height="250"  style="border:1px solid #d3d3d3;"/></p>
+					
+					<Button icon="ios-cloud-upload-outline">可拖动上传</Button>
+					</Upload>
 				</div>
 			</Form>
 		</Modal>
@@ -270,13 +236,14 @@
 				title: "编辑部门类型",
 				url: "http://localhost:8080",
 				count: 10,
+				sex:true,
 				mName: false,
 				dName: false,
 				cName: false,
 				pName: false,
 				eName: false,
 				status: "true",
-				modal13: true,
+				modal13: false,
 				loading: true,
 				departmentType: '',
 				classTable: '',
@@ -470,12 +437,12 @@
 					mPassword: '686868',
 					mName: '',
 					mSex: '男',
-					cId: 0,
+					cId: 1,
 					cPhone: '',
-					dId: 0,
+					dId: 1,
 					pPhoto: '',
-					eId: 0,
-					jId: 0,
+					eId: 1,
+					jId: 1,
 					mQq: '',
 					status: true,
 					rAdmissionDate: '',
@@ -484,14 +451,58 @@
 			}
 		},
 		methods: {
+			//添加按钮
 			add() {
 				this.modal13 = true;
+			},
+			handleSubmit(name) {
+				console.log(name+"das");
+				/*this.$refs[name].validate((valid) => {
+					 if (valid) {
+						this.$Message.success('Success!');
+					} else {
+						this.$Message.error('Fail!');
+					} */
+					const th=this;
+					axios.post(th.url+'/memberInformation/insert',th.memberInformation,{
+						headers:{
+							"Content-Type":"application/json;charset=utf-8"
+						}
+					}).then(function(res){
+						if(res.data.code===1028){
+							th.$Message.success(res.data.message);
+							th.select(1);
+							th.memberInformation.mUser="";
+							th.memberInformation.mName="";
+							th.memberInformation.pRemarks="";
+							th.memberInformation.pRemarks="";
+							th.memberInformation.cPhone="";
+							
+						}else{
+							th.$Message.error(res.data.message);
+							this.modal13 = true;
+						}
+					})
+				//})
+			},
+			//男女开关
+			off(value){
+				this.memberInformation.mSex=value==true?"男":"女";
 			},
 			//导出数据
 			exportData() {
 				this.$refs.table.exportCsv({
 					filename: '成员信息'
 				});
+			},
+			//上传
+			resultMsg(res) {
+				if (res.code === 1224) {
+					this.memberInformation.pPhoto = this.url+res.data;
+					this.$Message.success(res.message);
+				} else {
+					this.$Message.error(res.message);
+				}
 			},
 			//查询部门类型
 			selectAdd() {
@@ -589,7 +600,6 @@
 					}
 				})
 			},
-
 		},
 		created() {
 			this.select(1);

@@ -1,3 +1,8 @@
+<style>
+	.ivu-table td, .ivu-table-border td{
+		height: 41px;
+	}
+</style>
 <template>
 	<div>
 		<div class="rigtop">
@@ -18,7 +23,7 @@
 						<Checkbox v-model="dates" label="">请假时间</Checkbox>
 						</Col>
 						<Col span="16">
-						<DatePicker type="daterange" placement="bottom-end" @on-change="selectTime(($event))" placeholder="时间查询" style="width: 200px"></DatePicker>
+						<DatePicker type="daterange" placement="bottom-end" @on-change="selectTime(($event))" placeholder="请假时间" style="width: 200px"></DatePicker>
 						</Col>
 					</Row>
 				</FormItem>
@@ -34,8 +39,7 @@
 						</Col>
 					</Row>
 				</FormItem>
-
-				<FormItem>
+				<FormItem style="position: relative;right: 15px">
 					<Button @click="select(1,'bd')">
 						<Icon type="ios-sync" />快速查询
 					</Button>
@@ -57,13 +61,13 @@
 
 
 
-		<Table border :columns="columns7" :data="data6" height="520" :loading="loading" stripe size='default' ref="table"></Table>
+		<Table border :columns="columns7" :data="data6" height="450" :loading="loading" stripe size='default' ref="table"></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
 				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
 			</div>
 		</div>
-		<Modal v-model="modal13" draggable scrollable title="修改请假信息" @on-ok="ok">
+		<Modal v-model="modal13" :styles="{top: '40px'}"  draggable scrollable title="编辑请假信息" @on-ok="ok">
 			<div>
 				<Form ref="formInline" :model="leaveRecord" :label-width="80">
 					<FormItem label="姓名" prop="lMName">
@@ -73,13 +77,26 @@
 						<Input v-model="leaveRecord.lTitle" placeholder="会议标题"></Input>
 					</FormItem>
 					<FormItem label="请假类型">
-						<Input v-model="leaveRecord.lType" placeholder="请假类型"></Input>
+						<RadioGroup v-model="leaveRecord.lType">
+							<Radio label="病假">
+								<Icon type="ios-football-outline" />
+								<span>病假</span>
+							</Radio>
+							<Radio label="事假">
+								<Icon type="md-log-in" />
+								<span>事假</span>
+							</Radio>
+							<Radio label="其他">
+								<Icon type="md-log-out" />
+								<span>其他</span>
+							</Radio>
+						</RadioGroup>
 					</FormItem>
 					<FormItem label="请假时间">
 						<Row>
 							<Col span="11">
 							<FormItem prop="rAdmissionDate">
-								<DatePicker type="date" placeholder="请选择请假时间" v-model="leaveRecord.pDate"></DatePicker>
+								<DatePicker type="date" placeholder="请选择请假时间"  @on-change="getStartTime(($event))"  v-model="leaveRecord.pDate"></DatePicker>
 							</FormItem>
 							</Col>
 						</Row>
@@ -103,6 +120,66 @@
 				</Form>
 			</div>
 		</Modal>
+			<Modal v-model="modal14" :styles="{top: '40px'}" draggable scrollable title="添加请假信息" @on-ok="oks">
+			<Form ref="formInline" :model="leaveRecord" :label-width="80">
+				<FormItem label="工作编号" prop="mUser" >
+					<Row>
+						<Col span="11">
+					<Select v-model="leaveRecord.mUser" filterable placeholder="请输入编号" :remote-method="selectMname"
+			        :loading="loading" >
+					<Option v-for="item in menberInforMation" :value="item.mUser" :key="item.mUser">{{ item.mUser }}</Option>
+					</Select>
+					</Col>
+					<Col span="11">
+						<Input v-model="leaveRecord.lMName" disabled placeholder="姓名"></Input>
+					</Col>
+					</Row>
+				</FormItem>
+				<FormItem label="会议标题">
+					<Input v-model="leaveRecord.lTitle" placeholder="会议标题"></Input>
+				</FormItem>
+				<FormItem label="请假类型">
+					<RadioGroup v-model="leaveRecord.lType">
+						<Radio label="病假">
+							<Icon type="ios-football-outline" />
+							<span>病假</span>
+						</Radio>
+						<Radio label="事假">
+							<Icon type="md-log-in" />
+							<span>事假</span>
+						</Radio>
+						<Radio label="其他">
+							<Icon type="md-log-out" />
+							<span>其他</span>
+						</Radio>
+					</RadioGroup>
+				</FormItem>
+				<FormItem label="请假时间">
+					<Row>
+						<Col span="11">
+						<FormItem prop="rAdmissionDate">
+							<DatePicker type="date" placeholder="请选择请假时间" @on-change="getStartTime(($event))"  v-model="leaveRecord.pDate"></DatePicker>
+						</FormItem>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem label="文件上传">
+					<div>
+						<Row>
+							<Col span="12">
+							<Upload name='file' :show-upload-list='false' :on-success='resultMsg' action="http://localhost:8080/leaveRecord/upload">
+								<Button icon="ios-cloud-upload-outline">可拖动上传</Button>
+							</Upload>
+							</Col>
+							<Col span="12"><Input icon="ios-cloud-upload-outline" v-model="leaveRecord.lFile" disabled placeholder="没有文件" /></Col>
+						</Row>
+					</div>
+				</FormItem>
+				<FormItem label="请假内容" prop="lContexts">
+					<Input v-model="leaveRecord.lContexts" type="textarea" :autosize="{minRows: 4,maxRows: 8}" placeholder="内容"></Input>
+				</FormItem>
+			</Form>
+			</Modal>
 	</div>
 </template>
 <script>
@@ -116,9 +193,11 @@
 				bd: "",
 				loading: true,
 				departmentType: [],
+				menberInforMation:[],
 				url: "http://localhost:8080",
 				count: 10,
 				modal13: false,
+				modal14:false,
 				columns7: [{
 						title: '姓名',
 						key: 'lMName',
@@ -152,7 +231,9 @@
 					{
 						title: '标题',
 						key: 'lTitle',
-						align: 'center'
+						align: 'center',
+						width: 100,
+						tooltip: true
 					},
 					{
 						title: '请假类型',
@@ -176,6 +257,7 @@
 						title: '操作',
 						key: 'action',
 						align: 'center',
+						width: 125,
 						render: (h, params) => {
 							return h('div', [
 								h('Button', {
@@ -215,7 +297,7 @@
 					mUser: "",
 					pDate: "",
 					lTitle: "",
-					lType: "",
+					lType: "病假",
 					lFile: "",
 					mName: "",
 					lContexts: "",
@@ -361,7 +443,56 @@
 						th.modal13 = true;
 					}
 				})
-			}
+			},
+			//添加弹出
+			add() {
+				this.leaveRecord = {
+					lId: 0,
+					dName: "",
+					mUser: "",
+					pDate: "",
+					lTitle: "",
+					lType: "病假",
+					lFile: "",
+					mName: "",
+					lContexts: "",
+					lMName: "",
+				};
+				this.modal14 = true;
+			},
+			//添加
+			oks(){
+				const th = this;
+				axios.post(th.url + '/leaveRecord/insert', th.leaveRecord, {
+						headers: {
+							"Content-Type": "application/json;charset=utf-8"
+						}
+					}).then(function(res) {
+						if (res.data.code === 1028) {
+							th.$Message.success(res.data.message);
+							th.changePage(1);
+						} else {
+							th.$Message.error(res.data.message);
+							th.modal14 = true;
+						}
+					})
+				
+			},
+			//编号查询
+			selectMname(value){
+			const th = this;
+			axios.get(th.url + '/memberInformation/iUserName', {
+				params: {
+					mUser: value
+				}
+			}).then(function(res) {
+				th.menberInforMation = res.data.data;
+				for(let s of res.data.data){
+					th.leaveRecord.lMName=s.mName;
+					th.leaveRecord.dName=s.dId;
+				}
+			}) 
+		},
 		},
 		created() {
 			this.changePage(1);

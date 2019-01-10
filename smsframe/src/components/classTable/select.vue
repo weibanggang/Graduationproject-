@@ -1,7 +1,10 @@
+<style>
+	.ivu-table td, .ivu-table-border td{
+		height: 41px;
+	}
+</style>
 <template>
 	<div>
-
-
 		<div class="rigtop">
 			<Form ref="classTable" :model="classTable" inline>
 				<FormItem>
@@ -47,7 +50,7 @@
 				<FormItem style="position: absolute;right: 30px">
 					<FormItem>
 						<Button @click="insert()">
-							<Icon type="ios-add-circle-outline" />新增部门
+							<Icon type="ios-add-circle-outline" />新增班级
 						</Button>
 					</FormItem>
 					<Button @click="exportData()">
@@ -56,7 +59,7 @@
 				</FormItem>
 			</Form>
 		</div>
-		<Table border :columns="columns7" :data="data6" height="520" stripe size='default' :loading="loading" ref="table"></Table>
+		<Table border :columns="columns7" :data="data6" height="450" stripe size='default' :loading="loading" ref="table"></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
 				<Page :total="count" :current="1" @on-change="Page($event)"></Page>

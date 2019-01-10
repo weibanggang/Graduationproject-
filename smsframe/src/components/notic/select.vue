@@ -1,38 +1,65 @@
+<style scoped="scoped">
+	.ivu-table td, .ivu-table-border td{
+		height: 41px;
+	}
+	.rigtop{
+		height:80px;
+	}
+</style>
 <template>
 	<div>
 		<div class="rigtop">
-			<Form  :model="notic" inline>
+			<Form :model="notic" inline>
 				<FormItem>
 					<Row>
 						<Col span="8" style="text-align: center;">
-							<Checkbox v-model="title" label="">模糊标题</Checkbox>
-						</Col>
-						<Col span="16" >
-								<Input v-model="notic.nTitle"  placeholder="请输入关键字"></Input>
-						</Col>
-					</Row>
-				</FormItem>
-				<FormItem>
-					<Row>
-						<Col span="7" style="text-align: center;">
-							<Checkbox v-model="name" label="">发布人</Checkbox>
-						</Col>
-						<Col span="17">
-								<Input v-model="notic.mName"  placeholder="请输入名字"></Input>
-						</Col>
-					</Row>
-				</FormItem>
-				<FormItem>
-					<Row>
-						<Col span="7" style="text-align: center;">
-							<Checkbox v-model="dates" label="">发布时间</Checkbox>
+						<Checkbox v-model="title" label="">模糊标题</Checkbox>
 						</Col>
 						<Col span="16">
-						<DatePicker type="daterange" placement="bottom-end" placeholder="时间" @on-change="getStartTime(($event))" style="width: 200px"></DatePicker>
+						<Input v-model="notic.nTitle" placeholder="请输入关键字"></Input>
 						</Col>
 					</Row>
 				</FormItem>
+
 				<FormItem>
+					<Row>
+						<Col span="7" style="text-align: center;">
+						<Checkbox v-model="dates" label="">发布时间</Checkbox>
+						</Col>
+						<Col span="16">
+						<DatePicker type="daterange" placement="bottom-end" placeholder="时间" style="width: 200px"></DatePicker>
+						</Col>
+					</Row>
+				</FormItem>
+				<FormItem style="position: relative;left: 15px">
+					<Button @click="select(1,'bd')">
+						<Icon type="ios-sync" />快速查询
+					</Button>
+				</FormItem>
+				<FormItem style="position: absolute;right: 30px">
+					<FormItem>
+						<Button @click="add()">
+							<Icon type="ios-add-circle-outline" />新增部门
+						</Button>
+					</FormItem>
+					<Button @click="exportData()">
+						<Icon type="ios-download-outline" />数据导出
+					</Button>
+				</FormItem>
+			</Form>
+			<Form inline>
+				<FormItem>
+					<Row>
+						<Col span="8" style="text-align: center;">
+						<Checkbox v-model="name" label=""> 发 布 人</Checkbox>
+						</Col>
+						<Col span="16">
+						<Input v-model="notic.mName" placeholder="请输入名字"></Input>
+						</Col>
+					</Row>
+				</FormItem>
+
+				<FormItem style="position: relative;left: 15px">
 					<RadioGroup v-model="status">
 						<Radio label="true">
 							<Icon type="ios-eye" />
@@ -48,28 +75,17 @@
 						</Radio>
 					</RadioGroup>
 				</FormItem>
-				<FormItem>
-						<Button @click="select(1,'bd')">
-							快速查询
-							</Button>
-				</FormItem>
-			<FormItem style="position: absolute;right: 30px">
-			
-				<Button @click="exportData()">
-					<Icon type="ios-download-outline" />数据导出
-				</Button>
-				</FormItem>
 			</Form>
 		</div>
-		
-		
-		<Table border :columns="columns7" :data="data6" height="520" size='default' :loading="loading" stripe ref="table"></Table>
+
+
+		<Table border :columns="columns7" :data="data6" height="420" size='default' :loading="loading" stripe ref="table"></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
 				<Page :total="count" :current="1" @on-change="selectpage($event)"></Page>
 			</div>
 		</div>
-		<Modal v-model="modal13" draggable scrollable title="编辑公告" @on-ok="ok" >
+		<Modal v-model="modal13" :styles="{top: '40px'}" draggable scrollable title="编辑公告" @on-ok="ok">
 			<div>
 				<Form ref="formInline" :model="notic" :label-width="80">
 					<FormItem label="标题">
@@ -102,6 +118,41 @@
 				</Form>
 			</div>
 		</Modal>
+
+		<Modal v-model="modal14" :styles="{top: '40px'}" draggable scrollable title="添加公告" @on-ok="oks">
+			<div>
+				<Form ref="formInline" :model="notic" :label-width="80">
+				<FormItem label="标题">
+					<Input v-model="notic.nTitle" placeholder="标题"></Input>
+				</FormItem>
+				<FormItem label="内容" prop="nContext">
+					<Input v-model="notic.nContext" type="textarea" :autosize="{minRows: 6,maxRows: 8}" placeholder="内容"></Input>
+				</FormItem>
+				<FormItem label="文件上传">
+					<div>
+						<Row>
+							<Col span="12">
+							<Upload name='file' :show-upload-list='false' :on-success='resultMsg' action="http://localhost:8080/notic/upload">
+								<Button icon="ios-cloud-upload-outline">可拖动上传</Button>
+							</Upload>
+							</Col>
+							<Col span="12"><Input icon="ios-cloud-upload-outline" v-model="notic.nFile" disabled placeholder="没有文件" /></Col>
+						</Row>
+					</div>
+				</FormItem>
+				<FormItem label="状态">
+					<i-switch v-model="notic.status" size="large">
+						<span slot="open">正常</span>
+						<span slot="close">冻结</span>
+					</i-switch>
+				</FormItem>
+				<FormItem label="排序">
+					<InputNumber :max="100" :min="1" v-model="notic.nSort"></InputNumber>
+				</FormItem>
+				</Form>
+			</div>
+		</Modal>
+		
 	</div>
 </template>
 <script>
@@ -111,23 +162,24 @@
 				url: "http://localhost:8080",
 				count: 10,
 				modal13: false,
-				noticTitle:"",
-				title:false,
-				name:false,
-				dates:false,
-				loading:true,
-				status:"true",
-				bd:"",
-				baDate:[],
+				modal14: false,
+				noticTitle: "",
+				title: false,
+				name: false,
+				dates: false,
+				loading: true,
+				status: "true",
+				bd: "",
+				baDate: [],
 				memberInformationType: [],
 				columns7: [{
 						title: '标题',
 						key: 'nTitle',
 						align: 'center',
-						width:150,
-						tooltip:true
+						width: 150,
+						tooltip: true
 					},
-						{
+					{
 						title: '编号',
 						key: 'nId',
 						align: 'center',
@@ -209,9 +261,9 @@
 					{
 						title: '公告内容',
 						key: 'nContext',
-						width:200,
+						width: 200,
 						align: 'center',
-						tooltip:true
+						tooltip: true
 					},
 					{
 						title: '操作',
@@ -271,7 +323,7 @@
 			},
 			//间隔时间
 			getStartTime(starTime) {
-					this.baDate = starTime;
+				this.baDate = starTime;
 			},
 			//编辑弹出
 			show(data) {
@@ -347,38 +399,69 @@
 					}
 				})
 			},
+			//添加
+			oks() {
+				const th = this;
+				axios.post(th.url + '/notic/insert', th.notic, {
+					headers: {
+						"Content-Type": "application/json;charset=utf-8"
+					}
+				}).then(function(res) {
+					if (res.data.code === 1028) {
+						th.$Message.success(res.data.message);
+						th.changePage(1);
+					} else {
+						th.$Message.error(res.data.message);
+					}
+				})
+
+			},
 			//分页查询
-			selectpage(page){
-				if(this.bd == "bd"){
-					select(page,bd);
-				}else{
+			selectpage(page) {
+				if (this.bd == "bd") {
+					select(page, bd);
+				} else {
 					changePage(page);
 				}
 			},
+			//添加弹出
+			add() {
+				this.modal14 = true;
+				this.notic = {
+					nId: 0,
+					nTitle: "",
+					nDate: "",
+					nFile: "",
+					mName: "",
+					status: true,
+					nContext: "",
+					nSort: 1
+				};
+			},
 			//快速查询
-			select(page, bd){
-				if(bd =="bd"){
+			select(page, bd) {
+				if (bd == "bd") {
 					this.bd = bd;
-					}
-					this.loading = true;
-				if(!this.title){
+				}
+				this.loading = true;
+				if (!this.title) {
 					this.notic.nTitle = null;
 				}
-				if(!this.name){
+				if (!this.name) {
 					this.notic.mName = null;
 				}
-				if(!this.dates){
-					this.baDate = ["",""];
+				if (!this.dates) {
+					this.baDate = ["", ""];
 				}
 				const th = this;
 				axios.get(th.url + '/notic/selects', {
 					params: {
 						pageNum: page,
-						nTitle:th.notic.nTitle,
-						mName:th.notic.mName,
-						status:th.status,
-						beforeDate:th.baDate[0],
-						afterDate:th.baDate[1],
+						nTitle: th.notic.nTitle,
+						mName: th.notic.mName,
+						status: th.status,
+						beforeDate: th.baDate[0],
+						afterDate: th.baDate[1],
 					}
 				}).then(function(res) {
 					th.data6 = res.data.data;

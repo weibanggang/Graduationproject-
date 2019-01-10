@@ -1,3 +1,8 @@
+<style>
+	.ivu-table td, .ivu-table-border td{
+		height: 41px;
+	}
+</style>
 <template>
 	<div>
 		<div class="rigtop">
@@ -43,7 +48,7 @@
 			</Form>
 		</div>
 		
-		<Table border :columns="columns7" :data="data6" height="520" stripe size='default' :loading="loading" ref="table"></Table>
+		<Table border :columns="columns7" :data="data6" height="450" stripe size='default' :loading="loading" ref="table"></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
 				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>

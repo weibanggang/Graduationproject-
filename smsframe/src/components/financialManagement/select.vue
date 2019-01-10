@@ -1,3 +1,8 @@
+<style>
+	.ivu-table td, .ivu-table-border td{
+		height: 41px;
+	}
+</style>
 <template>
 	<div>
 		<div class="rigtop">
@@ -59,7 +64,7 @@
 			</Form>
 		</div>
 
-		<Table border :columns="columns7" :data="data6" height="520" stripe size='default' ref="table"></Table>
+		<Table border :columns="columns7" :data="data6" height="450" stripe size='default' ref="table"></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
 				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
@@ -86,7 +91,7 @@
 					<Row>
 						<Col span="11">
 						<FormItem prop="rAdmissionDate">
-							<DatePicker type="date" placeholder="请选择时间" v-model="FinancialManagement.fDate"></DatePicker>
+							<DatePicker type="date" placeholder="请选择时间"  @on-change="getStartTime(($event))" v-model="FinancialManagement.fDate"></DatePicker>
 						</FormItem>
 						</Col>
 					</Row>
@@ -206,6 +211,10 @@
 				this.$refs.table.exportCsv({
 					filename: '余额记录'
 				});
+			},
+			//时间
+			getStartTime(starTime) {
+				this.FinancialManagement.fDate = starTime;
 			},
 			//添加弹出框
 			insert() {

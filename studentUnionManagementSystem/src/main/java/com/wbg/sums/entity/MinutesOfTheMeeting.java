@@ -40,7 +40,7 @@ public class MinutesOfTheMeeting {
      *
      * @mbg.generated
      */
-    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GTM+8")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date mDate;
 

@@ -1,3 +1,8 @@
+<style>
+	.ivu-table td, .ivu-table-border td{
+		height: 41px;
+	}
+</style>
 <template>
 	<div>
 
@@ -40,7 +45,7 @@
 			</Form>
 		</div>
 
-		<Table  border :columns="columns7" :data="data6" height="520" :loading="loading" ref="table"  stripe size='default'></Table>
+		<Table  border :columns="columns7" :data="data6" height="450" :loading="loading" ref="table"  stripe size='default'></Table>
 		<div style="margin: 10px;overflow: hidden">
 			<div style="float: right;">
 				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
@@ -69,13 +74,13 @@
 				</FormItem>
 			</Form>
 		</Modal>
-		<Modal v-model="modal14" draggable scrollable title="新增部门"  @on-ok="add">
+		<Modal v-model="modal14" :styles="{top: '40px'}" draggable scrollable title="新增部门"  @on-ok="add">
 					<Form ref="formValidate" :model="DepartmentType" :label-width="80">
 						<FormItem label="部门名称" prop="dName">
 							<Input v-model="DepartmentType.dName" placeholder="请输入部门名称"></Input>
 						</FormItem>
 						<FormItem label="部门简介" prop="dSynopsis">
-							<Input v-model="DepartmentType.dSynopsis" type='textarea' :autosize="{minRows: 5,maxRows: 6}" placeholder="请输入部门简介"></Input>
+							<Input v-model="DepartmentType.dSynopsis" type='textarea' :autosize="{minRows: 4,maxRows: 6}" placeholder="请输入部门简介"></Input>
 						</FormItem>
 						<FormItem label="部门状态" rop="status">
 							<i-switch v-model="DepartmentType.status" size="large">
@@ -85,7 +90,7 @@
 						</FormItem>
 		
 						<FormItem label="部门备注" prop="dRemarks">
-							<Input v-model="DepartmentType.dRemarks" type='textarea' :autosize="{minRows: 5,maxRows: 6}" placeholder="请输入部门备注"></Input>
+							<Input v-model="DepartmentType.dRemarks" type='textarea' :autosize="{minRows: 4,maxRows: 6}" placeholder="请输入部门备注"></Input>
 						</FormItem>
 						<FormItem label="排序" prop="dSort">
 							<InputNumber :max="100" :min="1" v-model="DepartmentType.dSort"></InputNumber>

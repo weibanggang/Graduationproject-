@@ -42,6 +42,7 @@ public class MonthlyPlanSummaryController {
     @PostMapping("/insert")
     public Result insert(@RequestBody MonthlyPlanSummary monthlyPlanSummary) {
         try {
+            monthlyPlanSummary.setmName("设置session");
             return monthlyPlanSummaryService.insert(monthlyPlanSummary) > 0 ? new Result().successMessage("添加成功！") : new Result("添加失败！");
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");

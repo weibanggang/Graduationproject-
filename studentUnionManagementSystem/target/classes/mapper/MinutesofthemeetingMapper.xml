@@ -33,7 +33,7 @@
         m_date, m_file, m_name,
         m_contexts)
         values (#{mId,jdbcType=INTEGER}, #{mTitle,jdbcType=VARCHAR}, #{tId,jdbcType=INTEGER},
-        #{mDate,jdbcType=TIMESTAMP}, #{mFile,jdbcType=VARCHAR}, #{mName,jdbcType=VARCHAR},
+        now(), #{mFile,jdbcType=VARCHAR}, #{mName,jdbcType=VARCHAR},
         #{mContexts,jdbcType=VARCHAR})
     </insert>
     <update id="updateByPrimaryKey" parameterType="com.wbg.sums.entity.MinutesOfTheMeeting">
