@@ -13,7 +13,7 @@ public class MonthlyPlanSummary {
      *
      * @mbg.generated
      */
-    private Integer mId;
+    private int mId;
 
     public DepartmentType getDepartmenttype() {
         return departmenttype;
@@ -41,7 +41,7 @@ public class MonthlyPlanSummary {
      *
      * @mbg.generated
      */
-    private Integer dId;
+    private int dId;
 
     /**
      *
@@ -98,7 +98,7 @@ public class MonthlyPlanSummary {
      *
      * @mbg.generated
      */
-    public Integer getmId() {
+    public int getmId() {
         return mId;
     }
 
@@ -110,7 +110,7 @@ public class MonthlyPlanSummary {
      *
      * @mbg.generated
      */
-    public void setmId(Integer mId) {
+    public void setmId(int mId) {
         this.mId = mId;
     }
 
@@ -146,7 +146,7 @@ public class MonthlyPlanSummary {
      *
      * @mbg.generated
      */
-    public Integer getdId() {
+    public int getdId() {
         return dId;
     }
 
@@ -158,7 +158,7 @@ public class MonthlyPlanSummary {
      *
      * @mbg.generated
      */
-    public void setdId(Integer dId) {
+    public void setdId(int dId) {
         this.dId = dId;
     }
 

@@ -48,7 +48,7 @@
 
 					<FormItem>
 						<Button @click="add()">
-							<Icon type="ios-add-circle-outline" />新增部门
+							<Icon type="ios-add-circle-outline" />添加记录
 						</Button>
 					</FormItem>
 					<Button @click="exportData()">

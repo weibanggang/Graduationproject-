@@ -192,6 +192,19 @@ public class AdminController {
             return new Result().error("出错,请重试！");
         }
     }
-
+    /**
+     * 登录
+     *  用户名  密码
+     * @param aUsername aPassword
+     * @return
+     */
+    @GetMapping("/index")
+    public Result login(String aUsername, String aPassword ) {
+        try {
+            return adminService.login(aUsername, aPassword) > 0 ? new Result().successMessage("登录成功") : new Result().error("账号密码不一致！");
+        } catch (Exception ex) {
+            return new Result().error("出错,请重试！");
+        }
+    }
 
 }

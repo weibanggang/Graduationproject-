@@ -2,7 +2,9 @@ package com.wbg.sums.service.impl;
 
 import com.wbg.sums.dao.AttendanceMapper;
 import com.wbg.sums.entity.Attendance;
+import com.wbg.sums.entity.DepartmentType;
 import com.wbg.sums.service.AttendanceService;
+import com.wbg.sums.service.DepartmentTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +14,8 @@ import java.util.List;
 public class AttendanceServiceImpl implements AttendanceService {
     @Autowired
     private AttendanceMapper attendanceMapper;
-
+    @Autowired
+    private DepartmentTypeService departmentTypeService;
     @Override
     public int deleteByPrimaryKey(Integer aId) {
         return attendanceMapper.deleteByPrimaryKey(aId);
@@ -25,6 +28,10 @@ public class AttendanceServiceImpl implements AttendanceService {
 
     @Override
     public int insert(Attendance record) {
+        DepartmentType departmentType=new DepartmentType();
+        departmentType.setdId(Integer.parseInt(record.getdName()));
+        departmentType=departmentTypeService.selectByPrimaryKey(departmentType.getdId());
+        record.setdName(departmentType.getdName());
         return attendanceMapper.insert(record);
     }
 

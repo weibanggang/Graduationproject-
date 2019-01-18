@@ -36,6 +36,11 @@
 							<Icon type="ios-sync" />快速查询
 						</Button>
 					</FormItem>
+					<FormItem>
+						<Button @click="changePage(1)">
+							<Icon type="ios-football-outline" />全部查询
+						</Button>
+					</FormItem>
 				</FormItem>
 				<FormItem style="position: absolute;right: 30px">
 
@@ -246,15 +251,16 @@
 			selectpage(page) {
 				this.loading = true;
 				if (this.bd == "dName") {
-					selectdName(page);
+					this.selectdName(page);
 				}
 				if (this.bd == "mName") {
-					select(page);
+					this.select(page);
 				}
 				if (this.bd == "mName") {
-					selectTime(page, th.baDate);
-				} else {
-					changePage(page);
+					this.selectTime(page, th.baDate);
+				} 
+				else{
+					this.changePage(page);
 				}
 				this.loading = false;
 			},

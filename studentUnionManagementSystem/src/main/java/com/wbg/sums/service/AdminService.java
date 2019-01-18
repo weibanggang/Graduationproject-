@@ -13,6 +13,8 @@ public interface AdminService {
      *
      * @mbg.generated
      */
+    //验证登陆
+    int login(@Param("aUsername")String aUsername, @Param("aPassword")String aPassword);
     int deleteByPrimaryKey(Integer aId);
 
     /**

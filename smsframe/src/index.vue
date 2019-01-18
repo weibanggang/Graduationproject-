@@ -30,16 +30,14 @@
 }
 .layout-logo{
     width: 100px;
-    border-radius: 3px;
     float: left;
     position: relative;
     top: 15px;
     left: 20px;
 }
 .layout-nav{
-    width: 430px;
-    margin: 0 auto;
-    margin-right: -20px;
+   right: 50px;
+    position: absolute;
 }
 </style>
 
@@ -49,39 +47,44 @@
 			<!--头部-->
 			<Header>
 				<Menu mode="horizontal" :theme="theme" active-name="6" :style="{position: 'fixed', width: '100%'}">
-					<div class="layout-logo" style="left:-50px;top:0px;width:200px;text-align: center;background:#515a6e ">
-						<img src="http://localhost:8080/image/logos.png" style="width: 100%; height: 100%;" />
-					</div>
-					<div class="layout-logo" style="left:-50px;top:0px;width:50%;text-align: center;background:#515a6e ">
-						<Menu mode="horizontal" :theme="theme" active-name="1">
+					<div class="layout-logo" style="left:-50px;top:0px;width:50%;text-align: center; ">
+						<Menu mode="horizontal"  @on-select="topfu" :accordion="true"  :theme="theme" active-name="1">
+							<div class="layout-logo" style="left:0;top:0;width: 200px;;text-align: center;padding-left: 6px;">
+							<router-Link to="/index/">
+							<MenuItem name="控制台">
+							<h3>南方学生会后台系统</h3>
+							</MenuItem>	
+								</router-Link>
+							</div>
 							
-							<MenuItem name="1">
+								<router-Link to="/index/">
+							<MenuItem name="控制台">
 							<Icon type="ios-paper" />
 							控制台
 							</MenuItem>
-							
+								</router-Link>
+								
 							<router-Link to="/index/adminSelect">
-							<MenuItem name="2">
-							<Icon type="ios-people" />
-							工作安排
-							</MenuItem>
+								<MenuItem name="工作安排">
+								<Icon type="ios-people" />
+								工作安排
+								</MenuItem>
 							</router-Link>
 							<router-Link to="/index/workArrangementSelect">
-							<MenuItem name="2">
-							<Icon type="ios-people" />
-							公告管理
-							</MenuItem>
+								<MenuItem name="公告管理">
+								<Icon type="ios-people" />
+								公告管理
+								</MenuItem>
 							</router-Link>
-							<router-Link to="/index/workArrangementSelect">
-							<MenuItem name="2">
-							<Icon type="ios-people" />
-							管理员
-							</MenuItem>
+							<router-Link to="/index/adminSelect">
+								<MenuItem name="管理员">
+								<Icon type="ios-people" />
+								管理员
+								</MenuItem>
 							</router-Link>
-							
+
 						</Menu>
 					</div>
-
 
 					<div class="layout-nav">
 						<MenuItem name="5">
@@ -99,17 +102,30 @@
 						<Submenu name="6">
 							<template slot="title">
 								<Icon type="ios-shirt-outline" />
-								皮肤
+								更换主题
 							</template>
-							<MenuItem name="3-1">新增和启动</MenuItem>
-							<MenuItem name="3-2">活跃分析</MenuItem>
-							<MenuItem name="3-3">时段分析</MenuItem>
-
+							<div style="background-color: #1b315e">
+								<RadioGroup v-model="theme" >
+									<Radio label="dark">
+										<Icon type="social-apple"></Icon>
+										<span>黑色主题</span>
+									</Radio>
+									<Radio label="light">
+										<Icon type="social-android"></Icon>
+										<span>白色主题</span>
+									</Radio>
+									<Radio label="primary">
+										<Icon type="social-windows"></Icon>
+										<span>飘色主题</span>
+									</Radio>
+								</RadioGroup>
+							</div>
+							
 						</Submenu>
 						<router-link to="/">
 							<MenuItem name="3">
 							<Icon type="ios-exit-outline" />
-							注销
+							<span>注销</span>
 							</MenuItem>
 						</router-link>
 					</div>
@@ -118,89 +134,86 @@
 			<Layout>
 				<!--左边-->
 				<Sider hide-trigger :style="{background: '#fff'}">
-					<Menu active-name="1-2" :theme="theme" accordion width="auto" :open-names="['1']">
-						<Submenu name="5">
+					<Menu  @on-open-change="fu"  @on-select="ze" :accordion="true" active-name="1-2" :theme="theme"  width="auto" :open-names="['1']">
+						<Submenu name="财务管理">
 							<template slot="title">
-								<Icon type="ios-navigate"></Icon>
+								<Icon type="logo-yen" />
 								财务管理
 							</template>
 							<router-Link to="/index/financialManagementSelect">
-								<MenuItem name="5-1">余额查询</MenuItem>
-							</router-Link>
-							<router-Link to="/index/financialManagementadd">
-								<MenuItem name="5-2">支出收入</MenuItem>
+								<MenuItem name="余额查询">余额查询</MenuItem>
 							</router-Link>
 						</Submenu>
-						<Submenu name="6">
+						<Submenu name="记录情况">
 							<template slot="title">
-								<Icon type="ios-navigate"></Icon>
+								<Icon type="ios-paper-outline" />
 								记录情况
 							</template>
 							<router-Link to="/index/minutesOfTheMeetingSelect">
-								<MenuItem name="6-1">会议记录</MenuItem>
+								<MenuItem name="会议记录">会议记录</MenuItem>
 							</router-Link>
 							<router-Link to="/index/monthlyPlanSummarySelect">
-								<MenuItem name="6-2">月计划月总结</MenuItem>
+								<MenuItem name="月计划月总结">月计划月总结</MenuItem>
 							</router-Link>
 							<router-Link to="/index/leaveRecordSelect">
-								<MenuItem name="6-3">请假记录</MenuItem>
+								<MenuItem name="请假记录">请假记录</MenuItem>
 							</router-Link>
 						</Submenu>
-						<Submenu name="7">
+						<Submenu name="出勤管理">
 							<template slot="title">
-								<Icon type="ios-navigate"></Icon>
+								<Icon type="md-done-all"></Icon>
 								出勤管理
 							</template>
 							<router-Link to="/index/attendanceSelect">
-								<MenuItem name="7-1">出勤查询</MenuItem>
+								<MenuItem name="出勤查询">出勤查询</MenuItem>
 							</router-Link>
 						</Submenu>
-						<Submenu name="8">
+						<Submenu name="评优管理">
 							<template slot="title">
-								<Icon type="ios-navigate"></Icon>
+								<Icon type="ios-ribbon" />
 								评优管理
 							</template>
 							<router-Link to="/index/personalMeritRecordSelect">
-								<MenuItem name="8-1">个人评优</MenuItem>
+								<MenuItem name="个人评优">个人评优</MenuItem>
 							</router-Link>
 							<router-Link to="/index/departmentalExcellenceRecordSelect">
-								<MenuItem name="8-2">部门评优</MenuItem>
+								<MenuItem name="部门评优">部门评优</MenuItem>
 							</router-Link>
 						</Submenu>
-						<Submenu name="12">
+						<Submenu name="成员管理">
 							<template slot="title">
-								<Icon type="ios-navigate"></Icon>
+								<Icon type="ios-people"></Icon>
 								成员管理
 							</template>
 							<router-Link to="/index/memberInformationSelect">
-								<MenuItem name="12-1">成员信息</MenuItem>
+								<MenuItem name="成员信息">成员信息</MenuItem>
 							</router-Link>
-							<router-Link to="/index/memberInformationAdd">
-								<MenuItem name="12-2">添加成员</MenuItem>
+							<router-Link to="/index/memberInformationselectEcharts">
+								<MenuItem name="报表">报表</MenuItem>
 							</router-Link>
 						</Submenu>
-						<Submenu name="13">
+						<Submenu name="其他管理">
 							<template slot="title">
 								<Icon type="ios-keypad"></Icon>
 								其他管理
 							</template>
 							<router-Link to="/index/jurisdictionSelect">
-								<MenuItem name="13-1">权限管理</MenuItem>
+								<MenuItem name="权限管理">权限管理</MenuItem>
 							</router-Link>
 							<router-Link to="/index/classTableSelect">
-								<MenuItem name="13-2">班级管理</MenuItem>
+								<MenuItem name="班级管理">班级管理</MenuItem>
 							</router-Link>
 							<router-Link to="/index/typeOfMeetingSelect">
-								<MenuItem name="13-3">会议类型</MenuItem>
+								<MenuItem name="会议类型">会议类型</MenuItem>
 							</router-Link>
 							<router-Link to="/index/exchangeTableSelect">
-								<MenuItem name="13-4">会名管理</MenuItem>
+								<MenuItem name="会名管理">会名管理</MenuItem>
 							</router-Link>
 							<router-Link to="/index/departmentTypeSelect">
-								<MenuItem name="13-5">部门管理</MenuItem>
+								<MenuItem name="部门管理">部门管理</MenuItem>
 							</router-Link>
 							<router-Link to="/index/positionTypeSelect">
-								<MenuItem name="13-6">职位管理</MenuItem>
+								<MenuItem name="职位管理">职位管理</MenuItem>
 							</router-Link>
 						</Submenu>
 					</Menu>
@@ -209,11 +222,18 @@
 				<Layout>
 					<!--导航栏-->
 					<Breadcrumb :style="{margin: '5px'}">
-						<b>位置：</b>首页 > 财务管理 > 查询余额
+						<span >
+							<Icon type="ios-pin-outline"/>
+							当前位置：</span>
+						<span >{{ parentTag }}</span>
+						<span >{{ childTag }}</span>
+						<span style="float: right; margin-right: 20px;">{{years}}</span>
 					</Breadcrumb>
 					<!--内容-->
 					<Content :style="{padding: '0 25px', minHeight: '280px', background: '#fff'}">
-						<router-view></router-view>
+						<router-view>
+							
+						</router-view>
 					</Content>
 				</Layout>
 			</Layout>
@@ -224,10 +244,30 @@
 
 <script>
 	export default {
-		data () {
-					 return {
-						 theme:"dark",
-					 }
+		data() {
+			return {
+				years:"",
+				theme: "primary",
+				parentTag:"控制台",
+				childTag:""
+			}
+		},
+		methods:{
+			fu(e){
+				this.parentTag = e[0];
+				this.childTag = "";
+			},
+			ze(e){
+				this.childTag = " > " + e;
+			},
+			topfu(e){
+				this.parentTag = e;
+				this.childTag = "";
+			},
+		},
+		created(){
+			var data = new Date();
+			this.years = data.getFullYear() + "年" + data.getMonth()+1 +"月" + data.getDate() + "日";
 		}
 	}
 </script>

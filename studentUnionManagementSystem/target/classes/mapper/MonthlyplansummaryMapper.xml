@@ -69,7 +69,7 @@
         from monthlyplansummary m join departmenttype d on m.d_id = d.d_id
     </select>
     <select id="count" resultType="java.lang.Integer">
-    select count(*) from monthlyplansummary
+      select count(*)   from monthlyplansummary m join departmenttype d on m.d_id = d.d_id
   </select>
     <select id="selectDate" resultMap="BaseResultMap">
     select m_id, m_title, m.d_id, m_date, m_file, m_remarks, m_name, m_contexts,d_name
@@ -87,10 +87,10 @@ select m_id, m_title, m.d_id, m_date, m_file, m_remarks, m_name, m_contexts,d_na
     where d.d_id = #{dId}
   </select>
     <select id="counts" resultType="java.lang.Integer">
-        select count(*) from monthlyplansummary
+        select count(*)   from monthlyplansummary m join departmenttype d on m.d_id = d.d_id
         <where>
             <if test="dId != 0">
-                and d_id = #{dId}
+                and d.d_id = #{dId}
             </if>
             <if test=" beforeDate != null and beforeDate != '' ">
                 and m_date &gt;= #{beforeDate} and m_date &lt;= #{afterDate}

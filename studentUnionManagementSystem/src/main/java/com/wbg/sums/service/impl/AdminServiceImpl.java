@@ -16,6 +16,11 @@ public class AdminServiceImpl implements AdminService {
     private AdminMapper adminMapper;
 
     @Override
+    public int login(String aUsername, String aPassword) {
+        return adminMapper.login(aUsername, aPassword);
+    }
+
+    @Override
     public int deleteByPrimaryKey(Integer aId) {
 
         return adminMapper.deleteByPrimaryKey(aId);

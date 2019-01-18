@@ -75,4 +75,10 @@
     <select id="count" resultType="java.lang.Integer">
        select count (*) from Admin where status like concat('%',#{status},'%')
     </select>
+    <select id="login" resultType="java.lang.Integer">
+       select count (*) from Admin  where
+        a_username = #{aUsername} and
+        a_password = #{aPassword} and
+        status = 'true'
+    </select>
 </mapper>

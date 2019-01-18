@@ -54,7 +54,7 @@
 
 					<FormItem>
 						<Button @click="insert()">
-							<Icon type="ios-add-circle-outline" />新增记录
+							<Icon type="ios-add-circle-outline" />添加记录
 						</Button>
 					</FormItem>
 					<Button @click="exportData()">
@@ -70,8 +70,8 @@
 				<Page :total="count" :current="1" @on-change="changePage($event)"></Page>
 			</div>
 		</div>
-		<Modal v-model="modal13" draggable scrollable title="交易记录" @on-ok="add">
-			<Form :model="FinancialManagement">
+		<Modal v-model="modal13" :styles="{top: '40px'}" draggable scrollable title="交易记录" @on-ok="add">
+			<Form :model="FinancialManagement" >
 				<FormItem prop="aUsername" label="金额">
 					<div>
 						<InputNumber
@@ -108,8 +108,12 @@
 						</Row>
 					</div>
 				</FormItem>
-				<FormItem>
-					<Input v-model="FinancialManagement.fRemarks" type="textarea" :autosize="{minRows: 6,maxRows: 8}" placeholder="备注"></Input>
+				<FormItem label="备注">
+					<Row>
+						<Col span="18">
+					<Input v-model="FinancialManagement.fRemarks" type="textarea" :autosize="{minRows: 5,maxRows: 8}" placeholder="备注"></Input>
+						</Col>
+					</Row>
 				</FormItem>
 			</Form>
 		</Modal>

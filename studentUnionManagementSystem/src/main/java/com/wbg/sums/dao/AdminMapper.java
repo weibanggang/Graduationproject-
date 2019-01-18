@@ -64,5 +64,6 @@ public interface AdminMapper {
 //    根据状态查询编号、账号、状态、备注  List<Admin> selectAllStatus(String status);
     List<Admin> selectAllStatus(@Param("status")String status);
 //    select * from Admin where status=#{status}
-
+    //验证登陆
+    int login(@Param("aUsername")String aUsername, @Param("aPassword")String aPassword);
 }

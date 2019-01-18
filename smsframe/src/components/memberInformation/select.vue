@@ -8,7 +8,7 @@
 </style>
 <template>
 	<div>
-		<div class="rigtop" >
+		<div class="rigtop">
 			<Form inline>
 				<FormItem>
 					<Row>
@@ -52,7 +52,7 @@
 				<FormItem style="position: absolute;right: 30px">
 					<FormItem>
 						<Button @click="add()">
-							<Icon type="ios-add-circle-outline" />新增记录
+							<Icon type="ios-add-circle-outline" />新增信息
 						</Button>
 					</FormItem>
 					<Button @click="exportData()">
@@ -62,7 +62,7 @@
 
 			</Form>
 			<Form inline>
-				
+
 				<FormItem>
 					<Row>
 						<Col span="7" style="text-align: center;">
@@ -88,7 +88,7 @@
 					</Row>
 				</FormItem>
 				<FormItem>
-					状态 : 
+					状态 :
 					<RadioGroup v-model="status">
 						<Radio label="true">
 							<Icon type="ios-eye" />
@@ -113,7 +113,7 @@
 			</div>
 		</div>
 
-		<Modal v-model="modal13" fullscreen title="添加成员" @on-ok="handleSubmit('memberInformation')">
+		<Modal v-model="modal13" fullscreen title="添加成员" @on-ok="ok">
 			<Form :model="memberInformation" :label-width="80" inline>
 				<div style="width:70%;position:relative;float: left;">
 					<Row>
@@ -194,7 +194,7 @@
 							<Row>
 								<Col span="21">
 								<FormItem>
-									<DatePicker type="date" placeholder="请选择入会时间" v-model="memberInformation.rAdmissionDate"></DatePicker>
+									<DatePicker type="date" placeholder="请选择入会时间" @on-change="getStartTime" v-model="memberInformation.rAdmissionDate"></DatePicker>
 								</FormItem>
 								</Col>
 							</Row>
@@ -204,7 +204,7 @@
 						<FormItem label="状态">
 							<i-switch size="large" v-model="memberInformation.status">
 								<span slot="open">正常</span>
-								<span slot="close">冻结</span>
+								<span slot="close">退会</span>
 							</i-switch>
 						</FormItem>
 						</Col>
@@ -217,9 +217,9 @@
 				</div>
 				<div style="width: 28%;position:relative;float: left;margin: auto; text-align: center;">
 					<Upload name='file' :show-upload-list='false' :on-success='resultMsg' action="http://localhost:8080/memberInformation/upload">
-					<p><img :src="memberInformation.pPhoto" onerror="this.src='http://localhost:8080/image/tx.png'" id="myCanvas" width="200" height="250"  style="border:1px solid #d3d3d3;"/></p>
-					
-					<Button icon="ios-cloud-upload-outline">可拖动上传</Button>
+						<p><img :src="memberInformation.pPhoto" onerror="this.src='http://localhost:8080/image/tx.png'" id="myCanvas"
+							 width="200" height="250" style="border:1px solid #d3d3d3;" /></p>
+						<Button icon="ios-cloud-upload-outline">可拖动上传</Button>
 					</Upload>
 				</div>
 			</Form>
@@ -236,7 +236,8 @@
 				title: "编辑部门类型",
 				url: "http://localhost:8080",
 				count: 10,
-				sex:true,
+				sex: true,
+				interface:"",
 				mName: false,
 				dName: false,
 				cName: false,
@@ -272,6 +273,12 @@
 						key: 'mUser',
 						align: 'center',
 						width: 120,
+					},
+					{
+						title: '性别',
+						key: 'mSex',
+						align: 'center',
+						width: 80,
 					},
 					{
 						title: '联系方式',
@@ -361,7 +368,8 @@
 									},
 									on: {
 										click: () => {
-											this.show(params.row)
+											
+											this.show(params.row.mId);
 										}
 									}
 								}, '编辑'),
@@ -443,51 +451,91 @@
 					pPhoto: '',
 					eId: 1,
 					jId: 1,
+					pId:1,
 					mQq: '',
 					status: true,
 					rAdmissionDate: '',
+					rTuihuiDate:"",
 					pRemarks: ''
+				},
+				ruleValidate: {
+					mUser: [{
+						required: true,
+						message: '请输入编号',
+						trigger: 'blur'
+					}],mName: [{
+						required: true,
+						message: '请输入姓名',
+						trigger: 'blur'
+					}],
+					dId: [{
+						required: true,
+						message: '请选择部门',
+						trigger: 'change'
+					}],
+					pId: [{
+						required: true,
+						message: '请选择职位',
+						trigger: 'change'
+					}],
+					jId: [{
+						required: true,
+						message: '请选择权限',
+						trigger: 'change'
+					}],
+					eId: [{
+						required: true,
+						message: '请选择所属届',
+						trigger: 'change'
+					}],
+					cId: [{
+						required: true,
+						message: '请选择班级',
+						trigger: 'change'
+					}],
+					rAdmissionDate: [{
+						required: true,
+						type: 'date',
+						message: '请选择时间',
+						trigger: 'change'
+					}],
+				
 				}
 			}
 		},
 		methods: {
 			//添加按钮
 			add() {
+				this.interface = "insert";
 				this.modal13 = true;
+				this.memberInformation = {
+					mId: 0,
+					mUser: '',
+					mPassword: '686868',
+					mName: '',
+					mSex: '男',
+					cId: 1,
+					cPhone: '',
+					dId: 1,
+					pPhoto: '',
+					eId: 1,
+					jId: 1,
+					pId:1,
+					mQq: '',
+					status: true,
+					rAdmissionDate: '',
+					rTuihuiDate:"",
+					pRemarks: ''
+				};
 			},
-			handleSubmit(name) {
-				console.log(name+"das");
-				/*this.$refs[name].validate((valid) => {
-					 if (valid) {
-						this.$Message.success('Success!');
-					} else {
-						this.$Message.error('Fail!');
-					} */
-					const th=this;
-					axios.post(th.url+'/memberInformation/insert',th.memberInformation,{
-						headers:{
-							"Content-Type":"application/json;charset=utf-8"
-						}
-					}).then(function(res){
-						if(res.data.code===1028){
-							th.$Message.success(res.data.message);
-							th.select(1);
-							th.memberInformation.mUser="";
-							th.memberInformation.mName="";
-							th.memberInformation.pRemarks="";
-							th.memberInformation.pRemarks="";
-							th.memberInformation.cPhone="";
-							
-						}else{
-							th.$Message.error(res.data.message);
-							this.modal13 = true;
-						}
-					})
-				//})
+				//时间
+			getStartTime(starTime) {
+				this.memberInformation.rAdmissionDate = starTime;
+				console.log(starTime);
 			},
 			//男女开关
-			off(value){
-				this.memberInformation.mSex=value==true?"男":"女";
+			off(value) {
+				this.memberInformation.mSex = value == true ? "男" : "女";
 			},
 			//导出数据
 			exportData() {
@@ -498,7 +546,7 @@
 			//上传
 			resultMsg(res) {
 				if (res.code === 1224) {
-					this.memberInformation.pPhoto = this.url+res.data;
+					this.memberInformation.pPhoto = this.url + res.data;
 					this.$Message.success(res.message);
 				} else {
 					this.$Message.error(res.message);
@@ -524,8 +572,33 @@
 				})
 			},
 			//编辑
-			show(data) {
+			show(mId) {
+				this.interface = "updateByPrimaryKey";
 				this.modal13 = true;
+				var th = this;
+				axios.get(th.url + '/memberInformation/selectByPrimaryKey', {
+					params: {
+						mId: mId,
+					}
+				}).then(function(res) {
+					th.memberInformation.mId = res.data.data.mId;
+					th.memberInformation.mUser =  res.data.data.mUser;
+					th.memberInformation.mPassword =  res.data.data.mPassword;
+					th.memberInformation.mName =  res.data.data.mName;
+					th.sex =  res.data.data.mSex == "男" ? true : false;
+					th.memberInformation.cId =  res.data.data.cId;
+					th.memberInformation.cPhone =  res.data.data.cPhone;
+					th.memberInformation.dId =  res.data.data.dId;
+					th.memberInformation.pPhoto =  res.data.data.pPhoto;
+					th.memberInformation.eId =  res.data.data.eId;
+					th.memberInformation.jId =  res.data.data.jId;
+					th.memberInformation.pId =  res.data.data.pId;
+					th.memberInformation.mQq =  res.data.data.mQq;
+					th.memberInformation.status =  res.data.data.status == "true" ? true : false;
+					th.memberInformation.rAdmissionDate =  res.data.data.rAdmissionDate;
+					th.memberInformation.rTuihuiDate =  res.data.data.rTuihuiDate;
+					th.memberInformation.pRemarks =  res.data.data.pRemarks;
+				})
 			},
 			//查询
 			select(page) {
@@ -586,19 +659,20 @@
 			},
 			//修改
 			ok() {
-				const th = this;
-				axios.post(th.url + '/memberInformation/updateByPrimaryKey', th.memberInformation, {
-					headers: {
-						"Content-Type": "application/json;charset=utf-8"
+				const th=this;
+				axios.post(th.url+'/memberInformation/'+th.interface,th.memberInformation,{
+					headers:{
+						"Content-Type":"application/json;charset=utf-8"
 					}
-				}).then(function(res) {
-					if (res.data.code === 1028) {
+				}).then(function(res){
+					if(res.data.code===1028){
 						th.$Message.success(res.data.message);
-						th.changePage(1);
-					} else {
+						th.select(1);
+					}else{
 						th.$Message.error(res.data.message);
+						this.modal13 = true;
 					}
-				})
+				}) 
 			},
 		},
 		created() {

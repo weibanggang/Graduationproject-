@@ -123,6 +123,13 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <!--短信接口-->
+        <dependency>
+            <groupId>com.github.qcloudsms</groupId>
+            <artifactId>qcloudsms</artifactId>
+            <version>1.0.6</version>
+        </dependency>
+
     </dependencies>
     <!--Mybatis-generator自动生成-->
     <build>

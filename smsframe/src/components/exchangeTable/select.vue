@@ -38,7 +38,7 @@
 				<FormItem style="position: absolute;right: 30px">
 					<FormItem>
 						<Button @click="insert()">
-							<Icon type="ios-add-circle-outline" />新增信息
+							<Icon type="ios-add-circle-outline" />新增会名
 						</Button>
 					</FormItem>
 					<Button @click="exportData()">
