@@ -20,7 +20,6 @@ public class MemberInformationServiceImpl implements MemberInformationService {
 
     @Override
     public int insert(MemberInformation record) {
-
         return memberInformationMapper.insert(record);
 
     }
@@ -92,9 +91,23 @@ public class MemberInformationServiceImpl implements MemberInformationService {
     }
 
     @Override
-    public int selectJid(String mUser) {
-        return memberInformationMapper.selectJid(mUser);
+    public int selectRid(String mUser) {
+        return memberInformationMapper.selectRid(mUser);
     }
 
+    @Override
+    public MemberInformation getByMUser(String mUser) {
+        return memberInformationMapper.getByMUser(mUser);
+    }
+
+    @Override
+    public MemberInformation goLogin(String mUser, String mPassword) {
+        return memberInformationMapper.goLogin(mUser,mPassword);
+    }
+
+    @Override
+    public MemberInformation yzm(String mPhone) {
+        return memberInformationMapper.yzm(mPhone);
+    }
 
 }

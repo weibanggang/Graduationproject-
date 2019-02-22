@@ -129,12 +129,12 @@ public class MemberInfomationDto {
         this.eName = eName;
     }
 
-    public String getjName() {
-        return jName;
+    public String getrName() {
+        return rName;
     }
 
-    public void setjName(String jName) {
-        this.jName = jName;
+    public void setrName(String rName) {
+        this.rName = rName;
     }
 
     private String mName;
@@ -151,5 +151,5 @@ public class MemberInfomationDto {
     private String dName;
     private String pName;
     private String eName;
-    private String jName;
+    private String rName;
 }

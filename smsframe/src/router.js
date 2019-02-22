@@ -18,14 +18,6 @@ export default new Router({
 					path: '/',
 					name: '',
 					component: () => import('./components/echarts/index.vue')
-			}, {
-				path: '/index/adminSelect',
-				name: 'adminSelect',
-				component: () => import('./components/admin/select.vue')
-			}, {
-				path: '/index/adminAdd',
-				name: 'adminAdd',
-				component: () => import('./components/admin/add.vue')
 			},
 			{
 				path: '/index/departmentTypeSelect',

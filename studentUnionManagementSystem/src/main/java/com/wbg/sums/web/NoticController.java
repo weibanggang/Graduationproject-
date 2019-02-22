@@ -1,15 +1,12 @@
 package com.wbg.sums.web;
 
 import com.github.pagehelper.PageHelper;
-import com.wbg.sums.dto.Result;
+import com.wbg.sums.util.Result;
 import com.wbg.sums.entity.Notic;
 import com.wbg.sums.service.NoticService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController

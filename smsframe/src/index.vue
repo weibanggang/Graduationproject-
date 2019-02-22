@@ -48,23 +48,23 @@
 			<Header>
 				<Menu mode="horizontal" :theme="theme" active-name="6" :style="{position: 'fixed', width: '100%'}">
 					<div class="layout-logo" style="left:-50px;top:0px;width:50%;text-align: center; ">
-						<Menu mode="horizontal"  @on-select="topfu" :accordion="true"  :theme="theme" active-name="1">
+						<Menu mode="horizontal" @on-select="topfu" :accordion="true" :theme="theme" active-name="1">
 							<div class="layout-logo" style="left:0;top:0;width: 200px;;text-align: center;padding-left: 6px;">
-							<router-Link to="/index/">
-							<MenuItem name="控制台">
-							<h3>南方学生会后台系统</h3>
-							</MenuItem>	
+								<router-Link to="/index/">
+									<MenuItem name="控制台">
+									<h3>南方学生会后台系统</h3>
+									</MenuItem>
 								</router-Link>
 							</div>
-							
-								<router-Link to="/index/">
-							<MenuItem name="控制台">
-							<Icon type="ios-paper" />
-							控制台
-							</MenuItem>
-								</router-Link>
-								
-							<router-Link to="/index/adminSelect">
+
+							<router-Link to="/index/">
+								<MenuItem name="控制台">
+								<Icon type="ios-paper" />
+								控制台
+								</MenuItem>
+							</router-Link>
+
+							<router-Link to="/index/noticSelect">
 								<MenuItem name="工作安排">
 								<Icon type="ios-people" />
 								工作安排
@@ -74,12 +74,6 @@
 								<MenuItem name="公告管理">
 								<Icon type="ios-people" />
 								公告管理
-								</MenuItem>
-							</router-Link>
-							<router-Link to="/index/adminSelect">
-								<MenuItem name="管理员">
-								<Icon type="ios-people" />
-								管理员
 								</MenuItem>
 							</router-Link>
 
@@ -94,7 +88,6 @@
 							<Icon type="ios-arrow-down"></Icon>
 
 							<DropdownMenu slot="list">
-								<DropdownItem>安全设置</DropdownItem>
 								<DropdownItem>修改密码</DropdownItem>
 							</DropdownMenu>
 						</Dropdown>
@@ -105,7 +98,7 @@
 								更换主题
 							</template>
 							<div style="background-color: #1b315e">
-								<RadioGroup v-model="theme" >
+								<RadioGroup v-model="theme">
 									<Radio label="dark">
 										<Icon type="social-apple"></Icon>
 										<span>黑色主题</span>
@@ -120,21 +113,20 @@
 									</Radio>
 								</RadioGroup>
 							</div>
-							
+
 						</Submenu>
-						<router-link to="/">
-							<MenuItem name="3">
+							<MenuItem name="3" @click.native="logout">
 							<Icon type="ios-exit-outline" />
 							<span>注销</span>
 							</MenuItem>
-						</router-link>
 					</div>
 				</Menu>
 			</Header>
 			<Layout>
 				<!--左边-->
 				<Sider hide-trigger :style="{background: '#fff'}">
-					<Menu  @on-open-change="fu"  @on-select="ze" :accordion="true" active-name="1-2" :theme="theme"  width="auto" :open-names="['1']">
+					<Menu @on-open-change="fu" @on-select="ze" :accordion="true" active-name="1-2" :theme="theme" width="auto"
+					 :open-names="['1']">
 						<Submenu name="财务管理">
 							<template slot="title">
 								<Icon type="logo-yen" />
@@ -222,17 +214,17 @@
 				<Layout>
 					<!--导航栏-->
 					<Breadcrumb :style="{margin: '5px'}">
-						<span >
-							<Icon type="ios-pin-outline"/>
+						<span>
+							<Icon type="ios-pin-outline" />
 							当前位置：</span>
-						<span >{{ parentTag }}</span>
-						<span >{{ childTag }}</span>
+						<span>{{ parentTag }}</span>
+						<span>{{ childTag }}</span>
 						<span style="float: right; margin-right: 20px;">{{years}}</span>
 					</Breadcrumb>
 					<!--内容-->
 					<Content :style="{padding: '0 25px', minHeight: '280px', background: '#fff'}">
 						<router-view>
-							
+
 						</router-view>
 					</Content>
 				</Layout>
@@ -246,28 +238,43 @@
 	export default {
 		data() {
 			return {
-				years:"",
+				url: "http://localhost:8080",
+				years: "",
 				theme: "primary",
-				parentTag:"控制台",
-				childTag:""
+				parentTag: "控制台",
+				childTag: ""
 			}
 		},
-		methods:{
-			fu(e){
+		methods: {
+			logout(){
+				var th = this;
+				axios.get(th.url + '/login/logout').then(function(res) {
+					
+					if (res.data.code == 1028) {
+						th.$Message.success(res.data.message);
+						localStorage.setItem("accessToken",null);
+						setTimeout(function() {
+							window.location.href = "/";
+						}, 900);
+						
+					}
+				});
+				
+			},
+			fu(e) {
 				this.parentTag = e[0];
 				this.childTag = "";
-			},
-			ze(e){
+			},ze(e) {
 				this.childTag = " > " + e;
 			},
-			topfu(e){
+			topfu(e) {
 				this.parentTag = e;
 				this.childTag = "";
 			},
 		},
-		created(){
+		created() {
 			var data = new Date();
-			this.years = data.getFullYear() + "年" + data.getMonth()+1 +"月" + data.getDate() + "日";
+			this.years = data.getFullYear() + "年" + (data.getMonth() + 1) + "月" + data.getDate() + "日";
 		}
 	}
 </script>

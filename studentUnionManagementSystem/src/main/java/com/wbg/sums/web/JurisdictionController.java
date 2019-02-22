@@ -1,11 +1,10 @@
 package com.wbg.sums.web;
 
 import com.github.pagehelper.PageHelper;
-import com.wbg.sums.dto.Result;
+import com.wbg.sums.util.Result;
 import com.wbg.sums.entity.Jurisdiction;
 import com.wbg.sums.service.JurisdictionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,13 +18,13 @@ public class JurisdictionController {
     /**
      * jId
      *
-     * @param jurisdiction
+     * @param jId
      * @return
      */
     @GetMapping("/deleteByPrimaryKey")
-    public Result deleteByPrimaryKey(Jurisdiction jurisdiction) {
+    public Result deleteByPrimaryKey(int jId) {
         try {
-        return jurisdictionService.deleteByPrimaryKey(jurisdiction.getjId()) > 0 ? new Result().successMessage("删除成功") : new Result("修改失败");
+        return jurisdictionService.deleteByPrimaryKey(jId) > 0 ? new Result().successMessage("删除成功") : new Result("修改失败");
      }
         catch (Exception ex) {
         return new Result().error ("出错,检查是否有依赖，再重试！");
@@ -51,13 +50,13 @@ public class JurisdictionController {
     /**
      * 根据aid查找对象  最多只能返回一个对象
      *
-     * @param jurisdiction
+     * @param jId
      * @return
      */
     @GetMapping("/selectByPrimaryKey")
-    public Result selectByPrimaryKey(Jurisdiction jurisdiction) {
+    public Result selectByPrimaryKey(int  jId) {
         try {
-            Jurisdiction jurisdiction1 = jurisdictionService.selectByPrimaryKey(jurisdiction.getjId());
+            Jurisdiction jurisdiction1 = jurisdictionService.selectByPrimaryKey(jId);
             if (jurisdiction1 == null) {
                 return new Result().successMessage("无数据");
             } else {
@@ -81,7 +80,7 @@ public class JurisdictionController {
             if (list == null) {
                 return new Result().successMessage("无数据");
             } else {
-                return new Result().success(list,jurisdictionService.count(""));
+                return new Result().success(list,jurisdictionService.count("",""));
             }
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");
@@ -109,7 +108,7 @@ public class JurisdictionController {
      * @param jurisdiction
      * @return
      */
-    @GetMapping("/updateName")
+    @PostMapping("/updateName")
     public Result updateName(Jurisdiction jurisdiction) {
         try {
             return jurisdictionService.updateName(jurisdiction.getjId(),jurisdiction.getjName()) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");
@@ -118,77 +117,26 @@ public class JurisdictionController {
         }
     }
 
-    /**
-     * 根据jId修改Status
-     *
-     * @param jurisdiction
-     * @return
-     */
-    @GetMapping("/updateStatus")
-    public Result updateStatus(Jurisdiction jurisdiction) {
-        try {
-            return jurisdictionService.updateStatus(jurisdiction.getjId(),jurisdiction.getStatus()) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");
-        } catch (Exception ex) {
-            return new Result().error("出错,请重试！");
-        }
-    }
-
-    /**
-     * 根据Status查询   返回所有字段
-     *
-     * @param jurisdiction
-     * @return
-     */
-    @GetMapping("/selectAllStatus")
-    public Result selectAllStatus(Jurisdiction jurisdiction) {
-        try {
-          List<Jurisdiction> list=jurisdictionService.selectAllStatus(jurisdiction.getStatus());
-          if(list==null){
-              return new Result().successMessage("无数据");
-          }else{
-              return new Result().success(list);
-          }
-        } catch (Exception ex) {
-            return new Result().error("出错,请重试！");
-        }
-    }
 
 
 
-    /**
-     * 根据Status查询  只返回两个字段
-     *
-     * @param jurisdiction
-     * @return
-     */
-    @GetMapping("/iSelectAllStatus")
-    public Result iSelectAllStatus() {
-        try {
-            List<Jurisdiction> list=jurisdictionService.iselectAllStatus("true");
-            if(list==null){
-                return new Result().successMessage("无数据");
-            }else{
-                return new Result().success(list);
-            }
-        } catch (Exception ex) {
-            return new Result().error("出错,请重试！");
-        }
-    }
+
 
     /**
      * 根据jName模糊查询
      *
-     * @param jurisdiction
+     * @param jName
      * @return
      */
-    @GetMapping("/selectAllVague")
-    public Result selectAllVague(Jurisdiction jurisdiction) {
+    @GetMapping("/selectName")
+    public Result selectName(@RequestParam(defaultValue = "1") int pageNum,@RequestParam(defaultValue = "10") int pageSize,String jName) {
         try {
-            List<Jurisdiction> list=jurisdictionService.selectAllVague(jurisdiction.getjName());
+            PageHelper.startPage(pageNum,pageSize);
+            List<Jurisdiction> list=jurisdictionService.selectName(jName);
             if(list==null){
                 return new Result().successMessage("无数据");
             }else{
-                return new Result().success(list);
+                return new Result().success(list,jurisdictionService.count(jName,""));
             }
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");

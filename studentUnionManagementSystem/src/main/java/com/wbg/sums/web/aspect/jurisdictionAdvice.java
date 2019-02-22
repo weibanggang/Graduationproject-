@@ -1,19 +1,19 @@
 package com.wbg.sums.web.aspect;
 
-import com.wbg.sums.dto.Result;
-import com.wbg.sums.entity.Jurisdiction;
+import com.wbg.sums.util.Result;
 import com.wbg.sums.service.JurisdictionService;
 import com.wbg.sums.service.MemberInformationService;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.stereotype.Component;
+
 import javax.servlet.http.HttpSession;
 
-@Component
+/*@Component
 @Aspect
-@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy*/
+/**
+ * 暂时改为shiro
+ */
 public class jurisdictionAdvice {
 
     @Autowired

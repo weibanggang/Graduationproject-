@@ -18,9 +18,11 @@ public class JurisdictionServiceImpl implements JurisdictionService {
     }
 
     @Override
-    public int count(String status) {
-        return jurisdictionMapper.count(status);
+    public int count(String name, String url) {
+        return jurisdictionMapper.count(name,url);
     }
+
+
 
     @Override
     public int insert(Jurisdiction record) {
@@ -48,23 +50,13 @@ public class JurisdictionServiceImpl implements JurisdictionService {
     }
 
     @Override
-    public int updateStatus(int j_id, String status) {
-        return jurisdictionMapper.updateStatus(j_id,status);
+    public int updateUrl(int j_id, String url) {
+        return jurisdictionMapper.updateUrl(j_id,url);
     }
 
     @Override
-    public List<Jurisdiction> selectAllStatus(String status) {
-        return jurisdictionMapper.selectAllStatus(status);
-    }
-
-    @Override
-    public List<Jurisdiction> iselectAllStatus(String status) {
-        return jurisdictionMapper.iselectAllStatus(status);
-    }
-
-    @Override
-    public List<Jurisdiction> selectAllVague(String j_name) {
-        return jurisdictionMapper.selectAllVague(j_name);
+    public List<Jurisdiction> selectName(String name) {
+        return jurisdictionMapper.selectName(name);
     }
 
 }

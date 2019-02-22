@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wbg.sums.dao.GeUserPermissionsAssociateMapper">
+    <resultMap id="BaseResultMap" type="com.wbg.sums.entity.GeUserPermissionsAssociate">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="roles_id" jdbcType="INTEGER" property="rolesId"/>
+        <result column="Permissions_id" jdbcType="INTEGER" property="permissionsId"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ge_user_permissions_associate
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.wbg.sums.entity.GeUserPermissionsAssociate">
+        <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into ge_user_permissions_associate (id, roles_id, permissions_id
+        )
+        values (#{id,jdbcType=INTEGER}, #{rolesId,jdbcType=INTEGER}, #{permissionsId,jdbcType=INTEGER}
+        )
+    </insert>
+    <update id="updateByPrimaryKey"
+            parameterType="com.wbg.sums.entity.GeUserPermissionsAssociate">
+    update ge_user_permissions_associate
+    set roles_id = #{rolesId,jdbcType=INTEGER},
+      permissions_id = #{permissionsId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, roles_id, permissions_id
+    from ge_user_permissions_associate
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+    select id, roles_id, permissions_id
+    from ge_user_permissions_associate
+  </select>
+    <select id="getBuRoleIdGetPermissions"
+            resultMap="getByRoleIdGetPermissions">
+          select * from ge_user_permissions_associate gupa
+        join permissions p on gupa.permissions_id = p.id
+        where roles_id  = #{roleId};
+     </select>
+    <resultMap id="getByRoleIdGetPermissions" type="com.wbg.sums.dto.GetByRoleIdGetPermissions" autoMapping="true">
+        <association property="permissions" resultMap="getPermissions" autoMapping="true"/>
+        <association property="geUserPermissionsAssociate" resultMap="BaseResultMap" autoMapping="true"/>
+    </resultMap>
+    <resultMap id="getPermissions" type="com.wbg.sums.entity.Permissions" autoMapping="true"/>
+</mapper>

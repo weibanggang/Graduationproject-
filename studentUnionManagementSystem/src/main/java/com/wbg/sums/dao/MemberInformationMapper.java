@@ -67,7 +67,6 @@ public interface MemberInformationMapper {
 //    join Jurisdiction j on j.j_id=m.j_id
 //    根据姓名模糊查询、状态 List<MemberInformation> selectListNameStatus(m_name,status);
     List<MemberInformation> selectListNameStatus(String mName, String status);
-
  //    select m.m_id,m_user,m_name,m_sex,p_photo,m_qq,m.status,r_admission_date,m.p_remarks,c.c_name,c_headmaster_name,c.c_phone,d.d_name,p.p_name,e.e_name,j.j_name from MemberInformation m
 //    join ClassTable c on c.c_id=m.c_id
 //    join DepartmentType d on d.d_id=m.d_id
@@ -77,7 +76,6 @@ public interface MemberInformationMapper {
 //    where m.status=#{status} and m.m_name like concat('%',#{m_name},'%')
 //    根据成员编号修改成员照片 int updatePhoto(m_id, photo);
     int updatePhoto(@Param("mId") int mId, @Param("photo") String photo);
-
     //    update MemberInformation  set photo=#{photo} where m_id=#{m_id}
     //    根据编号修改状态int updateStatus(m_id,status);
     int updateStatus(@Param("mId")int mId,@Param("status") String status);
@@ -88,6 +86,28 @@ public interface MemberInformationMapper {
     //根据mUser模糊查询name
     List<MemberInformation> iUserName(String mUser);
 
-    //根据m_user查询权限
-    int selectJid(String mUser);
+    //根据m_user查询角色
+    int selectRid(String mUser);
+    /**
+     * 根据工作编号获取信息
+     * @param mUser
+     * @return
+     */
+    MemberInformation getByMUser(String mUser);
+    /**
+     * 根据账号密码获取信息
+     * @param mUser
+     * @param mPassword
+     * @return
+     */
+    MemberInformation goLogin(@Param("mUser") String mUser,@Param("mPassword") String mPassword);
+    /**
+     * 根据手机号码获取信息
+     * @param cPhone
+     * @return
+     */
+    MemberInformation yzm(@Param("cPhone") String cPhone);
+
+
+
 }

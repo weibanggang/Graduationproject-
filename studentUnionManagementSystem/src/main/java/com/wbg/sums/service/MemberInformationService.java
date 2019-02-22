@@ -37,8 +37,8 @@ public interface MemberInformationService {
      *
      * @mbg.generated
      */
-    int count(String status);
     List<MemberInformation> selectAll();
+    int count(String status);
     //多表连接查询
     List<MemberInfomationDto> selectTableAll(String status);
     /**
@@ -51,12 +51,14 @@ public interface MemberInformationService {
 
     //    根据工作编号修改密码int updatePassword(String m_user,String m_password)
     int updatePassword(String m_user, String m_password);
-    int counts(int cId, int dId, int pId, int eId,  String status,String mName);
-    //    update MemberInformation set m_password=#{m_password} where m_user={m_user}
-//    根据性别、班级、部门、职位、所属届、状态查询所有成员信息 List<MemberInformation> selectList(m_sex,c_id,d_id,p_id,e_id,status);
-//(要求多表查询，使用mybatis判断字段传入为空时条件不成立)
-    List<MemberInformation> selects(int cId, int dId, int pId, int eId,  String status,String mName);
 
+    //    update MemberInformation set m_password=#{m_password} where m_user={m_user}
+//    根据班级、部门、职位、所属届、状态、姓名查询所有成员信息 List<MemberInformation> selectList(m_sex,c_id,d_id,p_id,e_id,status);
+//(要求多表查询，使用mybatis判断字段传入为空时条件不成立)
+    //int cId, int dId,int pId,int eId,String status,String mName
+
+    List<MemberInformation> selects(@Param("cId") int cId,@Param("dId")  int dId,@Param("pId")  int pId,@Param("eId")  int eId,@Param("status")  String status,@Param("mName")  String mName);
+    int counts(@Param("cId") int cId,@Param("dId")  int dId,@Param("pId")  int pId,@Param("eId")  int eId,@Param("status")  String status,@Param("mName")  String mName);
     //    select m.m_id,m_user,m_name,m_sex,p_photo,m_qq,m.status,r_admission_date,m.p_remarks,c.c_name,c_headmaster_name,c.c_phone,d.d_name,p.p_name,e.e_name,j.j_name from MemberInformation m
 //    join ClassTable c on c.c_id=m.c_id
 //    join DepartmentType d on d.d_id=m.d_id
@@ -64,8 +66,7 @@ public interface MemberInformationService {
 //    join ExchangeTable e on e.e_id=m.e_id
 //    join Jurisdiction j on j.j_id=m.j_id
 //    根据姓名模糊查询、状态 List<MemberInformation> selectListNameStatus(m_name,status);
-    List<MemberInformation> selectListNameStatus(String m_name, String status);
-
+    List<MemberInformation> selectListNameStatus(String mName, String status);
     //    select m.m_id,m_user,m_name,m_sex,p_photo,m_qq,m.status,r_admission_date,m.p_remarks,c.c_name,c_headmaster_name,c.c_phone,d.d_name,p.p_name,e.e_name,j.j_name from MemberInformation m
 //    join ClassTable c on c.c_id=m.c_id
 //    join DepartmentType d on d.d_id=m.d_id
@@ -74,15 +75,36 @@ public interface MemberInformationService {
 //    join Jurisdiction j on j.j_id=m.j_id
 //    where m.status=#{status} and m.m_name like concat('%',#{m_name},'%')
 //    根据成员编号修改成员照片 int updatePhoto(m_id, photo);
-    int updatePhoto(int m_id, String photo);
-
+    int updatePhoto(@Param("mId") int mId, @Param("photo") String photo);
     //    update MemberInformation  set photo=#{photo} where m_id=#{m_id}
-//    根据编号修改状态int updateStatus(m_id,status);
-    int updateStatus(int m_id, String status);
-//    update MemberInformation  set status=#{status} where m_id=#{m_id}
-        List<MemberInformation> iSelectName(int pId);
-    //根据mUser查询name
+    //    根据编号修改状态int updateStatus(m_id,status);
+    int updateStatus(@Param("mId")int mId,@Param("status") String status);
+
+    //根据职位p_id查询所有名字和id
+    List<MemberInformation> iSelectName(int pId);
+
+    //根据mUser模糊查询name
     List<MemberInformation> iUserName(String mUser);
-    //根据m_user查询权限
-    int selectJid(String mUser);
+
+    //根据m_user查询角色
+    int selectRid(String mUser);
+    /**
+     * 根据工作编号获取信息
+     * @param mUser
+     * @return
+     */
+    MemberInformation getByMUser(String mUser);
+    /**
+     * 根据账号密码获取信息
+     * @param mUser
+     * @param mPassword
+     * @return
+     */
+    MemberInformation goLogin(@Param("mUser") String mUser,@Param("mPassword") String mPassword);
+    /**
+     * 根据手机号码获取信息
+     * @param mPhone
+     * @return
+     */
+    MemberInformation yzm(String mPhone);
 }

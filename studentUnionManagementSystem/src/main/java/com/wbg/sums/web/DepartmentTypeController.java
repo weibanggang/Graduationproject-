@@ -1,11 +1,12 @@
 package com.wbg.sums.web;
 
 import com.github.pagehelper.PageHelper;
-import com.wbg.sums.dto.Result;
+import com.wbg.sums.util.Result;
 import com.wbg.sums.entity.DepartmentType;
 import com.wbg.sums.service.DepartmentTypeService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class DepartmentTypeController {
      * @return
      */
     @GetMapping("/deleteByPrimaryKey")
+
     public Result deleteByPrimaryKey(DepartmentType departmentType) {
         try {
             return departmentTypeService.deleteByPrimaryKey(departmentType.getdId()) > 0 ? new Result().successMessage("删除成功") : new Result("修改失败");
@@ -75,6 +77,8 @@ public class DepartmentTypeController {
     @GetMapping("/selectAll")
     public Result selectAll(@RequestParam(defaultValue = "1") int pageNum, @RequestParam(defaultValue = "10") int pageSize) {
         try {
+
+            Subject subject = SecurityUtils.getSubject();
             PageHelper pageHelper = new PageHelper();
             pageHelper.startPage(pageNum, pageSize);
             List<DepartmentType> list = departmentTypeService.selectAll();

@@ -15,20 +15,15 @@ insert into backups(b_file,b_afterdate,b_brefore_name,b_after_name)values
 ('目前路径为空',null,'欧一乐',null),
 ('目前路径为空',null,'刘地林',null),
 ('目前路径为空',null,'唐玉棋',null);
-#2管理员
-create table Admin(
-a_id int auto_increment primary key comment '编号',
-a_username varchar(20) unique comment '账号',
-a_password varchar(256) comment '密码',
-status varchar(10) comment '状态',
-a_remarks varchar(256) comment '备注'
+
+#短信验证
+create table VerificationCode(
+id int auto_increment primary key,
+yzm int comment '验证码',
+v_type varchar(10) comment '验证类型',
+v_date datetime default(now()) comment '时间',
+v_phone varchar(11) comment '手机号码'
 );
-insert into Admin(a_username,a_password,status,a_remarks) values
-('123456','123456','true','账号密码都为123456'),
-('456789','456789','true','账号密码都为456789'),
-('123321','123321','true','账号密码都为123321'),
-('11111','11111','false','账号密码都为11111'),
-('22222','22222','false','账号密码都为22222');
 #3部门类型
 create table DepartmentType(
 d_id int auto_increment primary key comment '部门编号',
@@ -45,17 +40,38 @@ insert into DepartmentType(d_name,status,d_synopsis,d_remarks,d_sort)values
 ('播音部','true','播音部简介','无备注',4),
 ('宣传部','true','宣传部简介','无备注',5),
 ('纪检部','true','纪检部简介','无备注',6);
-#4权限
-create table Jurisdiction(
-j_id int primary key auto_increment comment '编号',
-j_name varchar(20) comment '权限名称',
-status varchar(10) comment '状态',
-j_remarks varchar(256) comment '权限备注'
+#权限表
+CREATE TABLE `permissions` (
+  `id` INT NULL primary key auto_increment,
+  `name` VARCHAR(45) not NULL COMMENT '权限名称',
+  `url` VARCHAR(45) COMMENT '地址'
+) COMMENT = '权限表';
+insert into permissions(name)values
+('all'),
+('bll'),
+('cll'),
+('dll');
+#2角色
+create table Roles(
+r_id int auto_increment primary key comment '编号',
+r_name varchar(20)  comment '角色名称',
+r_remarks varchar(256) comment '备注'
 );
-insert into Jurisdiction(j_name,status,j_remarks)values
-('高级管理','true','该管理可控制所有系统'),
-('中级管理','true','部长使用'),
-('普通管理','true','普通部员使用');
+insert into Roles(r_name)values
+('admin'),
+('auth'),
+('bbb'),
+('test'),
+('aaa');
+-- 角色权限关联表
+CREATE TABLE `ge_user_permissions_associate` (
+  `id` INT NULL primary key auto_increment COMMENT '编号',
+  `roles_id` INT  COMMENT '角色ID',
+  `permissions_id` INT  COMMENT '权限ID'
+) COMMENT = '角色权限关联表';
+insert into `ge_user_permissions_associate`(`roles_id`, `permissions_id`) values
+(1, 1), (2,2), (3,3), (4,4), (5,5);
+
 #5班级信息
 create table ClassTable(
 c_id int auto_increment primary key comment '编号',
@@ -124,7 +140,7 @@ d_id int comment '成员部门',
 p_id int comment '成员职位',
 p_photo varchar(256) comment '图片路径',
 e_id int comment '第几届',
-j_id int comment '权限',
+r_id int comment '角色',
 m_qq varchar(15) comment '成员qq',
 status varchar(10) comment '状态',
 r_admission_date date  comment '入会时间',
@@ -134,15 +150,15 @@ foreign key(c_id) references  ClassTable(c_id),
 foreign key(d_id)  references DepartmentType(d_id),
 foreign key(p_id)   references PositionType(p_id),
 foreign key(e_id)   references ExchangeTable(e_id),
-foreign key(j_id)   references Jurisdiction(j_id)
+foreign key(r_id)   references Roles(r_id)
 );
-insert into MemberInformation(m_user,m_password,m_name,m_sex,c_id,c_phone,d_id,p_id,p_photo,e_id,j_id,m_qq,status,r_admission_date,r_tuihui_date,p_remarks)values
+insert into MemberInformation(m_user,m_password,m_name,m_sex,c_id,c_phone,d_id,p_id,p_photo,e_id,r_id,m_qq,status,r_admission_date,r_tuihui_date,p_remarks)values
 ('100010001','123456','小邦哥','男',1,'18776203778',1,4,'',2,1,'761273133','true','2018-01-01','2018-10-10',''),
-('100010002','123456','廖珠炫','男',1,'18776235778',3,3,'',2,1,'861273133','true','2018-01-01','2018-10-10',''),
-('100010003','123456','朱茂深','男',1,'18776553778',3,4,'',2,2,'361273133','true','2018-01-01','2018-10-10',''),
-('100010004','123456','彭金华','男',1,'18346203778',2,3,'',2,3,'111273133','true','2018-01-01','2018-10-10',''),
-('100010005','123456','钟世杨','男',1,'19976203778',1,4,'',2,1,'761173133','true','2018-01-01','2018-10-10',''),
-('100010006','123456','邹雅','女',1,'18766203778',1,2,'',2,1,'721271133','true','2018-01-01','2018-10-10',''),
+('100010002','123456','廖珠炫','男',1,'11776235778',3,3,'',2,1,'861273133','true','2018-01-01','2018-10-10',''),
+('100010003','123456','朱茂深','男',1,'12776553778',3,4,'',2,2,'361273133','true','2018-01-01','2018-10-10',''),
+('100010004','123456','彭金华','男',1,'13346203778',2,3,'',2,3,'111273133','true','2018-01-01','2018-10-10',''),
+('100010005','123456','钟世杨','男',1,'14976203778',1,4,'',2,1,'761173133','true','2018-01-01','2018-10-10',''),
+('100010006','123456','邹雅','女',1,'15766203778',1,2,'',2,1,'721271133','true','2018-01-01','2018-10-10',''),
 ('100010007','123456','廖月康','男',1,'11276203778',1,4,'',2,1,'711173133','true','2018-01-01','2018-10-10','');
 #10工作安排
 create table WorkArrangement(

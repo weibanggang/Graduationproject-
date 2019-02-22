@@ -1,7 +1,7 @@
 package com.wbg.sums.web;
 import com.github.pagehelper.PageHelper;
 import com.wbg.sums.dto.MemberInfomationDto;
-import com.wbg.sums.dto.Result;
+import com.wbg.sums.util.Result;
 import com.wbg.sums.entity.MemberInformation;
 import com.wbg.sums.service.MemberInformationService;
 import org.springframework.beans.factory.annotation.Autowired;

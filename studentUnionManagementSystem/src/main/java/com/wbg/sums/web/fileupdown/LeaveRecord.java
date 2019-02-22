@@ -1,6 +1,7 @@
 package com.wbg.sums.web.fileupdown;
 
-import com.wbg.sums.dto.Result;
+import com.wbg.sums.util.DBUtil;
+import com.wbg.sums.util.Result;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -10,8 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @RestController
 @RequestMapping("/leaveRecord")

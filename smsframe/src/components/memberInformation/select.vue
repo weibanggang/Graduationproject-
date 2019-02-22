@@ -183,9 +183,9 @@
 
 					<Row>
 						<Col span="8">
-						<FormItem label="权限" prop="jId">
-							<Select v-model="memberInformation.jId" placeholder="请      选      择      权      限">
-								<Option v-for="item in jurisdiction" :value="item.jId" :key="item.pId">{{ item.jName }}</Option>
+						<FormItem label="角色" prop="rId">
+							<Select v-model="memberInformation.rId" placeholder="请      选      择     角     色">
+								<Option v-for="item in roles" :value="item.rId" :key="item.rId">{{ item.rName }}</Option>
 							</Select>
 						</FormItem>
 						</Col>
@@ -250,7 +250,7 @@
 				classTable: '',
 				positionType: '',
 				exchangeTable: '',
-				jurisdiction: '',
+				roles: '',
 				columns7: [{
 						title: '姓名',
 						key: 'mName',
@@ -304,8 +304,8 @@
 						width: 150,
 					},
 					{
-						title: '权限',
-						key: 'jName',
+						title: '角色',
+						key: 'rName',
 						align: 'center',
 						width: 100,
 					},
@@ -450,7 +450,7 @@
 					dId: 1,
 					pPhoto: '',
 					eId: 1,
-					jId: 1,
+					rId: 1,
 					pId:1,
 					mQq: '',
 					status: true,
@@ -478,9 +478,9 @@
 						message: '请选择职位',
 						trigger: 'change'
 					}],
-					jId: [{
+					rId: [{
 						required: true,
-						message: '请选择权限',
+						message: '请选择角色',
 						trigger: 'change'
 					}],
 					eId: [{
@@ -519,7 +519,7 @@
 					dId: 1,
 					pPhoto: '',
 					eId: 1,
-					jId: 1,
+					rId: 1,
 					pId:1,
 					mQq: '',
 					status: true,
@@ -531,7 +531,6 @@
 				//时间
 			getStartTime(starTime) {
 				this.memberInformation.rAdmissionDate = starTime;
-				console.log(starTime);
 			},
 			//男女开关
 			off(value) {
@@ -567,8 +566,8 @@
 				axios.get(th.url + '/exchangeTable/iSelectAllStatus').then(function(res) {
 					th.exchangeTable = res.data.data;
 				})
-				axios.get(th.url + '/jurisdiction/iSelectAllStatus').then(function(res) {
-					th.jurisdiction = res.data.data;
+				axios.get(th.url + '/roles/iSelectAll').then(function(res) {
+					th.roles = res.data.data;
 				})
 			},
 			//编辑
@@ -591,7 +590,7 @@
 					th.memberInformation.dId =  res.data.data.dId;
 					th.memberInformation.pPhoto =  res.data.data.pPhoto;
 					th.memberInformation.eId =  res.data.data.eId;
-					th.memberInformation.jId =  res.data.data.jId;
+					th.memberInformation.rId =  res.data.data.rId;
 					th.memberInformation.pId =  res.data.data.pId;
 					th.memberInformation.mQq =  res.data.data.mQq;
 					th.memberInformation.status =  res.data.data.status == "true" ? true : false;
