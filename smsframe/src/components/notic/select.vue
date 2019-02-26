@@ -385,6 +385,7 @@
 			//修改
 			ok() {
 				const th = this;
+				th.notic.mName = localStorage.getItem("mName");
 				axios.post(th.url + '/notic/updateByPrimaryKey', th.notic, {
 					headers: {
 						"Content-Type": "application/json;charset=utf-8"
@@ -401,7 +402,9 @@
 			},
 			//添加
 			oks() {
+				
 				const th = this;
+				th.notic.mName = localStorage.getItem("mName");
 				axios.post(th.url + '/notic/insert', th.notic, {
 					headers: {
 						"Content-Type": "application/json;charset=utf-8"

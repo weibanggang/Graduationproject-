@@ -1,9 +1,11 @@
 package com.wbg.sums.service.impl;
 
 import com.wbg.sums.dao.MemberInformationMapper;
+import com.wbg.sums.dto.HomeReport;
 import com.wbg.sums.dto.MemberInfomationDto;
 import com.wbg.sums.entity.MemberInformation;
 import com.wbg.sums.service.MemberInformationService;
+import com.wbg.sums.shiro.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +23,6 @@ public class MemberInformationServiceImpl implements MemberInformationService {
     @Override
     public int insert(MemberInformation record) {
         return memberInformationMapper.insert(record);
-
     }
 
     @Override
@@ -51,9 +52,15 @@ public class MemberInformationServiceImpl implements MemberInformationService {
     }
 
     @Override
-    public int updatePassword(String m_user, String m_password) {
-        return memberInformationMapper.updatePassword(m_user,m_password);
+    public int updatePassword(String mUser,String mPassword ,String xPasssword) {
+        return memberInformationMapper.updatePassword(mUser,mPassword,xPasssword);
     }
+
+    @Override
+    public List<HomeReport> homeReport() {
+        return memberInformationMapper.homeReport();
+    }
+
 
     @Override
     public int counts(int cId, int dId, int pId, int eId, String status, String mName) {

@@ -2,6 +2,7 @@ package com.wbg.sums.service.impl;
 
 import com.wbg.sums.dao.MemberInformationMapper;
 import com.wbg.sums.dao.VerificationCodeMapper;
+import com.wbg.sums.util.LoginOk;
 import com.wbg.sums.util.Result;
 import com.wbg.sums.entity.MemberInformation;
 import com.wbg.sums.entity.VerificationCode;
@@ -39,11 +40,17 @@ public class LoginServiceImpl implements LoginService {
             return Result.error("账号无效");
         }
         if(memberInformation.getmPassword().equals(mPassword)){
-            return Result.successMessage("登录成功", JWTUtil.sign(mUser, mPassword));
+            return Result.successMessage("登录成功", loginOk(memberInformation));
         }
         return Result.error("用户名密码错误");
     }
-
+    private static LoginOk loginOk(MemberInformation memberInformation){
+        LoginOk loginOk = new LoginOk();
+        loginOk.setmName(memberInformation.getmName());
+        loginOk.setmUser(memberInformation.getmUser());
+        loginOk.setSign(JWTUtil.sign(memberInformation.getmUser(), memberInformation.getmPassword()));
+        return loginOk;
+    }
     /**
      * 用手机+验证码登录
      * @param phone
@@ -58,7 +65,7 @@ public class LoginServiceImpl implements LoginService {
         }
         //获取用户
         MemberInformation memberInformation = memberInformationMapper.yzm(phone);
-        return Result.successMessage("登录成功", JWTUtil.sign(memberInformation.getmUser(), memberInformation.getmPassword()));
+        return Result.successMessage("登录成功", loginOk(memberInformation));
     }
 
     @Override

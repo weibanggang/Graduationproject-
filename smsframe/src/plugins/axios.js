@@ -19,10 +19,19 @@ const _axios = axios.create(config);
 _axios.interceptors.request.use(
   function(config) {
   var accessToken = localStorage.getItem('accessToken');
+	var mUser = localStorage.getItem('mUser');
+	var mName = localStorage.getItem('mName');
    // 判断是否存在Authorization，如果存在的话，则每个http header都加上Authorization
 	if (accessToken && accessToken !== '') {
   	config.headers.common['Authorization'] = accessToken;
+		
   }
+	if (mUser && mUser !== '') {
+		localStorage.setItem('mUser',mUser);
+	}
+	if (mName && mName !== '') {
+		localStorage.setItem('mName',mName);
+	}
     return config;
   },
   function(error) {
@@ -36,6 +45,14 @@ _axios.interceptors.response.use(
   function(response) {
     // Do something with response data
 		var accessToken = response.headers['authorization'];
+		var mUser = response.headers['mUser'];
+		var mName = response.headers['mName'];
+		if (mUser && mUser !== '') {
+			localStorage.setItem('mUser',mUser);
+		}
+		if (mName && mName !== '') {
+			localStorage.setItem('mName',mName);
+		}
 		if (accessToken && accessToken !== '') {
 			localStorage.setItem('accessToken',accessToken);
 		}
@@ -47,7 +64,6 @@ _axios.interceptors.response.use(
 		return response;
   },
   function(error) {
-    // Do something with response error
 		console.log("用户访问页面出错！");
     return Promise.reject(error);
   }

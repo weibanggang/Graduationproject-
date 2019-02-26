@@ -319,6 +319,7 @@
 			//添加
 			oks() {
 				const th = this;
+					th.attendance.mName = localStorage.getItem("mName");
 				axios.post(th.url + '/attendance/insert', th.attendance, {
 					headers: {
 						"Content-Type": "application/json;charset=utf-8"

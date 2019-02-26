@@ -55,7 +55,14 @@ public class LoginController {
      */
     @GetMapping("/verificationFailed")
     public Result verificationFailed() {
-        return Result.error(502,"身份验证不通过");
+        return Result.error(502,"未登录");
+    }
+    /**
+     * 权限不足
+     */
+    @GetMapping("/insufficientAuthority")
+    public Result insufficientAuthority() {
+        return Result.error(501,"权限不足");
     }
 
 }

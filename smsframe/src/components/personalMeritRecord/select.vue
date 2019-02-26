@@ -444,6 +444,7 @@
 			//添加
 			oks() {
 				const th = this;
+				th.personalMeritRecord.mName = localStorage.getItem("mName");
 				axios.post(th.url + 'personalMeritRecord/insert', th.personalMeritRecord, {
 					headers: {
 						"Content-Type": "application/json;charset=utf-8"

@@ -58,7 +58,8 @@
 			//添加
 			add() {
 				const th = this;
-			axios.post(th.url + '/notic/insert', th.notic, {
+				th.notic.mName = localStorage.getItem("mName");
+				axios.post(th.url + '/notic/insert', th.notic, {
 					headers: {
 						"Content-Type": "application/json;charset=utf-8"
 					}

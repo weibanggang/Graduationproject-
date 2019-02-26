@@ -1,12 +1,17 @@
 package com.wbg.sums.web;
 import com.github.pagehelper.PageHelper;
+import com.wbg.sums.dto.HomeReport;
 import com.wbg.sums.dto.MemberInfomationDto;
 import com.wbg.sums.util.Result;
 import com.wbg.sums.entity.MemberInformation;
 import com.wbg.sums.service.MemberInformationService;
+import org.apache.ibatis.annotations.Param;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.PathParam;
 import java.util.List;
 
 @RestController
@@ -38,6 +43,7 @@ public class MemberInformationController {
      * @return
      */
     @GetMapping("/deleteByPrimaryKey")
+    @RequiresRoles("admin")
     public Result deleteByPrimaryKey(MemberInformation memberInfomation) {
         try {
             return memberInformationService.deleteByPrimaryKey(memberInfomation.getmId()) > 0 ? new Result().successMessage("删除成功") : new Result("删除失败");
@@ -53,6 +59,7 @@ public class MemberInformationController {
      * @return
      */
     @GetMapping("/updateStatus")
+    @RequiresPermissions({"update"})
     public Result updateStatus(int dId, String status) {
         try {
             return memberInformationService.updateStatus(dId, status) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");
@@ -67,6 +74,7 @@ public class MemberInformationController {
      * @return
      */
     @PostMapping("/insert")
+    @RequiresPermissions({"insert"})
     public Result insert(@RequestBody MemberInformation memberInfomation) {
         try {
             return memberInformationService.insert(memberInfomation) > 0 ? new Result().successMessage("添加成功！") : new Result("添加失败！");
@@ -75,7 +83,20 @@ public class MemberInformationController {
         }
 
     }
-
+    /**s
+     * 添加对象MemberInformation
+     *
+     * @param password
+     * @return
+     */
+    @GetMapping("/upassword")
+    public Result upassword(String mUser,String password,String passwords) {
+        try {
+            return memberInformationService.updatePassword(mUser,password,passwords) > 0 ? new Result().successMessage("修改成功！") : new Result("修改失败！");
+        } catch (Exception ex) {
+            return new Result().error("出错,请重试！");
+        }
+    }
     /**
      * 根据aid查找对象  最多只能返回一个对象
      *
@@ -95,7 +116,24 @@ public class MemberInformationController {
             return new Result().error("出错,请重试！");
         }
     }
-
+    /**
+     * 首页报表
+     *
+     * @return
+     */
+    @GetMapping("/homeReport")
+    public Result homeReport() {
+        try {
+           List<HomeReport> homeReport = memberInformationService.homeReport();
+            if (homeReport == null) {
+                return new Result().successMessage("无数据");
+            } else {
+                return new Result().success(homeReport);
+            }
+        } catch (Exception ex) {
+            return new Result().error("出错,请重试！");
+        }
+    }
     /**
      * 查询所有数据
      *
@@ -164,6 +202,7 @@ public class MemberInformationController {
      * @return
      */
     @PostMapping(value = "/updateByPrimaryKey" )
+    @RequiresPermissions({"update"})
     public Result updateByPrimaryKey(@RequestBody MemberInformation memberInfomation) {
         try {
             return memberInformationService.updateByPrimaryKey(memberInfomation) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");

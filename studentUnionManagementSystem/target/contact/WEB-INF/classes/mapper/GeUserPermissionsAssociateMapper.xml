@@ -14,9 +14,9 @@
         <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
             SELECT LAST_INSERT_ID()
         </selectKey>
-        insert into ge_user_permissions_associate (id, roles_id, permissions_id
+        insert into ge_user_permissions_associate ( roles_id, permissions_id
         )
-        values (#{id,jdbcType=INTEGER}, #{rolesId,jdbcType=INTEGER}, #{permissionsId,jdbcType=INTEGER}
+        values (#{ #{rolesId,jdbcType=INTEGER}, #{permissionsId,jdbcType=INTEGER}
         )
     </insert>
     <update id="updateByPrimaryKey"

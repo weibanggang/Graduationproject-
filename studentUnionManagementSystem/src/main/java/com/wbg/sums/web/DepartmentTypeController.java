@@ -5,6 +5,8 @@ import com.wbg.sums.util.Result;
 import com.wbg.sums.entity.DepartmentType;
 import com.wbg.sums.service.DepartmentTypeService;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +26,7 @@ public class DepartmentTypeController {
      * @return
      */
     @GetMapping("/deleteByPrimaryKey")
-
+    @RequiresRoles("admin")
     public Result deleteByPrimaryKey(DepartmentType departmentType) {
         try {
             return departmentTypeService.deleteByPrimaryKey(departmentType.getdId()) > 0 ? new Result().successMessage("删除成功") : new Result("修改失败");
@@ -40,6 +42,7 @@ public class DepartmentTypeController {
      * @return
      */
     @PostMapping("/insert")
+    @RequiresPermissions({"insert"})
     public Result insert(@RequestBody DepartmentType departmentType) {
         try {
             return departmentTypeService.insert(departmentType) > 0 ? new Result().successMessage("添加成功！") : new Result("添加失败！");
@@ -99,6 +102,7 @@ public class DepartmentTypeController {
      * @return
      */
     @PostMapping("/updateByPrimaryKey")
+    @RequiresPermissions({"update"})
     public Result updateByPrimaryKey(@RequestBody DepartmentType departmentType) {
         try {
             return departmentTypeService.updateByPrimaryKey(departmentType) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");
@@ -129,6 +133,7 @@ public class DepartmentTypeController {
      * @return
      */
     @GetMapping("/updateStatus")
+    @RequiresPermissions({"update"})
     public Result updateStatus(DepartmentType departmentType) {
         try {
             return departmentTypeService.updateStatus(departmentType.getdId(), departmentType.getStatus()) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");

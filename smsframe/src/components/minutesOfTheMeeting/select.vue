@@ -352,6 +352,7 @@
 			//添加
 			oks() {
 				const th = this;
+				th.minutesOfTheMeeting.mName = localStorage.getItem("mName");
 				axios.post(th.url + '/minutesOfTheMeeting/insert', th.minutesOfTheMeeting, {
 					headers: {
 						"Content-Type": "application/json;charset=utf-8"

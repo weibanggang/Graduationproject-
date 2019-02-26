@@ -115,12 +115,6 @@
 						}
 					}).then(function(res) {
 						th.bd(res);
-						if (res.data.code == 1028) {
-							localStorage.setItem('accessToken',res.data.data);
-							setTimeout(function() {
-								window.location.href = "/#/index/";
-							}, 900);
-						}
 					});
 				} else {
 					if (this.user.phone.length == 0 || this.user.phone.trim() == "") {
@@ -143,25 +137,24 @@
 						}
 					}).then(function(res) {
 						th.bd(res);
-						localStorage.setItem('accessToken',res.data.data);
-						if (res.data.code == 1028) {
-							setTimeout(function() {
-								window.location.href = "/#/index/";
-							}, 900);
-						}
 					});
 				}
 
 				return false;
 			},
 			bd(res) {
-				if (res.data.code == 1028) {
+			if (res.data.code == 1028) {
 					this.$Message.success(res.data.message);
+					localStorage.setItem('accessToken',res.data.data.sign);
+					localStorage.setItem('mName',res.data.data.mName);
+					localStorage.setItem('mUser',res.data.data.mUser);
+					setTimeout(function() {
+						window.location.href = "/#/index/";
+					}, 900);
 				} else {
 					this.user.password = "";
 					this.$Message.error(res.data.message);
 				}
-
 			},
 			bdyzm(e) {
 				var th = this;

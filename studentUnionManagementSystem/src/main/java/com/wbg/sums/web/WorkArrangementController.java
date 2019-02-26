@@ -4,6 +4,8 @@ import com.github.pagehelper.PageHelper;
 import com.wbg.sums.util.Result;
 import com.wbg.sums.entity.WorkArrangement;
 import com.wbg.sums.service.WorkArrangementService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,7 @@ public class WorkArrangementController {
      * @return
      */
     @GetMapping("/deleteByPrimaryKey")
+    @RequiresRoles("admin")
     public Result deleteByPrimaryKey(WorkArrangement workArrangement) {
         try {
             return workArrangementService.deleteByPrimaryKey(workArrangement.getwId()) > 0 ? new Result().successMessage("删除成功") : new Result("删除失败");
@@ -37,6 +40,7 @@ public class WorkArrangementController {
      * @return
      */
     @PostMapping("/insert")
+    @RequiresPermissions({"insert"})
     public Result insert(@RequestBody WorkArrangement workArrangement) {
         try {
             return workArrangementService.insert(workArrangement) > 0 ? new Result().successMessage("添加成功！") : new Result("添加失败！");
@@ -93,6 +97,7 @@ public class WorkArrangementController {
      * @return
      */
     @PostMapping("/updateByPrimaryKey")
+    @RequiresPermissions({"update"})
     public Result updateByPrimaryKey(@RequestBody WorkArrangement workArrangement) {
         try {
             return workArrangementService.updateByPrimaryKey(workArrangement) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");

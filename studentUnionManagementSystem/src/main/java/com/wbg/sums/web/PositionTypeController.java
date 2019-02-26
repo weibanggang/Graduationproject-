@@ -4,6 +4,8 @@ import com.github.pagehelper.PageHelper;
 import com.wbg.sums.util.Result;
 import com.wbg.sums.entity.PositionType;
 import com.wbg.sums.service.PositionTypeService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,7 @@ public class PositionTypeController {
      * @return
      */
     @GetMapping("/deleteByPrimaryKey")
+    @RequiresRoles("admin")
     public Result deleteByPrimaryKey(PositionType positionType) {
         try {
             return positionTypeService.deleteByPrimaryKey(positionType.getpId()) > 0 ? new Result().successMessage("删除成功") : new Result("修改失败");
@@ -37,6 +40,7 @@ public class PositionTypeController {
      * @return
      */
     @PostMapping("/insert")
+    @RequiresPermissions({"insert"})
     public Result insert(@RequestBody PositionType positionType) {
         try {
             return positionTypeService.insert(positionType) > 0 ? new Result().successMessage("添加成功！") : new Result("添加失败！");
@@ -94,6 +98,7 @@ public class PositionTypeController {
      * @return
      */
     @PostMapping("/updateByPrimaryKey")
+    @RequiresPermissions({"update"})
     public Result updateByPrimaryKey(@RequestBody PositionType positionType) {
         try {
             return positionTypeService.updateByPrimaryKey(positionType) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");
@@ -110,6 +115,7 @@ public class PositionTypeController {
      * @return
      */
     @GetMapping("/updateStatus")
+    @RequiresPermissions({"update"})
     public Result updateStatus(PositionType positionType) {
         try {
             return positionTypeService.updateStatus(positionType.getpId(), positionType.getStatus()) > 0 ? new Result().successMessage("修改成功") : new Result().error("修改失败");
@@ -125,6 +131,7 @@ public class PositionTypeController {
      * @return
      */
     @PostMapping("/updateSort")
+    @RequiresPermissions({"update"})
     public Result updateSort(@RequestBody PositionType positionType) {
         try {
             return positionTypeService.updateSort(positionType.getpId(), positionType.getpSort()) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");

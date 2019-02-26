@@ -73,7 +73,7 @@
         where m_id = #{mId,jdbcType=INTEGER}
     </update>
     <update id="updatePassword">
-      update MemberInformation set m_password=#{m_password} where m_user={mUser}
+      update MemberInformation set m_password=#{xPassword} where m_user=#{mUser} and m_password=#{mPassword}
     </update>
     <update id="updatePhoto">
     update MemberInformation  set photo=#{photo} where m_id=#{mId}
@@ -99,6 +99,10 @@
         select m_id, m_user, m_password, m_name, m_sex, c_id, c_phone, d_id, p_id, p_photo,
         e_id, r_id, m_qq, status, r_admission_date, r_tuihui_date, p_remarks
         from MemberInformation
+    </select>
+    <select id="homeReport" resultType="com.wbg.sums.dto.HomeReport">
+      select d_name,DATE_FORMAT(r_admission_date,'%Y') as time,count(*) count  from memberinformation m
+join departmenttype d on m.d_id = d.d_id  GROUP BY d_name
     </select>
     <select id="selectListNameStatus" resultType="com.wbg.sums.entity.MemberInformation">
    m.m_id,m_user,m_name,m_sex,p_photo,m_qq,m.status,r_admission_date,m.p_remarks,c.c_name,c_headmaster_name,c.c_phone,d.d_name,p.p_name,e.e_name,r.r_name
@@ -148,21 +152,21 @@ where m.status like concat('%',#{status},'%')
         join ExchangeTable e on e.e_id=m.e_id
         join Roles r on r.r_id=m.r_id
         where m.status like concat('%',#{status},'%')
-            <if test="dId != 0">
-                and d.d_id = #{dId}
-            </if>
-            <if test="cId != 0">
-                and m.c_id = #{cId}
-            </if>
-            <if test="eId != 0">
-                and m.e_id = #{eId}
-            </if>
-            <if test="pId != 0">
-                and m.p_id = #{pId}
-            </if>
-            <if test="mName != null and mName !=''">
-                and m_name like concat('%',#{mName},'%')
-            </if>
+        <if test="dId != 0">
+            and d.d_id = #{dId}
+        </if>
+        <if test="cId != 0">
+            and m.c_id = #{cId}
+        </if>
+        <if test="eId != 0">
+            and m.e_id = #{eId}
+        </if>
+        <if test="pId != 0">
+            and m.p_id = #{pId}
+        </if>
+        <if test="mName != null and mName !=''">
+            and m_name like concat('%',#{mName},'%')
+        </if>
 
     </select>
     <select id="counts" resultType="java.lang.Integer">
@@ -189,7 +193,7 @@ where m.status like concat('%',#{status},'%')
                 and m.status = #{status}
             </if>
             <if test="mName != null and mName !=''">
-                and m_name =  #{mName}
+                and m_name = #{mName}
             </if>
         </where>
     </select>
@@ -202,4 +206,5 @@ where m.status like concat('%',#{status},'%')
     <select id="yzm" resultMap="BaseResultMap">
     select * from MemberInformation where c_phone = #{ cPhone }
     </select>
+
 </mapper>

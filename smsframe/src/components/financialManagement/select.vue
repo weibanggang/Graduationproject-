@@ -238,6 +238,7 @@
 			//添加
 			add() {
 				const th = this;
+				th.FinancialManagement.mName = localStorage.getItem("mName");
 				axios.post(th.url + '/financialManagement/insert', th.FinancialManagement, {
 					headers: {
 						"Content-Type": "application/json;charset=utf-8"

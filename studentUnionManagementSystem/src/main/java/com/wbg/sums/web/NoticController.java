@@ -4,14 +4,17 @@ import com.github.pagehelper.PageHelper;
 import com.wbg.sums.util.Result;
 import com.wbg.sums.entity.Notic;
 import com.wbg.sums.service.NoticService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
 @RequestMapping("/notic")
-
 public class NoticController {
     @Autowired
     private NoticService noticService;
@@ -22,6 +25,7 @@ public class NoticController {
      * @return
      */
     @GetMapping("/deleteByPrimaryKey")
+    @RequiresRoles("admin")
     public Result deleteByPrimaryKey(Notic notic) {
         try {
             return noticService.deleteByPrimaryKey(notic.getnId()) > 0 ? new Result().successMessage("删除成功") : new Result("删除失败");
@@ -37,10 +41,9 @@ public class NoticController {
      * @return
      */
     @PostMapping("/insert")
-    public Result insert(@RequestBody Notic notic ) {
+    @RequiresPermissions({"insert"})
+    public Result insert(@RequestBody Notic notic) {
         try {
-            /*request.getSession().getAttribute("user");*/
-            notic.setmName("小邦哥");
             return noticService.insert(notic) > 0 ? new Result().successMessage("添加成功！") : new Result("添加失败！");
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");
@@ -95,6 +98,7 @@ public class NoticController {
      * @return
      */
     @PostMapping(value = "/updateByPrimaryKey" )
+    @RequiresPermissions({"update"})
     public Result updateByPrimaryKey(@RequestBody Notic notic) {
         try {
             return noticService.updateByPrimaryKey(notic) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");
@@ -110,6 +114,7 @@ public class NoticController {
      * @return
      */
     @GetMapping("/updateStatus")
+    @RequiresPermissions({"update"})
     public Result updateStatus(Notic notic) {
         try {
             return noticService.updateStatus(notic.getnId(), notic.getStatus()) > 0 ? new Result().successMessage("修改成功！") : new Result("修改失败！");

@@ -1,5 +1,6 @@
 package com.wbg.sums.dao;
 
+import com.wbg.sums.dto.RolesAndPermissions;
 import com.wbg.sums.entity.Backups;
 import com.wbg.sums.entity.Roles;
 
@@ -46,4 +47,6 @@ public interface RolesMapper {
      */
     int updateByPrimaryKey(Roles record);
     int count();
+    List<RolesAndPermissions>  rolesAndpermissions(String rName);
+    int counts(String rName);
 }

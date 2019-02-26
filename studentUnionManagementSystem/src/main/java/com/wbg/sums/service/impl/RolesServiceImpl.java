@@ -1,6 +1,7 @@
 package com.wbg.sums.service.impl;
 
 import com.wbg.sums.dao.RolesMapper;
+import com.wbg.sums.dto.RolesAndPermissions;
 import com.wbg.sums.entity.Roles;
 import com.wbg.sums.service.RolesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,5 +42,15 @@ public class RolesServiceImpl implements RolesService {
     @Override
     public int count() {
         return rolesMapper.count();
+    }
+
+    @Override
+    public List<RolesAndPermissions> rolesAndpermissions(String rName) {
+        return rolesMapper.rolesAndpermissions(rName);
+    }
+
+    @Override
+    public int counts(String rName) {
+        return rolesMapper.counts(rName);
     }
 }

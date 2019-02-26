@@ -1,5 +1,6 @@
 package com.wbg.sums.service;
 
+import com.wbg.sums.dto.RolesAndPermissions;
 import com.wbg.sums.entity.Roles;
 
 import java.util.List;
@@ -45,4 +46,6 @@ public interface RolesService {
      */
     int updateByPrimaryKey(Roles record);
     int count();
+    List<RolesAndPermissions> rolesAndpermissions(String rName);
+    int counts(String rName);
 }

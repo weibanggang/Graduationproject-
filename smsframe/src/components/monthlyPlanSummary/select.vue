@@ -368,6 +368,7 @@
 			//添加
 			oks() {
 				const th = this;
+				th.MonthlyPlanSummary.mName = localStorage.getItem("mName");
 				axios.post(th.url + '/monthlyPlanSummary/insert', th.MonthlyPlanSummary, {
 					headers: {
 						"Content-Type": "application/json;charset=utf-8"

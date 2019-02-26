@@ -29,7 +29,7 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
     <select id="selectAll" resultMap="BaseResultMap">
-    select id, name url
+    select id, name , url
     from permissions
   </select>
 </mapper>

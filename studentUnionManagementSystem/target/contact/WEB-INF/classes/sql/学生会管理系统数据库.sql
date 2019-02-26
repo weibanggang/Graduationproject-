@@ -47,7 +47,7 @@ CREATE TABLE `permissions` (
   `url` VARCHAR(45) COMMENT '地址'
 ) COMMENT = '权限表';
 insert into permissions(name)values
-('all'),
+('*'),
 ('bll'),
 ('cll'),
 ('dll');
@@ -71,6 +71,7 @@ CREATE TABLE `ge_user_permissions_associate` (
 ) COMMENT = '角色权限关联表';
 insert into `ge_user_permissions_associate`(`roles_id`, `permissions_id`) values
 (1, 1), (2,2), (3,3), (4,4), (5,5);
+
 
 #5班级信息
 create table ClassTable(

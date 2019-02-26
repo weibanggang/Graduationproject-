@@ -84,13 +84,26 @@
 						<MenuItem name="5">
 						<Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" />
 						<Dropdown>
-							小邦哥
+							{{mName}}
 							<Icon type="ios-arrow-down"></Icon>
 
 							<DropdownMenu slot="list">
-								<DropdownItem>修改密码</DropdownItem>
+								<DropdownItem  @click.native="updatepassword">修改密码</DropdownItem>
 							</DropdownMenu>
 						</Dropdown>
+						<Modal v-model="modal13" draggable scrollable title="修改密码" @on-ok="ok">
+							<Form ref="formValidate" :model="user" :label-width="80">
+								<FormItem label="旧密码" prop="password">
+									<Input v-model="user.password" placeholder="请输入旧密码"></Input>
+								</FormItem>
+								<FormItem label="新密码" prop="passwords">
+									<Input v-model="user.passwords" placeholder="请输入新密码"></Input>
+								</FormItem>
+								<FormItem label="确认密码" prop="passwordss">
+									<Input v-model="user.passwordss" placeholder="请输入确认密码"></Input>
+								</FormItem>
+							</Form>
+						</Modal>
 						</MenuItem>
 						<Submenu name="6">
 							<template slot="title">
@@ -240,16 +253,22 @@
 			return {
 				url: "http://localhost:8080",
 				years: "",
+				mName:"小邦哥1",
 				theme: "primary",
 				parentTag: "控制台",
-				childTag: ""
+				modal13:false,
+				childTag: "",
+				user:{
+					password:"",
+					passwords:"",
+					passwordss:""
+				}
 			}
 		},
 		methods: {
 			logout(){
 				var th = this;
 				axios.get(th.url + '/login/logout').then(function(res) {
-					
 					if (res.data.code == 1028) {
 						th.$Message.success(res.data.message);
 						localStorage.setItem("accessToken",null);
@@ -260,6 +279,38 @@
 					}
 				});
 				
+			},
+			ok(){
+				var th = this;
+				if(th.user.password.length < 6){
+					th.$Message.warning("密码最少为6位");
+					return;
+				}
+				if(th.user.password != th.user.passwords ){
+					th.$Message.warning("两次密码不一致");
+					return;
+				}
+				axios.get(th.url + '/memberInformation/upassword', {
+					params: {
+						mUser:th.user.mUser,
+						password:th.user.password,
+						passwords:th.user.passwords
+					}
+				}).then(function(res) {
+					if (res.data.code == 1028) {
+						th.$Message.success(res.data.message);
+						localStorage.setItem("accessToken",null);
+						axios.get(th.url + '/login/logout');
+						setTimeout(function() {
+							window.location.href = "/";
+						}, 500);
+					}else{
+						th.$Message.error(res.data.message);
+					}
+				})
+			},
+			updatepassword(){
+				this.modal13 = true;
 			},
 			fu(e) {
 				this.parentTag = e[0];
@@ -273,6 +324,7 @@
 			},
 		},
 		created() {
+			this.mName = localStorage.getItem("mName");
 			var data = new Date();
 			this.years = data.getFullYear() + "年" + (data.getMonth() + 1) + "月" + data.getDate() + "日";
 		}

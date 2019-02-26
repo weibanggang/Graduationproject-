@@ -349,6 +349,7 @@
 			//添加
 			oks() {
 				const th = this;
+				th.departmentalExcellenceRecord.mName = localStorage.getItem("mName");
 				axios.post(th.url + 'departmentalExcellenceRecord/insert', th.departmentalExcellenceRecord, {
 					headers: {
 						"Content-Type": "application/json;charset=utf-8"

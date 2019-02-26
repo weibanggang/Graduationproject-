@@ -4,6 +4,8 @@ import com.github.pagehelper.PageHelper;
 import com.wbg.sums.util.Result;
 import com.wbg.sums.entity.Jurisdiction;
 import com.wbg.sums.service.JurisdictionService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,7 @@ public class JurisdictionController {
      * @return
      */
     @GetMapping("/deleteByPrimaryKey")
+    @RequiresRoles("admin")
     public Result deleteByPrimaryKey(int jId) {
         try {
         return jurisdictionService.deleteByPrimaryKey(jId) > 0 ? new Result().successMessage("删除成功") : new Result("修改失败");
@@ -38,6 +41,7 @@ public class JurisdictionController {
      * @return
      */
     @PostMapping("/insert")
+    @RequiresPermissions({"insert"})
     public Result insert(@RequestBody Jurisdiction jurisdiction) {
         try {
             return jurisdictionService.insert(jurisdiction) > 0 ? new Result().successMessage("添加成功！") : new Result("添加失败！");
@@ -94,6 +98,7 @@ public class JurisdictionController {
      * @return
      */
     @PostMapping("/updateByPrimaryKey")
+    @RequiresPermissions({"update"})
     public Result updateByPrimaryKey(@RequestBody Jurisdiction jurisdiction) {
         try {
             return jurisdictionService.updateByPrimaryKey(jurisdiction) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");
@@ -109,6 +114,7 @@ public class JurisdictionController {
      * @return
      */
     @PostMapping("/updateName")
+    @RequiresPermissions({"update"})
     public Result updateName(Jurisdiction jurisdiction) {
         try {
             return jurisdictionService.updateName(jurisdiction.getjId(),jurisdiction.getjName()) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");

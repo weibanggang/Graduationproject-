@@ -463,6 +463,7 @@
 			//添加
 			oks(){
 				const th = this;
+				th.leaveRecord.mName = localStorage.getItem("mName");
 				axios.post(th.url + '/leaveRecord/insert', th.leaveRecord, {
 						headers: {
 							"Content-Type": "application/json;charset=utf-8"

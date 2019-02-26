@@ -68,11 +68,11 @@
   </select>
     <select id="selectTitlestatus" resultType="com.wbg.sums.entity.Notic">
         select * from Notic
-  where  status like concat('%', #{status}, '%') and like n_title concat('%',#{nTitle},'%'}
+  where  status like concat('%', #{status}, '%') and  n_title like concat('%',#{nTitle},'%'}
     </select>
   <select id="selectMidStatus" resultType="com.wbg.sums.entity.Notic">
      select * from Notic
-   where n_id=#{mId} and  status concat('%', #{status},'%'}
+   where n_id=#{mId} and  status like concat('%', #{status},'%'}
   </select>
   <select id="iselectList" resultType="com.wbg.sums.entity.Notic">
       select n_id,n_title,n_context,n_date,m_name from Notic

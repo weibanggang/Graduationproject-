@@ -4,6 +4,8 @@ import com.github.pagehelper.PageHelper;
 import com.wbg.sums.util.Result;
 import com.wbg.sums.entity.ExchangeTable;
 import com.wbg.sums.service.ExchangeTableService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +25,7 @@ public class ExchangeTableController {
      * @return
      */
     @GetMapping("/deleteByPrimaryKey")
+    @RequiresRoles("admin")
     public Result deleteByPrimaryKey(ExchangeTable exchangeTable) {
         try {
             return exchangeTableService.deleteByPrimaryKey(exchangeTable.geteId()) > 0 ? new Result().successMessage("删除成功") : new Result("修改失败");
@@ -37,6 +40,7 @@ public class ExchangeTableController {
      * @return
      */
     @PostMapping("/insert")
+    @RequiresPermissions({"insert"})
     public Result insert(@RequestBody ExchangeTable exchangeTable) {
         try {
             return exchangeTableService.insert(exchangeTable) > 0 ? new Result().successMessage("添加成功！") : new Result("添加失败！");
@@ -93,6 +97,7 @@ public class ExchangeTableController {
      * @return
      */
     @PostMapping("/updateByPrimaryKey")
+    @RequiresPermissions({"update"})
     public Result updateByPrimaryKey(@RequestBody ExchangeTable exchangeTable) {
         try {
             return exchangeTableService.updateByPrimaryKey(exchangeTable) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");
@@ -108,6 +113,7 @@ public class ExchangeTableController {
      * @return
      */
     @GetMapping("/updateStatus")
+    @RequiresPermissions({"update"})
     public Result updateStatus(ExchangeTable exchangeTable) {
         try {
             return exchangeTableService.updateStatus(exchangeTable.geteId(),exchangeTable.getStatus()) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");
@@ -123,6 +129,7 @@ public class ExchangeTableController {
      * @return
      */
     @PostMapping("/updateSort")
+    @RequiresPermissions({"update"})
     public Result updateSort(@RequestBody ExchangeTable exchangeTable) {
         try {
             return exchangeTableService.updateSort(exchangeTable.geteId(),exchangeTable.geteSort()) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");

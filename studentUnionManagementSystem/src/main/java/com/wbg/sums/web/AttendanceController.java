@@ -4,6 +4,8 @@ import com.github.pagehelper.PageHelper;
 import com.wbg.sums.util.Result;
 import com.wbg.sums.entity.Attendance;
 import com.wbg.sums.service.AttendanceService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +23,7 @@ public class AttendanceController {
      * @return
      */
     @GetMapping("/deleteByPrimaryKey")
+    @RequiresRoles("admin")
     public Result deleteByPrimaryKey(Attendance attendance) {
         try {
             return attendanceService.deleteByPrimaryKey(attendance.getaId()) > 0 ? new Result().successMessage("删除成功") : new Result("删除失败");
@@ -36,9 +39,9 @@ public class AttendanceController {
      * @return
      */
     @PostMapping("/insert")
+    @RequiresPermissions({"insert"})
     public Result insert(@RequestBody Attendance attendance) {
         try {
-            attendance.setmName("设置session");
             return attendanceService.insert(attendance) > 0 ? new Result().successMessage("添加成功！") : new Result("添加失败！");
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");
@@ -93,6 +96,7 @@ public class AttendanceController {
      * @return
      */
     @PostMapping(value = "/updateByPrimaryKey" )
+    @RequiresPermissions({"update"})
     public Result updateByPrimaryKey(@RequestBody Attendance attendance) {
         try {
             return attendanceService.updateByPrimaryKey(attendance) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");

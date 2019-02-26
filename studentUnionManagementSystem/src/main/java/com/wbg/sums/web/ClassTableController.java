@@ -4,6 +4,8 @@ import com.github.pagehelper.PageHelper;
 import com.wbg.sums.util.Result;
 import com.wbg.sums.entity.ClassTable;
 import com.wbg.sums.service.ClassTableService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,7 @@ public class ClassTableController {
      * @return
      */
     @GetMapping("/deleteByPrimaryKey")
+    @RequiresRoles("admin")
     public Result deleteByPrimaryKey(ClassTable classTable) {
         try {
         return classTableService.deleteByPrimaryKey(classTable.getcId()) > 0 ? new Result().successMessage("删除成功") : new Result("修改失败");
@@ -37,6 +40,7 @@ public class ClassTableController {
      * @return
      */
     @PostMapping("/insert")
+    @RequiresPermissions({"insert"})
     public Result insert(@RequestBody ClassTable classTable) {
         try {
             return classTableService.insert(classTable) > 0 ? new Result().successMessage("添加成功！") : new Result("添加失败！");
@@ -111,6 +115,7 @@ public class ClassTableController {
      * @return
      */
     @PostMapping("/updateByPrimaryKey")
+    @RequiresPermissions({"update"})
     public Result updateByPrimaryKey(@RequestBody ClassTable classTable) {
         try {
             return classTableService.updateByPrimaryKey(classTable) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");
@@ -127,6 +132,7 @@ public class ClassTableController {
      * @return
      */
     @GetMapping("/updateName")
+    @RequiresPermissions({"update"})
     public Result updateName(ClassTable classTable) {
         try {
             return classTableService.updateName(classTable.getcId(),classTable.getcName()) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");
@@ -142,6 +148,7 @@ public class ClassTableController {
      * @return
      */
     @GetMapping("/updateStatus")
+    @RequiresPermissions({"update"})
     public Result updateStatus(ClassTable classTable) {
         try {
             return classTableService.updateStatus(classTable.getcId(),classTable.getStatus()) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");

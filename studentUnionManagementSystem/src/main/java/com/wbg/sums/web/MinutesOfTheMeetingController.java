@@ -4,6 +4,8 @@ import com.github.pagehelper.PageHelper;
 import com.wbg.sums.util.Result;
 import com.wbg.sums.entity.MinutesOfTheMeeting;
 import com.wbg.sums.service.MinutesOfTheMeetingService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,7 @@ public class MinutesOfTheMeetingController {
      * @return
      */
     @GetMapping("/deleteByPrimaryKey")
+    @RequiresRoles("admin")
     public Result deleteByPrimaryKey(MinutesOfTheMeeting minutesOfTheMeeting) {
         try {
             return minutesOfTheMeetingService.deleteByPrimaryKey(minutesOfTheMeeting.getmId()) > 0 ? new Result().successMessage("删除成功") : new Result("删除失败");
@@ -37,9 +40,9 @@ public class MinutesOfTheMeetingController {
      * @return
      */
     @PostMapping("/insert")
+    @RequiresPermissions({"insert"})
     public Result insert(@RequestBody MinutesOfTheMeeting minutesOfTheMeeting) {
         try {
-            minutesOfTheMeeting.setmName("设置session");
             return minutesOfTheMeetingService.insert(minutesOfTheMeeting) > 0 ? new Result().successMessage("添加成功！") : new Result("添加失败！");
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");
@@ -94,6 +97,7 @@ public class MinutesOfTheMeetingController {
      * @return
      */
     @PostMapping(value = "/updateByPrimaryKey" )
+    @RequiresPermissions({"update"})
     public Result updateByPrimaryKey(@RequestBody MinutesOfTheMeeting minutesOfTheMeeting) {
         try {
             return minutesOfTheMeetingService.updateByPrimaryKey(minutesOfTheMeeting) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");

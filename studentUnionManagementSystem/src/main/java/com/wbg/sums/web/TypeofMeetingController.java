@@ -4,6 +4,8 @@ import com.github.pagehelper.PageHelper;
 import com.wbg.sums.util.Result;
 import com.wbg.sums.entity.TypeofMeeting;
 import com.wbg.sums.service.TypeofMeetingService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,7 @@ public class TypeofMeetingController {
      * @return
      */
     @GetMapping("/deleteByPrimaryKey")
+    @RequiresRoles("admin")
     public Result deleteByPrimaryKey(TypeofMeeting typeofMeeting) {
         try {
             return typeofMeetingService.deleteByPrimaryKey(typeofMeeting.gettId()) > 0 ? new Result().successMessage("删除成功") : new Result("修改失败");
@@ -37,6 +40,7 @@ public class TypeofMeetingController {
      * @return
      */
     @PostMapping("/insert")
+    @RequiresPermissions({"insert"})
     public Result insert(@RequestBody TypeofMeeting typeofMeeting) {
         try {
             return typeofMeetingService.insert(typeofMeeting) > 0 ? new Result().successMessage("添加成功！") : new Result("添加失败！");
@@ -93,6 +97,7 @@ public class TypeofMeetingController {
      * @return
      */
     @PostMapping("/updateByPrimaryKey")
+    @RequiresPermissions({"update"})
     public Result updateByPrimaryKey(@RequestBody TypeofMeeting typeofMeeting) {
         try {
             return typeofMeetingService.updateByPrimaryKey(typeofMeeting) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");
@@ -107,6 +112,7 @@ public class TypeofMeetingController {
      * @return
      */
     @GetMapping("/updateStatus")
+    @RequiresPermissions({"update"})
     public Result updateStatus(TypeofMeeting typeofMeeting) {
         try {
             return typeofMeetingService.updateStatus(typeofMeeting.gettId(), typeofMeeting.getStatus()) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");
@@ -165,6 +171,7 @@ public class TypeofMeetingController {
      * @return
      */
     @PostMapping("/updateSort")
+    @RequiresPermissions({"update"})
     public Result updateSort(@RequestBody TypeofMeeting typeofMeeting) {
         try {
             return typeofMeetingService.updateSort(typeofMeeting.gettId(), typeofMeeting.gettSort()) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");

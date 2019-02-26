@@ -4,6 +4,8 @@ import com.github.pagehelper.PageHelper;
 import com.wbg.sums.util.Result;
 import com.wbg.sums.entity.LeaveRecord;
 import com.wbg.sums.service.LeaveRecordService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +26,7 @@ public class LeaveRecordController {
      * @return
      */
     @GetMapping("/deleteByPrimaryKey")
+    @RequiresRoles("admin")
     public Result deleteByPrimaryKey(LeaveRecord leaveRecord) {
         try {
             return leaveRecordService.deleteByPrimaryKey(leaveRecord.getlId()) > 0 ? new Result().successMessage("删除成功") : new Result("删除失败");
@@ -39,9 +42,9 @@ public class LeaveRecordController {
      * @return
      */
     @PostMapping("/insert")
+    @RequiresPermissions({"insert"})
     public Result insert(@RequestBody LeaveRecord leaveRecord) {
         try {
-            leaveRecord.setmName("设置session");
             return leaveRecordService.insert(leaveRecord) > 0 ? new Result().successMessage("添加成功！") : new Result("添加失败！");
         } catch (Exception ex) {
             return new Result().error("出错,请重试！");
@@ -96,6 +99,7 @@ public class LeaveRecordController {
      * @return
      */
     @PostMapping(value = "/updateByPrimaryKey" )
+    @RequiresPermissions({"update"})
     public Result updateByPrimaryKey(@RequestBody LeaveRecord leaveRecord) {
         try {
             return leaveRecordService.updateByPrimaryKey(leaveRecord) > 0 ? new Result().successMessage("修改成功") : new Result("修改失败");
