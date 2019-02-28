@@ -1,10 +1,10 @@
-drop database StudentUnionManagementSystem;
-create database StudentUnionManagementSystem;
+drop database StudentUnionManagementSystem ;
+create database StudentUnionManagementSystem CHARACTER SET utf8 COLLATE utf8_general_ci;
 use StudentUnionManagementSystem;
 #1备份表
 create table backups(
 b_id int auto_increment primary key comment '编号',
-b_beforedate datetime default(now()) comment '备份时间',
+b_beforedate datetime default now()  comment '备份时间',
 b_file varchar(256) comment '备份路径',
 b_afterdate datetime comment '还原时间',
 b_brefore_name varchar(20) comment '备份人',
@@ -21,7 +21,7 @@ create table VerificationCode(
 id int auto_increment primary key,
 yzm int comment '验证码',
 v_type varchar(10) comment '验证类型',
-v_date datetime default(now()) comment '时间',
+v_date datetime default now()  comment '时间',
 v_phone varchar(11) comment '手机号码'
 );
 #3部门类型
@@ -82,9 +82,9 @@ c_phone varchar(11) comment '联系电话',
 status varchar(10) comment '状态'
 );
 insert into ClassTable(c_name,c_headmaster_name,c_phone,status)values
-('s1s143','张婷','15348564582','false'),
-('s2s143','张婷','15348564582','false'),
-('s3s143','张婷','15348564582','false'),
+('s1s143','张婷','15348564582','true'),
+('s2s143','张婷','15348564582','true'),
+('s3s143','张婷','15348564582','true'),
 ('s1s147','王莹','15348564855','true'),
 ('s2s147','王莹','15348564855','true'),
 ('s3s147','王莹','15348564855','true'),
@@ -136,7 +136,7 @@ m_password varchar(20) comment '密码',
 m_name varchar(10) comment '姓名',
 m_sex varchar(2) comment '成员性别',
 c_id int comment '成员班级',
-c_phone  varchar(11) comment '成员手机',
+c_phone  varchar(11) unique  comment '成员手机',
 d_id int comment '成员部门',
 p_id int comment '成员职位',
 p_photo varchar(256) comment '图片路径',
@@ -183,7 +183,7 @@ create table Notic(
 n_id int auto_increment primary key comment'编号',
 n_title varchar(50) comment '标题',
 n_context longtext comment '内容',
-n_date datetime default(now())  comment '发布时间',
+n_date datetime default now()   comment '发布时间',
 n_file varchar(256) comment '文件路径',
 m_name varchar(20) comment '操作人',
 status varchar(10) comment '状态',
@@ -249,7 +249,7 @@ f_front_money decimal(10,2) comment '交易前余额',
 f_after_money decimal(10,2) comment '交易后余额',
 f_money decimal(10,2) comment '交易余额',
 f_date date  comment '时间',
-f_mr_date  datetime default(now()) comment '操作时间',
+f_mr_date  datetime default now()  comment '操作时间',
 m_name varchar(20) comment '操作人',
 f_remarks  varchar(256) comment '备注',
 f_file  varchar(256) comment '文件路径'
@@ -262,7 +262,7 @@ m_user int comment '成员工作编号',
 a_m_name varchar(20) comment '成员姓名',
 d_name varchar(20) comment '成员部门',
 a_titile  varchar(50) comment '标题',
-a_date datetime default(now()) comment '时间',
+a_date datetime default now()  comment '时间',
 m_name varchar(20) comment '操作人',
 a_remaks varchar(256) comment '备注'
 );
@@ -275,7 +275,7 @@ create table MinutesOfTheMeeting(
 m_id int auto_increment primary key comment'编号',
 m_title  varchar(50) comment '标题',
 t_id int comment '会议类型',
-m_date  datetime default(now()) comment '上传时间',
+m_date  datetime default now()  comment '上传时间',
 m_file   varchar(256) comment '文件路径',
 m_name varchar(20) comment '操作人',
 m_contexts varchar(256) comment '内容',
@@ -291,14 +291,14 @@ create table MonthlyPlanSummary(
 m_id int auto_increment primary key comment'编号',
 m_title varchar(50) comment '标题',
 d_id int comment '部门编号',
-m_date datetime default(now()) comment '上传时间',
+m_date datetime default now()  comment '上传时间',
 m_file  varchar(256) comment '文件路径',
 m_remarks varchar(256) comment '备注',
 m_name varchar(20) comment '操作人',
 m_contexts longtext comment '内容',
 foreign key(d_id) references DepartmentType(d_id)
 );
-insert into monthlyplansummary (m_title, d_id,  m_remarks,  m_name, m_contexts) values
+insert into MonthlyPlanSummary (m_title, d_id,  m_remarks,  m_name, m_contexts) values
 ('九月份总结与十月份计划','1','无','小邦哥','暂时没有内容'),
 ('九月份总结与十月份计划','2','无','小邦哥','暂时没有内容'),
 ('九月份总结与十月份计划','4','无','小邦哥','暂时没有内容'),

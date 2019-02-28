@@ -113,7 +113,7 @@
 			</div>
 		</div>
 
-		<Modal v-model="modal13" fullscreen title="添加成员" @on-ok="ok">
+		<Modal v-model="modal13" fullscreen :title="title" @on-ok="ok">
 			<Form :model="memberInformation" :label-width="80" inline>
 				<div style="width:70%;position:relative;float: left;">
 					<Row>
@@ -216,17 +216,14 @@
 					</Row>
 				</div>
 				<div style="width: 28%;position:relative;float: left;margin: auto; text-align: center;">
-					<Upload name='file' :show-upload-list='false' :on-success='resultMsg' action="http://localhost:8080/memberInformation/upload">
-						<p><img :src="memberInformation.pPhoto" onerror="this.src='http://localhost:8080/image/tx.png'" id="myCanvas"
+					<Upload name='file' :show-upload-list='false' :on-success='resultMsg' action="http://47.100.245.30:8080/upload/memberInformation">
+						<p><img :src="memberInformation.pPhoto" onerror="this.src='http://47.100.245.30:8080/image/tx.png'" id="myCanvas"
 							 width="200" height="250" style="border:1px solid #d3d3d3;" /></p>
 						<Button icon="ios-cloud-upload-outline">可拖动上传</Button>
 					</Upload>
 				</div>
 			</Form>
 		</Modal>
-
-
-
 	</div>
 </template>
 <script>
@@ -234,7 +231,7 @@
 		data() {
 			return {
 				title: "编辑部门类型",
-				url: "http://localhost:8080",
+				url: "http://47.100.245.30:8080",
 				count: 10,
 				sex: true,
 				interface:"",
@@ -508,6 +505,7 @@
 			add() {
 				this.interface = "insert";
 				this.modal13 = true;
+				this.title = "添加成员";
 				this.memberInformation = {
 					mId: 0,
 					mUser: '',
@@ -545,7 +543,7 @@
 			//上传
 			resultMsg(res) {
 				if (res.code === 1224) {
-					this.memberInformation.pPhoto = this.url + res.data;
+					this.memberInformation.pPhoto = this.url + "/file/"+res.data;
 					this.$Message.success(res.message);
 				} else {
 					this.$Message.error(res.message);
@@ -574,6 +572,7 @@
 			show(mId) {
 				this.interface = "updateByPrimaryKey";
 				this.modal13 = true;
+				this.title = "编辑成员信息";
 				var th = this;
 				axios.get(th.url + '/memberInformation/selectByPrimaryKey', {
 					params: {
@@ -589,6 +588,7 @@
 					th.memberInformation.cPhone =  res.data.data.cPhone;
 					th.memberInformation.dId =  res.data.data.dId;
 					th.memberInformation.pPhoto =  res.data.data.pPhoto;
+					console.log(th.memberInformation.pPhoto);
 					th.memberInformation.eId =  res.data.data.eId;
 					th.memberInformation.rId =  res.data.data.rId;
 					th.memberInformation.pId =  res.data.data.pId;

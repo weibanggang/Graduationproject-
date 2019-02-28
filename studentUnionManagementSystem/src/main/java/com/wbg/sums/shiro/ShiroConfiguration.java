@@ -61,12 +61,11 @@ public class ShiroConfiguration {
 		filterRuleMap.put("/", "anon");
 		filterRuleMap.put("/login/**", "anon");
         filterRuleMap.put("/image/**", "anon");
-		filterRuleMap.put("/error", "anon");
+		filterRuleMap.put("/file/**", "anon");
+		filterRuleMap.put("/upload/*", "anon");
 		// 所有请求通过我们自己的JWT Filter
 		filterRuleMap.put("/**", "jwt");
 		shiroFilterFactoryBean.setFilterChainDefinitionMap(filterRuleMap);
-		//登录、错误等页面转向
-		//shiroFilterFactoryBean.setUnauthorizedUrl("/401");
 		return shiroFilterFactoryBean;
 	}
 	//权限不足时候

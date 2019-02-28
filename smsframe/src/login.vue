@@ -11,7 +11,7 @@
 	}
 </style>
 <template>
-	<div style="height: 100%;background-image: url(http://localhost:8080/image/bj.jpg);background-size: 100% 100%;">
+	<div style="height: 100%;background-image: url(http://47.100.245.30:8080/image/bj.jpg);background-size: 100% 100%;">
 		<div style="height: 6%;"></div>
 		<div class="login">
 			<br />
@@ -82,7 +82,7 @@
 					btn1: false
 				},
 				code: 1024,
-				url: "http://localhost:8080"
+				url: "http://47.100.245.30:8080"
 			}
 		},
 		methods: {
@@ -172,12 +172,11 @@
 						}
 					}).then(function(res) {
 						if (res.data.code == 1203) {
-							th.$Message.success("手机号码无效!");
+							th.$Message.error("手机号码无效!");
 							return;
 						}
 						res = JSON.parse(res.data.data);
 						if (res.result == 0) {
-							console.log(res);
 							th.$Message.success("发送成功!");
 							var interval = setInterval(function() {
 								th.btnhqyzm = "倒计" + jsdx-- + "s";

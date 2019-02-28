@@ -101,8 +101,7 @@
         from MemberInformation
     </select>
     <select id="homeReport" resultType="com.wbg.sums.dto.HomeReport">
-      select d_name,DATE_FORMAT(r_admission_date,'%Y') as time,count(*) count  from memberinformation m
-join departmenttype d on m.d_id = d.d_id  GROUP BY d_name
+      select d_name,DATE_FORMAT(r_admission_date,'%Y') as time,count(*) count  from MemberInformation m join DepartmentType d on m.d_id = d.d_id  GROUP BY d_name;
     </select>
     <select id="selectListNameStatus" resultType="com.wbg.sums.entity.MemberInformation">
    m.m_id,m_user,m_name,m_sex,p_photo,m_qq,m.status,r_admission_date,m.p_remarks,c.c_name,c_headmaster_name,c.c_phone,d.d_name,p.p_name,e.e_name,r.r_name

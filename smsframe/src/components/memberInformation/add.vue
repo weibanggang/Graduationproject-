@@ -73,7 +73,7 @@
 	export default {
 		data() {
 			return {
-				url: 'http://localhost:8080/',
+				url: 'http://47.100.245.30:8080/',
 				sex:true,
 				memberInformation: {
 					mId: '',

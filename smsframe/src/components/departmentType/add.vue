@@ -40,7 +40,7 @@
 					dRemarks: "",
 					dSort: 1
 				},
-				url:"http://localhost:8080/"
+				url:"http://47.100.245.30:8080/"
 			};
 		},
 		methods:{

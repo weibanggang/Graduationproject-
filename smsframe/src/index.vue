@@ -94,13 +94,13 @@
 						<Modal v-model="modal13" draggable scrollable title="修改密码" @on-ok="ok">
 							<Form ref="formValidate" :model="user" :label-width="80">
 								<FormItem label="旧密码" prop="password">
-									<Input v-model="user.password" placeholder="请输入旧密码"></Input>
+									<Input type="password" v-model="user.password" placeholder="请输入旧密码"></Input>
 								</FormItem>
-								<FormItem label="新密码" prop="passwords">
-									<Input v-model="user.passwords" placeholder="请输入新密码"></Input>
+								<FormItem  label="新密码" prop="passwords">
+									<Input type="password" v-model="user.passwords" placeholder="请输入新密码"></Input>
 								</FormItem>
-								<FormItem label="确认密码" prop="passwordss">
-									<Input v-model="user.passwordss" placeholder="请输入确认密码"></Input>
+								<FormItem  label="确认密码" prop="passwordss">
+									<Input type="password" v-model="user.passwordss" placeholder="请输入确认密码"></Input>
 								</FormItem>
 							</Form>
 						</Modal>
@@ -251,7 +251,7 @@
 	export default {
 		data() {
 			return {
-				url: "http://localhost:8080",
+				url: "http://47.100.245.30:8080",
 				years: "",
 				mName:"小邦哥1",
 				theme: "primary",
@@ -286,10 +286,11 @@
 					th.$Message.warning("密码最少为6位");
 					return;
 				}
-				if(th.user.password != th.user.passwords ){
+				if(th.user.passwords != th.user.passwordss ){
 					th.$Message.warning("两次密码不一致");
 					return;
 				}
+				th.user.mUser = localStorage.getItem("mUser");
 				axios.get(th.url + '/memberInformation/upassword', {
 					params: {
 						mUser:th.user.mUser,

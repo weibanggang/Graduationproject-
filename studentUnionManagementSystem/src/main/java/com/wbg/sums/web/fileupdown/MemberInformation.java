@@ -13,9 +13,9 @@ import java.io.File;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/memberInformation")
+@RequestMapping("/upload")
 public class MemberInformation {
-    @RequestMapping(value = "/upload", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/memberInformation", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
     public Result upload(@RequestPart("file") MultipartFile multipartFile, HttpServletRequest request) {
 
         if (!multipartFile.getContentType().contains("image/")) {
@@ -25,7 +25,7 @@ public class MemberInformation {
             return new Result("图片只能是5M以下！");
         }
         //取得相对路径
-        String basePath = request.getServletContext().getRealPath(File.separator + "memberInformation" + File.separator);
+        String basePath = request.getServletContext().getRealPath(File.separator+ "file" + File.separator + "memberInformation" + File.separator);
         String rekativePath;
         try {
             rekativePath = new DBUtil().makeImagePath(multipartFile.getOriginalFilename());

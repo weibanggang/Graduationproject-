@@ -13,12 +13,12 @@ import java.io.File;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/leaveRecord")
+@RequestMapping("/upload")
 public class LeaveRecord {
-    @RequestMapping(value = "/upload", method = RequestMethod.POST,produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/leaveRecord", method = RequestMethod.POST,produces = "application/json;charset=utf-8")
     public Result upload(@RequestPart("file") MultipartFile multipartFile, HttpServletRequest request){
         //取得相对路径
-        String basePath = request.getServletContext().getRealPath(File.separator+"leaveRecord"+File.separator);
+        String basePath = request.getServletContext().getRealPath(File.separator+ "file" + File.separator + "leaveRecord"+File.separator);
         String rekativePath;
         try {
             rekativePath = new DBUtil().makeImagePath(multipartFile.getOriginalFilename());

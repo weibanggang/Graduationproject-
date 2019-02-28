@@ -100,7 +100,7 @@
 					<div>
 						<Row>
 							<Col span="6">
-							<Upload name='file' :show-upload-list='false' :on-success='resultMsg' action="http://localhost:8080/financialManagement/upload">
+							<Upload name='file' :show-upload-list='false' :on-success='resultMsg' action="http://47.100.245.30:8080/upload/financialManagement">
 								<Button icon="ios-cloud-upload-outline">可拖动上传</Button>
 							</Upload>
 							</Col>
@@ -124,7 +124,7 @@
 	export default {
 		data() {
 			return {
-				url: "http://localhost:8080",
+				url: "http://47.100.245.30:8080",
 				count: 10,
 				fType: "全部",
 				baDate: [],

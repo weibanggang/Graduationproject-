@@ -110,7 +110,7 @@
 		data() {
 			return {
 				fycx: "",
-				url: "http://localhost:8080",
+				url: "http://47.100.245.30:8080",
 				count: 10,
 				modal13: false,
 				modal14: false,

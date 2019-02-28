@@ -131,7 +131,7 @@ public class MemberInformationController {
                 return new Result().success(homeReport);
             }
         } catch (Exception ex) {
-            return new Result().error("出错,请重试！");
+            return new Result().error(ex.getMessage());
         }
     }
     /**

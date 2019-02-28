@@ -99,7 +99,7 @@
 		data() {
 			return {
 				title: "添加会议类型",
-				url: "http://localhost:8080",
+				url: "http://47.100.245.30:8080",
 				count: 10,
 				modal13: false,
 				loading:true,

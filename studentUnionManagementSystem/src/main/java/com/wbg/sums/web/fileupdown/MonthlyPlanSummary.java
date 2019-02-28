@@ -14,12 +14,12 @@ import java.io.File;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/monthlyPlanSummary")
+@RequestMapping("/upload")
 public class MonthlyPlanSummary {
-    @RequestMapping(value = "/upload", method = RequestMethod.POST,produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/monthlyPlanSummary", method = RequestMethod.POST,produces = "application/json;charset=utf-8")
     public Result upload(@RequestPart("file") MultipartFile multipartFile, HttpServletRequest request){
         //取得相对路径
-        String basePath = request.getServletContext().getRealPath(File.separator+"monthlyPlanSummary"+File.separator);
+        String basePath = request.getServletContext().getRealPath(File.separator+ "file" + File.separator + "monthlyPlanSummary"+File.separator);
         String rekativePath;
         try {
             rekativePath = new DBUtil().makeImagePath(multipartFile.getOriginalFilename());

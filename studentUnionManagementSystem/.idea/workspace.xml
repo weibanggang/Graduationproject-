@@ -2,129 +2,84 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="studentUnionManagementSystem:war exploded" />
+      <artifact name="studentUnionManagementSystem:war" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f51d9b0f-c744-400f-83e9-4ebe73929195" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/dto/HomeReport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/dto/RolesAndPermissions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/PermissionsMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/util/LoginOk.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/ExceptionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/MinutesOfTheMeeting.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/image/tx.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../smsframe/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../smsframe/src/components/attendance/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/attendance/select.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/classTable/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/classTable/select.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/departmentType/add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/departmentType/add.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/departmentType/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/departmentType/select.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../smsframe/src/components/departmentalExcellenceRecord/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/departmentalExcellenceRecord/select.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/echarts/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/echarts/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/exchangeTable/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/exchangeTable/select.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/financialManagement/add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/financialManagement/add.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../smsframe/src/components/financialManagement/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/financialManagement/select.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../smsframe/src/components/jurisdiction/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/jurisdiction/select.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../smsframe/src/components/leaveRecord/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/leaveRecord/select.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/memberInformation/add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/memberInformation/add.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/memberInformation/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/memberInformation/select.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/memberInformation/selectEcharts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/memberInformation/selectEcharts.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../smsframe/src/components/minutesOfTheMeeting/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/minutesOfTheMeeting/select.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../smsframe/src/components/monthlyPlanSummary/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/monthlyPlanSummary/select.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../smsframe/src/components/notic/add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/notic/add.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../smsframe/src/components/notic/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/notic/select.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../smsframe/src/components/personalMeritRecord/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/personalMeritRecord/select.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/positionType/add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/positionType/add.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/positionType/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/positionType/select.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/typeOfMeeting/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/typeOfMeeting/select.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/workArrangement/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/workArrangement/select.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../smsframe/src/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../smsframe/src/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/plugins/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/plugins/axios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../smsframe/src/views/bf1.vue" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/dao/MemberInformationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/dao/MemberInformationMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/dao/RolesMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/dao/RolesMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/MemberInformationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/MemberInformationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/RolesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/RolesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/impl/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/impl/LoginServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/impl/MemberInformationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/impl/MemberInformationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/impl/RolesServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/impl/RolesServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/impl/BackupsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/impl/BackupsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/shiro/JWTUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/shiro/JWTUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/shiro/ShiroConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/shiro/ShiroConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/AttendanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/AttendanceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/BackupsController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/ClassTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/ClassTableController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/DepartmentTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/DepartmentTypeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/DepartmentalExcellenceRecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/DepartmentalExcellenceRecordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/ExchangeTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/ExchangeTableController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/FinancialManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/FinancialManagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/JurisdictionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/JurisdictionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/LeaveRecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/LeaveRecordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/MemberInformationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/MemberInformationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/MinutesOfTheMeetingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/MinutesOfTheMeetingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/MonthlyPlanSummaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/MonthlyPlanSummaryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/NoticController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/NoticController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/PersonalMeritRecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/PersonalMeritRecordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/PositionTypeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/PositionTypeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/RolesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/RolesAndPermissionsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/TypeofMeetingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/TypeofMeetingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/WorkArrangementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/WorkArrangementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/GeUserPermissionsAssociateMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/GeUserPermissionsAssociateMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/DepartmentalExcellenceRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/DepartmentalExcellenceRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/FinancialManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/FinancialManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/LeaveRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/LeaveRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/MemberInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/MemberInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/MonthlyPlanSummary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/MonthlyPlanSummary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/Notic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/Notic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/PersonalMeritRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/PersonalMeritRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/TypeofMeeting.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/MemberinformationMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/MemberinformationMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/NoticMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/NoticMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/PermissionsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/PermissionsMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/RolesMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/RolesMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/sql/学生会管理系统数据库.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/学生会管理系统数据库.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/dao/MemberInformationMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/dao/MemberInformationMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/dao/RolesMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/dao/RolesMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/service/MemberInformationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/service/MemberInformationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/service/RolesService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/service/RolesService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/service/impl/LoginServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/service/impl/LoginServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/service/impl/MemberInformationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/service/impl/MemberInformationServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/service/impl/RolesServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/service/impl/RolesServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/shiro/JWTUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/shiro/JWTUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/shiro/ShiroConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/shiro/ShiroConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/AttendanceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/AttendanceController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/BackupsController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/ClassTableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/ClassTableController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/DepartmentTypeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/DepartmentTypeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/DepartmentalExcellenceRecordController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/DepartmentalExcellenceRecordController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/ExchangeTableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/ExchangeTableController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/FinancialManagementController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/FinancialManagementController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/JurisdictionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/JurisdictionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/LeaveRecordController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/LeaveRecordController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/MemberInformationController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/MinutesOfTheMeetingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/MinutesOfTheMeetingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/MonthlyPlanSummaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/MonthlyPlanSummaryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/NoticController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/NoticController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/PersonalMeritRecordController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/PersonalMeritRecordController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/PositionTypeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/PositionTypeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/RolesController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/TypeofMeetingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/TypeofMeetingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/WorkArrangementController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/WorkArrangementController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/GeUserPermissionsAssociateMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/GeUserPermissionsAssociateMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/MemberInformationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/MemberInformationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/DepartmentalExcellenceRecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/DepartmentalExcellenceRecord.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/FinancialManagement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/FinancialManagement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/LeaveRecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/LeaveRecord.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/MemberInformation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/MemberInformation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/MonthlyPlanSummary.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/MonthlyPlanSummary.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/Notic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/Notic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/PersonalMeritRecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/PersonalMeritRecord.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/TypeofMeeting.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/mapper/MemberinformationMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/MemberinformationMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/NoticMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/NoticMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/PermissionsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/PermissionsMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/RolesMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/RolesMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/sql/学生会管理系统数据库.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sql/学生会管理系统数据库.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/dao/MemberInformationMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/dao/MemberInformationMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/dao/RolesMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/dao/RolesMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/service/MemberInformationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/service/MemberInformationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/service/RolesService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/service/RolesService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/service/impl/LoginServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/service/impl/LoginServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/service/impl/MemberInformationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/service/impl/MemberInformationServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/service/impl/RolesServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/service/impl/RolesServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/shiro/JWTUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/shiro/JWTUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/shiro/ShiroConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/shiro/ShiroConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/AttendanceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/AttendanceController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/BackupsController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/ClassTableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/ClassTableController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/DepartmentTypeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/DepartmentTypeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/DepartmentalExcellenceRecordController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/DepartmentalExcellenceRecordController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/ExchangeTableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/ExchangeTableController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/FinancialManagementController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/FinancialManagementController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/JurisdictionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/JurisdictionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/LeaveRecordController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/LeaveRecordController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/LoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/MemberInformationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/MemberInformationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/MinutesOfTheMeetingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/MinutesOfTheMeetingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/MonthlyPlanSummaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/MonthlyPlanSummaryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/NoticController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/NoticController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/PersonalMeritRecordController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/PersonalMeritRecordController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/PositionTypeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/PositionTypeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/RolesController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/TypeofMeetingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/TypeofMeetingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/WorkArrangementController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/WorkArrangementController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/mapper/GeUserPermissionsAssociateMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/mapper/GeUserPermissionsAssociateMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/DepartmentalExcellenceRecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/DepartmentalExcellenceRecord.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/FinancialManagement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/FinancialManagement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/LeaveRecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/LeaveRecord.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/MemberInformation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/MemberInformation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/MonthlyPlanSummary.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/MonthlyPlanSummary.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/Notic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/Notic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/PersonalMeritRecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/PersonalMeritRecord.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/TypeofMeeting.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/mapper/MemberinformationMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/mapper/MemberinformationMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/mapper/NoticMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/mapper/NoticMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/mapper/PermissionsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/mapper/PermissionsMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/mapper/RolesMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/mapper/RolesMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/sql/学生会管理系统数据库.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/sql/学生会管理系统数据库.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -161,7 +116,7 @@
     <session id="1049810283">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="59" />
+          <entry key="project.closed" value="69" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.104" value="1" />
           <entry key="project.open.time.16" value="1" />
@@ -170,17 +125,20 @@
           <entry key="project.open.time.22" value="3" />
           <entry key="project.open.time.24" value="5" />
           <entry key="project.open.time.25" value="3" />
-          <entry key="project.open.time.26" value="1" />
+          <entry key="project.open.time.26" value="3" />
           <entry key="project.open.time.27" value="2" />
           <entry key="project.open.time.28" value="3" />
           <entry key="project.open.time.29" value="1" />
           <entry key="project.open.time.3" value="4" />
           <entry key="project.open.time.31" value="1" />
-          <entry key="project.open.time.32" value="2" />
+          <entry key="project.open.time.32" value="4" />
+          <entry key="project.open.time.33" value="1" />
           <entry key="project.open.time.34" value="1" />
           <entry key="project.open.time.35" value="4" />
-          <entry key="project.open.time.36" value="1" />
-          <entry key="project.open.time.39" value="1" />
+          <entry key="project.open.time.36" value="2" />
+          <entry key="project.open.time.37" value="1" />
+          <entry key="project.open.time.38" value="1" />
+          <entry key="project.open.time.39" value="2" />
           <entry key="project.open.time.4" value="3" />
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.45" value="1" />
@@ -190,73 +148,56 @@
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="5" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="60" />
+          <entry key="project.opened" value="69" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="144" />
+          <entry key="class" value="145" />
           <entry key="dtd" value="1" />
-          <entry key="java" value="949" />
+          <entry key="java" value="1023" />
           <entry key="jpg" value="1" />
-          <entry key="png" value="5" />
-          <entry key="properties" value="5" />
-          <entry key="sql" value="18" />
-          <entry key="xml" value="171" />
+          <entry key="png" value="7" />
+          <entry key="properties" value="7" />
+          <entry key="sql" value="20" />
+          <entry key="xml" value="177" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="144" />
+          <entry key="CLASS" value="145" />
           <entry key="DTD" value="1" />
-          <entry key="Image" value="6" />
-          <entry key="JAVA" value="949" />
-          <entry key="Properties" value="5" />
-          <entry key="SQL" value="16" />
+          <entry key="Image" value="8" />
+          <entry key="JAVA" value="1023" />
+          <entry key="Properties" value="7" />
+          <entry key="SQL" value="18" />
           <entry key="Scratch" value="2" />
-          <entry key="XML" value="171" />
+          <entry key="XML" value="177" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="2" />
-          <entry key="java" value="7926" />
-          <entry key="sql" value="138" />
-          <entry key="xml" value="2268" />
+          <entry key="java" value="7985" />
+          <entry key="properties" value="5" />
+          <entry key="sql" value="153" />
+          <entry key="xml" value="2279" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="7926" />
+          <entry key="JAVA" value="7985" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="SQL" value="190" />
+          <entry key="Properties" value="5" />
+          <entry key="SQL" value="205" />
           <entry key="Scratch" value="14" />
-          <entry key="XML" value="2202" />
+          <entry key="XML" value="2213" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/shiro/JWTUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="65" column="25" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/spring-web.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="38" column="31" lean-forward="true" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -268,7 +209,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>WebSessionManager</find>
       <find>index</find>
       <find>Jid</find>
       <find>Roles</find>
@@ -298,6 +238,7 @@
       <find>lifecycleBeanPostProcessor</find>
       <find>upda</find>
       <find>insert</find>
+      <find>mar</find>
     </findStrings>
     <replaceStrings>
       <replace>p_date</replace>
@@ -324,22 +265,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/util/DBUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/exception/GlobalExceptionHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/exception/CommonJsonException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/exception/MainsiteErrorController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/spring-web.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/exception/ShiroGlobalExceptionHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/dto/MemberInfomationDto.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/spring/spring-service.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/util/Result.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/exception/GlobalExceptionHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/GlobalExceptionHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/shiro/JWTRealm.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/shiro/JWTFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/LoginController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/shiro/ShiroConfiguration.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/sql/学生会管理系统数据库.sql" />
         <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/ExceptionController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/ClassTableController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/ExchangeTableController.java" />
@@ -373,8 +298,24 @@
         <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/dao/MemberInformationMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/MemberInformationService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/impl/MemberInformationServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring-web.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/jdbc.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/shiro/JWTUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/MemberInformationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/impl/BackupsServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/MemberinformationMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/TypeofMeeting.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/sql/学生会管理系统数据库.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/DepartmentalExcellenceRecord.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/FinancialManagement.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/LeaveRecord.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/MemberInformation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/MinutesOfTheMeeting.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/MonthlyPlanSummary.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/Notic.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/PersonalMeritRecord.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wbg/sums/shiro/ShiroConfiguration.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -403,13 +344,18 @@
           <item name="studentUnionManagementSystem" type="9519ce18:MavenProjectsStructure$ProjectNode" />
           <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
         </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="studentUnionManagementSystem" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+        </path>
       </expand>
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="161" />
-    <option name="y" value="-10" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="97" />
+    <option name="y" value="-12" />
     <option name="width" value="1221" />
     <option name="height" value="530" />
   </component>
@@ -417,96 +363,67 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
       <hideEmptyPackages ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="studentUnionManagementSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="studentUnionManagementSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
             </path>
             <path>
               <item name="studentUnionManagementSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="studentUnionManagementSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+              <item name="Database Consoles" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
             </path>
             <path>
               <item name="studentUnionManagementSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="studentUnionManagementSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="studentUnionManagementSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="studentUnionManagementSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="studentUnionManagementSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="studentUnionManagementSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="studentUnionManagementSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="studentUnionManagementSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="wbg" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="studentUnionManagementSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="studentUnionManagementSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="wbg" type="462c0819:PsiDirectoryNode" />
-              <item name="sums" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="studentUnionManagementSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="studentUnionManagementSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="studentUnionManagementSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="studentUnionManagementSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="spring" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="studentUnionManagementSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="studentUnionManagementSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="studentUnionManagementSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+              <item name="Extensions" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="studentUnionManagementSystem" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="studentUnionManagementSystem" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+            <path>
+              <item name="studentUnionManagementSystem" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="studentUnionManagementSystem" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="studentUnionManagementSystem" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="studentUnionManagementSystem" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="studentUnionManagementSystem" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="studentUnionManagementSystem" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="resources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="studentUnionManagementSystem" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="studentUnionManagementSystem" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="target" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -523,12 +440,13 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="G:\Graduationproject-\studentUnionManagementSystem\src\main\webapp\image" />
-      <recent name="G:\Graduationproject-\studentUnionManagementSystem\target\contact\image" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.wbg.sums" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\Graduationproject-\studentUnionManagementSystem\src\main\java\com\wbg\sums" />
+      <recent name="G:\Graduationproject-\studentUnionManagementSystem\src\main\resources\mapper" />
+      <recent name="G:\Graduationproject-\studentUnionManagementSystem\src\main\webapp\image" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.wbg.sums.exception" />
@@ -537,10 +455,9 @@
       <recent name="com.wbg.sums.dao" />
       <recent name="com.wbg.sums.dto" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="G:\Graduationproject-\studentUnionManagementSystem\src\main\java\com\wbg\sums" />
-      <recent name="G:\Graduationproject-\studentUnionManagementSystem\src\main\resources\mapper" />
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="G:\Graduationproject-\studentUnionManagementSystem\src\main\webapp\image" />
+      <recent name="G:\Graduationproject-\studentUnionManagementSystem\target\contact\image" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -809,12 +726,21 @@
       <workItem from="1550747113643" duration="9120000" />
       <workItem from="1550795486206" duration="10251000" />
       <workItem from="1550818427758" duration="1634000" />
-      <workItem from="1551143918954" duration="25773000" />
+      <workItem from="1551143918954" duration="30174000" />
+      <workItem from="1551196348855" duration="150000" />
+      <workItem from="1551222721341" duration="9065000" />
+      <workItem from="1551238829410" duration="792000" />
+      <workItem from="1551248416572" duration="371000" />
+      <workItem from="1551265614715" duration="83000" />
+      <workItem from="1551267126310" duration="201000" />
+      <workItem from="1551267935843" duration="341000" />
+      <workItem from="1551268897897" duration="1290000" />
+      <workItem from="1551270271793" duration="2148000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="264108000" />
+    <option name="totallyTimeSpent" value="282950000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -826,19 +752,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4987775" visible="true" weight="0.1301059" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4987775" visible="true" weight="0.22541603" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info id="Web" order="5" sideWeight="0.5012225" side_tool="true" weight="0.26399395" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3344426" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.44444445" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.26065573" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3409836" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.28196722" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.2442623" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3295082" />
@@ -853,7 +778,7 @@
       <window_info anchor="bottom" id="FindBugs-IDEA" order="15" weight="0.7672131" />
       <window_info anchor="bottom" id="Database Console" order="16" weight="0.091803275" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Maven Projects" order="1" weight="0.23071104" />
+      <window_info anchor="right" id="Maven Projects" order="1" visible="true" weight="0.26399395" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.0688351" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="right" id="Palette" order="4" />
@@ -864,16 +789,16 @@
       <window_info anchor="right" id="CDI" order="9" weight="0.32980332" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4987775" visible="true" weight="0.30408472" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4987775" visible="true" weight="0.24281392" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info id="Web" order="5" sideWeight="0.5012225" side_tool="true" weight="0.26399395" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3344426" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.44444445" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3409836" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3661616" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.2442623" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3295082" />
@@ -884,11 +809,11 @@
       <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.13606557" />
       <window_info anchor="bottom" id="Spring" order="12" weight="0.7491803" />
       <window_info anchor="bottom" id="Application Servers" order="13" weight="0.3295082" />
-      <window_info anchor="bottom" id="Messages" order="14" visible="true" weight="0.16885246" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.16885246" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="15" weight="0.7672131" />
       <window_info anchor="bottom" id="Database Console" order="16" weight="0.091803275" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Maven Projects" order="1" weight="0.23071104" />
+      <window_info anchor="right" id="Maven Projects" order="1" visible="true" weight="0.03706505" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.0688351" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="right" id="Palette" order="4" />
@@ -910,208 +835,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/web/PositionTypeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-997">
-          <caret line="147" column="35" lean-forward="true" selection-start-line="147" selection-start-column="35" selection-end-line="147" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/service/impl/RolesServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="48" column="51" selection-start-line="48" selection-start-column="51" selection-end-line="48" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/entity/Roles.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="29" column="5" lean-forward="true" selection-start-line="3" selection-start-column="3" selection-end-line="29" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/dto/GetByRoleIdGetPermissions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/dto/MemberInfomationDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/sql/学生会管理系统数据库.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="62" column="8" lean-forward="true" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/service/PermissionsMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1100">
-          <caret line="44" column="52" selection-start-line="44" selection-start-column="52" selection-end-line="44" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/dao/PermissionsMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/dto/RolesAndPermissions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/entity/Permissions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="24" lean-forward="true" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/PermissionsMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="36" lean-forward="true" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/dao/GeUserPermissionsAssociateMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="19" column="11" lean-forward="true" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/GeUserPermissionsAssociateMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/entity/GeUserPermissionsAssociate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="5" column="28" lean-forward="true" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/service/RolesService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/NoticMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="81" column="51" selection-start-line="81" selection-start-column="47" selection-end-line="81" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/RolesMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="67" column="11" lean-forward="true" selection-start-line="67" selection-start-column="11" selection-end-line="67" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/dao/RolesMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="51" column="1" lean-forward="true" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/MinutesofthemeetingMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="75" column="52" selection-start-line="75" selection-start-column="28" selection-end-line="75" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/dao/MinutesOfTheMeetingMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/web/RolesAndPermissionsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="158" column="58" lean-forward="true" selection-start-line="158" selection-start-column="58" selection-end-line="158" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/util/Result.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1784">
-          <caret line="89" column="30" selection-start-line="89" selection-start-column="26" selection-end-line="89" selection-end-column="30" />
-          <folding>
-            <element signature="e#1724#1725#0" expanded="true" />
-            <element signature="e#1772#1773#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/util/LoginOk.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="21" lean-forward="true" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
-          <folding>
-            <element signature="e#99#100#0" expanded="true" />
-            <element signature="e#127#128#0" expanded="true" />
-            <element signature="e#169#170#0" expanded="true" />
-            <element signature="e#203#204#0" expanded="true" />
-            <element signature="e#234#235#0" expanded="true" />
-            <element signature="e#261#262#0" expanded="true" />
-            <element signature="e#301#302#0" expanded="true" />
-            <element signature="e#333#334#0" expanded="true" />
-            <element signature="e#365#366#0" expanded="true" />
-            <element signature="e#393#394#0" expanded="true" />
-            <element signature="e#435#436#0" expanded="true" />
-            <element signature="e#469#470#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/web/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
-          <folding>
-            <element signature="e#1194#1195#0" expanded="true" />
-            <element signature="e#1238#1239#0" expanded="true" />
-            <element signature="e#1509#1510#0" expanded="true" />
-            <element signature="e#1556#1557#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/shiro/JWTRealm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1102">
-          <caret line="61" column="7" lean-forward="true" selection-start-line="61" selection-start-column="7" selection-end-line="61" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1119,13 +846,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="33" column="14" lean-forward="true" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/shiro/JWTToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -1157,13 +877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/web/WorkArrangementController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-323">
-          <caret line="99" column="36" selection-start-line="99" selection-start-column="36" selection-end-line="99" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/web/DepartmentalExcellenceRecordController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
@@ -1182,13 +895,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/web/MinutesOfTheMeetingController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1227,93 +933,246 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/generatorConfig.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="44" lean-forward="true" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="54" lean-forward="true" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/jdbc.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="20" lean-forward="true" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1168" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4">
+          <caret line="37" column="14" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/image/light.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/image/logos.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/dto/HomeReport.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
-          <caret line="2" column="23" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="23" />
-          <folding>
-            <element signature="e#133#134#0" expanded="true" />
-            <element signature="e#161#162#0" expanded="true" />
-            <element signature="e#203#204#0" expanded="true" />
-            <element signature="e#237#238#0" expanded="true" />
-            <element signature="e#268#269#0" expanded="true" />
-            <element signature="e#295#296#0" expanded="true" />
-            <element signature="e#335#336#0" expanded="true" />
-            <element signature="e#367#368#0" expanded="true" />
-            <element signature="e#396#397#0" expanded="true" />
-            <element signature="e#424#425#0" expanded="true" />
-            <element signature="e#463#464#0" expanded="true" />
-            <element signature="e#497#498#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/service/impl/MemberInformationServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="59" column="42" lean-forward="true" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="42" />
-          <folding>
-            <element signature="e#1848#1849#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/service/MemberInformationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="59" column="31" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="31" />
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/MemberinformationMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="104" column="57" selection-start-line="104" selection-start-column="57" selection-end-line="104" selection-end-column="57" />
+        <state relative-caret-position="145">
+          <caret line="102" column="65" lean-forward="true" selection-start-line="102" selection-start-column="65" selection-end-line="102" selection-end-column="65" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/dao/MemberInformationMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="71" column="34" lean-forward="true" selection-start-line="71" selection-start-column="34" selection-end-line="71" selection-end-column="34" />
+        <state relative-caret-position="170">
+          <caret line="72" column="52" selection-start-line="72" selection-start-column="52" selection-end-line="72" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/service/impl/MemberInformationServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="60" column="43" selection-start-line="60" selection-start-column="43" selection-end-line="60" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/service/MemberInformationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="59" column="21" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/service/impl/BackupsServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/web/MemberInformationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="123" column="28" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="28" />
+        <state relative-caret-position="127">
+          <caret line="126" column="72" selection-start-line="126" selection-start-column="72" selection-end-line="126" selection-end-column="72" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/shiro/ShiroConfiguration.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/shiro/JWTRealm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1728">
-          <caret line="54" column="11" lean-forward="true" selection-start-line="54" selection-start-column="11" selection-end-line="54" selection-end-column="11" />
+        <state relative-caret-position="231">
+          <caret line="61" column="7" lean-forward="true" selection-start-line="61" selection-start-column="7" selection-end-line="61" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/web/MinutesOfTheMeetingController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1007">
+          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/entity/TypeofMeeting.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-250">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/TypeofMeetings.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/service/TypeofMeetingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="30" column="48" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/shiro/JWTToken.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/shiro/JWTFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1859">
+        <state relative-caret-position="2224">
           <caret line="110" column="47" lean-forward="true" selection-start-line="110" selection-start-column="47" selection-end-line="110" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/shiro/JWTUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="65" column="25" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
+        <state relative-caret-position="150">
+          <caret line="22" column="55" lean-forward="true" selection-start-line="22" selection-start-column="55" selection-end-line="22" selection-end-column="55" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-web.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/sql/学生会管理系统数据库.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="38" column="31" lean-forward="true" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+        <state>
+          <caret line="82" column="2" selection-start-line="82" selection-start-column="2" selection-end-line="82" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/web/WorkArrangementController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="99" column="36" selection-start-line="99" selection-start-column="36" selection-end-line="99" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/org/springframework/spring-web/5.1.0.RELEASE/spring-web-5.1.0.RELEASE.jar!/org/springframework/web/multipart/MultipartFile.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="21" column="11" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/MinutesOfTheMeeting.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="19" column="88" selection-start-line="19" selection-start-column="84" selection-end-line="19" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/PersonalMeritRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="23" column="49" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1700">
+          <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/MemberInformation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="29" column="13" lean-forward="true" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/FinancialManagement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="20" column="109" selection-start-line="20" selection-start-column="109" selection-end-line="20" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/DepartmentalExcellenceRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="20" column="110" selection-start-line="20" selection-start-column="110" selection-end-line="20" selection-end-column="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/LeaveRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="20" column="109" selection-start-line="20" selection-start-column="109" selection-end-line="20" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/Notic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="20" column="110" selection-start-line="20" selection-start-column="110" selection-end-line="20" selection-end-column="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/MonthlyPlanSummary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="21" column="109" selection-start-line="21" selection-start-column="109" selection-end-line="21" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/util/DBUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wbg/sums/shiro/ShiroConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="59" column="23" selection-start-line="59" selection-start-column="23" selection-end-line="59" selection-end-column="23" />
         </state>
       </provider>
     </entry>

@@ -105,7 +105,7 @@
 						<div>
 							<Row>
 								<Col span="12">
-								<Upload name='file' :show-upload-list='false' :on-success='resultMsg' action="http://localhost:8080/leaveRecord/upload">
+								<Upload name='file' :show-upload-list='false' :on-success='resultMsg' action="http://47.100.245.30:8080/upload/leaveRecord">
 									<Button icon="ios-cloud-upload-outline">可拖动上传</Button>
 								</Upload>
 								</Col>
@@ -167,7 +167,7 @@
 					<div>
 						<Row>
 							<Col span="12">
-							<Upload name='file' :show-upload-list='false' :on-success='resultMsg' action="http://localhost:8080/leaveRecord/upload">
+							<Upload name='file' :show-upload-list='false' :on-success='resultMsg' action="http://47.100.245.30:8080/upload/leaveRecord">
 								<Button icon="ios-cloud-upload-outline">可拖动上传</Button>
 							</Upload>
 							</Col>
@@ -194,7 +194,7 @@
 				loading: true,
 				departmentType: [],
 				menberInforMation:[],
-				url: "http://localhost:8080",
+				url: "http://47.100.245.30:8080",
 				count: 10,
 				modal13: false,
 				modal14:false,
