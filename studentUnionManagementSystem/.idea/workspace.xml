@@ -6,81 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f51d9b0f-c744-400f-83e9-4ebe73929195" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/MinutesOfTheMeeting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/image/tx.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/attendance/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/attendance/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/classTable/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/classTable/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/departmentType/add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/departmentType/add.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/departmentType/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/departmentType/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/departmentalExcellenceRecord/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/departmentalExcellenceRecord/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/echarts/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/echarts/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/exchangeTable/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/exchangeTable/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/financialManagement/add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/financialManagement/add.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/financialManagement/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/financialManagement/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/jurisdiction/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/jurisdiction/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/leaveRecord/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/leaveRecord/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/memberInformation/add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/memberInformation/add.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/memberInformation/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/memberInformation/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/memberInformation/selectEcharts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/memberInformation/selectEcharts.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/minutesOfTheMeeting/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/minutesOfTheMeeting/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/monthlyPlanSummary/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/monthlyPlanSummary/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/notic/add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/notic/add.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/notic/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/notic/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/personalMeritRecord/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/personalMeritRecord/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/positionType/add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/positionType/add.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/positionType/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/positionType/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/typeOfMeeting/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/typeOfMeeting/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/components/workArrangement/select.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/components/workArrangement/select.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../smsframe/src/login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../smsframe/src/views/bf1.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/impl/BackupsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/service/impl/BackupsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/shiro/JWTUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/shiro/JWTUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/shiro/ShiroConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/shiro/ShiroConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/MemberInformationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/MemberInformationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/DepartmentalExcellenceRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/DepartmentalExcellenceRecord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/FinancialManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/FinancialManagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/LeaveRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/LeaveRecord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/MemberInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/MemberInformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/MonthlyPlanSummary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/MonthlyPlanSummary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/Notic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/Notic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/PersonalMeritRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/PersonalMeritRecord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wbg/sums/web/fileupdown/TypeofMeeting.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/MemberinformationMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/MemberinformationMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sql/学生会管理系统数据库.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/学生会管理系统数据库.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/shiro/JWTUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/shiro/JWTUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/shiro/ShiroConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/shiro/ShiroConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/MemberInformationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/MemberInformationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/DepartmentalExcellenceRecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/DepartmentalExcellenceRecord.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/FinancialManagement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/FinancialManagement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/LeaveRecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/LeaveRecord.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/MemberInformation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/MemberInformation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/MonthlyPlanSummary.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/MonthlyPlanSummary.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/Notic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/Notic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/PersonalMeritRecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/PersonalMeritRecord.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wbg/sums/web/fileupdown/TypeofMeeting.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/MemberinformationMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/MemberinformationMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sql/学生会管理系统数据库.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sql/学生会管理系统数据库.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/shiro/JWTUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/shiro/JWTUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/shiro/ShiroConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/shiro/ShiroConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/MemberInformationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/MemberInformationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/DepartmentalExcellenceRecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/DepartmentalExcellenceRecord.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/FinancialManagement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/FinancialManagement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/LeaveRecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/LeaveRecord.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/MemberInformation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/MemberInformation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/MonthlyPlanSummary.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/MonthlyPlanSummary.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/Notic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/Notic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/PersonalMeritRecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/PersonalMeritRecord.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/com/wbg/sums/web/fileupdown/TypeofMeeting.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/mapper/MemberinformationMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/mapper/MemberinformationMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/contact/WEB-INF/classes/sql/学生会管理系统数据库.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/contact/WEB-INF/classes/sql/学生会管理系统数据库.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-    </list>
+    <list default="true" id="f51d9b0f-c744-400f-83e9-4ebe73929195" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -116,7 +42,7 @@
     <session id="1049810283">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="69" />
+          <entry key="project.closed" value="70" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.104" value="1" />
           <entry key="project.open.time.16" value="1" />
@@ -124,7 +50,7 @@
           <entry key="project.open.time.2" value="3" />
           <entry key="project.open.time.22" value="3" />
           <entry key="project.open.time.24" value="5" />
-          <entry key="project.open.time.25" value="3" />
+          <entry key="project.open.time.25" value="4" />
           <entry key="project.open.time.26" value="3" />
           <entry key="project.open.time.27" value="2" />
           <entry key="project.open.time.28" value="3" />
@@ -148,7 +74,7 @@
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="5" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="69" />
+          <entry key="project.opened" value="70" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -197,7 +123,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -389,6 +315,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -396,34 +323,10 @@
               <item name="studentUnionManagementSystem" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="studentUnionManagementSystem" type="2674bda8:ScopeViewTreeModel$GroupNode" />
             </path>
-            <path>
-              <item name="studentUnionManagementSystem" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="studentUnionManagementSystem" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="studentUnionManagementSystem" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="studentUnionManagementSystem" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="studentUnionManagementSystem" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="studentUnionManagementSystem" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="resources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="studentUnionManagementSystem" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="studentUnionManagementSystem" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="target" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -431,7 +334,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="F:/test" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -736,11 +639,12 @@
       <workItem from="1551267935843" duration="341000" />
       <workItem from="1551268897897" duration="1290000" />
       <workItem from="1551270271793" duration="2148000" />
+      <workItem from="1551334609011" duration="47000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="282950000" />
+    <option name="totallyTimeSpent" value="282997000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -754,7 +658,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4987775" visible="true" weight="0.22541603" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4987775" visible="true" weight="0.22844176" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
